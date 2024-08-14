@@ -193,17 +193,67 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
          </section>
 
          <section className="bg-white">
-            <div className="custom-container py-20">
-               <div className="py-7 border-y-2 border-green">
+            <div className="custom-container py-20 max-md:py-10">
+               <div className="py-7 max-md:py-5 border-y-2 border-green">
                   <h2 className="text-3xl max-sm:text-xl text-center text-yellow">\\НАША ГАЛЕРЕЯ</h2>
                </div>
 
-               <div className="grid grid-cols-3 gap-3 px-40 my-7">
+               <div className="grid grid-cols-3 gap-3 px-60 max-xl:px-40 max-lg:px-10 my-7 max-md:hidden">
+                  <div className="flex flex-col gap-3">
+                     {
+                        [0, 1, 2, 3].map((i: number) => (
+                           <div key={i} className={i == 0 ? "h-[25%]" : i == 1 ? "h-[25%]" : i == 2 ? "h-[25%]" : "h-[25%]"}>
+                              <Image
+                                 className="w-full h-full object-cover rounded-lg"
+                                 src={"/images/img.png"}
+                                 width={1000}
+                                 height={1000}
+                                 alt="img"
+                              />
+                           </div>
+                        ))
+                     }
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                     {
+                        [0, 1, 2, 3].map((i: number) => (
+                           <div key={i} className={i == 0 ? "h-[30%]" : i == 1 ? "h-[25%]" : "h-[20%]"}>
+                              <Image
+                                 className="w-full h-full object-cover rounded-lg"
+                                 src={"/images/img.png"}
+                                 width={1000}
+                                 height={1000}
+                                 alt="img"
+                              />
+                           </div>
+                        ))
+                     }
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                     {
+                        [0, 1, 2, 3].map((i: number) => (
+                           <div key={i} className={i == 0 ? "h-[25%]" : i == 1 ? "h-[20%]" : i == 2 ? "h-[35%]" : "h-[25%]"}>
+                              <Image
+                                 className="w-full h-full object-cover rounded-lg"
+                                 src={"/images/img.png"}
+                                 width={1000}
+                                 height={1000}
+                                 alt="img"
+                              />
+                           </div>
+                        ))
+                     }
+                  </div>
+               </div>
+
+               <div className="grid grid-cols-10 gap-1 my-5 md:hidden">
                   {
-                     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i: number) => (
-                        <div key={i} className="">
+                     [0, 1, 2, 3, 4, 5].map((i: number) => (
+                        <div key={i} className={i == 0 ? "col-span-6" : i == 1 ? "col-span-4" : i == 2 ? "col-span-10" : i == 3 ? "col-span-4" : i == 4 ? "col-span-6" : "col-span-10"}>
                            <Image
-                              className="w-full h-full"
+                              className="w-full h-40 object-cover rounded-md"
                               src={"/images/img.png"}
                               width={1000}
                               height={1000}
