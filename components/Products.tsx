@@ -47,7 +47,7 @@ const Products = () => {
                                     <div className="my-3 border-l-[3px] pl-3 border-yellow">
                                         <p className='text-xl max-sm:text-base font-bold'>Полотенца, которые впечатляют!</p>
                                     </div>
-                                    <p className='text-sm leading-6 max-sm:leading-5 mb-5'>
+                                    <p className='text-sm max-sm:text-xs max-sm:font-medium leading-6 max-sm:leading-5 mb-5'>
                                         Один из самых необыкновенных проектов нашей
                                         компании - полотенца в старинном стиле.
                                     </p>

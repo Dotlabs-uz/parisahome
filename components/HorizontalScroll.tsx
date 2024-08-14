@@ -4,8 +4,30 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef } from "react";
 
-gsap.registerPlugin(ScrollTrigger);
+const arr = [
+    {
+        years: "2014",
+        title: "Наше наследие",
+        dcr: "Полотенца, которые впечатляют! Parisa Home была основана в 2009 году, Наша компания также известна, как ООО'Sam Rafoat Textile'. В начале эта компания начала производить плющ. С 2009 года ООО'Sam Rafoat Текстиль' обеспечивал местные"
+    },
+    {
+        years: "2017",
+        title: "Начало производства",
+        dcr: "Полотенца, которые впечатляют! Parisa Home была основана в 2009 году, Наша компания также известна, как ООО'Sam Rafoat Textile'."
+    },
+    {
+        years: "2020",
+        title: "Время роста",
+        dcr: "Полотенца, которые впечатляют! Parisa Home была основана в 2009 году, Наша компания также известна, как ООО'Sam Rafoat Textile'."
+    },
+    {
+        years: "2020",
+        title: "Время роста",
+        dcr: "Полотенца, которые впечатляют! Parisa Home была основана в 2009 году, Наша компания также известна, как ООО'Sam Rafoat Textile'."
+    },
+]
 
+gsap.registerPlugin(ScrollTrigger);
 const HorizontalScroll = () => {
     const sectionRef = useRef(null);
     const triggerRef = useRef(null);
@@ -29,6 +51,7 @@ const HorizontalScroll = () => {
                 },
             }
         );
+
         gsap.to(".progress", {
             width: "100%",
             scrollTrigger: {
@@ -45,103 +68,64 @@ const HorizontalScroll = () => {
 
     return (
         <>
-            <section className="scroll-section-outer">
+            <div className="scroll-section-outer">
                 <div ref={triggerRef} className="relative scroll">
-                    <div className="w-screen h-1 absolute bottom-20 left-0 bg-white">
+                    <div className="w-screen h-1 absolute bottom-10 max-md:bottom-5 left-0 bg-white">
                         <div className="bg-yellow h-full w-0 progress"></div>
+
+                        <div className="flex flex-col gap-3 items-center absolute -top-11 left-[5%]">
+                            <div className="p-1 px-2 rounded-md border border-white">
+                                <p className="text-sm font-medium text-white">наше наследие</p>
+                            </div>
+                            <span className="block w-2 h-2 rounded-full bg-white"></span>
+                        </div>
+                        <div className="flex flex-col gap-3 items-center absolute -top-11 left-[40%]">
+                            <div className="p-1 px-2 rounded-md border border-white">
+                                <p className="text-sm font-medium text-white">наше наследие</p>
+                            </div>
+                            <span className="block w-2 h-2 rounded-full bg-white"></span>
+                        </div>
+                        <div className="flex flex-col gap-3 items-center absolute -top-11 left-[70%]">
+                            <div className="p-1 px-2 rounded-md border border-white">
+                                <p className="text-sm font-medium text-white">наше наследие</p>
+                            </div>
+                            <span className="block w-2 h-2 rounded-full bg-white"></span>
+                        </div>
+                        <div className="flex flex-col gap-3 items-center absolute -top-11 left-[89%]">
+                            <div className="p-1 px-2 rounded-md border border-white">
+                                <p className="text-sm font-medium text-white">наше наследие</p>
+                            </div>
+                            <span className="block w-2 h-2 rounded-full bg-white"></span>
+                        </div>
                     </div>
                     <div ref={sectionRef} className="scroll-section-inner text-white">
-                        <div className="scroll-section">
-                            <div className="custom-container h-full flex max-md:flex-col items-center justify-between py-24">
-                                <div className=" w-full">
-                                    <p className="text-xl mb-10">2014</p>
+                        {
+                            arr.map((item: any, index: number) => (
+                                <div className="scroll-section">
+                                    <div className="custom-container h-full flex max-md:flex-col items-center justify-between py-40 max-md:py-20">
+                                        <div className=" w-full">
+                                            <p className="text-xl mb-10">{item.years}</p>
 
-                                    <h2 className="text-5xl mb-3">Наше наследие</h2>
-                                    <p className="max-w-[430px] text-[17px] leading-6">Полотенца, которые впечатляют! Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ. С 2009 года ООО"Sam Rafoat Текстиль" обеспечивал местные </p>
-                                </div>
+                                            <h2 className="text-5xl mb-3">{item.title}</h2>
+                                            <p className="max-w-[430px] text-[17px] leading-6">{item.dcr}</p>
+                                        </div>
 
-                                <div className="max-w-md w-full h-full">
-                                    <Image
-                                        className="w-full h-full"
-                                        src={"/images/flower.svg"}
-                                        width={1000}
-                                        height={1000}
-                                        alt="img"
-                                    />
+                                        <div className="max-w-md w-full flower">
+                                            <Image
+                                                className="w-full h-full"
+                                                src={"/images/flower.svg"}
+                                                width={1000}
+                                                height={1000}
+                                                alt="img"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="scroll-section">
-                            <div className="custom-container h-full flex max-md:flex-col items-end justify-between py-24">
-                                <div className=" w-full">
-                                    <p className="text-xl mb-10">2017</p>
-
-                                    <h2 className="text-5xl mb-3">Начало производства</h2>
-                                    <p className="max-w-[430px] text-[17px] leading-6">
-                                        Полотенца, которые впечатляют! Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile".
-                                    </p>
-                                </div>
-
-                                <div className="max-w-md w-full h-full">
-                                    <Image
-                                        className="w-full h-full"
-                                        src={"/images/flower.svg"}
-                                        width={1000}
-                                        height={1000}
-                                        alt="img"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="scroll-section">
-                            <div className="custom-container h-full flex max-md:flex-col items-start justify-between py-24">
-                                <div className=" w-full">
-                                    <p className="text-xl mb-10">2020</p>
-
-                                    <h2 className="text-5xl mb-3">Время роста</h2>
-                                    <p className="max-w-[430px] text-[17px] leading-6">
-                                        Полотенца, которые впечатляют! Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile".                                    </p>
-                                </div>
-
-                                <div className="max-w-md w-full h-full">
-                                    <Image
-                                        className="w-full h-full"
-                                        src={"/images/flower.svg"}
-                                        width={1000}
-                                        height={1000}
-                                        alt="img"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="scroll-section">
-                            <div className="custom-container h-full flex max-md:flex-col items-center justify-between py-24">
-                                <div className=" w-full">
-                                    <p className="text-xl mb-10">2020</p>
-
-                                    <h2 className="text-5xl mb-3">Время роста</h2>
-                                    <p className="max-w-[430px] text-[17px] leading-6">
-                                        Полотенца, которые впечатляют! Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile".                                    </p>
-                                </div>
-
-                                <div className="max-w-md w-full h-full">
-                                    <Image
-                                        className="w-full h-full"
-                                        src={"/images/flower.svg"}
-                                        width={1000}
-                                        height={1000}
-                                        alt="img"
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                            ))
+                        }
                     </div>
                 </div>
-            </section>
-
-            <section>
-                <div className="w-screen h-screen bg-[red]"></div>
-            </section>
+            </div>
         </>
     );
 }

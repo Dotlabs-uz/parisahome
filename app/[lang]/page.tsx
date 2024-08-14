@@ -61,9 +61,9 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
                                     alt="img"
                                  />
                               </div>
-                              <div className="mt-8 max-md:mt-3">
+                              <div className="mt-8 max-md:mt-3 px-4 max-sm:px-3">
                                  <h3 className="text-2xl text-center">Особенная технология</h3>
-                                 <p className="text-sm leading-6 my-5 max-md:my-2">Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ. С 2009 года ООО"Sam Rafoat Текстиль" обеспечивал местные </p>
+                                 <p className="text-base leading-6 my-5 max-md:my-2">Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ. С 2009 года ООО"Sam Rafoat Текстиль" обеспечивал местные </p>
                               </div>
                            </div>
                         ))
