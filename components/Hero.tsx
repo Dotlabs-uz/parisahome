@@ -1,11 +1,13 @@
 "use client"
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const Hero = () => {
     return (
@@ -29,8 +31,8 @@ const Hero = () => {
                                 height={1000}
                                 alt='img'
                             />
-                            <h1 className='text-9xl max-lg:text-8xl text-center max-lg:leading-[75px]'>Parisa Home</h1>
-                            <h2 className='text-4xl max-lg:text-3xl text-center'>Полотенца, которые впечатляют!</h2>
+                            <h1 className='title text-9xl max-lg:text-8xl text-center max-lg:leading-[75px]'>Parisa Home</h1>
+                            <h2 className='title text-4xl max-lg:text-3xl text-center'>Полотенца, которые впечатляют!</h2>
                         </div>
                     </SwiperSlide>
                 ))

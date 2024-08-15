@@ -218,7 +218,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
                   <div className="flex flex-col gap-3">
                      {
                         [0, 1, 2, 3].map((i: number) => (
-                           <div key={i} className={i == 0 ? "h-[30%]" : i == 1 ? "h-[25%]" : "h-[20%]"}>
+                           <div key={i} className={i == 0 ? "h-[30%]" : i == 1 ? "h-[25%]" : i == 2 ? "h-[25%]" : "h-[20%]"}>
                               <Image
                                  className="w-full h-full object-cover rounded-lg"
                                  src={"/images/img.png"}
