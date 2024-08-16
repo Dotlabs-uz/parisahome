@@ -27,7 +27,7 @@ const Page = () => {
                         <p className='text-[56px] max-xl:text-5xl max-lg:text-4xl max-md:text-3xl leading-[50.97px] text-white/50'>специализируется на полотенцах и общепромышленной продукции.</p>
                     </div>
                     <div className="w-full max-w-[430px] flex flex-col justify-end pb-32 ml-auto">
-                        <p className="text-sm font-light leading-[23.8px] mb-5 text-white">Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ. С 2009 года ООО"Sam Rafoat Текстиль" обеспечивал местные рынки своей продукцией </p>
+                        <p className="text-sm font-light leading-[23.8px] mb-5 text-white">Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией </p>
                         <button className="w-fit max-md:text-sm font-medium py-3 max-md:py-2 px-10 max-md:px-6 max-md:m-auto rounded-lg bg-yellow text-white">ИЗУЧИТЬ УСЛУГИ</button>
                     </div>
                 </div>
@@ -89,7 +89,7 @@ const Page = () => {
                                     />
                                 </div>
                                 <div className="">
-                                    <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ.</p>
+                                    <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ОООSam Rafoat Textile. В начале эта компания начала производить плющ.</p>
                                 </div>
                             </div>
                             <div className="">
@@ -103,7 +103,7 @@ const Page = () => {
                                     />
                                 </div>
                                 <div className="">
-                                    <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ.</p>
+                                    <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ.</p>
                                 </div>
                             </div>
                             <div className="">
@@ -117,7 +117,7 @@ const Page = () => {
                                     />
                                 </div>
                                 <div className="">
-                                    <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ.</p>
+                                    <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ.</p>
                                 </div>
                             </div>
                             <div className="">
@@ -131,7 +131,7 @@ const Page = () => {
                                     />
                                 </div>
                                 <div className="">
-                                    <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ.</p>
+                                    <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ.</p>
                                 </div>
                             </div>
                         </div>
@@ -179,10 +179,10 @@ const Page = () => {
                                 height={1000}
                                 alt='vector'
                             />
-                            <p className='text-sm leading-6 max-md:hidden text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ. С 2009 года ООО"Sam Rafoat Текстиль" обеспечивал местные рынки своей продукцией </p>
+                            <p className='text-sm leading-6 max-md:hidden text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией </p>
                         </div>
                         <div className="mt-3">
-                            <p className='text-xs leading-5 md:hidden text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ. С 2009 года ООО"Sam Rafoat Текстиль" обеспечивал местные рынки своей продукцией </p>
+                            <p className='text-xs leading-5 md:hidden text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией </p>
                         </div>
                     </div>
                     <div className="">
@@ -202,10 +202,10 @@ const Page = () => {
                                 height={1000}
                                 alt='vector'
                             />
-                            <p className='text-sm leading-6 max-md:hidden text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ. С 2009 года ООО"Sam Rafoat Текстиль" обеспечивал местные рынки своей продукцией </p>
+                            <p className='text-sm leading-6 max-md:hidden text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией</p>
                         </div>
                         <div className="mt-3">
-                            <p className='text-xs leading-5 md:hidden text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО"Sam Rafoat Textile". В начале эта компания начала производить плющ. С 2009 года ООО"Sam Rafoat Текстиль" обеспечивал местные рынки своей продукцией </p>
+                            <p className='text-xs leading-5 md:hidden text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией </p>
                         </div>
                     </div>
                 </div>
