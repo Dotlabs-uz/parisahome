@@ -104,7 +104,7 @@ const HorizontalScroll = () => {
                             arr.map((item: any, index: number) => (
                                 <div className="scroll-section ">
                                     <div className="custom-container h-full flex max-md:flex-col gap-20 items-center justify-around lg:justify-between py-40 max-md:py-20">
-                                        <div className=" w-full">
+                                        <div className="w-full">
                                             <p className="text-xl mb-10">{item.years}</p>
 
                                             <h2 className="text-5xl mb-3">{item.title}</h2>

@@ -4,7 +4,6 @@ import Image from 'next/image'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
 gsap.registerPlugin(ScrollTrigger);
 const AboutСompany = () => {
@@ -37,7 +36,7 @@ const AboutСompany = () => {
                 <div className="max-w-sm max-lg:w-80 max-lg:h-[300px] relative">
                     <div className="absolute -z-10 top-3 -right-3 max-sm:-right-2 max-sm:top-2 w-full h-full rounded-md bg-white/30 border border-white"></div>
                     <Image
-                        className='w-full h-full object-cover rounded-md hover:translate-x-3 hover:translate-y-3 duration-500 ease-in-out'
+                        className="w-full h-full object-cover rounded-md hover:translate-x-3 hover:translate-y-3 duration-500 ease-in-out"
                         src={"/images/image.png"}
                         width={1000}
                         height={1000}
