@@ -13,11 +13,11 @@ const AboutСompany = () => {
         const texts = gsap.utils.toArray('.text');
         texts.forEach((text: any) => {
             gsap.from(text, {
-                x: 100,
+                x: 50,
                 ease: "none",
                 duration: 2,
                 opacity: 0,
-                stagger: 0.1,
+                stagger: 0.2,
                 scrollTrigger: {
                     trigger: text,
                     // containerAnimation: ".text",
