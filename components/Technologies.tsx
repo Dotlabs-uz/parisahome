@@ -8,23 +8,20 @@ import React, { useRef } from 'react'
 gsap.registerPlugin(ScrollTrigger)
 const Technologies = () => {
     useGSAP(() => {
-        const technologies = gsap.utils.toArray('.technologies');
-        technologies.forEach((technologie: any) => {
-            gsap.from(technologie, {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: {
-                    trigger: technologie,
-                    start: 'center bottom',
-                    end: 'bottom 80%',
-                    scrub: 1,
-                    // markers: true
-                }
-            })
+        gsap.from(".technologies", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: ".technologiesSection",
+                start: 'center bottom',
+                end: 'bottom 80%',
+                scrub: 1,
+                // markers: true
+            }
         })
-    })
+    }, [])
 
     return (
         <div className="custom-container py-10 technologiesSection">

@@ -7,8 +7,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 const FAQ = () => {
-    const accordionsSection = useRef(null)
-
     useGSAP(() => {
         const accordions = gsap.utils.toArray('.accordions');
         accordions.forEach((accordion: any) => {
@@ -19,20 +17,20 @@ const FAQ = () => {
                 stagger: 0.2,
                 scrollTrigger: {
                     trigger: accordion,
-                    start: "center bottom",
-                    end: "bottom 80%",
+                    start: "center 80%",
+                    end: "center 60%",
                     scrub: 1,
                     // markers: true
                 }
             })
         })
-    }, { scope: accordionsSection })
+    }, [])
 
     return (
-        <div ref={accordionsSection} className="custom-container">
+        <div className="custom-container">
             <div className="py-20 max-md:py-10 max-sm:py-5 rounded-3xl shadow-md bg-white">
-                <div className="mb-11 max-md:mb-5 px-4">
-                    <h2 className="text-yellow text-4xl max-lg:text-3xl max-sm:text-2xl sm:text-center accordions">\\Часто задаваемые вопросы</h2>
+                <div className="mb-11 max-md:mb-5 px-4 accordions">
+                    <h2 className="text-yellow text-4xl max-lg:text-3xl max-sm:text-2xl sm:text-center ">\\Часто задаваемые вопросы</h2>
                 </div>
 
                 <div className="">

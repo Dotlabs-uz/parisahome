@@ -38,6 +38,7 @@ const Form = () => {
                 // markers: true
             }
         })
+
         gsap.from(".form-img", {
             x: 100,
             // opacity: 0,
@@ -48,7 +49,7 @@ const Form = () => {
                 start: "center bottom",
                 end: "center 30%",
                 scrub: true,
-                markers: true
+                // markers: true
             }
         })
     })

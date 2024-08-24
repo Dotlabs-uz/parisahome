@@ -7,13 +7,29 @@ import React from 'react'
 
 gsap.registerPlugin(ScrollTrigger);
 const ExploreServices = () => {
+    useGSAP(() => {
+        gsap.from(".explore", {
+            x: -50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: ".explore-section",
+                start: "center bottom",
+                end: "center center",
+                scrub: 1,
+                // markers: true
+            }
+        })
+    }, [])
+
     return (
         <>
             <div className="absolute -z-10 top-0 left-0 w-full h-full bg-black/50" />
-            <div className="custom-container h-full w-full">
+            <div className="custom-container h-full w-full explore-section">
                 <div className="max-w-xl py-10 max-md:py-14 max-md:mb-5">
                     <Image
-                        className="w-96 mb-3"
+                        className="w-96 mb-3 explore"
                         src={"/images/parisahome.svg"}
                         width={1000}
                         height={1000}
@@ -23,8 +39,8 @@ const ExploreServices = () => {
                 </div>
 
                 <div className="w-full max-w-[430px] flex flex-col justify-end pb-32 ml-auto">
-                    <p className="text-sm font-light leading-[23.8px] mb-5 text-white">Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией </p>
-                    <button className="w-fit max-md:text-sm font-medium py-3 max-md:py-2 px-10 max-md:px-6 max-md:m-auto rounded-lg bg-yellow text-white">ИЗУЧИТЬ УСЛУГИ</button>
+                    <p className="explore text-sm font-light leading-[23.8px] mb-5 text-white">Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией </p>
+                    <button className="explore w-fit max-md:text-sm font-medium py-3 max-md:py-2 px-10 max-md:px-6 max-md:m-auto rounded-lg bg-yellow text-white">ИЗУЧИТЬ УСЛУГИ</button>
                 </div>
             </div>
         </>
