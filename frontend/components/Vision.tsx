@@ -28,7 +28,7 @@ const Vision = () => {
                     start: "center bottom",
                     end: "center center",
                     scrub: true,
-                    markers: true
+                    // markers: true
                 }
             }, delay)
         })
