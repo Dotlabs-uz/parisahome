@@ -18,7 +18,7 @@ const AboutPartners = () => {
                 scrollTrigger: {
                     trigger: el,
                     start: "center bottom",
-                    end: "center center",
+                    end: "center 80%",
                     scrub: 1,
                     // markers: true
                 }

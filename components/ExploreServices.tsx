@@ -18,7 +18,6 @@ const ExploreServices = () => {
                 start: "center bottom",
                 end: "center center",
                 scrub: 1,
-                // markers: true
             }
         })
     }, [])
