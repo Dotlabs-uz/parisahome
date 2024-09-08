@@ -17,8 +17,8 @@ const FAQ = () => {
                 stagger: 0.2,
                 scrollTrigger: {
                     trigger: accordion,
-                    start: "center 80%",
-                    end: "center 60%",
+                    start: "center bottom",
+                    end: "center 80%",
                     scrub: 1,
                     // markers: true
                 }

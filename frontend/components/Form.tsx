@@ -19,11 +19,12 @@ const Form = () => {
             scrollTrigger: {
                 trigger: ".left-animation",
                 start: "center bottom",
-                end: "center 60%",
+                end: "center 70%",
                 scrub: true,
-                // markers: true
+                markers: true
             }
         })
+
         gsap.from(".right-animation", {
             x: 50,
             opacity: 0,
@@ -33,7 +34,7 @@ const Form = () => {
             scrollTrigger: {
                 trigger: ".left-animation",
                 start: "center bottom",
-                end: "center 60%",
+                end: "center 70%",
                 scrub: true,
                 // markers: true
             }
