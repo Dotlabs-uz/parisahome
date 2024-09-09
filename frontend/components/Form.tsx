@@ -21,7 +21,7 @@ const Form = () => {
                 start: "center bottom",
                 end: "center 70%",
                 scrub: true,
-                markers: true
+                // markers: true
             }
         })
 
