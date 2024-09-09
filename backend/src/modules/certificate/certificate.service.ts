@@ -1,26 +1,62 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateCertificateDto } from './dto/create-certificate.dto';
-import { UpdateCertificateDto } from './dto/update-certificate.dto';
+import { InjectModel } from '@nestjs/sequelize';
+import { Certificate } from './entities/certificate.entity';
+import { ImagesService } from '../images/images.service';
 
 @Injectable()
 export class CertificateService {
-  create(createCertificateDto: CreateCertificateDto) {
-    return 'This action adds a new certificate';
+  constructor(
+    @InjectModel(Certificate) private certificateModel: typeof Certificate,
+    private imagesService: ImagesService
+  ) { }
+
+  async create(createCertificateDto: any, file: Express.Multer.File) {
+    try {
+      const certificate = await this.certificateModel.create(createCertificateDto);
+      await this.imagesService.uploadImage(certificate.dataValues.id, file, "certificateId")
+
+      return this.certificateModel.findByPk(certificate.dataValues.id, { include: { all: true } });
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
   }
 
-  findAll() {
-    return `This action returns all certificate`;
+  async findAll() {
+    return this.certificateModel.findAll({ include: { all: true } });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} certificate`;
+  async findOne(id: number) {
+    return this.certificateModel.findByPk(id, { include: { all: true } });
   }
 
-  update(id: number, updateCertificateDto: UpdateCertificateDto) {
-    return `This action updates a #${id} certificate`;
+  async update(id: number, updateCertificateDto: any, file: Express.Multer.File) {
+    try {
+      const certificate = await this.certificateModel.findByPk(id);
+      if (!certificate) {
+        throw new BadRequestException('Product not found');
+      }
+
+      const { image, ...productData } = updateCertificateDto;
+
+      await this.certificateModel.update(productData, { where: { id } });
+
+      if (file) {
+        const oldImages = await this.imagesService.findImagesByProductId(certificate.dataValues.id);
+
+        await this.imagesService.deleteImages(oldImages);
+
+        await this.imagesService.uploadImage(certificate.dataValues.id, file, 'certificateId');
+      }
+
+      return this.certificateModel.findByPk(id, { include: { all: true } });
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} certificate`;
+
+  async remove(id: number) {
+    return this.certificateModel.destroy({ where: { id: id } });
   }
 }

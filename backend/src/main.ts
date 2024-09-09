@@ -17,6 +17,8 @@ async function bootstrap() {
 
   app.useStaticAssets(join(__dirname, '..', 'uploads'));
 
+  app.enableCors();
+
   app.setGlobalPrefix('/api/');
 
   app.useGlobalPipes(

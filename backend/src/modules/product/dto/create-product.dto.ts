@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Type } from "class-transformer";
-import { IsEmail, IsInt, IsOptional, IsString, Length } from "class-validator";
+import {IsInt, IsString} from "class-validator";
 
 export class CreateProductDto {
     @ApiProperty({ description: "name" })
@@ -16,6 +16,9 @@ export class CreateProductDto {
     @Type(() => Number)
     readonly price: number;
 
+    @ApiProperty({ description: "categoryId" })
+    @IsInt()
+    @Type(() => Number)
     readonly categoryId: number;
 
     @ApiProperty({
@@ -28,3 +31,5 @@ export class CreateProductDto {
     })
     images: Array<Express.Multer.File>;
 }
+
+export type TUpdateProductDto = Partial<CreateProductDto>

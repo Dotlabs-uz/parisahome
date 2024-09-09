@@ -1,5 +1,6 @@
-import { Column, Model, Table, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Column, Model, Table, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
 import { Category } from 'src/modules/category/entities/category.entity';
+import { Image } from 'src/modules/images/entities/image.entity';
 
 @Table({ tableName: 'products' })
 export class Product extends Model<Product> {
@@ -12,8 +13,8 @@ export class Product extends Model<Product> {
   @Column
   price: number;
 
-  @Column
-  imageUrl: string; // Store image path from the uploads folder
+  @HasMany(() => Image)
+  images: Image[];
 
   @ForeignKey(() => Category)
   @Column

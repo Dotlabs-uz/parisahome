@@ -1,39 +1,46 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFiles } from '@nestjs/common';
 import { ProductService } from './product.service';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
+import { CreateProductDto, TUpdateProductDto } from './dto/create-product.dto';
 import { ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FilesInterceptor } from '@nestjs/platform-express';
+import { multerOptions } from 'src/common/multer.option';
+import { Category } from '../category/entities/category.entity';
 
 @ApiTags("Product")
 @Controller('product')
 export class ProductController {
-  constructor(private readonly productService: ProductService) { }
+	constructor(private readonly productService: ProductService) { }
 
-  @Post()
-  @UseInterceptors(FilesInterceptor('images', 10))
-  @ApiConsumes('multipart/form-data')
-  async create(@Body() createProductDto: CreateProductDto, @UploadedFiles() files: Array<Express.Multer.File>) {
-    return await this.productService.create(createProductDto, files );
-  }
+	@Post()
+	@ApiConsumes('multipart/form-data')
+	@UseInterceptors(FilesInterceptor('images', 10, multerOptions))
+	async create(@Body() createProductDto: CreateProductDto, @UploadedFiles() files: Array<Express.Multer.File>) {
+		return await this.productService.create(createProductDto, files);
+	}
 
-  @Get()
-  findAll() {
-    return this.productService.findAll();
-  }
+	@Get()
+	async findAll() {
+		return await this.productService.findAll();
+	}
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productService.findOne(+id);
-  }
+	@Get(':id')
+	async findOne(@Param('id') id: string) {
+		return await this.productService.findOne(+id);
+	}
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productService.update(+id, updateProductDto);
-  }
+	@Patch(':id')
+	@ApiConsumes('multipart/form-data')
+	@UseInterceptors(FilesInterceptor('images', 10, multerOptions))
+	async update(
+		@Param('id') id: string,
+		@Body() updateProductDto: Partial<CreateProductDto>, // Допускает частичное обновление
+		@UploadedFiles() files: Array<Express.Multer.File>
+	) {
+		return await this.productService.update(id, updateProductDto, files);
+	}
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.productService.remove(+id);
-  }
+	@Delete(':id')
+	async remove(@Param('id') id: string) {
+		return await this.productService.remove(+id);
+	}
 }
