@@ -12,6 +12,8 @@ import { Image } from './modules/images/entities/image.entity';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { AdminModule } from './modules/admin/admin.module';
+import { Admin } from './modules/admin/entities/admin.entity';
 
 @Module({
 	imports: [
@@ -28,7 +30,7 @@ import { join } from 'path';
 			username: "postgres",
 			password: "20051978m",
 			database: "parisahome",
-			models: [Product, Category, Certificate, Image],
+			models: [Product, Category, Certificate, Image, Admin],
 			autoLoadModels: true,
 			synchronize: true,
 			sync: { alter: true },
@@ -38,6 +40,7 @@ import { join } from 'path';
 		CategoryModule,
 		CertificateModule,
 		ImagesModule,
+		AdminModule,
 	],
 	controllers: [AppController]
 })
