@@ -1,16 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile, UseGuards } from '@nestjs/common';
 import { CertificateService } from './certificate.service';
-import { ApiConsumes, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/common/multer.option';
 import { Multer } from 'multer';
 import { CreateCertificateDto, TUpdateCertificateDto } from './dto/create-certificate.dto';
+import { IsAdminGuard } from 'src/guards/IsAdmin.guard';
 
 @ApiTags("Certificate")
 @Controller('certificate')
 export class CertificateController {
   constructor(private readonly certificateService: CertificateService) { }
 
+  @ApiBearerAuth()
+  @UseGuards(IsAdminGuard)
   @Post()
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('image', multerOptions))
@@ -28,6 +31,8 @@ export class CertificateController {
     return this.certificateService.findOne(+id);
   }
 
+  @ApiBearerAuth()
+  @UseGuards(IsAdminGuard)
   @Patch(':id')
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('image', multerOptions))
@@ -35,6 +40,8 @@ export class CertificateController {
     return this.certificateService.update(+id, updateCertificateDto, file);
   }
 
+  @ApiBearerAuth()
+  @UseGuards(IsAdminGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.certificateService.remove(+id);

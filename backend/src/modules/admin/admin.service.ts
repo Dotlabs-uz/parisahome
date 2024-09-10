@@ -31,4 +31,15 @@ export class AdminService {
 			accessToken: token
 		};
 	}
+
+	async register(body: AdminsDto) {
+
+		const hashedPassword = await this.authService.hashPassword(body.password)
+
+		body.password = hashedPassword
+
+		const resAdmin = await this.adminModel.create(body);
+
+		return resAdmin
+	}
 }
