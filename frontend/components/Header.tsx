@@ -11,10 +11,9 @@ const Header = () => {
         { link: "/", title: "Home" },
         { link: "/about-us", title: "О нас" },
         { link: "/catalog", title: "Каталог" },
-        { link: "/events", title: "События" },
-        { link: "/vacancies", title: "Вакансии" },
-        { link: "/equipment", title: "Оборудование" },
         { link: "/contacts", title: "Контакты" },
+        { link: "/machineries", title: "Станки" },
+        { link: "/certificates", title: "Сертификаты" },
     ]
 
     useGSAP(() => {

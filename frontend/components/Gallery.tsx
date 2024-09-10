@@ -22,7 +22,7 @@ const Gallery = () => {
                     trigger: img,
                     // containerAnimation: img,
                     start: 'center bottom',
-                    end: 'bottom 80%',
+                    end: 'bottom 90%',
                     scrub: true,
                     // markers: true
                 }
