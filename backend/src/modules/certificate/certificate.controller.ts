@@ -3,9 +3,9 @@ import { CertificateService } from './certificate.service';
 import { ApiBearerAuth, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/common/multer.option';
-import { Multer } from 'multer';
 import { CreateCertificateDto, TUpdateCertificateDto } from './dto/create-certificate.dto';
-import { IsAdminGuard } from 'src/guards/IsAdmin.guard';
+import { IsAdminGuard } from '../../guards/isAdmin.guard';
+
 
 @ApiTags("Certificate")
 @Controller('certificate')

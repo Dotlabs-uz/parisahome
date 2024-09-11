@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFiles, UseGuards } from '@nestjs/common';
 import { ProductService } from './product.service';
-import { CreateProductDto, TUpdateProductDto } from './dto/create-product.dto';
+import { CreateProductDto } from './dto/create-product.dto';
 import { ApiBearerAuth, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/common/multer.option';
-import { IsAdminGuard } from 'src/guards/IsAdmin.guard';
+import { IsAdminGuard } from '../../guards/isAdmin.guard';
 
 @ApiTags("Product")
 @Controller('product')

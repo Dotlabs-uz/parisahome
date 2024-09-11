@@ -25,12 +25,12 @@ import { JwtModule } from '@nestjs/jwt';
 			rootPath: join(__dirname, '..', 'uploads')
 		}),
 		SequelizeModule.forRoot({
-			dialect: 'postgres',
-			host: "localhost",
-			port: 5432,
-			username: "postgres",
-			password: "20051978m",
-			database: "parisahome",
+			dialect: "postgres",
+			host: process.env.POSTGRES_HOST,
+			port: +process.env.POSTGRES_PORT,
+			username: process.env.POSTGRES_USER,
+			password: process.env.POSTGRES_PASSWORD,
+			database: process.env.POSTGRES_DB,
 			models: [Product, Category, Certificate, Image, Admin],
 			autoLoadModels: true,
 			synchronize: true,
