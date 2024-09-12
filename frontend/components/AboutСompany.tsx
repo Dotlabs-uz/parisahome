@@ -23,7 +23,7 @@ const AboutСompany = () => {
                     // containerAnimation: ".text",
                     start: 'bottom bottom',
                     end: 'top 50%',
-                    scrub: true,
+                    // scrub: true,
                     // markers: true
                 }
             });

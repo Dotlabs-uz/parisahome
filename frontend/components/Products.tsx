@@ -23,7 +23,7 @@ const Products = () => {
                 trigger: ".productsSection",
                 start: "center bottom",
                 end: "center 60%",
-                scrub: 1,
+                // scrub: 1,
                 // markers: true
             }
         })

@@ -20,7 +20,7 @@ const Form = () => {
                 trigger: ".left-animation",
                 start: "center bottom",
                 end: "center 70%",
-                scrub: true,
+                // scrub: true,
                 // markers: true
             }
         })
@@ -35,7 +35,7 @@ const Form = () => {
                 trigger: ".left-animation",
                 start: "center bottom",
                 end: "center 70%",
-                scrub: true,
+                // scrub: true,
                 // markers: true
             }
         })
@@ -49,7 +49,7 @@ const Form = () => {
                 trigger: ".form-img",
                 start: "center bottom",
                 end: "center 30%",
-                scrub: true,
+                // scrub: true,
                 // markers: true
             }
         })

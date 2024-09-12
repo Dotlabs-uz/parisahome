@@ -18,7 +18,7 @@ const Partners = () => {
                 trigger: ".partnersSection",
                 start: "center bottom",
                 end: "center 50%",
-                scrub: 1,
+                // scrub: 1,
                 // markers: true
             }
         })

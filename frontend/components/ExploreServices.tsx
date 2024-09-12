@@ -17,7 +17,7 @@ const ExploreServices = () => {
                 trigger: ".explore-section",
                 start: "center bottom",
                 end: "center center",
-                scrub: 1,
+                // scrub: 1,
             }
         })
     }, [])

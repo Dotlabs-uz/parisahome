@@ -12,14 +12,12 @@ const arr = [
 ];
 
 gsap.registerPlugin(ScrollTrigger);
-
 const HorizontalScroll = () => {
     const sectionRef = useRef(null);
     const triggerRef = useRef(null);
     const [activeDot, setActiveDot] = useState(0);
 
     useEffect(() => {
-        const totalSections = arr.length;
         const pin = gsap.fromTo(
             sectionRef.current,
             { translateX: 0 },

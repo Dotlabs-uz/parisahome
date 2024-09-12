@@ -15,15 +15,15 @@ const Gallery = () => {
             gsap.from(img, {
                 y: 50,
                 ease: "none",
-                duration: 2,
+                duration: 1,
                 opacity: 0,
                 stagger: 0.2,
                 scrollTrigger: {
                     trigger: img,
                     // containerAnimation: img,
                     start: 'center bottom',
-                    end: 'bottom 90%',
-                    scrub: true,
+                    end: 'bottom 95%',
+                    // scrub: true,
                     // markers: true
                 }
             })
@@ -35,7 +35,7 @@ const Gallery = () => {
                 trigger: ".galleryTitle",
                 start: "center bottom",
                 end: "center center",
-                scrub: 1,
+                // scrub: 1,
                 // markers: true
             }
         })
@@ -46,7 +46,7 @@ const Gallery = () => {
                 trigger: ".galleryTitle",
                 start: "center bottom",
                 end: "center center",
-                scrub: 1,
+                // scrub: 1,
                 // markers: true
             }
         })

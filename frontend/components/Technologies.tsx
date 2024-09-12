@@ -17,7 +17,7 @@ const Technologies = () => {
                 trigger: ".technologiesSection",
                 start: 'center bottom',
                 end: 'bottom 80%',
-                scrub: 1,
+                // scrub: 1,
                 // markers: true
             }
         })

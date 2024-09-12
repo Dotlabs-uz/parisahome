@@ -21,7 +21,7 @@ const Page = () => {
                 trigger: ".form-section",
                 start: "center bottom",
                 end: "center 70%",
-                scrub: true,
+                // scrub: true,
                 // markers: true
             }
         })
@@ -36,8 +36,8 @@ const Page = () => {
                 trigger: ".form-section",
                 start: "center bottom",
                 end: "center 70%",
-                scrub: true,
-                markers: true
+                // scrub: true,
+                // markers: true
             }
         })
 
@@ -50,7 +50,7 @@ const Page = () => {
                 trigger: ".form-img",
                 start: "center bottom",
                 end: "center 30%",
-                scrub: true,
+                // scrub: true,
                 // markers: true
             }
         })
