@@ -9,32 +9,38 @@ import { Category } from './modules/category/entities/category.entity';
 import { Certificate } from './modules/certificate/entities/certificate.entity';
 import { ImagesModule } from './modules/images/images.module';
 import { Image } from './modules/images/entities/image.entity';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AdminModule } from './modules/admin/admin.module';
 import { Admin } from './modules/admin/entities/admin.entity';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
 	imports: [
-		ServeStaticModule.forRoot({
-			rootPath: join(__dirname, '..', 'uploads')
-		}),
 		ConfigModule.forRoot({
 			isGlobal: true,
 		}),
+		ServeStaticModule.forRoot({
+			rootPath: join(__dirname, '..', 'uploads')
+		}),
 		SequelizeModule.forRoot({
-			dialect: 'postgres',
-			host: "localhost",
-			port: 5432,
-			username: "postgres",
-			password: "20051978m",
-			database: "parisahome",
+			dialect: "postgres",
+			host: process.env.POSTGRES_HOST,
+			port: +process.env.POSTGRES_PORT,
+			username: process.env.POSTGRES_USER,
+			password: process.env.POSTGRES_PASSWORD,
+			database: process.env.POSTGRES_DB,
 			models: [Product, Category, Certificate, Image, Admin],
 			autoLoadModels: true,
 			synchronize: true,
 			sync: { alter: true },
 			logging: false
+		}),
+		JwtModule.register({
+			global: true,
+			secret: process.env.JWT_SECRET,
+			signOptions: { expiresIn: '5d' },
 		}),
 		ProductModule,
 		CategoryModule,

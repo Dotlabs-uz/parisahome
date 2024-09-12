@@ -13,6 +13,7 @@ async function bootstrap() {
     .setTitle("Parisa Home")
     .setDescription("Документация по API: Parisa Home")
     .setVersion("1.0.0")
+    .addBearerAuth()
     .build()
 
   app.useStaticAssets(join(__dirname, '..', 'uploads'));
