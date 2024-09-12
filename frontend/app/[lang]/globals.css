@@ -43,3 +43,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+video::-webkit-media-controls {
+  display: none !important;
+}

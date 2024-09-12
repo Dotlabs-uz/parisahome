@@ -20,7 +20,13 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
    return (
       <>
          <section>
-            <Hero />
+            {/* <Hero /> */}
+            <div className="h-[90vh] max-sm:h-[85vh] w-full">
+               <video preload={"auto"} autoPlay controls muted className="w-full h-full">
+                  <source src="/images/videos/hero.mp4" type="video/mp4" />
+               </video>
+               {/* <iframe className="w-full h-full" src="/imgaes/hero.mp4" frameBorder="0"></iframe> */}
+            </div>
          </section>
 
          <section>

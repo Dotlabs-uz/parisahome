@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
 import React, { useRef } from 'react'
+import FlowerModal from './children/FlowerModal'
 
 gsap.registerPlugin(ScrollTrigger)
 const Technologies = () => {
@@ -34,6 +35,7 @@ const Technologies = () => {
                         height={1000}
                         alt="img"
                     />
+                    {/* <FlowerModal /> */}
                     <div className="flex items-center justify-between mb-10">
                         <div className="w-full flex max-sm:flex-col sm:items-center justify-between gap-3">
                             <h2 className="text-3xl max-sm:text-xl technologies text-yellow">\\ТЕХНОЛОГИИ</h2>
