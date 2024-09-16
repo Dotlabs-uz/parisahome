@@ -13,8 +13,8 @@ export class AdminController {
     return this.adminService.signin(body);
   }
 
-  // @Post('register')
-  // async adminsRegister(@Body() body: AdminsDto) {
-  //   return this.adminService.register(body);
-  // }
+  @Post('register')
+  async adminsRegister(@Body() body: AdminsDto) {
+    return this.adminService.register(body);
+  }
 }
