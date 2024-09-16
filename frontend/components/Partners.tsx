@@ -1,37 +1,27 @@
 "use client"
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import React from 'react'
+import { animateElementsOnScroll } from '@/lib/animations'
 
-gsap.registerPlugin(ScrollTrigger)
 const Partners = () => {
+    const sectionRef = useRef<HTMLDivElement | null>(null)
 
-    useGSAP(() => {
-        gsap.from(".partner", {
-            y: 50,
-            stagger: 0.2,
-            opacity: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: ".partnersSection",
-                start: "center bottom",
-                end: "center 50%",
-                scrub: 1,
-                // markers: true
-            }
-        })
-    })
+    useEffect(() => {
+        const section = sectionRef.current
+        if (section) {
+            const elements = section.querySelectorAll('.anim-element')
+            animateElementsOnScroll(elements)
+        }
+    }, [])
 
     return (
-        <div className="custom-container partnersSection">
-            <div className="max-w-xl m-auto mb-16 max-md:mb-10">
-                <h2 className="text-2xl max-sm:text-xl font-extrabold text-center partner text-yellow">Наши партнёры  выбирают нас за непревзойденное качество</h2>
+        <div ref={sectionRef} className="custom-container">
+            <div className="max-w-xl m-auto mb-16 max-md:mb-10 anim-element">
+                <h2 className="text-2xl max-sm:text-xl font-extrabold text-center text-yellow">Наши партнёры  выбирают нас за непревзойденное качество</h2>
             </div>
 
             <div className="grid grid-cols-4 max-lg:grid-cols-2 max-xs:grid-cols-1 gap-10 max-sm:gap-7">
-                <div className="flex flex-col items-center gap-5 partner">
+                <div className="flex flex-col items-center gap-5 anim-element">
                     <div className="">
                         <Image
                             className="w-[160px]"
@@ -49,7 +39,7 @@ const Partners = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-5 partner">
+                <div className="flex flex-col items-center gap-5 anim-element">
                     <div className="">
                         <Image
                             className="w-[150px]"
@@ -67,7 +57,7 @@ const Partners = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-5 partner">
+                <div className="flex flex-col items-center gap-5 anim-element">
                     <div className="">
                         <Image
                             className="w-[110px]"
@@ -85,7 +75,7 @@ const Partners = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-5 partner">
+                <div className="flex flex-col items-center gap-5 anim-element">
                     <div className="">
                         <Image
                             className="w-[110px]"

@@ -12,14 +12,12 @@ const arr = [
 ];
 
 gsap.registerPlugin(ScrollTrigger);
-
 const HorizontalScroll = () => {
     const sectionRef = useRef(null);
     const triggerRef = useRef(null);
     const [activeDot, setActiveDot] = useState(0);
 
     useEffect(() => {
-        const totalSections = arr.length;
         const pin = gsap.fromTo(
             sectionRef.current,
             { translateX: 0 },
@@ -33,6 +31,7 @@ const HorizontalScroll = () => {
                     end: "2000 top",
                     scrub: 0.6,
                     pin: true,
+                    // markers: true,
                     onUpdate: (self) => {
                         const progress = self.progress * (arr.length - 1);
                         const index = Math.round(progress); // Округляем прогресс для более точного переключения
