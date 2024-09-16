@@ -1,4 +1,5 @@
 import React from 'react';
+import LoginPage from './Login';
 
 interface pageProps {
     
@@ -6,9 +7,7 @@ interface pageProps {
 
 const page: React.FC<pageProps> = () => {
     return (
-        <div>
-            
-        </div>
+        <LoginPage/>
     );
 };
 
