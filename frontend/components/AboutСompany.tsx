@@ -22,7 +22,7 @@ const AboutСompany = () => {
                     start: 'bottom bottom',
                     end: 'top 50%',
                     // scrub: true,
-                    markers: true
+                    // markers: true
                 }
             });
         })
