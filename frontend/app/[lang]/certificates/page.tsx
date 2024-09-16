@@ -4,7 +4,6 @@ import gsap from 'gsap'
 import React from 'react'
 
 const Page = () => {
-
     useGSAP(() => {
         gsap.from(".certificates", {
             y: 50,

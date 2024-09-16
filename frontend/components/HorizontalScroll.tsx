@@ -31,6 +31,7 @@ const HorizontalScroll = () => {
                     end: "2000 top",
                     scrub: 0.6,
                     pin: true,
+                    markers: true,
                     onUpdate: (self) => {
                         const progress = self.progress * (arr.length - 1);
                         const index = Math.round(progress); // Округляем прогресс для более точного переключения

@@ -14,8 +14,6 @@ const AboutСompany = () => {
         texts.forEach((text: any) => {
             gsap.from(text, {
                 x: 50,
-                ease: "none",
-                duration: 2,
                 opacity: 0,
                 stagger: 0.2,
                 scrollTrigger: {
@@ -24,7 +22,7 @@ const AboutСompany = () => {
                     start: 'bottom bottom',
                     end: 'top 50%',
                     // scrub: true,
-                    // markers: true
+                    markers: true
                 }
             });
         })
@@ -32,8 +30,8 @@ const AboutСompany = () => {
 
     return (
         <div className="about-company custom-container flex max-lg:flex-col gap-10 justify-between max-lg:items-center pt-32 max-md:pt-12 pb-20 max-md:pb-10 text-white">
-            <div className="h-fit">
-                <div className="max-w-sm max-lg:w-80 max-lg:h-[300px] relative">
+            <div className="lg:w-full">
+                <div className="max-w-sm w-full max-lg:w-80 max-lg:h-[300px] relative">
                     <div className="absolute -z-10 top-3 -right-3 max-sm:-right-2 max-sm:top-2 w-full h-full rounded-md bg-white/30 border border-white"></div>
                     <Image
                         className="w-full h-full object-cover rounded-md hover:translate-x-3 hover:translate-y-3 duration-500 ease-in-out"
@@ -45,7 +43,7 @@ const AboutСompany = () => {
                 </div>
             </div>
 
-            <div ref={main} className="flex flex-col gap-12 max-xl:gap-7 max-w-xl max-xl:max-w-none w-fit">
+            <div ref={main} className="flex flex-col gap-12 max-xl:gap-7 max-w-xl max-xl:max-w-none w-full">
                 <div className="flex gap-32 max-xl:gap-10 max-lg:gap-5 items-start justify-between text">
                     <div className="max-md:hidden">
                         <p className='text-4xl font-medium underline underline-offset-4'>01</p>

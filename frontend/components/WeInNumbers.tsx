@@ -1,29 +1,11 @@
 "use client"
-import { animateElementsOnScroll } from '@/lib/animations'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import React, { useEffect, useRef } from 'react'
+
+import { animateElementsOnScroll } from '@/lib/animations'
+
 import { LuArrowUpRight } from 'react-icons/lu'
 
-gsap.registerPlugin(ScrollTrigger)
 const WeInNumbers = () => {
-    // useGSAP(() => {
-    //     gsap.from(".number", {
-    //         y: 50,
-    //         stagger: 0.2,
-    //         opacity: 0,
-    //         duration: 1,
-    //         scrollTrigger: {
-    //             trigger: ".weInNumbersSection",
-    //             start: "center bottom",
-    //             end: "center 50%",
-    //             // scrub: 1,
-    //             // markers: true
-    //         }
-    //     })
-    // })
-
     const sectionRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {

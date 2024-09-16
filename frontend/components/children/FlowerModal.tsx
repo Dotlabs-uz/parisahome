@@ -2,9 +2,10 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
+import * as THREE from 'three'
 
-const Model = () => {
-    const { scene } = useGLTF('/models/goldMatteHigh.gltf')
+const Model = ({ type }: any) => {
+    const { scene } = useGLTF(`/models/${type}.gltf`) // goldMatteHigh silver goldMatte gold silverMatter
     const modelRef = useRef<any>()
     const [isMobile, setIsMobile] = useState(false)
 
@@ -38,11 +39,13 @@ const Model = () => {
             window.addEventListener('mousemove', handleMouseMove)
 
             return () => {
-                // Удаляем обработчик при размонтировании компонента
                 window.removeEventListener('mousemove', handleMouseMove)
             }
         }
     }, [isMobile])
+
+    // Клонируем сцену при каждом рендере компонента, чтобы избежать проблем с повторным использованием одного объекта
+    const clonedScene = scene.clone()
 
     // Обновляем вращение модели при каждом кадре
     useFrame(() => {
@@ -58,16 +61,15 @@ const Model = () => {
         }
     })
 
-    // Уменьшенный масштаб модели
-    return <primitive object={scene} scale={[20, 20, 20]} ref={modelRef} position={[0, -2, 0]} />
+    return <primitive object={clonedScene} scale={[20, 20, 20]} ref={modelRef} position={[0, -2, 0]} />
 }
 
-const FlowerModal = () => {
+const FlowerModal = ({ type }: any) => {
     return (
         <Canvas className='threeD'>
             <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={3} />
-            <Model />
+            <directionalLight position={[10, 10, 5]} intensity={10000} />
+            <Model type={type} />
         </Canvas>
     )
 }
