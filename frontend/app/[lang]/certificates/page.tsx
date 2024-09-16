@@ -1,6 +1,7 @@
 "use client"
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import Image from 'next/image'
 import React from 'react'
 
 const Page = () => {
@@ -20,7 +21,12 @@ const Page = () => {
             </div>
             <div className="mb-10 grid grid-cols-3 gap-5">
                 <div className="max-w-xs certificates">
-                    <img src="https://parisahome.com/sites/default/files/20.HUZ_.26946-en%20OEKO-TEX-1%282%29_0.jpg" alt="certificates" />
+                    <Image
+                        src="/images/certificates/image.png"
+                        width={1000}
+                        height={1000}
+                        alt="certificates"
+                    />
                 </div>
             </div>
         </div>
