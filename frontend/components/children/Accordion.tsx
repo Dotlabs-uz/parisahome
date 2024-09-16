@@ -18,7 +18,7 @@ const Accordion = ({ title, id, content, expanded, setExpanded }: any) => {
     }, [isOpen]);
 
     return (
-        <div className="w-full h-auto border-b cursor-pointer accordions" ref={ref} onClick={() => setExpanded(id === expanded ? -1 : id)}>
+        <div className="w-full h-auto border-b cursor-pointer" ref={ref} onClick={() => setExpanded(id === expanded ? -1 : id)}>
             <div className="pt-3 max-sm:pt-2 rounded-r-xl flex gap-2 items-center max-sm:items-start justify-between">
                 <h3 className="text-xl max-lg:text-lg max-sm:text-base max-xs:text-sm uppercase">{title}</h3>
                 <FiPlus className="text-[30px] text-yellow" />

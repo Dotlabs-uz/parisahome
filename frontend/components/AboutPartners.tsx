@@ -19,7 +19,7 @@ const AboutPartners = () => {
                     trigger: el,
                     start: "center bottom",
                     end: "center 80%",
-                    scrub: 1,
+                    // scrub: 1,
                     // markers: true
                 }
             })

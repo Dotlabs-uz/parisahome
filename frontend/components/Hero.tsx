@@ -55,6 +55,7 @@ const Hero = () => {
                                 height={1000}
                                 alt='img'
                             />
+
                             <h1 className='h_title text-9xl max-lg:text-8xl text-center max-lg:leading-[75px]'>
                                 <span className='-mb-1.5 -mt-6 inline-block overflow-hidden align-bottom'>
                                     <span className='inline-block translate-y-full pb-1.5 pt-6 will-change-transform'>

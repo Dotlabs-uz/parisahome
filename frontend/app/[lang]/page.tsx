@@ -4,7 +4,6 @@ import { getDictionary } from "@/lib/dictionary";
 import Hero from "@/components/Hero";
 import { LuArrowUpRight } from "react-icons/lu";
 import Products from "@/components/Products";
-import Accordions from "@/components/Accordions";
 import { TfiEmail } from "react-icons/tfi";
 import Gallery from "@/components/Gallery";
 import Partners from "@/components/Partners";
@@ -19,8 +18,15 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
 
    return (
       <>
-         <section>
-            <Hero />
+         <section className="relative">
+            {/* <Hero /> */}
+            <div className="h-[90vh] max-xl:h-[80vh] max-lg:h-[100%] w-full">
+               <video preload={"auto"} autoPlay controls muted className="w-full h-full object-cover select-none pointer-events-none">
+                  <source src="/images/videos/hero.mp4" type="video/mp4" />
+               </video>
+            </div>
+            <div className="w-full h-[20%] max-md:h-[10%] absolute top-0 left-0 bg-gradient-to-b from-green" />
+            <div className="w-full h-[20%] max-md:h-[10%] absolute -bottom-1 left-0 bg-gradient-to-t from-green" />
          </section>
 
          <section>

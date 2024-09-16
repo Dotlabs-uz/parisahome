@@ -43,3 +43,20 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+.threeD {
+  width: 400px !important;
+  height: 280px !important;
+  /* background: #ffffff20; */
+}
+
+@media only screen and (max-width: 820px) {
+  .threeD {
+    width: 180px !important;
+    height: 130px !important;
+  }
+}

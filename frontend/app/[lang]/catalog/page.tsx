@@ -5,10 +5,11 @@ import Link from 'next/link';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { animateElementsOnScroll } from '@/lib/animations';
 
 gsap.registerPlugin(ScrollTrigger)
 const Page = () => {
-    const catalog = useRef(null)
+    const sectionRef = useRef<HTMLDivElement | null>(null)
     const [activeIndex, setActiveIndex] = useState<number | null>(0);
     const categoryRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
@@ -16,33 +17,21 @@ const Page = () => {
         setActiveIndex(index);
     };
 
-    useGSAP(() => {
-        const elems = gsap.utils.toArray(".catalog-animated")
-
-        elems.forEach((el: any) => {
-            gsap.from(el, {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: {
-                    trigger: el,
-                    start: "center bottom",
-                    end: "center 80%",
-                    // scrub: 1,
-                    // markers: true
-                }
-            })
-        })
-    }, { scope: catalog })
+    useEffect(() => {
+        const section = sectionRef.current
+        if (section) {
+            const elements = section.querySelectorAll('.anim-element')
+            animateElementsOnScroll(elements)
+        }
+    }, [])
 
     useEffect(() => {
         if (activeIndex !== null) {
             gsap.to(categoryRefs.current[activeIndex], {
-                backgroundColor: 'white',
-                color: 'green',
+                backgroundColor: '#EF9D4E',
+                color: '#022B26',
+                borderColor: '#EF9D4E',
                 duration: 0.3,
-                borderColor: 'green',
                 ease: 'power1.out',
             });
 
@@ -50,8 +39,8 @@ const Page = () => {
                 if (i !== activeIndex) {
                     gsap.to(category, {
                         backgroundColor: 'transparent',
-                        color: 'white',
-                        borderColor: 'white',
+                        color: '#EF9D4E',
+                        borderColor: '#EF9D4E',
                         duration: 0.3,
                         ease: 'power1.out',
                     });
@@ -61,17 +50,17 @@ const Page = () => {
     }, [activeIndex]);
 
     return (
-        <div ref={catalog} className="custom-container min-h-screen">
-            <div className="mt-10">
-                <h1 className="catalog-animated text-4xl max-lg:text-3xl font-bold mb-8 text-white">Категории продукции</h1>
+        <div ref={sectionRef} className="custom-container min-h-screen">
+            <div className="mt-10 mb-5 max-md:mb-3 anim-element">
+                <h1 className="text-4xl max-lg:text-3xl max-sm:text-2xl font-bold text-white">Категории продукции</h1>
             </div>
 
-            <div className="catalog-animated w-full flex items-center gap-4 max-sm:gap-3 overflow-scroll pb-5 mb-10 max-lg:mb-6 relative">
-                {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+            <div className="anim-element w-full relative flex items-center max-sm:grid grid-cols-2 gap-2 pb-5 mb-5 max-md:mb-3">
+                {[0, 1, 2, 3].map((i) => (
                     <p
                         key={i}
                         ref={(el: any) => (categoryRefs.current[i] = el)}
-                        className={`max-lg:text-sm font-semibold py-2 px-5 max-sm:px-3 max-sm:py-1.5 rounded-full cursor-pointer border ${activeIndex === i ? 'border-green bg-white text-green' : 'border-white text-white'} hover:bg-white/80 hover:text-green duration-150`}
+                        className={`text-sm font-semibold text-center py-1.5 px-4 max-sm:px-3 max-sm:py-1.5 rounded-full cursor-pointer border duration-150`}
                         onClick={() => handleClick(i)}
                     >
                         категория
@@ -79,10 +68,10 @@ const Page = () => {
                 ))}
             </div>
 
-            <div className="grid grid-cols-3 max-lg:grid-cols-2 gap-10 max-lg:gap-5 max-md:gap-x-3 max-md:gap-y-7 mb-10">
+            <div className="grid grid-cols-4 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-3 gap-y-7 mb-10 max-md:mb-5">
                 {
                     [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i: number) => (
-                        <Link href={"#"} key={i} className="catalog-animated">
+                        <Link href={"#"} key={i} className="anim-element">
                             <div className="">
                                 <Image
                                     src={"/images/img.png"}
@@ -91,7 +80,7 @@ const Page = () => {
                                     alt='product'
                                 />
                             </div>
-                            <div className="mt-3 text-white">
+                            <div className="mt-1.5 px-2 text-white">
                                 <div className="flex items-center justify-between">
                                     <p className='font-semibold'>Shirt</p>
                                     <p>$85</p>

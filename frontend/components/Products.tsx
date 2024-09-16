@@ -1,38 +1,30 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import Image from 'next/image';
+import Link from 'next/link';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import { animateElementsOnScroll } from '@/lib/animations';
 
-gsap.registerPlugin(ScrollTrigger)
 const Products = () => {
-    useGSAP(() => {
-        gsap.from(".product", {
-            y: 50,
-            stagger: 0.2,
-            opacity: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: ".productsSection",
-                start: "center bottom",
-                end: "center 60%",
-                scrub: 1,
-                // markers: true
-            }
-        })
-    })
+    const sectionRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        const section = sectionRef.current
+        if (section) {
+            const elements = section.querySelectorAll('.anim-element')
+            animateElementsOnScroll(elements)
+        }
+    }, [])
 
     return (
-        <div className="custom-container py-28 max-md:py-20 max-sm:py-10 productsSection">
-            <div className="mb-16 max-md:mb-8">
-                <h2 className="text-3xl max-sm:text-xl text-center text-yellow product">\\ПРОДУКЦИЯ</h2>
+        <div ref={sectionRef} className="custom-container py-28 max-md:py-20 max-sm:py-10">
+            <div className="mb-16 max-md:mb-8 anim-element">
+                <h2 className="text-3xl max-sm:text-xl text-center text-yellow">\\ПРОДУКЦИЯ</h2>
             </div>
 
             <Swiper
@@ -53,8 +45,8 @@ const Products = () => {
             >
                 {
                     [0, 1, 2, 3].map((i: number) => (
-                        <SwiperSlide key={i} className='mb-16 max-md:mb-10 product'>
-                            <div className="p-3 max-sm:p-1.5 rounded-[20px] border  border-[#EEEEEE]">
+                        <SwiperSlide key={i} className='mb-16 max-md:mb-10 anim-element'>
+                            <div className="p-3 max-sm:p-1.5 rounded-[20px] border border-[#EEEEEE]">
                                 <div className="md">
                                     <Image
                                         src={"/images/product-img.png"}

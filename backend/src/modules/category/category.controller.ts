@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { IsAdminGuard } from 'src/guards/IsAdmin.guard';
+import { IsAdminGuard } from '../../guards/isAdmin.guard';
 
 @ApiTags("Category")
 @Controller('category')
