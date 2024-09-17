@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+* {
+  /* border: 1px solid black */
+}
 
 body {
   @apply bg-green;
@@ -29,16 +31,16 @@ body {
 }
 
 .scroll-section-inner {
-  height: 95vh;
+  height: 100vh;
   width: 400vw;
   display: flex;
   flex-direction: row;
-  position: relative;
+  /* position: relative; */
 }
 
 .scroll-section {
   width: 100vw;
-  height: 95vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

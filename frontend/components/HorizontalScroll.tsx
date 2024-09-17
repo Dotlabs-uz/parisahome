@@ -1,8 +1,8 @@
 "use client"
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
+import FlowerRotate from "./children/FlowerRotate";
 
 const arr = [
     { years: "2014", title: "Наше наследие", dcr: "Полотенца, которые впечатляют! Parisa Home была основана в 2009 году, Наша компания также известна, как ООО'Sam Rafoat Textile'. В начале эта компания начала производить плющ. С 2009 года ООО'Sam Rafoat Текстиль' обеспечивал местные" },
@@ -12,10 +12,11 @@ const arr = [
 ];
 
 gsap.registerPlugin(ScrollTrigger);
+
 const HorizontalScroll = () => {
     const sectionRef = useRef(null);
     const triggerRef = useRef(null);
-    const [activeDot, setActiveDot] = useState(0);
+    // const [activeDot, setActiveDot] = useState(0);
 
     useEffect(() => {
         const pin = gsap.fromTo(
@@ -32,11 +33,11 @@ const HorizontalScroll = () => {
                     scrub: 0.5,
                     pin: true,
                     // markers: true,
-                    onUpdate: (self) => {
-                        const progress = self.progress * (arr.length - 1);
-                        const index = Math.round(progress); // Округляем прогресс для более точного переключения
-                        setActiveDot(index);
-                    }
+                    // onUpdate: (self) => {
+                    //     const progress = self.progress * (arr.length - 1);
+                    //     const index = Math.round(progress); // Округляем прогресс для более точного переключения
+                    //     setActiveDot(index);
+                    // }
                 }
             }
         );
@@ -57,13 +58,13 @@ const HorizontalScroll = () => {
 
     return (
         <>
-            <div className="scroll-section-outer">
+            <div className="scroll-section-outer relative">
                 <div ref={triggerRef} className="relative scroll">
                     <div className="w-screen h-1 absolute bottom-10 max-md:bottom-5 left-0 bg-white">
                         <div className="bg-yellow h-full w-0 progress relative">
                             <span className="md:hidden w-2 h-2 absolute right-0 -top-0.5 rounded-full bg-yellow" />
                         </div>
-                        {arr.map((_, index) => (
+                        {/* {arr.map((_, index) => (
                             <div
                                 key={index}
                                 className="dot-container max-md:hidden flex flex-col gap-3 items-center absolute -top-11"
@@ -76,30 +77,27 @@ const HorizontalScroll = () => {
                                 </div>
                                 <span className={`block w-2 h-2 rounded-full ${activeDot >= index ? 'bg-yellow' : 'bg-white'}`}></span>
                             </div>
-                        ))}
+                        ))} */}
                     </div>
 
-                    <div ref={sectionRef} className="scroll-section-inner text-white">
+                    <div className="max-w-md max-md:max-w-xs w-full h-80 max-md:h-60 fixed left-1/2 max-lg:left-1/3 top-1/2 -translate-y-1/2 max-md:left-[10%]">
+                        <FlowerRotate type={"gold"} />
+                    </div>
+
+                    <div ref={sectionRef} className="scroll-section-inner text-white relative">
                         {
                             arr.map((item, index) => (
-                                <div key={index} className="scroll-section ">
-                                    <div className="custom-container h-full flex max-md:flex-col gap-20 max-md:gap-10 items-center justify-between py-40 max-md:py-20">
+                                <div key={index} className="scroll-section flex max-md:flex-col max-md:justify-around">
+                                    <div className="custom-container flex max-md:flex-col gap-20 max-md:gap-10 items-center justify-between max-md:justify-around py-40 max-md:py-20">
                                         <div className="w-full">
                                             <p className="text-xl mb-10 max-md:mb-5">{item.years}</p>
                                             <h2 className="text-5xl mb-3">{item.title}</h2>
                                             <p className="max-w-[430px] text-[17px] leading-6">{item.dcr}</p>
                                         </div>
-
-                                        <div className="max-w-md max-md:max-w-60 w-full flower">
-                                            <Image
-                                                className="w-full h-full"
-                                                src={"/images/flower.svg"}
-                                                width={1000}
-                                                height={1000}
-                                                alt="img"
-                                            />
-                                        </div>
                                     </div>
+                                    {/* <div className="max-w-md max-md:max-w-xs w-full h-80 max-md:h-60 md:hidden">
+                                        <FlowerRotate type={"gold"} />
+                                    </div> */}
                                 </div>
                             ))
                         }

@@ -15,7 +15,7 @@ const Page = () => {
     })
 
     return (
-        <div className='custom-container h-screen'>
+        <div className='custom-container h-screen pt-14'>
             <div className="">
                 <h2 className='text-4xl max-lg:text-3xl font-bold my-8 certificates text-white'>Сертификаты</h2>
             </div>

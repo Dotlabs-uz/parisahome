@@ -18,29 +18,29 @@ const Header = () => {
 
     const ref = useRef(null);
 
-    React.useEffect(() => {
-        const tl = gsap.timeline({
-            defaults: {
-                duration: 4,
-                ease: "none"
-            },
-            scrollTrigger: {
-                trigger: ref.current,
-                start: "10px top",
-                end: "90px top",
-                scrub: true,
-                // markers: true
-            }
-        });
+    // React.useEffect(() => {
+    //     const tl = gsap.timeline({
+    //         defaults: {
+    //             duration: 4,
+    //             ease: "none"
+    //         },
+    //         scrollTrigger: {
+    //             trigger: ref.current,
+    //             start: "10px top",
+    //             end: "90px top",
+    //             scrub: true,
+    //             // markers: true
+    //         }
+    //     });
 
-        tl.to(ref.current, {
-            y: -100
-        });
-        tl.add(() => { }, "+=0.5");
-        tl.to(ref.current, {
-            y: 0
-        });
-    }, []);
+    //     tl.to(ref.current, {
+    //         y: -100
+    //     });
+    //     tl.add(() => { }, "+=0.5");
+    //     tl.to(ref.current, {
+    //         y: 0
+    //     });
+    // }, []);
 
     useGSAP(() => {
         gsap.from(".header", {
@@ -52,7 +52,7 @@ const Header = () => {
     })
 
     return (
-        <header ref={ref} className='w-full md:border-b md:border-white/40 bg-green'>
+        <header ref={ref} className='w-full absolute z-50 top-0 left-0 md:border-b md:border-white/40 bg-green'>
             <div className="custom-container flex items-center justify-between py-3">
                 <Link href={`/`} className="header">
                     <Image
