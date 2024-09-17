@@ -8,9 +8,6 @@ import Image from 'next/image'
 
 const Page = () => {
 
-
-
-
     return (
         <>
             <section>
@@ -24,10 +21,6 @@ const Page = () => {
             <section className="w-full h-screen relative z-10 bg-[url('/images/hero-img.png')] bg-no-repeat bg-cover bg-center">
                 <ExploreServices />
             </section>
-            {/* 
-            <section className='custom-container pt-10'>
-                <TextAnimation />
-            </section> */}
 
             <section>
                 <Vision />

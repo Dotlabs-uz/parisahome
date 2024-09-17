@@ -55,8 +55,8 @@ const Model = ({ type }: any) => {
                 modelRef.current.rotation.y += 0.01
             } else {
                 // Поворачиваем модель по осям Y и X в зависимости от положения мыши на десктопе
-                modelRef.current.rotation.y = mouseX.current * 0.3 // чувствительность по оси Y
-                modelRef.current.rotation.x = mouseY.current * -0.2 // чувствительность по оси X
+                modelRef.current.rotation.y = mouseX.current * 0.2 // чувствительность по оси Y
+                modelRef.current.rotation.x = mouseY.current * -0.1 // чувствительность по оси X
             }
         }
     })

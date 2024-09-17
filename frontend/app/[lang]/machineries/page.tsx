@@ -5,7 +5,7 @@ import Technologies from '@/components/Technologies'
 const Page = () => {
 
     return (
-        <section>
+        <section className='pt-14'>
             <Technologies />
         </section>
     )

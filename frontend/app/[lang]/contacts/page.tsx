@@ -21,7 +21,7 @@ const Page = () => {
     }, [])
 
     return (
-        <div ref={sectionRef}>
+        <div ref={sectionRef} className='pt-14'>
             <div>
                 <div className="relative py-32 max-lg:py-20 bg-[url('https://parisahome.com/sites/all/themes/sap/img/dist/footer-bg.jpg')] bg-cover bg-no-repeat">
                     <div className="absolute top-0 left-0 w-full h-full bg-black/50" />
