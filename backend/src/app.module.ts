@@ -9,12 +9,14 @@ import { Category } from './modules/category/entities/category.entity';
 import { Certificate } from './modules/certificate/entities/certificate.entity';
 import { ImagesModule } from './modules/images/images.module';
 import { Image } from './modules/images/entities/image.entity';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AdminModule } from './modules/admin/admin.module';
 import { Admin } from './modules/admin/entities/admin.entity';
 import { JwtModule } from '@nestjs/jwt';
+import { MachinesModule } from './modules/machines/machines.module';
+import { Machine } from './modules/machines/entities/machine.entity';
 
 @Module({
 	imports: [
@@ -31,7 +33,7 @@ import { JwtModule } from '@nestjs/jwt';
 			username: process.env.POSTGRES_USER,
 			password: process.env.POSTGRES_PASSWORD,
 			database: process.env.POSTGRES_DB,
-			models: [Product, Category, Certificate, Image, Admin],
+			models: [Product, Category, Certificate, Image, Admin, Machine],
 			autoLoadModels: true,
 			synchronize: true,
 			sync: { alter: true },
@@ -47,6 +49,7 @@ import { JwtModule } from '@nestjs/jwt';
 		CertificateModule,
 		ImagesModule,
 		AdminModule,
+		MachinesModule,
 	],
 	controllers: [AppController]
 })
