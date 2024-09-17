@@ -35,6 +35,26 @@ services:
             - api
             - traefik
 
+    admin:
+        container_name: admin
+        restart: always
+        build:
+            context: ./admin
+            dockerfile: Dockerfile
+        networks:
+            - dropin
+        environment:
+            NEXT_PUBLIC_API_URL: ${DOMAIN}
+            API_URL: http://api:${PORT}/api/v1
+        labels:
+            - traefik.enable=true
+            - traefik.http.routers.admin.entrypoints=websecure
+            - traefik.http.routers.admin.rule=(Host(`${HOST}`) && PathPrefix(`/admin`) || Host(`www.${HOST}`) && PathPrefix(`/admin`))
+            - traefik.http.services.admin.loadbalancer.server.port=3001
+        depends_on:
+            - api
+            - traefik
+
     api:
         container_name: api
         restart: always
