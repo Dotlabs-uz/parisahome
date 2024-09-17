@@ -4,20 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ImageUploader from "./ImageUploader";
+import { Good } from "@/app/dashboard/goods/GoodsPage";
 
-export interface Good {
-	id: number;
-	images: string[];
-	title: string;
-	description: string;
-}
 
 interface GoodsFormProps {
 	newGood: Good;
 	onSubmit: (e: React.FormEvent) => void;
-	onInputChange: (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => void;
 	onImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	removeImage: (index: number) => void;
 	fileInputRef: React.RefObject<HTMLInputElement>;
@@ -26,7 +18,6 @@ interface GoodsFormProps {
 const GoodsForm: React.FC<GoodsFormProps> = ({
 	newGood,
 	onSubmit,
-	onInputChange,
 	onImageUpload,
 	removeImage,
 	fileInputRef,
@@ -45,16 +36,18 @@ const GoodsForm: React.FC<GoodsFormProps> = ({
 				/>
 				<Input
 					type="text"
-					name="title"
-					value={newGood.title}
-					onChange={onInputChange}
+					name="name"
+					placeholder="Title"
+					className="w-full"
+				/>
+				<Input
+					type="text"
+					name="price"
 					placeholder="Title"
 					className="w-full"
 				/>
 				<Textarea
 					name="description"
-					value={newGood.description}
-					onChange={onInputChange}
 					placeholder="Description"
 					className="w-full"
 				/>
@@ -66,5 +59,4 @@ const GoodsForm: React.FC<GoodsFormProps> = ({
 	</Card>
 );
 
-
-export default GoodsForm
+export default GoodsForm;

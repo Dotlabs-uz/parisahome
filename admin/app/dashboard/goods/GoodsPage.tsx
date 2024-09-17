@@ -5,35 +5,39 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import GoodsForm from "@/components/custom/GoodsForm";
 import GoodsPreview from "@/components/custom/GoodsPreview";
+import Cookies from "js-cookie";
 
-interface Good {
+export interface Good {
 	id: number;
 	images: string[];
-	title: string;
+	name: string;
+	price: number;
+	categoryId: number;
 	description: string;
 }
 
 export default function GoodsPage() {
 	const [goods, setGoods] = useState<Good[]>([]);
+	const [formData, setFormData] = useState<any>(null);
 	const [newGood, setNewGood] = useState<Good>({
 		id: 0,
 		images: [],
-		title: "",
+		name: "",
+		price: 0,
+		categoryId: 0,
 		description: "",
 	});
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
-	const handleInputChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => {
-		const { name, value } = e.target;
-		setNewGood((prev) => ({ ...prev, [name]: value }));
-	};
-
 	const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const files = e.target.files;
 		if (files) {
+			const fm = new FormData();
+
 			Array.from(files).forEach((file) => {
+				fm.append("image[]", file);
+				console.log(file);
+
 				const reader = new FileReader();
 				reader.onloadend = () => {
 					setNewGood((prev) => ({
@@ -43,6 +47,7 @@ export default function GoodsPage() {
 				};
 				reader.readAsDataURL(file);
 			});
+			setFormData(fm);
 		}
 	};
 
@@ -53,15 +58,35 @@ export default function GoodsPage() {
 		}));
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		if (newGood.title && newGood.description && newGood.images.length > 0) {
-			setGoods((prev) => [...prev, { ...newGood, id: Date.now() }]);
-			setNewGood({ id: 0, images: [], title: "", description: "" });
+		const token = Cookies.get("token");
+
+		const fm = new FormData(e.target as any);
+
+		formData.forEach((elem: any) => {
+			fm.append("images", elem);
+		});
+
+		const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/product", {
+			method: "POST",
+			body: fm,
+			headers: {
+				Authorization: `Bearer ${token}`, // передаем токен в заголовке
+			},
+		});
+
+		// Проверяем результат запроса
+		if (res.ok) {
+			const data = await res.json();
+			console.log(data);
+			// Очищаем форму после успешной отправки
+			// setNewGood({ id: 0, images: [], name: "", description: "" });
 			if (fileInputRef.current) {
 				fileInputRef.current.value = "";
 			}
-			console.log(newGood);
+		} else {
+			console.error("Error uploading product:", res.statusText);
 		}
 	};
 
@@ -78,7 +103,6 @@ export default function GoodsPage() {
 					<GoodsForm
 						newGood={newGood}
 						onSubmit={handleSubmit}
-						onInputChange={handleInputChange}
 						onImageUpload={handleImageUpload}
 						removeImage={removeImage}
 						fileInputRef={fileInputRef}
@@ -106,7 +130,7 @@ export default function GoodsPage() {
 									className="border rounded-lg p-4"
 								>
 									<h3 className="font-bold text-lg mb-2">
-										{good.title}
+										{good.name}
 									</h3>
 									<p className="text-gray-600 mb-2">
 										{good.description}
@@ -116,7 +140,7 @@ export default function GoodsPage() {
 											<img
 												key={index}
 												src={image}
-												alt={`${good.title} - Image ${
+												alt={`${good.name} - Image ${
 													index + 1
 												}`}
 												className="w-20 h-20 object-cover rounded"
