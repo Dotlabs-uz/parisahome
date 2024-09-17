@@ -18,7 +18,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
 
    return (
       <>
-         <section className="relative">
+         <section className="relative mt-14">
             {/* <Hero /> */}
             <div className="h-[90vh] max-xl:h-[80vh] max-lg:h-[100%] w-full">
                <video preload={"auto"} autoPlay controls muted className="w-full h-full object-cover select-none pointer-events-none">
@@ -29,7 +29,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
             <div className="w-full h-[20%] max-md:h-[10%] absolute -bottom-1 left-0 bg-gradient-to-t from-green" />
          </section>
 
-         <section>
+         <section className="bg-green">
             <Technologies />
          </section>
 

@@ -1,10 +1,8 @@
 import AboutPartners from '@/components/AboutPartners'
 import AboutСompany from '@/components/AboutСompany'
-import TextAnimation from '@/components/children/TextAnimation'
 import ExploreServices from '@/components/ExploreServices'
 import HorizontalScroll from '@/components/HorizontalScroll'
 import Vision from '@/components/Vision'
-import Image from 'next/image'
 
 const Page = () => {
 
@@ -26,13 +24,7 @@ const Page = () => {
                 <Vision />
             </section>
 
-            <section>
-                <AboutPartners />
-            </section>
-
-            <section>
-                
-            </section>
+            <AboutPartners />
         </>
     )
 }

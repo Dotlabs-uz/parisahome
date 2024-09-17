@@ -1,34 +1,35 @@
-"use client"
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
+import axios from 'axios'
 import Image from 'next/image'
-import React from 'react'
+import React, { Suspense } from 'react'
 
-const Page = () => {
-    useGSAP(() => {
-        gsap.from(".certificates", {
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2
-        })
-    })
+const Page = async () => {
+
+    const certificate = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/certificate`)
 
     return (
         <div className='custom-container h-screen pt-14'>
             <div className="">
                 <h2 className='text-4xl max-lg:text-3xl font-bold my-8 certificates text-white'>Сертификаты</h2>
             </div>
-            <div className="mb-10 grid grid-cols-3 gap-5">
-                <div className="max-w-xs certificates">
-                    <Image
-                        src="/images/certificates/image.png"
-                        width={1000}
-                        height={1000}
-                        alt="certificates"
-                    />
+
+            <Suspense fallback={'loading'}>
+                <div className="mb-10 grid grid-cols-3 gap-5">
+                    {
+                        certificate.data.map((i: any, idx: number) => (
+                            <div key={idx} className="certificates">
+                                <Image
+                                    className='h-full w-full object-cover'
+                                    src={i.images[0].url}
+                                    width={1000}
+                                    height={1000}
+                                    alt="certificates"
+                                />
+                            </div>
+                        ))
+                    }
                 </div>
-            </div>
+            </Suspense>
+
         </div>
     )
 }
