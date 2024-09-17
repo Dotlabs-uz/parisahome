@@ -1,37 +1,44 @@
 "use client"
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
+import { animateElementsOnScroll } from '@/lib/animations';
 
-gsap.registerPlugin(ScrollTrigger);
 const AboutСompany = () => {
-    const main = useRef(null);
+    // const main = useRef(null);
 
-    useGSAP(() => {
-        const texts = gsap.utils.toArray('.text');
-        texts.forEach((text: any) => {
-            gsap.from(text, {
-                x: 50,
-                opacity: 0,
-                stagger: 0.2,
-                scrollTrigger: {
-                    trigger: text,
-                    // containerAnimation: ".text",
-                    start: 'bottom bottom',
-                    end: 'top 50%',
-                    // scrub: true,
-                    // markers: true
-                }
-            });
-        })
-    }, { scope: main })
+    // useGSAP(() => {
+    //     const texts = gsap.utils.toArray('.text');
+    //     texts.forEach((text: any) => {
+    //         gsap.from(text, {
+    //             x: 50,
+    //             opacity: 0,
+    //             stagger: 0.2,
+    //             scrollTrigger: {
+    //                 trigger: text,
+    //                 // containerAnimation: ".text",
+    //                 start: 'bottom bottom',
+    //                 end: 'top 50%',
+    //                 // scrub: true,
+    //                 markers: true
+    //             }
+    //         });
+    //     })
+    // }, { scope: main })
+
+    const sectionRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        const section = sectionRef.current
+        if (section) {
+            const elements = section.querySelectorAll('.anim-element')
+            animateElementsOnScroll(elements)
+        }
+    }, [])
 
     return (
-        <div className="about-company custom-container flex max-lg:flex-col gap-10 justify-between max-lg:items-center pt-32 max-md:pt-12 pb-20 max-md:pb-10 text-white">
+        <div ref={sectionRef} className="about-company custom-container flex max-lg:flex-col gap-10 justify-between max-lg:items-center pt-32 max-md:pt-12 pb-20 max-md:pb-10 text-white">
             <div className="lg:w-full">
-                <div className="max-w-sm w-full max-lg:w-80 max-lg:h-[300px] relative">
+                <div className="max-w-sm w-full max-lg:w-80 max-lg:h-[300px] relative anim-element">
                     <div className="absolute -z-10 top-3 -right-3 max-sm:-right-2 max-sm:top-2 w-full h-full rounded-md bg-white/30 border border-white"></div>
                     <Image
                         className="w-full h-full object-cover rounded-md hover:translate-x-3 hover:translate-y-3 duration-500 ease-in-out"
@@ -43,8 +50,8 @@ const AboutСompany = () => {
                 </div>
             </div>
 
-            <div ref={main} className="flex flex-col gap-12 max-xl:gap-7 max-w-xl max-xl:max-w-none w-full">
-                <div className="flex gap-32 max-xl:gap-10 max-lg:gap-5 items-start justify-between text">
+            <div className="flex flex-col gap-12 max-xl:gap-7 max-w-xl max-xl:max-w-none w-full">
+                <div className="flex gap-32 max-xl:gap-10 max-lg:gap-5 items-start justify-between anim-element">
                     <div className="max-md:hidden">
                         <p className='text-4xl font-medium underline underline-offset-4'>01</p>
                     </div>
@@ -58,7 +65,7 @@ const AboutСompany = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex gap-32 max-xl:gap-10 max-lg:gap-5 items-start justify-between text">
+                <div className="flex gap-32 max-xl:gap-10 max-lg:gap-5 items-start justify-between anim-element">
                     <div className="max-md:hidden">
                         <p className='text-4xl font-medium underline underline-offset-4'>02</p>
                     </div>
@@ -72,7 +79,7 @@ const AboutСompany = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex gap-32 max-xl:gap-10 max-lg:gap-5 items-start justify-between text">
+                <div className="flex gap-32 max-xl:gap-10 max-lg:gap-5 items-start justify-between anim-element">
                     <div className="max-md:hidden">
                         <p className='text-4xl font-medium underline underline-offset-8'>03</p>
                     </div>
