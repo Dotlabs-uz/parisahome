@@ -1,39 +1,44 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import GoodsForm from "@/components/custom/GoodsForm";
 import GoodsPreview from "@/components/custom/GoodsPreview";
+import Cookies from "js-cookie";
 
-interface Good {
+export interface Good {
 	id: number;
 	images: string[];
-	title: string;
+	name: string;
+	price: number;
+	categoryId: number;
 	description: string;
 }
 
 export default function GoodsPage() {
 	const [goods, setGoods] = useState<Good[]>([]);
+	const [categories, setCategories] = useState<[]>([]);
+	const [formData, setFormData] = useState<any>(null);
 	const [newGood, setNewGood] = useState<Good>({
 		id: 0,
 		images: [],
-		title: "",
+		name: "",
+		price: 0,
+		categoryId: 0,
 		description: "",
 	});
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
-	const handleInputChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => {
-		const { name, value } = e.target;
-		setNewGood((prev) => ({ ...prev, [name]: value }));
-	};
-
 	const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const files = e.target.files;
 		if (files) {
+			const fm = new FormData();
+
 			Array.from(files).forEach((file) => {
+				fm.append("image[]", file);
+				console.log(file);
+
 				const reader = new FileReader();
 				reader.onloadend = () => {
 					setNewGood((prev) => ({
@@ -43,6 +48,7 @@ export default function GoodsPage() {
 				};
 				reader.readAsDataURL(file);
 			});
+			setFormData(fm);
 		}
 	};
 
@@ -53,17 +59,47 @@ export default function GoodsPage() {
 		}));
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: any) => {
 		e.preventDefault();
-		if (newGood.title && newGood.description && newGood.images.length > 0) {
-			setGoods((prev) => [...prev, { ...newGood, id: Date.now() }]);
-			setNewGood({ id: 0, images: [], title: "", description: "" });
+		const token = Cookies.get("token");
+
+		const fm = new FormData(e.target as any);
+
+		formData.forEach((elem: any) => {
+			fm.append("images", elem);
+		});
+
+		const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/product", {
+			method: "POST",
+			body: fm,
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+
+		if (res.ok) {
+			const data = await res.json();
+			setGoods((prev) => [...prev, data]);
+
+			e.target.reset();
+
 			if (fileInputRef.current) {
 				fileInputRef.current.value = "";
 			}
-			console.log(newGood);
+		} else {
+			console.error("Error uploading product:", res.statusText);
 		}
 	};
+
+	useEffect(() => {
+		fetch(process.env.NEXT_PUBLIC_API_URL + "/category")
+			.then((res) => res.json())
+			.then((res) => setCategories(res));
+
+		fetch(process.env.NEXT_PUBLIC_API_URL + "/product")
+			.then((res) => res.json())
+			.then((res) => setGoods(res));
+	}, []);
 
 	return (
 		<div className="container mx-auto p-4">
@@ -78,10 +114,10 @@ export default function GoodsPage() {
 					<GoodsForm
 						newGood={newGood}
 						onSubmit={handleSubmit}
-						onInputChange={handleInputChange}
 						onImageUpload={handleImageUpload}
 						removeImage={removeImage}
 						fileInputRef={fileInputRef}
+						categories={categories}
 					/>
 				</TabsContent>
 				<TabsContent value="preview">
@@ -106,22 +142,35 @@ export default function GoodsPage() {
 									className="border rounded-lg p-4"
 								>
 									<h3 className="font-bold text-lg mb-2">
-										{good.title}
+										Title: {good.name}
 									</h3>
 									<p className="text-gray-600 mb-2">
-										{good.description}
+										Price: {good.price}
 									</p>
+							
+									<p className="text-gray-600 mb-2">
+										Description: {good.description}
+									</p>
+									
+									<p className="text-gray-600 mb-2">
+										Images:
+									</p>
+
 									<div className="flex flex-wrap gap-2">
-										{good.images.map((image, index) => (
-											<img
-												key={index}
-												src={image}
-												alt={`${good.title} - Image ${
-													index + 1
-												}`}
-												className="w-20 h-20 object-cover rounded"
-											/>
-										))}
+										{good.images.map(
+											(image: any, index) => {
+												return (
+													<img
+														key={index}
+														src={image.url}
+														alt={`${
+															good.name
+														} - Image ${index + 1}`}
+														className="w-20 h-20 object-cover rounded"
+													/>
+												);
+											}
+										)}
 									</div>
 								</li>
 							))}

@@ -4,32 +4,31 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ImageUploader from "./ImageUploader";
-
-export interface Good {
-	id: number;
-	images: string[];
-	title: string;
-	description: string;
-}
+import { Good } from "@/app/dashboard/goods/GoodsPage";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
 
 interface GoodsFormProps {
 	newGood: Good;
 	onSubmit: (e: React.FormEvent) => void;
-	onInputChange: (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => void;
 	onImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	removeImage: (index: number) => void;
 	fileInputRef: React.RefObject<HTMLInputElement>;
+	categories: Array<any>;
 }
 
 const GoodsForm: React.FC<GoodsFormProps> = ({
 	newGood,
 	onSubmit,
-	onInputChange,
 	onImageUpload,
 	removeImage,
 	fileInputRef,
+	categories,
 }) => (
 	<Card>
 		<CardHeader>
@@ -45,16 +44,36 @@ const GoodsForm: React.FC<GoodsFormProps> = ({
 				/>
 				<Input
 					type="text"
-					name="title"
-					value={newGood.title}
-					onChange={onInputChange}
+					name="name"
 					placeholder="Title"
 					className="w-full"
+					required
 				/>
+				<Input
+					type="text"
+					name="price"
+					placeholder="Price"
+					className="w-full"
+					required
+				/>
+				<Select name="categoryId">
+					<SelectTrigger className="w-full text-gray-500">
+						<SelectValue placeholder="Select Category" />
+					</SelectTrigger>
+					<SelectContent>
+						{categories.map((item) => (
+							<SelectItem
+								className="text-black"
+								key={item.id}
+								value={item.id}
+							>
+								{item.name}
+							</SelectItem>
+						))}
+					</SelectContent>
+				</Select>
 				<Textarea
 					name="description"
-					value={newGood.description}
-					onChange={onInputChange}
 					placeholder="Description"
 					className="w-full"
 				/>
@@ -66,5 +85,4 @@ const GoodsForm: React.FC<GoodsFormProps> = ({
 	</Card>
 );
 
-
-export default GoodsForm
+export default GoodsForm;

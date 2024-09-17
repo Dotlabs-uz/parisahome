@@ -17,32 +17,39 @@ import { useRouter } from "next/navigation";
 export default function LoginPage() {
 	const [login, setLogin] = useState("");
 	const [password, setPassword] = useState("");
-    const router = useRouter()        
+	const [loading, setLoading] = useState(false);
+	const router = useRouter();
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
+        setLoading(true)
 
-		const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/admin/signin", {
-			method: "post",
-			body: JSON.stringify({ login, password }),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
+		const res = await fetch(
+			process.env.NEXT_PUBLIC_API_URL + "/admin/signin",
+			{
+				method: "post",
+				body: JSON.stringify({ login, password }),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			}
+		);
 
-        if(!res.ok) {
-            alert('Somethin went wrong!')
-            return
-        }
+		if (!res.ok) {
+			alert("Somethin went wrong!");
+            setLoading(false)
+			return;
+		}
 
-        const data = await res.json()
+		const data = await res.json();
 
-        Cookies.set("token", data.accessToken, {
+		Cookies.set("token", data.accessToken, {
 			expires: 7, // срок действия куки, например, 7 дней
 			secure: process.env.NODE_ENV === "production", // Только для HTTPS в продакшн
 		});
-        
-        router.push("/dashboard")
+
+        setLoading(false)
+		router.push("/dashboard");
 	};
 
 	return (
@@ -79,8 +86,12 @@ export default function LoginPage() {
 							/>
 						</div>
 						<CardFooter>
-							<Button className="w-full" type="submit">
-								Log In
+							<Button
+								disabled={loading}
+								className="w-full"
+								type="submit"
+							>
+								{loading ? "loading" : "Log In"}
 							</Button>
 						</CardFooter>
 					</form>
