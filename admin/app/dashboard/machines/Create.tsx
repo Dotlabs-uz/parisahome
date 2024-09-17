@@ -55,7 +55,7 @@ export default function CertificateForm({ token }: { token: any }) {
 		<Card className="w-full mx-auto">
 			<CardHeader>
 				<CardTitle className="text-2xl font-bold text-center">
-					Add New Certificate
+					Add New Machine
 				</CardTitle>
 			</CardHeader>
 			<CardContent>
