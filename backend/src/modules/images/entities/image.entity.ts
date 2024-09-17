@@ -1,5 +1,6 @@
 import { Column, ForeignKey, Model, Table } from "sequelize-typescript";
 import { Certificate } from "src/modules/certificate/entities/certificate.entity";
+import { Machine } from "src/modules/machines/entities/machine.entity";
 import { Product } from "src/modules/product/entities/product.entity";
 
 @Table({ tableName: 'images' })
@@ -30,4 +31,10 @@ export class Image extends Model<Image> {
     })
     @ForeignKey(() => Certificate)
     certificateId: number
+
+    @Column({
+        allowNull: true
+    })
+    @ForeignKey(() => Machine)
+    machineId: number
 }

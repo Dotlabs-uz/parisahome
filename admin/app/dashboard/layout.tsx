@@ -10,19 +10,21 @@ export default function DashboardLayout({
 		<div className="flex h-screen bg-gray-100">
 			<aside className="w-64 bg-white shadow-md">
 				<nav className="p-5 space-y-2">
-					<Link
-						href="/dashboard"
-						className="flex items-center space-x-2 text-gray-700 hover:bg-gray-100 rounded p-2"
-					>
-						<HomeIcon className="h-5 w-5" />
-						<span>Dashboard</span>
-					</Link>
+					<h1 className="text-black text-2xl mb-4" >Admin dashboard</h1>
+					<hr/>
 					<Link
 						href="/dashboard/goods"
 						className="flex items-center space-x-2 text-gray-700 hover:bg-gray-100 rounded p-2"
 					>
 						<PackageIcon className="h-5 w-5" />
 						<span>Goods</span>
+					</Link>
+					<Link
+						href="/dashboard/categories"
+						className="flex items-center space-x-2 text-gray-700 hover:bg-gray-100 rounded p-2"
+					>
+						<HelpCircleIcon className="h-5 w-5" />
+						<span>Categories</span>
 					</Link>
 					<Link
 						href="/dashboard/certificates"
@@ -37,13 +39,6 @@ export default function DashboardLayout({
 					>
 						<CogIcon className="h-5 w-5" />
 						<span>Machines</span>
-					</Link>
-					<Link
-						href="/dashboard/faq"
-						className="flex items-center space-x-2 text-gray-700 hover:bg-gray-100 rounded p-2"
-					>
-						<HelpCircleIcon className="h-5 w-5" />
-						<span>FAQ</span>
 					</Link>
 				</nav>
 			</aside>

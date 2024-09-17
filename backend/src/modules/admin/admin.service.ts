@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { AdminsDto } from './dto/create-admin.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Admin } from './entities/admin.entity';
@@ -30,6 +30,22 @@ export class AdminService {
 		return {
 			accessToken: token
 		};
+	}
+
+	async update(id: number, updateAdminDto: Partial<AdminsDto>) {
+
+		const resAdmin = await this.adminModel.findOne({ where: { id } });
+
+		if (!resAdmin?.dataValues) {
+			throw new NotFoundException();
+		}
+
+		if (updateAdminDto.password) {
+			const hashedPassword = await this.authService.hashPassword(updateAdminDto.password)
+			updateAdminDto.password = hashedPassword
+		}
+
+		return await this.adminModel.update(updateAdminDto, { where: { id } })
 	}
 
 	async register(body: AdminsDto) {

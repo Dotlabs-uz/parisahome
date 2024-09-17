@@ -49,9 +49,7 @@ export class ProductService {
 
 			if (files && files.length > 0) {
 
-				const oldImages = await this.imagesService.findImagesByProductId(product.dataValues.id);
-
-				await this.imagesService.deleteImages(oldImages);
+				await this.imagesService.deleteImages(product.dataValues.id, "productId");
 
 				await this.imagesService.uploadImages(product.dataValues.id, files, 'productId');
 			}
@@ -64,6 +62,20 @@ export class ProductService {
 
 
 	async remove(id: number) {
-		return this.productModel.destroy({ where: { id: id } });
+		try {
+			const resProduct = await this.productModel.findByPk(id, { include: { all: true } });
+
+			if (!resProduct) {
+				throw new BadRequestException('Product not found');
+			}
+			await this.imagesService.deleteImages(resProduct.dataValues.id, "productId");
+
+			await this.productModel.destroy({ where: { id: id } });
+
+		} catch (e) {
+			throw new BadRequestException(e.message);
+		}
+
+		return { message: 'Product was deleted' };
 	}
 }

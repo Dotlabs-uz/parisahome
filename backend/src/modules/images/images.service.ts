@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Image } from './entities/image.entity';
-import path from 'path';
+import * as path from 'path';
 import { unlink } from 'fs/promises';
 
 @Injectable()
@@ -51,20 +51,26 @@ export class ImagesService {
 		}
 	}
 
-	async findImagesByProductId(productId: string) {
-		return await this.imageModel.findAll({ where: { productId } });
+	async findImagesByProductId(id: string, service: string) {
+		return await this.imageModel.findAll({ where: { [service]: id } });
 	}
 
 	// Удалить изображения с диска и из базы данных
-	async deleteImages(images: any[]) {
+	async deleteImages(id: number, service: string) {
+
+		const images = await this.imageModel.findAll({ where: { [service]: id } });
+
 		for (const image of images) {
-			const imagePath = path.join(__dirname, '../../uploads/', image.url); // Путь к файлу на диске
+
+			const imagePath = path.join(__dirname, '../../../uploads/', image.dataValues.url.split("/").at(-1)); // Путь к файлу на диске
+
 			try {
-				await unlink(imagePath); // Удаление файла с диска
+				await unlink(imagePath); // Удаление файла с диска\
+				const resImage = await this.imageModel.findByPk(image.dataValues.id);
+				await resImage.destroy()
 			} catch (error) {
 				console.error(`Failed to delete image file: ${imagePath}`, error);
 			}
-			await image.destroy(); // Удаление записи из базы данных
 		}
 	}
 }
