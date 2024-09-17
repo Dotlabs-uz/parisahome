@@ -49,7 +49,7 @@ export default function LoginPage() {
 		});
 
         setLoading(false)
-		router.push("/dashboard");
+		router.push("/admin/dashboard");
 	};
 
 	return (

@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ImageUploader from "./ImageUploader";
-import { Good } from "@/app/dashboard/goods/GoodsPage";
+import { Good } from "@/app/admin/dashboard/goods/GoodsPage";
 import {
 	Select,
 	SelectContent,
