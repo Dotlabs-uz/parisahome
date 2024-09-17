@@ -5,7 +5,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ImageUploader from "./ImageUploader";
 import { Good } from "@/app/dashboard/goods/GoodsPage";
-
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
 
 interface GoodsFormProps {
 	newGood: Good;
@@ -13,6 +19,7 @@ interface GoodsFormProps {
 	onImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	removeImage: (index: number) => void;
 	fileInputRef: React.RefObject<HTMLInputElement>;
+	categories: Array<any>;
 }
 
 const GoodsForm: React.FC<GoodsFormProps> = ({
@@ -21,6 +28,7 @@ const GoodsForm: React.FC<GoodsFormProps> = ({
 	onImageUpload,
 	removeImage,
 	fileInputRef,
+	categories,
 }) => (
 	<Card>
 		<CardHeader>
@@ -39,13 +47,31 @@ const GoodsForm: React.FC<GoodsFormProps> = ({
 					name="name"
 					placeholder="Title"
 					className="w-full"
+					required
 				/>
 				<Input
 					type="text"
 					name="price"
-					placeholder="Title"
+					placeholder="Price"
 					className="w-full"
+					required
 				/>
+				<Select name="categoryId">
+					<SelectTrigger className="w-full text-gray-500">
+						<SelectValue placeholder="Select Category" />
+					</SelectTrigger>
+					<SelectContent>
+						{categories.map((item) => (
+							<SelectItem
+								className="text-black"
+								key={item.id}
+								value={item.id}
+							>
+								{item.name}
+							</SelectItem>
+						))}
+					</SelectContent>
+				</Select>
 				<Textarea
 					name="description"
 					placeholder="Description"

@@ -16,14 +16,14 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 	removeImage,
 	fileInputRef,
 }) => (
-	<div>
+	<div >
 		<label
 			htmlFor="image-upload"
 			className="block text-sm font-medium text-gray-700 mb-2"
 		>
 			Upload Images
 		</label>
-		<div className="flex items-center space-x-2">
+		<div className="flex items-center">
 			<Input
 				id="image-upload"
 				type="file"
@@ -32,9 +32,11 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 				onChange={onImageUpload}
 				ref={fileInputRef}
 				className="hidden"
+				required
 			/>
 			<Button
 				type="button"
+				className="w-full "
 				onClick={() => fileInputRef.current?.click()}
 				variant="outline"
 			>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import GoodsForm from "@/components/custom/GoodsForm";
@@ -18,6 +18,7 @@ export interface Good {
 
 export default function GoodsPage() {
 	const [goods, setGoods] = useState<Good[]>([]);
+	const [categories, setCategories] = useState<[]>([]);
 	const [formData, setFormData] = useState<any>(null);
 	const [newGood, setNewGood] = useState<Good>({
 		id: 0,
@@ -58,7 +59,7 @@ export default function GoodsPage() {
 		}));
 	};
 
-	const handleSubmit = async (e: React.FormEvent) => {
+	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 		const token = Cookies.get("token");
 
@@ -72,16 +73,16 @@ export default function GoodsPage() {
 			method: "POST",
 			body: fm,
 			headers: {
-				Authorization: `Bearer ${token}`, // передаем токен в заголовке
+				Authorization: `Bearer ${token}`,
 			},
 		});
 
-		// Проверяем результат запроса
 		if (res.ok) {
 			const data = await res.json();
-			console.log(data);
-			// Очищаем форму после успешной отправки
-			// setNewGood({ id: 0, images: [], name: "", description: "" });
+			setGoods((prev) => [...prev, data]);
+
+			e.target.reset();
+
 			if (fileInputRef.current) {
 				fileInputRef.current.value = "";
 			}
@@ -89,6 +90,16 @@ export default function GoodsPage() {
 			console.error("Error uploading product:", res.statusText);
 		}
 	};
+
+	useEffect(() => {
+		fetch(process.env.NEXT_PUBLIC_API_URL + "/category")
+			.then((res) => res.json())
+			.then((res) => setCategories(res));
+
+		fetch(process.env.NEXT_PUBLIC_API_URL + "/product")
+			.then((res) => res.json())
+			.then((res) => setGoods(res));
+	}, []);
 
 	return (
 		<div className="container mx-auto p-4">
@@ -106,6 +117,7 @@ export default function GoodsPage() {
 						onImageUpload={handleImageUpload}
 						removeImage={removeImage}
 						fileInputRef={fileInputRef}
+						categories={categories}
 					/>
 				</TabsContent>
 				<TabsContent value="preview">
@@ -130,22 +142,35 @@ export default function GoodsPage() {
 									className="border rounded-lg p-4"
 								>
 									<h3 className="font-bold text-lg mb-2">
-										{good.name}
+										Title: {good.name}
 									</h3>
 									<p className="text-gray-600 mb-2">
-										{good.description}
+										Price: {good.price}
 									</p>
+							
+									<p className="text-gray-600 mb-2">
+										Description: {good.description}
+									</p>
+									
+									<p className="text-gray-600 mb-2">
+										Images:
+									</p>
+
 									<div className="flex flex-wrap gap-2">
-										{good.images.map((image, index) => (
-											<img
-												key={index}
-												src={image}
-												alt={`${good.name} - Image ${
-													index + 1
-												}`}
-												className="w-20 h-20 object-cover rounded"
-											/>
-										))}
+										{good.images.map(
+											(image: any, index) => {
+												return (
+													<img
+														key={index}
+														src={image.url}
+														alt={`${
+															good.name
+														} - Image ${index + 1}`}
+														className="w-20 h-20 object-cover rounded"
+													/>
+												);
+											}
+										)}
 									</div>
 								</li>
 							))}
