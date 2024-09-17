@@ -39,7 +39,7 @@ services:
         container_name: admin
         restart: always
         build:
-            context: ./frontend
+            context: ./admin
             dockerfile: Dockerfile
         networks:
             - dropin
