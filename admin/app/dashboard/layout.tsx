@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PackageIcon, CogIcon, HelpCircleIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+import { parseJwt } from "@/lib/utils";
 
 function NavLink({
 	href,
@@ -34,6 +37,19 @@ export default function DashboardLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	const router = useRouter();
+	const token = Cookies.get("token");
+
+	if (!token) {
+		router.push("/login");
+		return;
+	}
+	const jwt = parseJwt(token);
+
+	if (jwt.exp < Date.now() / 1000) {
+		router.push("/login");
+	}
+
 	return (
 		<div className="flex h-screen bg-gray-100">
 			<aside className="w-64 bg-white shadow-md">
