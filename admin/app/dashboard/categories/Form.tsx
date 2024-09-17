@@ -5,7 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
-export default function AddForm({ token }: { token: string | undefined }) {
+export default function AddForm({
+	token,
+}: {
+	token: { name: string; value: string };
+}) {
 	const [loading, setLoading] = useState(false);
 	const [name, setName] = useState("");
 
@@ -21,7 +25,7 @@ export default function AddForm({ token }: { token: string | undefined }) {
 					body: JSON.stringify({ name: name }),
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${token}`,
+						Authorization: `Bearer ${token.value}`,
 					},
 				}
 			);

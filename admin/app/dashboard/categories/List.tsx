@@ -14,7 +14,7 @@ export default function CategoryList({
 	token,
 }: {
 	categories: Array<any>;
-	token: string | undefined;
+	token: {name: string, value: string}
 }) {
 	return (
 		<Card className="p-3">
