@@ -1,6 +1,6 @@
 "use client";
 
-import action from "@/app/actions";
+import action from "@/app/admin/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";

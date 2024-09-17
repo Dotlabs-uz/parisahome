@@ -9,7 +9,9 @@ const nextConfig = {
                 pathname: '/api/v1/uploads/**',
             }
         ]
-    }
+    },
+    basePath: '/admin',
+    distDir: '/admin/.next'
 };
 
 export default nextConfig;

@@ -103,7 +103,7 @@ export default function GoodsPage() {
 
 	return (
 		<div className="container mx-auto p-4">
-			<h1 className="text-2xl font-bold mb-4">Goods Management</h1>
+			<h1 className="text-2xl font-bold mb-4 text-black">Goods Management</h1>
 
 			<Tabs defaultValue="add" className="mb-6">
 				<TabsList className="grid w-full grid-cols-2">

@@ -1,5 +1,5 @@
 "use client";
-import action from "@/app/actions";
+import action from "@/app/admin/actions";
 import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import React, { useState } from "react";
