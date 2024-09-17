@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IoMenu } from "react-icons/io5";
@@ -16,6 +16,32 @@ const Header = () => {
         { link: "/certificates", title: "Сертификаты" },
     ]
 
+    const ref = useRef(null);
+
+    React.useEffect(() => {
+        const tl = gsap.timeline({
+            defaults: {
+                duration: 4,
+                ease: "none"
+            },
+            scrollTrigger: {
+                trigger: ref.current,
+                start: "10px top",
+                end: "90px top",
+                scrub: true,
+                // markers: true
+            }
+        });
+
+        tl.to(ref.current, {
+            y: -100
+        });
+        tl.add(() => { }, "+=0.5");
+        tl.to(ref.current, {
+            y: 0
+        });
+    }, []);
+
     useGSAP(() => {
         gsap.from(".header", {
             y: -30,
@@ -26,7 +52,7 @@ const Header = () => {
     })
 
     return (
-        <header className='md:border-b md:border-white/40'>
+        <header ref={ref} className='w-full md:border-b md:border-white/40 bg-green'>
             <div className="custom-container flex items-center justify-between py-3">
                 <Link href={`/`} className="header">
                     <Image

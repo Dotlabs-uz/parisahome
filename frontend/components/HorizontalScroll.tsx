@@ -29,7 +29,7 @@ const HorizontalScroll = () => {
                     trigger: triggerRef.current,
                     start: "top top",
                     end: "2000 top",
-                    scrub: 0.6,
+                    scrub: 0.5,
                     pin: true,
                     // markers: true,
                     onUpdate: (self) => {
