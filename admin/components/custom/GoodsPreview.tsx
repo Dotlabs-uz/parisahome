@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Good } from "./GoodsForm";
 
-const GoodsPreview: React.FC<{ good: Good }> = ({ good }) => (
+const GoodsPreview: React.FC<{ good: any }> = ({ good }) => (
 	<Card>
 		<CardHeader>
 			<CardTitle>Preview</CardTitle>
@@ -16,7 +15,7 @@ const GoodsPreview: React.FC<{ good: Good }> = ({ good }) => (
 						{good.description || "No description"}
 					</p>
 					<div className="flex flex-wrap gap-2">
-						{good.images.map((image, index) => (
+						{good.images.map((image: any, index: number) => (
 							<img
 								key={index}
 								src={image}
@@ -35,5 +34,4 @@ const GoodsPreview: React.FC<{ good: Good }> = ({ good }) => (
 	</Card>
 );
 
-
-export default GoodsPreview
+export default GoodsPreview;

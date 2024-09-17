@@ -7,7 +7,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PlusCircle } from "lucide-react";
 
-export default function CertificateForm({ token }: { token: any }) {
+export default function CertificateForm({
+	token,
+}: {
+	token: { value: string };
+}) {
 	const [imagePreview, setImagePreview] = useState<string | null>(null);
 
 	const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +31,7 @@ export default function CertificateForm({ token }: { token: any }) {
 		const formData = new FormData(e.target);
 
 		try {
-			formData.append("name", "")
+			formData.append("name", "");
 			const response = await fetch(
 				process.env.NEXT_PUBLIC_API_URL + "/machines",
 				{
