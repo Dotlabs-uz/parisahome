@@ -1,4 +1,5 @@
 "use client"
+import FlowerModal from '@/components/children/FlowerModal'
 import { animateElementsOnScroll, animateElementsOnScrollRight } from '@/lib/animations'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -82,14 +83,8 @@ const Page = () => {
                             <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element"><IoLocationOutline className="text-2xl max-sm:text-[15px]" /> Konigil Samarkand 140319, Uzbekistan</p>
                         </div>
 
-                        <div className="m-auto h-full w-fit flex items-center justify-center max-md:absolute -top-5 -right-10 select-none pointer-events-none anim-element">
-                            <Image
-                                className="w-72 max-md:w-96"
-                                src={"/images/flower-gary.svg"}
-                                width={1000}
-                                height={1000}
-                                alt="img"
-                            />
+                        <div className="flex items-center justify-center w-96 h-72 max-md:w-full max-md:h-60">
+                            <FlowerModal type={"silver"} />
                         </div>
                     </div>
                 </div>

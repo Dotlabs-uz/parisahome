@@ -80,24 +80,21 @@ const HorizontalScroll = () => {
                         ))} */}
                     </div>
 
-                    <div className="max-w-md max-md:max-w-xs w-full h-80 max-md:h-60 fixed left-1/2 max-lg:left-1/3 top-1/2 -translate-y-1/2 max-md:left-[10%]">
+                    <div className="max-w-md max-md:max-w-xs w-full h-80 max-md:h-72 fixed left-1/2 max-lg:left-1/3 top-1/2 -translate-y-1/2 max-md:left-[10%]">
                         <FlowerRotate type={"gold"} />
                     </div>
 
                     <div ref={sectionRef} className="scroll-section-inner text-white relative">
                         {
                             arr.map((item, index) => (
-                                <div key={index} className="scroll-section flex max-md:flex-col max-md:justify-around">
-                                    <div className="custom-container flex max-md:flex-col gap-20 max-md:gap-10 items-center justify-between max-md:justify-around py-40 max-md:py-20">
+                                <div key={index} className="scroll-section flex">
+                                    <div className="custom-container h-full flex gap-20 max-md:gap-10 nth py-40 max-md:py-20">
                                         <div className="w-full">
                                             <p className="text-xl mb-10 max-md:mb-5">{item.years}</p>
                                             <h2 className="text-5xl mb-3">{item.title}</h2>
                                             <p className="max-w-[430px] text-[17px] leading-6">{item.dcr}</p>
                                         </div>
                                     </div>
-                                    {/* <div className="max-w-md max-md:max-w-xs w-full h-80 max-md:h-60 md:hidden">
-                                        <FlowerRotate type={"gold"} />
-                                    </div> */}
                                 </div>
                             ))
                         }
