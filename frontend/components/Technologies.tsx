@@ -33,16 +33,28 @@ const Technologies = () => {
         <div ref={sectionRef} className="custom-container pb-10 pt-20">
             <div className="text-white">
                 <div className="relative anim-element">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[75%] max-md:-translate-y-[100%] w-96 h-72 max-md:w-44 max-md:h-32 max-sm:hidden">
-                        <FlowerModal type={"gold"} />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[75%] max-md:-translate-y-[100%] w-72 max-md:w-44 max-sm:hidden">
+                        {/* <FlowerModal type={"gold"} /> */}
+                        <Image
+                            src={"/images/flower.svg"}
+                            width={1000}
+                            height={1000}
+                            alt='flower'
+                        />
                     </div>
                     <div className="flex items-center justify-between mb-10 anim-element">
                         <div className="w-full flex max-sm:flex-col sm:items-center justify-between gap-3">
                             <h2 className="text-3xl max-sm:text-xl text-yellow">\\ТЕХНОЛОГИИ</h2>
                             <Link href={"/about-us"} className="w-fit text-sm max-sm:text-xs py-3 max-sm:py-2 px-8 max-sm:px-5 rounded-full border border-yellow">О КОМПАНИИ</Link>
                         </div>
-                        <div className="w-44 h-32 sm:hidden anim-element">
-                            <FlowerModal type={"gold"} />
+                        <div className="w-56 sm:hidden anim-element">
+                            {/* <FlowerModal type={"gold"} /> */}
+                            <Image
+                                src={"/images/flower.svg"}
+                                width={1000}
+                                height={1000}
+                                alt='flower'
+                            />
                         </div>
                     </div>
                     <div className="flex max-md:flex-col md:items-center md:justify-end gap-10 max-md:gap-2 anim-element">

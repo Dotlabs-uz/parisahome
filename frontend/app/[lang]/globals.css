@@ -54,6 +54,10 @@ audio::-webkit-media-controls {
   display: none !important;
 }
 
+video::-webkit-media-controls-enclosure {
+  display: none;
+}
+
 .threeD {
   width: 400px !important;
   height: 280px !important;

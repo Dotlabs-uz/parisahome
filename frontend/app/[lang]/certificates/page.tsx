@@ -13,7 +13,7 @@ const Page = async () => {
             </div>
 
             <Suspense fallback={'loading'}>
-                <div className="mb-10 grid grid-cols-3 gap-5">
+                <div className="mb-10 grid grid-cols-3 max-md:grid-cols-2 gap-5 max-md:gap-2">
                     {
                         certificate.data.map((i: any, idx: number) => (
                             <div key={idx} className="certificates">
