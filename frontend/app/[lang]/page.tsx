@@ -1,10 +1,6 @@
-import Image from "next/image";
 import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
-import Hero from "@/components/Hero";
-import { LuArrowUpRight } from "react-icons/lu";
 import Products from "@/components/Products";
-import { TfiEmail } from "react-icons/tfi";
 import Gallery from "@/components/Gallery";
 import Partners from "@/components/Partners";
 import WeInNumbers from "@/components/WeInNumbers";
@@ -12,7 +8,6 @@ import Technologies from "@/components/Technologies";
 import FAQ from "@/components/FAQ";
 import Form from "@/components/Form";
 import HeroVideo from "@/components/HeroVideo";
-
 
 const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
    const { homepage } = await getDictionary(lang);

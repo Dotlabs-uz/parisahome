@@ -3,6 +3,7 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Head from "next/head";
 
 const inter = Raleway({
    weight: ["300", "400", "500", "600", '800'],
@@ -23,6 +24,11 @@ export default function RootLayout({
 }>) {
    return (
       <html lang="en">
+         <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+         </Head>
          <body className={inter.className}>
             <Header />
             <main className="pt-[0.5px]">
