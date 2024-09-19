@@ -7,7 +7,7 @@ const nextConfig = {
                 hostname: '165.22.220.228',
             },
         ],
-
+        unoptimized: true
     }
 };
 
