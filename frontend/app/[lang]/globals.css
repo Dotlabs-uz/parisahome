@@ -50,6 +50,10 @@ video::-webkit-media-controls {
   display: none !important;
 }
 
+audio::-webkit-media-controls {
+  display: none !important;
+}
+
 .threeD {
   width: 400px !important;
   height: 280px !important;
@@ -61,4 +65,28 @@ video::-webkit-media-controls {
     width: 180px !important;
     height: 130px !important;
   }
+}
+
+@media (max-width: 720px) {
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 5em;
+    z-index: 2;
+    display: flex;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+    @apply bg-green;
+  }
+
+  .menu-link-item {
+    width: max-content;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+
+.scroll-section:nth-child(even) .nth {
+  align-items: end;
 }

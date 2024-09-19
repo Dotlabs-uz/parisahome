@@ -22,6 +22,8 @@ const Gallery = () => {
                 trigger: ".galleryTitle",
                 start: "center bottom",
                 end: "center center",
+                scrub: 1,
+                // markers: true
             }
         })
 
@@ -31,6 +33,8 @@ const Gallery = () => {
                 trigger: ".galleryTitle",
                 start: "center bottom",
                 end: "center center",
+                scrub: 1,
+                // markers: true
             }
         })
     }, [])

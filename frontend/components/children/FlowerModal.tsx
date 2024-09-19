@@ -66,7 +66,7 @@ const Model = ({ type }: any) => {
 
 const FlowerModal = ({ type }: any) => {
     return (
-        <Canvas className='threeD'>
+        <Canvas className='w-full h-full'>
             <ambientLight intensity={0.5} />
             <directionalLight position={[10, 10, 5]} intensity={10000} />
             <Model type={type} />

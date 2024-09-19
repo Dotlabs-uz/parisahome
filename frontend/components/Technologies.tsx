@@ -4,6 +4,7 @@ import Image from 'next/image'
 import FlowerModal from './children/FlowerModal'
 import { animateElementsOnScroll } from '@/lib/animations'
 import axios from 'axios'
+import Link from 'next/link'
 
 const Technologies = () => {
     const sectionRef = useRef<HTMLDivElement | null>(null)
@@ -28,21 +29,19 @@ const Technologies = () => {
             })
     }, [])
 
-    console.log(machines);
-
     return (
         <div ref={sectionRef} className="custom-container pb-10 pt-20">
             <div className="text-white">
                 <div className="relative anim-element">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[75%] max-md:-translate-y-[100%] max-sm:hidden">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[75%] max-md:-translate-y-[100%] w-96 h-72 max-md:w-44 max-md:h-32 max-sm:hidden">
                         <FlowerModal type={"gold"} />
                     </div>
                     <div className="flex items-center justify-between mb-10 anim-element">
                         <div className="w-full flex max-sm:flex-col sm:items-center justify-between gap-3">
                             <h2 className="text-3xl max-sm:text-xl text-yellow">\\ТЕХНОЛОГИИ</h2>
-                            <button className="w-fit text-sm max-sm:text-xs py-3 max-sm:py-2 px-8 max-sm:px-5 rounded-full border border-yellow">О КОМПАНИИ</button>
+                            <Link href={"/about-us"} className="w-fit text-sm max-sm:text-xs py-3 max-sm:py-2 px-8 max-sm:px-5 rounded-full border border-yellow">О КОМПАНИИ</Link>
                         </div>
-                        <div className="sm:hidden w-72 anim-element">
+                        <div className="w-44 h-32 sm:hidden anim-element">
                             <FlowerModal type={"gold"} />
                         </div>
                     </div>
@@ -63,7 +62,9 @@ const Technologies = () => {
                                             src={i.image.url}
                                             width={1000}
                                             height={1000}
+                                            layout="responsive"
                                             alt="img"
+                                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 75vw, (max-width: 1024px) 50vw, 33vw"
                                         />
                                     </div>
 

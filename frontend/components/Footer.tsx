@@ -7,26 +7,22 @@ import Link from 'next/link';
 import React from 'react'
 import { SlArrowUp } from "react-icons/sl";
 
-gsap.registerPlugin(ScrollTrigger)
 const Footer = () => {
-    // useGSAP(() => {
-    //     const elems = gsap.utils.toArray(".footer-el")
-    //     elems.forEach((el: any) => {
-    //         gsap.from(el, {
-    //             y: 30,
-    //             opacity: 0,
-    //             duration: 1,
-    //             stagger: 0.2,
-    //             scrollTrigger: {
-    //                 trigger: ".footer-section",
-    //                 start: "center bottom",
-    //                 end: "center center",
-    //                 scrub: 1,
-    //                 markers: true
-    //             }
-    //         })
-    //     })
-    // }, [])
+    const links = [
+        { link: "/en", title: "Home" },
+        { link: "/en/about-us", title: "О нас" },
+        { link: "/en/catalog", title: "Каталог" },
+        { link: "/en/contacts", title: "Контакты" },
+        { link: "/en/machineries", title: "Станки" },
+        { link: "/en/certificates", title: "Сертификаты" },
+    ];
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling effect
+        });
+    };
 
     return (
         <footer className='bg-black py-8 footer-section'>
@@ -34,7 +30,7 @@ const Footer = () => {
                 <div className="flex pt-7 border-t-2 border-white text-white">
                     <div className="w-2/5 flex flex-col justify-between max-sm:hidden">
                         <div className='flex items-center gap-3 footer-el'>
-                            <button className='p-4 rounded-lg bg-yellow'>
+                            <button onClick={scrollToTop} className='p-4 rounded-lg bg-yellow'>
                                 <SlArrowUp className='text-[16px]' />
                             </button>
                             <p className=''>НАЗАД К НАЧАЛУ</p>
@@ -58,7 +54,7 @@ const Footer = () => {
                             alt="img"
                         />
                         <div className='flex items-center gap-3 sm:hidden footer-el'>
-                            <button className='p-4 max-sm:p-3 rounded-lg bg-yellow'>
+                            <button onClick={scrollToTop} className='p-4 max-sm:p-3 rounded-lg bg-yellow'>
                                 <SlArrowUp className='text-[16px]' />
                             </button>
                             <p className='max-sm:text-xs'>НАЗАД К НАЧАЛУ</p>
@@ -77,10 +73,10 @@ const Footer = () => {
 
                         <ul className='grid gap-x-28 gap-y-2 grid-cols-2 sm:hidden'>
                             {
-                                [0, 1, 2, 3, 4, 5, 6].map((i: number) => (
-                                    <li key={i} className='text-sm font-medium w-fit footer-el'>
-                                        <Link href={"#"}>
-                                            Главная
+                                links.map((i: any, idx: number) => (
+                                    <li key={idx} className='text-sm font-medium footer-el'>
+                                        <Link href={i.link}>
+                                            {i.title}
                                         </Link>
                                     </li>
                                 ))
@@ -97,15 +93,15 @@ const Footer = () => {
 
                         <div className="">
                             <h2 className='text-5xl max-xl:text-4xl max-md:text-3xl max-sm:text-2xl max-sm:text-center mb-7 max-sm:mb-3 footer-el'>Мы всегда ищем новые партнерства и варианты</h2>
-                            <button className='bg-yellow max-sm:text-sm font-medium py-3 max-lg:py-2 px-10 max-lg:px-7 rounded-lg max-sm:mx-auto flex footer-el'>СВЯЗАТЬСЯ С НАМИ</button>
+                            <Link href={"/contacts"} className='bg-yellow max-sm:text-sm font-medium py-3 max-lg:py-2 px-10 max-lg:px-7 rounded-lg max-sm:mx-auto flex footer-el'>СВЯЗАТЬСЯ С НАМИ</Link>
                         </div>
 
                         <ul className='w-fit grid gap-x-28 gap-y-2 grid-cols-2 ml-auto max-sm:hidden'>
                             {
-                                [0, 1, 2, 3, 4, 5, 6].map((i: number) => (
-                                    <li key={i} className='text-sm font-medium footer-el'>
-                                        <Link href={"#"}>
-                                            Главная
+                                links.map((i: any, idx: number) => (
+                                    <li key={idx} className='text-sm font-medium footer-el'>
+                                        <Link href={i.link}>
+                                            {i.title}
                                         </Link>
                                     </li>
                                 ))

@@ -67,7 +67,7 @@ const Form = () => {
                     </form>
                 </div>
 
-                <div className="w-full h-52 relative anim-element-right">
+                <div className="w-full relative anim-element-right">
                     <div>
                         <h2 className="text-3xl max-md:text-2xl font-semibold">Oставайтесь на связи</h2>
                         <p className="flex gap-1 items-center text-xl max-sm:text-lg">
@@ -75,7 +75,7 @@ const Form = () => {
                         </p>
                     </div>
 
-                    <div className="m-auto h-full w-fit flex items-center justify-center">
+                    <div className="flex items-center justify-center w-96 h-72 max-md:w-full max-md:h-60">
                         <FlowerModal type={"silver"} />
                     </div>
                 </div>

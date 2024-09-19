@@ -42,6 +42,7 @@ const Products = () => {
 
             <Suspense fallback={'loading'}>
                 <Swiper
+                    className=''
                     slidesPerView={1.5}
                     spaceBetween={20}
                     modules={[Pagination]}
@@ -59,28 +60,27 @@ const Products = () => {
                 >
                     {
                         products.map((i: any, idx: number) => (
-                            <SwiperSlide key={idx} className='mb-16 max-md:mb-10 anim-element'>
-                                <div className="p-3 max-sm:p-1.5 rounded-[20px] border border-[#EEEEEE]">
-                                    <div className="w-full h-full">
-                                        <Image
-                                            className='w-full h-full object-cover rounded-lg'
-                                            src={i.images[0].url}
-                                            width={1000}
-                                            height={1000}
-                                            alt='img'
-                                        />
+                            <SwiperSlide key={idx} className='mb-10 p-3 max-sm:p-1.5 rounded-[20px] border border-[#EEEEEE] anim-element'>
+                                <div className="w-full h-52 max-md:h-40">
+                                    <Image
+                                        className='w-full h-full object-cover rounded-lg'
+                                        src={i.images[0].url}
+                                        width={1000}
+                                        height={1000}
+                                        alt='img'
+                                    />
+                                </div>
+
+                                <div className="">
+                                    <div className="my-3 border-l-[3px] pl-3 border-yellow">
+                                        <p className='text-xl max-sm:text-base font-bold'>{i.name}</p>
                                     </div>
-                                    <div className="">
-                                        <div className="my-3 border-l-[3px] pl-3 border-yellow">
-                                            <p className='text-xl max-sm:text-base font-bold'>{i.name}</p>
-                                        </div>
-                                        <p className='text-sm max-sm:text-xs max-sm:font-medium leading-6 max-sm:leading-5 mb-5'>
-                                            {i.description}
-                                        </p>
-                                        <Link href={"#"} className='text-sm max-sm:text-xs font-extrabold underline m-auto'>
-                                            Читать полностью
-                                        </Link>
-                                    </div>
+                                    <p className='text-sm max-sm:text-xs max-sm:font-medium leading-6 max-sm:leading-5 mb-5'>
+                                        {i.description}
+                                    </p>
+                                    <Link href={"#"} className='text-sm max-sm:text-xs font-extrabold underline m-auto'>
+                                        Читать полностью
+                                    </Link>
                                 </div>
                             </SwiperSlide>
                         ))
