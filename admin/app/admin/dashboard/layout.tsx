@@ -16,7 +16,7 @@ export default function DashboardLayout({
 	const coockied = cookieStore.get("token");
 
 	if (!coockied) redirect("/admin/login");
-	const jwt = parseJwt(coockied?.value);
+	const jwt = parseJwt(decodeURIComponent(coockied?.value));
 
 	if (jwt.exp < Date.now() / 1000) {
 		redirect("/admin/login");

@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/(auth)/login/page": "app/admin/(auth)/login/page.js",
+  "/page": "app/page.js",
+  "/api/cookies/route": "app/api/cookies/route.js",
+  "/admin/dashboard/goods/page": "app/admin/dashboard/goods/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/admin/dashboard/machines/page": "app/admin/dashboard/machines/page.js",
+  "/admin/dashboard/categories/page": "app/admin/dashboard/categories/page.js",
+  "/admin/dashboard/certificates/page": "app/admin/dashboard/certificates/page.js"
+}

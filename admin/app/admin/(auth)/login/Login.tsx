@@ -44,7 +44,7 @@ export default function LoginPage() {
 
         const data = await res.json();
 
-        setCookies("token", data.accessToken);
+        await setCookies("token", data.accessToken);
 
         setLoading(false);
         router.push("/admin/dashboard");

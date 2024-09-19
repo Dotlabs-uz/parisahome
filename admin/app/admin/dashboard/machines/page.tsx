@@ -13,7 +13,11 @@ const page: React.FC<pageProps> = async () => {
 	if (!res.ok) return <h1>Something went wrong</h1>;
 	const {data} = await res.json();
 	const cookieStore = cookies();
-	const token = cookieStore.get("token") as { name: string; value: string };
+	const resToken = cookieStore.get("token") as {
+        name: string;
+        value: string;
+    };
+    const token = JSON.parse(decodeURIComponent(resToken.value));
 
 	return (
 		<Card className="">
