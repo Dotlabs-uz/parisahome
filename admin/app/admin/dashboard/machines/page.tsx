@@ -29,8 +29,8 @@ const page: React.FC<pageProps> = async () => {
 				<div className="w-full">
 					<h2 className="text-2xl my-2">List of machines</h2>
 					<div className="grid grid-cols-2 gap-2 w-full">
-						{data.map((item: any) => (
-							<Certificate item={item} token={token} />
+						{data.map((item: any, index:number) => (
+							<Certificate key={index} item={item} token={token} />
 						))}
 					</div>
 				</div>

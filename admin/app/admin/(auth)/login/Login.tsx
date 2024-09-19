@@ -11,7 +11,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-// import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { setCookies } from "@/lib/cookies.request";
 

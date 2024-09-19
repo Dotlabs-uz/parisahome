@@ -30,8 +30,8 @@ const page: React.FC<pageProps> = async () => {
                 <div className="w-full">
                     <h2 className="text-2xl my-2">List of certificates</h2>
                     <div className="grid grid-cols-2 gap-2 w-full">
-                        {certificate.map((item: any) => (
-                            <Certificate item={item} />
+                        {certificate.map((item: any,index:number) => (
+                            <Certificate key={index} item={item} />
                         ))}
                     </div>
                 </div>
