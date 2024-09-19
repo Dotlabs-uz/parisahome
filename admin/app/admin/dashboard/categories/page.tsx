@@ -6,11 +6,12 @@ import CategoryList from "./List";
 import { cookies } from "next/headers";
 
 const page = async () => {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/category", {
+    const res = await fetch(process.env.API_URL + "/category", {
         cache: "no-store",
     });
     if (!res.ok) return <h1>Something went wrong</h1>;
     const categories = await res.json();
+
     const cookieStore = cookies();
     const resToken = cookieStore.get("token") as {
         name: string;

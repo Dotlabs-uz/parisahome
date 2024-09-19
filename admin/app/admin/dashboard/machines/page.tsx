@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 interface pageProps {}
 
 const page: React.FC<pageProps> = async () => {
-	const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/machines", {
+	const res = await fetch(process.env.API_URL + "/machines", {
 		cache: "no-store",
 	});
 	if (!res.ok) return <h1>Something went wrong</h1>;
