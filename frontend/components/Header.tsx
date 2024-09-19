@@ -89,7 +89,7 @@ const Header = () => {
             <div ref={container} className="custom-container flex items-center justify-between py-3 relative z-10">
                 <Link href={`/`} className="header relative z-40">
                     <Image
-                        className='w-24 max-lg:w-20 max-md:w-16'
+                        className='w-24 max-lg:w-20'
                         src={"/images/logo.svg"}
                         width={1000}
                         height={1000}
