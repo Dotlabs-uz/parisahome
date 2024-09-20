@@ -11,7 +11,7 @@ export default function Category({
 }: {
 	item: any;
 	index: number;
-	token: { name: string; value: string };
+	token: string;
 }) {
 	const [isProcessing, setIsProcessing] = useState(false);
 
@@ -27,7 +27,7 @@ export default function Category({
 						body: JSON.stringify({ name: newTitle }),
 						headers: {
 							"Content-Type": "application/json",
-							Authorization: `Bearer ${token.value}`,
+							Authorization: `Bearer ${token}`,
 						},
 					}
 				);
@@ -52,7 +52,7 @@ export default function Category({
 					{
 						method: "delete",
 						headers: {
-							Authorization: `Bearer ${token.value}`,
+							Authorization: `Bearer ${token}`,
 						}
 					}
 				);

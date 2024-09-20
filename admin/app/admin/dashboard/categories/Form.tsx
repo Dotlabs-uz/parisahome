@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function AddForm({
 	token,
 }: {
-	token: { name: string; value: string };
+	token: string
 }) {
 	const [loading, setLoading] = useState(false);
 	const [name, setName] = useState("");
@@ -25,7 +25,7 @@ export default function AddForm({
 					body: JSON.stringify({ name: name }),
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${token.value}`,
+						Authorization: `Bearer ${token}`,
 					},
 				}
 			);

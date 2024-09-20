@@ -11,7 +11,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-// import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { setCookies } from "@/lib/cookies.request";
 
@@ -44,8 +43,7 @@ export default function LoginPage() {
 
         const data = await res.json();
 
-        setCookies("token", data.accessToken);
-
+        await setCookies("token", data.accessToken);
         setLoading(false);
         router.push("/admin/dashboard");
     };

@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import GoodsForm from "@/components/custom/GoodsForm";
 import GoodsPreview from "@/components/custom/GoodsPreview";
-import Cookies from "js-cookie";
+import { getCookies } from "@/lib/cookies.request";
 
 export interface Good {
 	id: number;
@@ -61,7 +61,7 @@ export default function GoodsPage() {
 
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
-		const token = Cookies.get("token");
+		const token =await getCookies("token");
 
 		const fm = new FormData(e.target as any);
 

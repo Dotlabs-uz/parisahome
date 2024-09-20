@@ -1,7 +1,7 @@
 
-export async function setCookies(key: string, value: any, options?: Record<string, any>) {
+export async function setCookies(key: string, value: any, options?: Record<string, any>) {    
     try {
-        const response = await fetch("/api/cookies", {
+        const response = await fetch("/admin/api/cookies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export async function setCookies(key: string, value: any, options?: Record<strin
 
 export async function getCookies(key: string) {
     try {
-        const response = await fetch(`/api/cookies?key=${key}`);
+        const response = await fetch(`/admin/api/cookies?key=${key}`);
 
         if (!response.ok) {
             console.error(`Failed to get cookie: ${response.statusText}`);
@@ -40,7 +40,7 @@ export async function getCookies(key: string) {
 
 export async function deleteCookies(key: string) {
     try {
-        const response = await fetch("/api/cookies", {
+        const response = await fetch("/admin/api/cookies", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

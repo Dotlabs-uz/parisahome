@@ -14,7 +14,7 @@ export default function CategoryList({
 	token,
 }: {
 	categories: Array<any>;
-	token: {name: string, value: string}
+	token: string
 }) {
 	return (
 		<Card className="p-3">
@@ -29,7 +29,7 @@ export default function CategoryList({
 				</TableHeader>
 				<TableBody>
 					{categories.map((item: any, index: number) => (
-						<Category item={item} index={index} token={token} />
+						<Category key={index} item={item} index={index} token={token} />
 					))}
 				</TableBody>
 			</Table>
