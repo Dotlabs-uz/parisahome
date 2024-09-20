@@ -18,6 +18,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { MachinesModule } from './modules/machines/machines.module';
 import { Machine } from './modules/machines/entities/machine.entity';
 import { QuestionModule } from './modules/question/question.module';
+import { Question } from './modules/question/entities/question.entity';
 
 @Module({
 	imports: [
@@ -34,7 +35,7 @@ import { QuestionModule } from './modules/question/question.module';
 			username: process.env.POSTGRES_USER,
 			password: process.env.POSTGRES_PASSWORD,
 			database: process.env.POSTGRES_DB,
-			models: [Product, Category, Certificate, Image, Admin, Machine],
+			models: [Product, Category, Certificate, Image, Admin, Machine, Question],
 			autoLoadModels: true,
 			synchronize: true,
 			sync: { alter: true },
