@@ -1,11 +1,14 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IoMenu } from "react-icons/io5";
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 import { usePathname } from 'next/navigation';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Header = () => {
     const links = [
@@ -17,19 +20,43 @@ const Header = () => {
         { link: "/en/certificates", title: "Сертификаты" },
     ];
 
-    const pathname = usePathname();
-    const header = useRef<any>()
-    const tl = useRef<any>()
     const [openModal, setOpenModal] = useState(false);
+    const pathname = usePathname();
+    const headerRef = useRef<HTMLDivElement | null>(null);
+    const container = useRef<any>()
+    const tl = useRef<any>()
 
-    useGSAP(() => {
-        gsap.from(".header", {
-            y: -30,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.1,
+    const isActive = (link: string) => {
+        const langPrefix = pathname.startsWith('/ru') ? '/ru' : '/en';
+        const adjustedLink = link.replace('/en', langPrefix);
+        if (adjustedLink === `${langPrefix}`) {
+            return pathname === `${langPrefix}`;
+        }
+        return pathname.startsWith(adjustedLink);
+    };
+
+    useLayoutEffect(() => {
+        let lastScrollY = 0;
+
+        // ScrollTrigger для отслеживания прокрутки
+        ScrollTrigger.create({
+            trigger: document.body,
+
+            start: 'top top',
+            onUpdate: (self) => {
+                const scrollY = window.scrollY;
+
+                if (scrollY > lastScrollY) {
+                    // Прокрутка вниз — скрываем header
+                    gsap.to(headerRef.current, { y: "-100%", duration: 1, ease: "none" });
+                } else {
+                    // Прокрутка вверх — показываем header
+                    gsap.to(headerRef.current, { y: "0%", duration: 1, ease: "none" });
+                }
+                lastScrollY = scrollY;
+            },
         });
-    });
+    }, []);
 
     useGSAP(() => {
         gsap.set(".menu-link-item-holder", { y: 75 })
@@ -47,24 +74,7 @@ const Header = () => {
                 ease: "power4.inOut",
                 delay: -0.75
             })
-    }, { scope: header })
-
-    // Function to check if the link should be active
-    const isActive = (link: string) => {
-        // Get the language prefix from the pathname (either /en or /ru)
-        const langPrefix = pathname.startsWith('/ru') ? '/ru' : '/en';
-
-        // Modify link to match the correct language prefix
-        const adjustedLink = link.replace('/en', langPrefix);
-
-        // Exact match for the home link (root /en or /ru)
-        if (adjustedLink === `${langPrefix}`) {
-            return pathname === `${langPrefix}`;
-        }
-
-        // For other links, check if they start with the language prefix
-        return pathname.startsWith(adjustedLink);
-    };
+    }, { scope: container })
 
     useEffect(() => {
         if (openModal) {
@@ -75,11 +85,11 @@ const Header = () => {
     }, [openModal])
 
     return (
-        <header ref={header} className='w-full absolute z-50 top-0 left-0 md:border-b md:border-white/40 bg-green'>
-            <div className="custom-container flex items-center justify-between py-3 relative z-10">
+        <header ref={headerRef} className='w-full fixed z-50 top-0 left-0 md:border-b md:border-white/40 bg-green'>
+            <div ref={container} className="custom-container flex items-center justify-between py-3 relative z-10">
                 <Link href={`/`} className="header relative z-40">
                     <Image
-                        className='w-24 max-lg:w-20 max-md:w-16'
+                        className='w-24 max-lg:w-20'
                         src={"/images/logo.svg"}
                         width={1000}
                         height={1000}

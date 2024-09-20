@@ -59,7 +59,7 @@ const Footer = () => {
                             </button>
                             <p className='max-sm:text-xs'>НАЗАД К НАЧАЛУ</p>
                         </div>
-                        <div className="flex max-sm:flex-col sm:items-center gap-4">
+                        {/* <div className="flex max-sm:flex-col sm:items-center gap-4">
                             <label className='w-full footer-el'>
                                 <p className='mb-1'>Ваш email</p>
                                 <input
@@ -69,7 +69,7 @@ const Footer = () => {
                                 />
                             </label>
                             <button className='bg-yellow max-sm:w-fit mt-auto py-2 max-lg:py-1 px-10 max-lg:px-7 text-xl max-lg:text-lg font-medium rounded-full footer-el'>Отправить</button>
-                        </div>
+                        </div> */}
 
                         <ul className='grid gap-x-28 gap-y-2 grid-cols-2 sm:hidden'>
                             {
@@ -93,7 +93,7 @@ const Footer = () => {
 
                         <div className="">
                             <h2 className='text-5xl max-xl:text-4xl max-md:text-3xl max-sm:text-2xl max-sm:text-center mb-7 max-sm:mb-3 footer-el'>Мы всегда ищем новые партнерства и варианты</h2>
-                            <Link href={"/contacts"} className='bg-yellow max-sm:text-sm font-medium py-3 max-lg:py-2 px-10 max-lg:px-7 rounded-lg max-sm:mx-auto flex footer-el'>СВЯЗАТЬСЯ С НАМИ</Link>
+                            <Link href={"/contacts"} className='bg-yellow w-fit m-auto max-sm:text-sm font-medium py-3 max-lg:py-2 px-10 max-lg:px-7 rounded-lg max-sm:mx-auto flex footer-el'>СВЯЗАТЬСЯ С НАМИ</Link>
                         </div>
 
                         <ul className='w-fit grid gap-x-28 gap-y-2 grid-cols-2 ml-auto max-sm:hidden'>
