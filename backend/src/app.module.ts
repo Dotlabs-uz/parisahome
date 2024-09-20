@@ -17,6 +17,7 @@ import { Admin } from './modules/admin/entities/admin.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { MachinesModule } from './modules/machines/machines.module';
 import { Machine } from './modules/machines/entities/machine.entity';
+import { QuestionModule } from './modules/question/question.module';
 
 @Module({
 	imports: [
@@ -50,6 +51,7 @@ import { Machine } from './modules/machines/entities/machine.entity';
 		ImagesModule,
 		AdminModule,
 		MachinesModule,
+		QuestionModule,
 	],
 	controllers: [AppController]
 })
