@@ -89,7 +89,7 @@ const HorizontalScroll = () => {
 
     return (
         <div className="scroll-section-outer relative">
-            <div ref={triggerRef} className="relative scroll">
+            <div ref={triggerRef} className="relative">
                 <div className="w-screen h-1 absolute bottom-10 max-md:bottom-5 left-0 bg-white">
                     <div className="bg-yellow h-full w-[5%] progress relative">
                         <span className="md:hidden w-2 h-2 absolute right-0 -top-0.5 rounded-full bg-yellow" />
