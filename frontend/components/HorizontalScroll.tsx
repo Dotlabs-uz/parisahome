@@ -2,11 +2,10 @@
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+
 import FlowerRotate from "./children/FlowerRotate";
 
-// Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
-
 const HorizontalScroll = () => {
     const sectionRef = useRef(null);
     const triggerRef = useRef(null);
@@ -76,9 +75,7 @@ const HorizontalScroll = () => {
                     onUpdate: (self) => {
                         const progress = self.progress * (sectionsData.length - 1);
                         const index = Math.round(progress);
-                        // if (index !== activeDot) {
                         setActiveDot(index);
-                        // }
                         updateModelRotation(self.progress);
                     },
                 },
@@ -93,11 +90,11 @@ const HorizontalScroll = () => {
     return (
         <div className="scroll-section-outer relative">
             <div ref={triggerRef} className="relative scroll">
-                {/* Progress bar */}
                 <div className="w-screen h-1 absolute bottom-10 max-md:bottom-5 left-0 bg-white">
                     <div className="bg-yellow h-full w-[5%] progress relative">
                         <span className="md:hidden w-2 h-2 absolute right-0 -top-0.5 rounded-full bg-yellow" />
                     </div>
+
                     {sectionsData.map((_, index) => (
                         <div
                             key={index}
@@ -119,12 +116,10 @@ const HorizontalScroll = () => {
                     ))}
                 </div>
 
-                {/* 3D Model section */}
                 <div className="max-w-md max-md:max-w-xs w-full h-80 max-md:h-64 fixed left-1/2 max-lg:left-1/3 top-1/2 -translate-y-1/2 max-md:left-[10%]">
                     <FlowerRotate rotation={modelRotation} />
                 </div>
 
-                {/* Scrolling content sections */}
                 <div ref={sectionRef} className="scroll-section-inner text-white relative">
                     {sectionsData.map((item, index) => (
                         <div key={index} className="scroll-section flex">
