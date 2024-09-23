@@ -30,8 +30,8 @@ const ExploreServices = () => {
                         opacity: 1,
                         scrollTrigger: {
                             trigger: char,
-                            start: "top 80%",
-                            end: "top center",
+                            start: "top 90%",
+                            end: "bottom center",
                             scrub: true,
                             // markers: true,
                             toggleActions: "play play reverse reverse",
@@ -65,8 +65,8 @@ const ExploreServices = () => {
     return (
         <>
             <div className="absolute -z-10 top-0 left-0 w-full h-full bg-black/50" />
-            <div className="custom-container h-full w-full">
-                <div className="max-w-xl py-10 max-md:py-14 max-md:mb-5">
+            <div className="custom-container h-full w-full flex flex-col justify-around">
+                <div className="max-w-xl">
                     <Image
                         className="w-96 mb-3"
                         src={"/images/parisahome.svg"}
@@ -79,7 +79,7 @@ const ExploreServices = () => {
                     </div>
                 </div>
 
-                <div className="w-full max-w-[430px] flex flex-col justify-end pb-32 ml-auto">
+                <div className="w-full max-w-[430px] flex flex-col justify-end ml-auto">
                     <div className="text-animation-container">
                         <p className="text-split text-sm font-light leading-[23.8px] mb-5">Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией </p>
                     </div>

@@ -42,7 +42,7 @@ const Products = () => {
 
             <Suspense fallback={'loading'}>
                 <Swiper
-                    className=''
+                    className='anim-element'
                     slidesPerView={1.5}
                     spaceBetween={20}
                     modules={[Pagination]}
