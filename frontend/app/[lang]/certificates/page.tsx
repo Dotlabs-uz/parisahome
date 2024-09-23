@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react'
 import Image from 'next/image'
 import axios from 'axios'
-import Animation from '@/components/Animation'
 
 const Page = async () => {
     const certificate = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/certificate`)
@@ -9,9 +8,7 @@ const Page = async () => {
     return (
         <div className='custom-container h-screen pt-14'>
             <div className="">
-                <Animation>
-                    <h2 className='text-4xl max-lg:text-3xl font-bold my-8 certificates text-white'>Сертификаты</h2>
-                </Animation>
+                <h2 className='text-4xl max-lg:text-3xl font-bold my-8 certificates text-white'>Сертификаты</h2>
             </div>
 
             <Suspense fallback={'loading'}>
