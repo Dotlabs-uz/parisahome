@@ -13,7 +13,6 @@ const HorizontalScroll = () => {
     const [activeDot, setActiveDot] = useState(0);
     const [modelRotation, setModelRotation] = useState<[number, number, number]>([0, 0, 0]);
 
-    // Memoized section data
     const sectionsData = useMemo(() => [
         {
             years: "2014",
@@ -39,7 +38,6 @@ const HorizontalScroll = () => {
         []
     );
 
-    // Memoize the progress animation setup
     useEffect(() => {
         const progressAnimation = gsap.to(".progress", {
             width: "100%",
@@ -47,19 +45,18 @@ const HorizontalScroll = () => {
                 trigger: ".scroll-section-outer",
                 start: "top top",
                 scrub: 1.0,
-                markers: false, // Disable markers for production
+                markers: true,
             },
         });
 
-        // Cleanup function
         return () => {
             progressAnimation.kill();
         };
     }, []);
 
     const updateModelRotation = useMemo(() => (progress: number) => {
-        const angle = progress * Math.PI * 2; // Rotate 360 degrees over the scroll length
-        setModelRotation([0, angle, 0]); // Rotate around Y-axis
+        const angle = progress * Math.PI * 2;
+        setModelRotation([0, angle, 0]);
     }, []);
 
     useEffect(() => {
@@ -88,7 +85,6 @@ const HorizontalScroll = () => {
             }
         );
 
-        // Cleanup function
         return () => {
             horizontalScroll.kill();
         };
