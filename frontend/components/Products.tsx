@@ -60,7 +60,7 @@ const Products = () => {
                 >
                     {
                         products.map((i: any, idx: number) => (
-                            <SwiperSlide key={idx} className='mb-10 p-3 max-sm:p-1.5 rounded-[20px] border border-[#EEEEEE] anim-element'>
+                            <SwiperSlide key={idx} className='mb-10 p-3 max-sm:p-1.5 rounded-[20px] border border-[#EEEEEE]'>
                                 <div className="w-full h-52 max-md:h-40">
                                     <Image
                                         className='w-full h-full object-cover rounded-lg'

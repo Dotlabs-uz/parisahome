@@ -27,23 +27,24 @@ body {
 }
 
 .scroll-section-outer {
+  height: 100vh;
   overflow: hidden;
+  position: relative;
 }
 
-.scroll-section-inner {
-  height: 100vh;
-  width: 400vw;
-  display: flex;
-  flex-direction: row;
-  /* position: relative; */
+.progress-line {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  height: 3px;
+  background-color: #ef9d4e;
+  z-index: 40;
+  transition: width 0.1s ease;
 }
 
 .scroll-section {
-  width: 100vw;
+  min-width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 video::-webkit-media-controls {

@@ -31,7 +31,7 @@ export default function RootLayout({
          </Head>
          <body className={inter.className}>
             <Header />
-            <main className="pt-[0.5px]">
+            <main>
                {children}
             </main>
             <Footer />

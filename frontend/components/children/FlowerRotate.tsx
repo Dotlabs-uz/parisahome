@@ -8,7 +8,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 interface ModelProps {
-    rotation: [number, number, number];
+    rotation: number[];
 }
 
 const Model = ({ rotation }: ModelProps) => {

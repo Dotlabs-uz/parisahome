@@ -61,13 +61,13 @@ const Technologies = () => {
                         <h2 className="max-w-md text-3xl max-lg:text-2xl max-sm:text-xl font-extrabold">Бренд идущий по пути технологических инноваций</h2>
                         <p className="max-w-sm text-sm md:text-end leading-6">Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией</p>
                     </div>
-                </div>  
+                </div>
 
                 <Suspense fallback={'loading'}>
                     <div className="grid grid-cols-3 max-md:grid-cols-2 max-xs:grid-cols-1 gap-5 mt-8 max-sm:px-5 anim-element">
                         {
                             machines.map((i: any, idx: number) => (
-                                <div key={idx} className="border-b-4 border-green hover:border-white max-sm:border-white anim-element">
+                                <div key={idx} className="border-b-4 border-green hover:border-white max-sm:border-white">
                                     <div className="">
                                         <Image
                                             className='w-full h-full object-cover rounded-lg'
