@@ -14,7 +14,7 @@ const HeroVideo = () => {
         <div>
             <div className="h-[90vh] max-xl:h-[80vh] max-lg:h-[100%] w-full">
                 <video ref={videoRef} preload="auto" autoPlay muted playsInline className="video w-full h-full object-cover select-none pointer-events-none">
-                    <source src="/images/videos/hero.mp4" type="video/mp4" />
+                    <source src="/images/videos/v4.mp4" type="video/mp4" />
                 </video>
             </div>
 
