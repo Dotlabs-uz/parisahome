@@ -17,7 +17,7 @@ export const animateElementsOnScroll = (elements: NodeListOf<Element>, options =
                 ease: 'power4.out',
                 scrollTrigger: {
                     trigger: element,    // Каждая анимация привязана к своему элементу
-                    start: 'top 80%',    // Запуск анимации, когда верх элемента достигает 90% высоты окна
+                    start: 'top 90%',    // Запуск анимации, когда верх элемента достигает 90% высоты окна
                     toggleActions: 'play none none none', // Запускается только один раз при прокрутке
                     // markers: true,
                     // scrub: 1,
