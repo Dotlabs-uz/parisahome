@@ -32,7 +32,7 @@ const Page = () => {
                 </div>
             </div>
             <div className="bg-white my-10 overflow-hidden">
-                <div className="custom-container flex max-md:flex-col gap-16 max-lg:gap-5 py-20">
+                <div className="custom-container flex max-md:flex-col gap-16 max-lg:gap-5 py-20 max-md:py-10">
                     <div className="md:max-w-md w-full anim-element-left">
                         <div className="text-black mb-5 max-sm:text-center anim-element">
                             <h2 className="text-3xl max-sm:text-2xl font-semibold">Остались вопросы?</h2>
@@ -75,7 +75,7 @@ const Page = () => {
                         </form>
                     </div>
 
-                    <div className="w-full h-52 relative anim-element-right">
+                    <div className="w-full relative">
                         <div className="">
                             <h2 className="text-3xl max-md:text-2xl font-semibold anim-element">Oставайтесь на связи</h2>
                             <p className="flex gap-1 items-center text-xl max-sm:text-lg anim-element"><TfiEmail className="text-[18px] max-sm:text-[15px]" /> info@parisahome.com</p>
@@ -83,7 +83,7 @@ const Page = () => {
                             <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element"><IoLocationOutline className="text-2xl max-sm:text-[15px]" /> Konigil Samarkand 140319, Uzbekistan</p>
                         </div>
 
-                        <div className="flex items-center justify-center w-96 h-72 max-md:w-full max-md:h-60">
+                        <div className="flex items-center justify-center w-96 h-72 max-md:w-full max-md:h-60 max-md:mt-5 anim-element">
                             <FlowerModal type={"silver"} />
                         </div>
                     </div>

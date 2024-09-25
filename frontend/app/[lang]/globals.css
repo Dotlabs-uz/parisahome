@@ -34,7 +34,6 @@ body {
 
 .progress-line {
   position: absolute;
-  bottom: 40px;
   left: 0;
   height: 3px;
   background-color: #ef9d4e;

@@ -3,36 +3,41 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IoMenu } from "react-icons/io5";
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Header = () => {
+const Header = ({ lang }: any) => {
     const links = [
-        { link: "/en", title: "Home" },
-        { link: "/en/about-us", title: "О нас" },
-        { link: "/en/catalog", title: "Каталог" },
-        { link: "/en/contacts", title: "Контакты" },
-        { link: "/en/machineries", title: "Станки" },
-        { link: "/en/certificates", title: "Сертификаты" },
+        { link: `/${lang}`, title: "Home" },
+        { link: `/${lang}/about-us`, title: "О нас" },
+        { link: `/${lang}/catalog`, title: "Каталог" },
+        { link: `/${lang}/contacts`, title: "Контакты" },
+        { link: `/${lang}/machineries`, title: "Станки" },
+        { link: `/${lang}/certificates`, title: "Сертификаты" },
     ];
 
     const [openModal, setOpenModal] = useState(false);
     const pathname = usePathname();
+    const router = useRouter();
     const headerRef = useRef<HTMLDivElement | null>(null);
     const container = useRef<any>()
     const tl = useRef<any>()
 
     const isActive = (link: string) => {
-        const langPrefix = pathname.startsWith('/ru') ? '/ru' : '/en';
-        const adjustedLink = link.replace('/en', langPrefix);
-        if (adjustedLink === `${langPrefix}`) {
-            return pathname === `${langPrefix}`;
-        }
-        return pathname.startsWith(adjustedLink);
+        const langPrefix = ['/ru', '/en', '/jpn', '/uz'].find(prefix => pathname.startsWith(prefix)) || '/uz';
+        const adjustedLink = link.replace(/^\/(ru|en|jpn|uz)/, langPrefix);
+        return adjustedLink === langPrefix ? pathname === langPrefix : pathname.startsWith(adjustedLink);
+    };
+
+    // Функция для смены языка
+    const changeLanguage = (newLang: string) => {
+        const currentLang = pathname.split('/')[1];
+        const newPath = pathname.replace(`/${currentLang}`, `/${newLang}`);
+        router.push(newPath); // Переход на новую страницу с обновленным языковым префиксом
     };
 
     useLayoutEffect(() => {
@@ -41,7 +46,6 @@ const Header = () => {
         // ScrollTrigger для отслеживания прокрутки
         ScrollTrigger.create({
             trigger: document.body,
-
             start: 'top top',
             onUpdate: (self) => {
                 const scrollY = window.scrollY;
@@ -59,7 +63,7 @@ const Header = () => {
     }, []);
 
     useGSAP(() => {
-        gsap.set(".menu-link-item-holder", { y: 75 })
+        gsap.set(".menu-link-item-holder", { y: 75 });
 
         tl.current = gsap.timeline({ paused: true })
             .to(".menu-overlay", {
@@ -73,16 +77,16 @@ const Header = () => {
                 stagger: 0.1,
                 ease: "power4.inOut",
                 delay: -0.75
-            })
-    }, { scope: container })
+            });
+    }, { scope: container });
 
     useEffect(() => {
         if (openModal) {
-            tl.current.play()
+            tl.current.play();
         } else {
-            tl.current.reverse()
+            tl.current.reverse();
         }
-    }, [openModal])
+    }, [openModal]);
 
     return (
         <header ref={headerRef} className='w-full fixed z-50 top-0 left-0 md:border-b md:border-white/40 bg-green'>
@@ -101,7 +105,7 @@ const Header = () => {
                     <ul className='flex items-center gap-5 max-lg:gap-3 max-md:hidden'>
                         {links.map((i, idx) => (
                             <li key={idx} className={`text-sm font-semibold py-0.5 px-2 rounded-md header text-white ${isActive(i.link) ? 'bg-yellow' : ''}`}>
-                                <Link href={i.link.replace('/en', pathname.startsWith('/ru') ? '/ru' : '/en')}>{i.title}</Link>
+                                <Link href={i.link}>{i.title}</Link>
                             </li>
                         ))}
                     </ul>
@@ -110,7 +114,7 @@ const Header = () => {
                         {links.map((i, idx) => (
                             <li key={idx} className={`menu-link-item`}>
                                 <p className={`menu-link-item-holder md:leading-loose text-3xl font-medium py-0.5 px-2 rounded-md text-white ${isActive(i.link) ? 'bg-yellow' : ''}`}>
-                                    <Link onClick={() => setOpenModal(false)} href={i.link.replace('/en', pathname.startsWith('/ru') ? '/ru' : '/en')}>{i.title}</Link>
+                                    <Link onClick={() => setOpenModal(false)} href={i.link}>{i.title}</Link>
                                 </p>
                             </li>
                         ))}
@@ -119,13 +123,21 @@ const Header = () => {
 
                 <div className="flex gap-5">
                     <div className="flex items-center gap-3 max-lg:gap-1 text-white header relative z-40">
-                        <Link href={pathname.replace('/ru', '/en')} className={`text-xs font-medium uppercase ${pathname.startsWith('/en') ? 'text-yellow' : ''}`}>
-                            en
-                        </Link>
-                        <span className='block h-4 w-[1px] bg-white' />
-                        <Link href={pathname.replace('/en', '/ru')} className={`text-xs font-medium uppercase ${pathname.startsWith('/ru') ? 'text-yellow' : ''}`}>
+                        <button onClick={() => changeLanguage('ru')} className={`text-xs font-medium uppercase ${pathname.startsWith('/ru') ? 'text-yellow' : ''}`}>
                             ru
-                        </Link>
+                        </button>
+                        <span className='block h-4 w-[1px] bg-white' />
+                        <button onClick={() => changeLanguage('en')} className={`text-xs font-medium uppercase ${pathname.startsWith('/en') ? 'text-yellow' : ''}`}>
+                            en
+                        </button>
+                        <span className='block h-4 w-[1px] bg-white' />
+                        <button onClick={() => changeLanguage('uz')} className={`text-xs font-medium uppercase ${pathname.startsWith('/uz') ? 'text-yellow' : ''}`}>
+                            uz
+                        </button>
+                        <span className='block h-4 w-[1px] bg-white' />
+                        <button onClick={() => changeLanguage('jpn')} className={`text-xs font-medium uppercase ${pathname.startsWith('/jpn') ? 'text-yellow' : ''}`}>
+                            jpn
+                        </button>
                     </div>
                     <button onClick={() => setOpenModal(!openModal)} className='md:hidden header z-10'>
                         <IoMenu className='text-[24px] text-white' />

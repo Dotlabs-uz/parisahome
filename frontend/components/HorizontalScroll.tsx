@@ -136,10 +136,10 @@ const HorizontalScroll: React.FC = () => {
 
     return (
         <div ref={containerRef} className="scroll-section-outer relative">
-            <div className="progress-line-bg absolute bottom-10 left-0 h-[3px] w-full bg-white z-20" />
-            <div className="progress-line" />
+            <div className="progress-line-bg absolute bottom-10 max-md:bottom-5 left-0 h-[3px] w-full bg-white z-20" />
+            <div className="progress-line bottom-10 max-md:bottom-5" />
 
-            <div className="dots-container absolute bottom-[38px] left-0 w-full flex justify-around z-[41]">
+            <div className="dots-container absolute bottom-[38px] max-md:bottom-[18px] left-0 w-full flex justify-around z-[41]">
                 {sectionsData.map((_, index) => (
                     <div
                         key={index}

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Head from "next/head";
+import { Locale } from "@/i18n.config";
 
 const inter = Raleway({
    weight: ["300", "400", "500", "600", '800'],
@@ -18,9 +19,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+   params: { lang },
    children,
 }: Readonly<{
    children: React.ReactNode;
+   params: { lang: Locale }
 }>) {
    return (
       <html lang="en">
@@ -30,8 +33,8 @@ export default function RootLayout({
             <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
          </Head>
          <body className={inter.className}>
-            <Header />
-            <main>
+            <Header lang={lang} />
+            <main className="pt-[0.5px]">
                {children}
             </main>
             <Footer />
