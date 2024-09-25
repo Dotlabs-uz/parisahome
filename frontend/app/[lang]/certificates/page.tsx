@@ -15,7 +15,7 @@ const Page = async () => {
                 <div className="mb-10 grid grid-cols-3 max-md:grid-cols-2 gap-5 max-md:gap-2">
                     {
                         certificate.data.map((i: any, idx: number) => (
-                            <div className="certificates">
+                            <div key={idx} className="certificates">
                                 <Image
                                     className='h-full w-full object-cover rounded-md'
                                     src={i.images[0].url}
