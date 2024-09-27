@@ -94,3 +94,65 @@ video::-webkit-media-controls-enclosure {
 .scroll-section:nth-child(even) .nth {
   align-items: end;
 }
+
+/* .select select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 50px;
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  content: "";
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid white;
+  top: 30%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid white;
+  top: 55%;
+} */
+
+
+.select {
+  @apply w-12 text-xs font-medium uppercase px-2 py-1.5 rounded-md border-none outline-none bg-yellow cursor-pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  content: "";
+  position: absolute;
+  right: .5rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid white;
+  top: 30%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid white;
+  top: 55%;
+}
