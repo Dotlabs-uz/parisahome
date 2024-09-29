@@ -28,8 +28,6 @@ const CataloProducts = ({ category }: any) => {
             })
     }, [])
 
-    console.log(products);
-
     return (
         <div ref={sectionRef} className="grid grid-cols-4 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-3 gap-y-7 mb-10 max-md:mb-5">
             {
@@ -37,23 +35,25 @@ const CataloProducts = ({ category }: any) => {
                     if (category === i.category.name) {
                         return (
                             <Link href={"#"} key={idx} className="anim-element">
-                                <div className="w-full h-full">
-                                    <Image
-                                        className='w-full h-full object-cover'
-                                        src={i.images[0].url}
-                                        width={1000}
-                                        height={1000}
-                                        alt='product'
-                                    />
-                                </div>
-                                <div className="mt-1.5 px-2 text-white">
-                                    <div className="flex items-center justify-between">
-                                        <p className='font-semibold'>{i.name.toLocaleString('uz')}</p>
-                                        <p>{i.price} сум</p>
+                                <div className="flex flex-col h-full w-full">
+                                    <div className="w-full h-full">
+                                        <Image
+                                            className='w-full h-full object-cover'
+                                            src={i.images[0].url}
+                                            width={1000}
+                                            height={1000}
+                                            alt='product'
+                                        />
                                     </div>
-                                    <div className="flex items-center justify-between">
-                                        <p>2 colors</p>
-                                        <p className='text-white/50 line-through'>$124</p>
+                                    <div className="mt-1.5 px-2 text-white">
+                                        <div className="flex items-center justify-between">
+                                            <p className='font-semibold'>{i.name.toLocaleString('uz')}</p>
+                                            <p>{i.price} сум</p>
+                                        </div>
+                                        <div className="flex items-center justify-between">
+                                            <p>2 colors</p>
+                                            <p className='text-white/50 line-through'>$124</p>
+                                        </div>
                                     </div>
                                 </div>
                             </Link>
@@ -61,23 +61,25 @@ const CataloProducts = ({ category }: any) => {
                     } else if (category === "all") {
                         return (
                             <Link href={"#"} key={idx} className="anim-element">
-                                <div className="w-full h-full">
-                                    <Image
-                                        className='w-full h-full object-cover'
-                                        src={i.images[0].url}
-                                        width={1000}
-                                        height={1000}
-                                        alt='product'
-                                    />
-                                </div>
-                                <div className="mt-1.5 px-2 text-white">
-                                    <div className="flex items-center justify-between">
-                                        <p className='font-semibold'>{i.name.toLocaleString('uz')}</p>
-                                        <p>{i.price} сум</p>
+                                <div className="flex flex-col h-full w-full">
+                                    <div className="w-full h-full">
+                                        <Image
+                                            className='w-full h-full object-cover'
+                                            src={i.images[0].url}
+                                            width={1000}
+                                            height={1000}
+                                            alt='product'
+                                        />
                                     </div>
-                                    <div className="flex items-center justify-between">
-                                        <p>2 colors</p>
-                                        <p className='text-white/50 line-through'>$124</p>
+                                    <div className="mt-1.5 px-2 text-white">
+                                        <div className="flex items-center justify-between">
+                                            <p className='font-semibold'>{i.name.toLocaleString('uz')}</p>
+                                            <p>{i.price} сум</p>
+                                        </div>
+                                        <div className="flex items-center justify-between">
+                                            <p>2 colors</p>
+                                            <p className='text-white/50 line-through'>$124</p>
+                                        </div>
                                     </div>
                                 </div>
                             </Link>

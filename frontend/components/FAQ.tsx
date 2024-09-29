@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 // import Accordions from './Accordions'
 import { animateElementsOnScroll } from '@/lib/animations'
 import Accordion from './children/Accordion';
+import axios from 'axios';
 
 const AccordionData = [
     {
@@ -23,8 +24,8 @@ const AccordionData = [
     }
 ];
 
-
 const FAQ = () => {
+    const [questions, setQuestions] = useState([]);
     const [expanded, setExpanded] = useState(4);
     const sectionRef = useRef<HTMLDivElement | null>(null)
 
@@ -36,6 +37,16 @@ const FAQ = () => {
         }
     }, [])
 
+    useEffect(() => {
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/question`)
+            .then((res) => {
+                if (res.status === 200 || res.status === 201) {
+                    setQuestions(res.data);
+                }
+            })
+            .catch((err) => console.log(err))
+    }, [])
+
     return (
         <div ref={sectionRef} className="custom-container">
             <div className="py-20 max-md:py-10 max-sm:py-5 rounded-3xl shadow-md bg-white">
@@ -44,12 +55,12 @@ const FAQ = () => {
                 </div>
 
                 <div className='max-w-4xl h-auto mx-auto px-10 max-sm:px-4 anim-element'>
-                    {AccordionData.map((e, i) => (
+                    {questions.map((e, i) => (
                         <Accordion
                             key={i}
                             id={i}
-                            title={e.title}
-                            content={e.content}
+                            question={e.question}
+                            answer={e.answer}
                             expanded={expanded}
                             setExpanded={setExpanded}
                         />

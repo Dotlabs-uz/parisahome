@@ -66,9 +66,9 @@ const Categories = () => {
             </div>
 
             <div className="anim-element w-full relative flex items-center max-sm:grid grid-cols-2 gap-2 pb-5 mb-5 max-md:mb-3">
-                {categories.map((i: any, idx: number) => (
+                {[{ name: "all" }, ...categories].map((i: any, idx: number) => (
                     <button
-                        key={i.id}
+                        key={idx}
                         ref={(el: any) => (categoryRefs.current[idx] = el)}
                         className={`text-sm font-semibold text-center py-1.5 px-4 max-sm:px-3 max-sm:py-1.5 rounded-full cursor-pointer border border-yellow text-yellow duration-150`}
                         onClick={() => { handleClick(idx), push(`?category=${i.name}`) }}

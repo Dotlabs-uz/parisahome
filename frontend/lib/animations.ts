@@ -13,7 +13,7 @@ export const animateElementsOnScroll = (elements: NodeListOf<Element>, options =
             {
                 opacity: 1,   // Финальное состояние (полная видимость)
                 y: 0,         // Возвращаем элемент на место
-                duration: 1,
+                duration: 0.5,
                 ease: 'power4.out',
                 scrollTrigger: {
                     trigger: element,    // Каждая анимация привязана к своему элементу

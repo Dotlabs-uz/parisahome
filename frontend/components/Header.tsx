@@ -52,10 +52,10 @@ const Header = ({ lang }: any) => {
 
                 if (scrollY > lastScrollY) {
                     // Прокрутка вниз — скрываем header
-                    gsap.to(headerRef.current, { y: "-100%", duration: 1, ease: "none" });
+                    gsap.to(headerRef.current, { y: "-100%", duration: 0.7, ease: "none" });
                 } else {
                     // Прокрутка вверх — показываем header
-                    gsap.to(headerRef.current, { y: "0%", duration: 1, ease: "none" });
+                    gsap.to(headerRef.current, { y: "0%", duration: 0.7, ease: "none" });
                 }
                 lastScrollY = scrollY;
             },
