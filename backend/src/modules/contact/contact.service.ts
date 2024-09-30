@@ -1,4 +1,3 @@
-
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
 
@@ -8,7 +7,9 @@ export class ContactService {
 
   constructor() {
     this.transporter = nodemailer.createTransport({
-      service: 'gmail', // или используйте SMTP вашего хостинга
+      host: 'parisahome.com',
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -17,13 +18,18 @@ export class ContactService {
   }
 
   async sendMail(to: string, subject: string, text: string) {
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to,
-      subject,
-      text,
-    };
-
-    return await this.transporter.sendMail(mailOptions);
+    try {
+      const result = await this.transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to,
+        subject,
+        text,
+      });
+      console.log('Письмо отправлено:', result);
+      return result;
+    } catch (error) {
+      console.error('Ошибка при отправке письма:', error);
+      throw error;
+    }
   }
 }

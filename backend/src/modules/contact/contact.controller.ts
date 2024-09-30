@@ -19,7 +19,7 @@ export class ContactController {
 
         try {
             // Отправляем письмо на вашу почту
-            await this.contactService.sendMail('ваш_почтовый_адрес@example.com', subject, text);
+            await this.contactService.sendMail(process.env.EMAIL_USER, subject, text);
             return { message: 'Заявка успешно отправлена!' };
         } catch (error) {
             return { message: 'Ошибка при отправке заявки', error };
