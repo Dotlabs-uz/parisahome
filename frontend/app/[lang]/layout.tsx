@@ -34,7 +34,7 @@ export default function RootLayout({
          </Head>
          <body className={inter.className}>
             <Header lang={lang} />
-            <main className="pt-[0.5px]">
+            <main>
                {children}
             </main>
             <Footer />
