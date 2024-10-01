@@ -21,8 +21,8 @@ export class AdminController {
     return this.adminService.update(+id, updateAdminDto);
   }
 
-  @Post('register')
-  async adminsRegister(@Body() body: AdminsDto) {
-    return this.adminService.register(body);
-  }
+  // @Post('register')
+  // async adminsRegister(@Body() body: AdminsDto) {
+  //   return this.adminService.register(body);
+  // }
 }
