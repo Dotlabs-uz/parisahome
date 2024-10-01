@@ -11,14 +11,12 @@ export class ContactController {
 
     @Post()
     async submitContactForm(@Body() body: ContactDto) {
-        const { name, email, message } = body;
+        const { name, email, message, telNumber } = body;
 
-        // Формируем письмо для отправки
         const subject = `Новая заявка от ${name}`;
-        const text = `Имя: ${name}\nEmail: ${email}\nСообщение: ${message}`;
+        const text = `Имя: ${name}\nНомер телефона: ${telNumber}\nEmail: ${email}\nСообщение: ${message}`;
 
         try {
-            // Отправляем письмо на вашу почту
             await this.contactService.sendMail(process.env.EMAIL_USER, subject, text);
             return { message: 'Заявка успешно отправлена!' };
         } catch (error) {
