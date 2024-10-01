@@ -82,6 +82,8 @@ services:
             GET_IMAGE_PATH: ${GET_IMAGE_PATH}
             UPLOAD_URL: ${UPLOAD_URL}
             JWT_SECRET: ${JWT_SECRET}
+            EMAIL_USER: ${EMAIL_USER}
+            EMAIL_PASS: ${EMAIL_PASS}
         depends_on:
             - database
             - traefik
