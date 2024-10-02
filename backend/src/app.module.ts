@@ -19,6 +19,8 @@ import { MachinesModule } from './modules/machines/machines.module';
 import { Machine } from './modules/machines/entities/machine.entity';
 import { QuestionModule } from './modules/question/question.module';
 import { Question } from './modules/question/entities/question.entity';
+import { ContactController } from './modules/contact/contact.controller';
+import { ContactModule } from './modules/contact/contact.module';
 
 @Module({
 	imports: [
@@ -53,6 +55,7 @@ import { Question } from './modules/question/entities/question.entity';
 		AdminModule,
 		MachinesModule,
 		QuestionModule,
+		ContactModule
 	],
 	controllers: [AppController]
 })
