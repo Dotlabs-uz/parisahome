@@ -23,7 +23,7 @@ export const metadata = {
    openGraph: {
       title: 'Parisa Home',
       description: 'Parisahome – ведущий поставщик качественных полотенец. Предлагаем широкий ассортимент мягких и стильных полотенец для дома, отеля или спа. Ваш комфорт и стиль – наша забота.',
-      url: 'https://parisahome.com',
+      url: 'http://165.22.220.228',
       siteName: 'parisahome.com',
       images: [
          {
@@ -51,7 +51,19 @@ export default function RootLayout({
             <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+            <meta property="og:title" content="Parisa Home" />
+            <meta property="og:description" content="Parisahome – ведущий поставщик качественных полотенец. Предлагаем широкий ассортимент мягких и стильных полотенец для дома, отеля или спа. Ваш комфорт и стиль – наша забота." />
+            <meta property="og:url" content="http://165.22.220.228" />
+            <meta property="og:site_name" content="parisahome.com" />
+            <meta property="og:image" content="/images/icon.ico" />
+            <meta property="og:image:secure_url" content="/images/icon.ico" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:image:alt" content="parisahome" />
+            <meta property="og:type" content="website" />
          </Head>
+
          <body className={inter.className}>
             <Header lang={lang} />
             <main>
