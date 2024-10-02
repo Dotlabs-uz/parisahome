@@ -4,7 +4,6 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { TfiEmail } from 'react-icons/tfi'
 import { animateElementsOnScroll } from '@/lib/animations'
 import FlowerModal from './children/FlowerModal'
-import InputMask from 'react-input-mask';
 import axios from 'axios'
 import { IoCallOutline, IoLocationOutline } from 'react-icons/io5'
 
@@ -17,18 +16,16 @@ type Inputs = {
 
 const Form = () => {
     const [loadind, setLoading] = useState<boolean>(false);
-
     const {
         register,
         handleSubmit,
-        watch,
         reset,
         formState: { errors },
     } = useForm<Inputs>();
+
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         setLoading(true);
-        axios
-            .post(`${process.env.NEXT_PUBLIC_API_URL}/contact`, data)
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/contact`, data)
             .then((res) => {
                 if (res.status === 200 || res.status === 201) {
                     reset();
@@ -36,7 +33,7 @@ const Form = () => {
                 }
             })
             .catch((err) => {
-                console.log(err);
+                console.log(err.message);
                 setLoading(false);
             });
     };
