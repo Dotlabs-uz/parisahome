@@ -23,7 +23,7 @@ export const metadata = {
    openGraph: {
       title: 'Parisa Home',
       description: 'Parisahome – ведущий поставщик качественных полотенец. Предлагаем широкий ассортимент мягких и стильных полотенец для дома, отеля или спа. Ваш комфорт и стиль – наша забота.',
-      url: 'http://165.22.220.228',
+      url: 'https://parisahome.com',
       siteName: 'parisahome.com',
       images: [
          {
@@ -54,7 +54,7 @@ export default function RootLayout({
 
             <meta property="og:title" content="Parisa Home" />
             <meta property="og:description" content="Parisahome – ведущий поставщик качественных полотенец. Предлагаем широкий ассортимент мягких и стильных полотенец для дома, отеля или спа. Ваш комфорт и стиль – наша забота." />
-            <meta property="og:url" content="http://165.22.220.228" />
+            <meta property="og:url" content="https://parisahome.com" />
             <meta property="og:site_name" content="parisahome.com" />
             <meta property="og:image" content="/images/icon.ico" />
             <meta property="og:image:secure_url" content="/images/icon.ico" />

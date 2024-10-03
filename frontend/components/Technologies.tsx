@@ -64,19 +64,18 @@ const Technologies = () => {
                 </div>
 
                 <Suspense fallback={'loading'}>
-                    <div className="grid grid-cols-3 max-md:grid-cols-2 max-xs:grid-cols-1 gap-5 mt-8 max-sm:px-5 anim-element">
+                    <div className="grid grid-cols-3 max-md:grid-cols-2 max-xs:grid-cols-1 gap-5 max-sm:gap-y-10 mt-8 max-sm:px-5 anim-element">
                         {
                             machines.map((i: any, idx: number) => (
                                 <div key={idx} className="border-b-4 border-green hover:border-white max-sm:border-white">
-                                    <div className="">
+                                    <div className="w-full ">
                                         <Image
-                                            className='w-full h-full object-cover rounded-lg'
+                                            className='w-full h-40 object-cover rounded-lg'
                                             src={i.image.url}
                                             width={1000}
                                             height={1000}
-                                            layout="responsive"
+                                            // layout="responsive"
                                             alt="img"
-                                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 75vw, (max-width: 1024px) 50vw, 33vw"
                                         />
                                     </div>
 
