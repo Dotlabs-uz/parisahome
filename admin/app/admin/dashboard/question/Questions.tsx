@@ -16,6 +16,7 @@ import Image from "next/image";
 import React, { use } from "react";
 import action from "../../actions";
 import { getCookies } from "@/lib/cookies.request";
+import { useToast } from "@/hooks/use-toast";
 
 interface CertificateProps {
     item: any;
@@ -26,6 +27,9 @@ const Questions: React.FC<CertificateProps> = ({
 }: {
     item: { id: number; question: string; answer: string };
 }) => {
+
+    const {toast} = useToast()
+
     const deleteFIQ = async () => {
         try {
             const token = await getCookies("token");
@@ -41,9 +45,17 @@ const Questions: React.FC<CertificateProps> = ({
             );
 
             if (!res.ok) {
-                alert("Error while delete question.");
+                toast({
+                    title: "Error!",
+                    description: "Error while delete question.",
+                    variant:"destructive"
+                });
+                return
             };
-            alert("Question successfully deleted!");
+            toast({
+                title: "Success!",
+                description: "Question successfully deleted.",
+            });
             action("/question");
 
         } catch (error) {}

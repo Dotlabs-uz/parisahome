@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { PlusCircle } from "lucide-react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import action from "../../actions";
+import { useToast } from "@/hooks/use-toast";
 
 type Inputs = {
     answer: string;
@@ -15,19 +16,7 @@ type Inputs = {
 };
 
 export default function QuestionForm({ token }: { token: string }) {
-    // const handleSubmit = async (e: any) => {
-    //     e.preventDefault();
-
-    //     let info: any = {};
-
-    //     const formData = new FormData(e.target);
-
-    //     formData.forEach((value, key) => {
-    //         info[key] = value;
-    //     });
-
-    //
-    // };
+    const {toast} = useToast()
 
     const {
         register,
@@ -51,15 +40,27 @@ export default function QuestionForm({ token }: { token: string }) {
             );
 
             if (response.ok) {
-                alert("Question successfully added!");
+                toast({
+                    title: "Success!",
+                    description: "Question successfully added!",
+                    variant:"default"
+                });
 				action("question")
                 reset();
             } else {
-                alert("Error while adding question.");
+                toast({
+                    title: "Error!",
+                    description: "Error while adding question.",
+                    variant:"destructive"
+                });
             }
         } catch (error) {
             console.error("Error:", error);
-            alert("Failed to send question data.");
+            toast({
+                title: "Error!",
+                description: "Failed to send question data.",
+                variant:"destructive"
+            });
         }
     };
 

@@ -1,6 +1,7 @@
 "use client"
 import action from "@/app/admin/actions";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
 import React from "react";
 
@@ -10,6 +11,8 @@ interface CertificateProps {
 }
 
 const Certificate: React.FC<CertificateProps> = ({ item, token }) => {
+
+	const {toast} = useToast()
 	async function handleRemove() {
 		const forSure = confirm("Are you sure you want to delete?");
 		if (forSure) {
@@ -27,8 +30,16 @@ const Certificate: React.FC<CertificateProps> = ({ item, token }) => {
 				if (!res.ok) {
 					throw new Error(res.statusText);
 				}
+				toast({
+					title: "Success!",
+					description: "Question successfully deleted.",
+				});
 			} catch (e: any) {
-				alert("Something went wrong!");
+				toast({
+                    title: "Error!",
+                    description: "Something went wrong!",
+                    variant:"destructive"
+                });
 				console.error(e.message);
 			}
 			action("/machines");
