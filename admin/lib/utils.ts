@@ -1,3 +1,4 @@
+import { toast } from "@/hooks/use-toast";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -19,3 +20,10 @@ export function parseJwt(token: string) {
 
 	return JSON.parse(jsonPayload);
 }
+
+export const callMessage = (variant: any, title: string) => {
+	toast({
+		variant: variant,
+		title: title,
+	});
+};
