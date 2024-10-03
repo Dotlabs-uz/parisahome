@@ -55,7 +55,7 @@ const FAQ = () => {
                 </div>
 
                 <div className='max-w-4xl h-auto mx-auto px-10 max-sm:px-4 anim-element'>
-                    {questions.map((e:{question:string,answer:string, id:number}) => (
+                    {questions.map((e: { question: string, answer: string, id: number }) => (
                         <Accordion
                             key={e.id}
                             id={e.id}
