@@ -13,12 +13,15 @@ import {
 } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import { setCookies } from "@/lib/cookies.request";
+import { useToast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+
+    const {toast} = useToast()
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -36,7 +39,11 @@ export default function LoginPage() {
         );
 
         if (!res.ok) {
-            alert("Somethin went wrong!");
+            toast({
+                title: "Error!",
+                description: "Somethin went wrong.",
+                variant:"destructive"
+            });
             setLoading(false);
             return;
         }

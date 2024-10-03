@@ -5,7 +5,7 @@ const nextConfig = {
             {
                 protocol: 'http',
                 hostname: '*',
-                port: '',
+                port: '5000',
                 pathname: '/api/v1/uploads/**',
             }
         ]

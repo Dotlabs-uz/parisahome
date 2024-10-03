@@ -3,6 +3,7 @@
 import action from "@/app/admin/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 
 export default function AddForm({
@@ -12,6 +13,8 @@ export default function AddForm({
 }) {
 	const [loading, setLoading] = useState(false);
 	const [name, setName] = useState("");
+
+	const {toast} = useToast()
 
 	async function handleSubmit(event: any) {
 		event.preventDefault();
@@ -31,12 +34,20 @@ export default function AddForm({
 			);
 
 			if (!res.ok) {
-				alert("Somethin went wrong!");
+				toast({
+					title: "Error!",
+					description: `Somethin went wrong!`,
+					variant:"destructive"
+				});
 				return;
 			}
 			action("/category");
 		} catch (e: any) {
-			alert(e.message);
+			toast({
+				title: "Error!",
+				description: `${e.message}`,
+				variant:"destructive"
+			});
 		}
 
 		setLoading(false);

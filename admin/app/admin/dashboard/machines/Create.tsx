@@ -6,9 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PlusCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function CertificateForm({ token }: { token: string }) {
     const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+    const {toast} = useToast()
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -40,14 +43,25 @@ export default function CertificateForm({ token }: { token: string }) {
             );
 
             if (response.ok) {
-                alert("Certificate successfully added!");
+                toast({
+                    title: "Success!",
+                    description: "Certificate successfully added!",
+                });
                 e.target.reset(); // Очистка формы после успешной отправки
             } else {
-                alert("Error while adding certificate.");
+                toast({
+                    title: "Error!",
+                    description: "Error while adding certificate.",
+                    variant:"destructive"
+                });
             }
         } catch (error) {
             console.error("Error:", error);
-            alert("Failed to send certificate data.");
+            toast({
+                title: "Error!",
+                description: "Failed to send certificate data.",
+                variant:"destructive"
+            });
         }
     };
 
