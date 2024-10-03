@@ -10,6 +10,7 @@ const Certificate: React.FC<CertificateProps> = ({ item }) => {
 		<div className="w-full rounded overflow-hidden shadow-lg bg-white">
 			<Image
 				className="w-full h-48 object-cover bg-gray-200"
+				unoptimized={true}
 				src={item.images[0].url}
 				alt={item.title}
                 width={200}

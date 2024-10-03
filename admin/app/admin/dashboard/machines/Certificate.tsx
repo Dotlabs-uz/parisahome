@@ -49,6 +49,7 @@ const Certificate: React.FC<CertificateProps> = ({ item, token }) => {
 	return (
 		<div className="w-full rounded overflow-hidden shadow-lg bg-white">
 			<Image
+				unoptimized={true}
 				className="w-full h-48 object-cover bg-gray-200"
 				src={item.image.url}
 				alt={item.title || "parisahome"}
