@@ -42,6 +42,9 @@ export default function DashboardLayout({
 					<NavLink href="/admin/dashboard/machines" Icon={<AiFillProduct/> }>
 						Machines
 					</NavLink>
+					<NavLink href="/admin/dashboard/question" Icon={<AiFillProduct/> }>
+						FAQ
+					</NavLink>
 				</nav>
 			</aside>
 			<main className="flex-1 p-8 overflow-y-auto">{children}</main>
