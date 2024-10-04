@@ -65,7 +65,7 @@ const GoodsForm: React.FC<GoodsFormProps> = ({
 							<SelectItem
 								className="text-black"
 								key={item.id}
-								value={item.id}
+								value={`${item.id}`}
 							>
 								{item.name}
 							</SelectItem>

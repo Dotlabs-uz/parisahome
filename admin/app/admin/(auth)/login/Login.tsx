@@ -21,7 +21,7 @@ export default function LoginPage() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    const {toast} = useToast()
+    const { toast } = useToast()
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -42,7 +42,7 @@ export default function LoginPage() {
             toast({
                 title: "Error!",
                 description: "Somethin went wrong.",
-                variant:"destructive"
+                variant: "destructive"
             });
             setLoading(false);
             return;

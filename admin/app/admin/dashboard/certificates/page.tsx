@@ -5,7 +5,7 @@ import Certificate from "./Certificate";
 import CertificateForm from "./Create";
 import { cookies } from "next/headers";
 
-interface pageProps {}
+interface pageProps { }
 
 const page: React.FC<pageProps> = async () => {
     const res = await fetch(process.env.API_URL + "/certificate", {
@@ -19,7 +19,7 @@ const page: React.FC<pageProps> = async () => {
         value: string;
     };
     const token = JSON.parse(decodeURIComponent(resToken.value));
-	
+
     return (
         <Card className="">
             <CardHeader>
@@ -30,7 +30,7 @@ const page: React.FC<pageProps> = async () => {
                 <div className="w-full">
                     <h2 className="text-2xl my-2">List of certificates</h2>
                     <div className="grid grid-cols-2 gap-2 w-full">
-                        {certificate.map((item: any,index:number) => (
+                        {certificate.map((item: any, index: number) => (
                             <Certificate key={index} item={item} />
                         ))}
                     </div>

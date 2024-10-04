@@ -40,7 +40,7 @@ export default function GoodsPage() {
             const fm = new FormData();
 
             Array.from(files).forEach((file) => {
-                fm.append("image[]", file);
+                fm.append("images[]", file);
                 console.log(file);
 
                 const reader = new FileReader();
@@ -110,7 +110,6 @@ export default function GoodsPage() {
             .then((res) => setGoods(res));
     }, []);
 
-
     const DeleteGood = async (id: number) => {
         const token = await getCookies("token");
         const res = await fetch(
@@ -122,6 +121,7 @@ export default function GoodsPage() {
                 },
             }
         );
+
         if (res.ok) {
             setGoods((prev) => prev.filter((good) => good.id !== id));
             callMessage("default", "Product deleted successfully");
@@ -137,7 +137,6 @@ export default function GoodsPage() {
                 Goods Management
             </h1>
 
-            {/* добавление */}
             <Tabs defaultValue="add" className="mb-6">
                 <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="add">Add New Good</TabsTrigger>
@@ -158,7 +157,6 @@ export default function GoodsPage() {
                 </TabsContent>
             </Tabs>
 
-            {/* отрисовка */}
             <Card>
                 <CardHeader>
                     <CardTitle>List of Goods</CardTitle>
@@ -206,8 +204,7 @@ export default function GoodsPage() {
                                                         <img
                                                             key={index}
                                                             src={image.url}
-                                                            alt={`${good.name
-                                                                } - Image ${index + 1}`}
+                                                            alt={`${good.name} - Image ${index + 1}`}
                                                             className="w-20 h-20 object-cover rounded"
                                                         />
                                                     );
