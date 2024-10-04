@@ -23,7 +23,8 @@ export interface Good {
 export default function GoodsPage() {
     const [goods, setGoods] = useState<Good[]>([]);
     const [categories, setCategories] = useState<[]>([]);
-    const [formData, setFormData] = useState<any>(null);
+    const [formData, setFormData] = useState<FormData | null>(null);
+    const [handleUpdate, setHandleUpdate] = useState<boolean>(false);
     const [newGood, setNewGood] = useState<Good>({
         id: 0,
         images: [],
@@ -36,12 +37,26 @@ export default function GoodsPage() {
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
-        if (files) {
+        if (!files) return;
+
+        if (formData) {
+            Array.from(files).forEach((file) => {
+                formData.append("images", file);
+
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    setNewGood((prev) => ({
+                        ...prev,
+                        images: [...prev.images, reader.result as string],
+                    }));
+                };
+                reader.readAsDataURL(file);
+            });
+        } else {
             const fm = new FormData();
 
             Array.from(files).forEach((file) => {
-                fm.append("images[]", file);
-                console.log(file);
+                fm.append("images", file);
 
                 const reader = new FileReader();
                 reader.onloadend = () => {
@@ -61,6 +76,18 @@ export default function GoodsPage() {
             ...prev,
             images: prev.images.filter((_, i) => i !== index),
         }));
+        if (formData) {
+            setFormData((prev: FormData | null) => {
+                if (!prev) return null;
+            
+                const images = prev.getAll("images").filter((_, i) => i !== index) as File[];
+
+                const newValues = new FormData();
+                images.forEach((image) => newValues.append("images", image));
+            
+                return newValues;
+            });
+        }
     };
 
     const handleSubmit = async (e: any) => {
@@ -68,6 +95,8 @@ export default function GoodsPage() {
         const token = await getCookies("token");
 
         const fm = new FormData(e.target as any);
+
+        if (!formData) return;
 
         formData.forEach((elem: any) => {
             fm.append("images", elem);
@@ -88,6 +117,7 @@ export default function GoodsPage() {
                 ...prev,
                 images: [],
             }));
+            setFormData(null)
             e.target.reset();
 
             if (fileInputRef.current) {
@@ -108,7 +138,7 @@ export default function GoodsPage() {
         fetch(process.env.NEXT_PUBLIC_API_URL + "/product")
             .then((res) => res.json())
             .then((res) => setGoods(res));
-    }, []);
+    }, [handleUpdate]);
 
     const DeleteGood = async (id: number) => {
         const token = await getCookies("token");
@@ -175,12 +205,18 @@ export default function GoodsPage() {
                                     className="border rounded-lg p-4"
                                 >
                                     <div className="w-full h-10 flex justify-end items-center gap-2">
-                                        <PatchGoodModal id={good.id}>
+                                        <PatchGoodModal good={good} categories={categories} setHandleUpdate={setHandleUpdate} id={good.id}>
                                             <div className="rounded-full p-1 border border-blue-500 hover:bg-gray-200 transition-all cursor-pointer">
-                                                <Pencil width={20} height={20} />
+                                                <Pencil
+                                                    width={20}
+                                                    height={20}
+                                                />
                                             </div>
                                         </PatchGoodModal>
-                                        <div className="rounded-full p-1 border border-red-500 hover:bg-gray-200 transition-all cursor-pointer" onClick={() => DeleteGood(good.id)}>
+                                        <div
+                                            className="rounded-full p-1 border border-red-500 hover:bg-gray-200 transition-all cursor-pointer"
+                                            onClick={() => DeleteGood(good.id)}
+                                        >
                                             <Trash width={20} height={20} />
                                         </div>
                                     </div>
@@ -204,7 +240,11 @@ export default function GoodsPage() {
                                                         <img
                                                             key={index}
                                                             src={image.url}
-                                                            alt={`${good.name} - Image ${index + 1}`}
+                                                            alt={`${
+                                                                good.name
+                                                            } - Image ${
+                                                                index + 1
+                                                            }`}
                                                             className="w-20 h-20 object-cover rounded"
                                                         />
                                                     );

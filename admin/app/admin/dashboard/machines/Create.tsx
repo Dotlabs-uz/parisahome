@@ -7,8 +7,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PlusCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import action from "../../actions";
 
-export default function CertificateForm({ token }: { token: string }) {
+export default function MachinesForm({ token }: { token: string }) {
     const [imagePreview, setImagePreview] = useState<string | null>(null);
 
     const {toast} = useToast()
@@ -45,13 +46,15 @@ export default function CertificateForm({ token }: { token: string }) {
             if (response.ok) {
                 toast({
                     title: "Success!",
-                    description: "Certificate successfully added!",
+                    description: "Machines successfully added!",
                 });
-                e.target.reset(); // Очистка формы после успешной отправки
+                e.target.reset(); 
+                setImagePreview(null)
+                action("machines")
             } else {
                 toast({
                     title: "Error!",
-                    description: "Error while adding certificate.",
+                    description: "Error while adding machines.",
                     variant:"destructive"
                 });
             }
@@ -59,7 +62,7 @@ export default function CertificateForm({ token }: { token: string }) {
             console.error("Error:", error);
             toast({
                 title: "Error!",
-                description: "Failed to send certificate data.",
+                description: "Failed to send machines data.",
                 variant:"destructive"
             });
         }
@@ -83,7 +86,7 @@ export default function CertificateForm({ token }: { token: string }) {
                         <Input
                             id="title"
                             name="title"
-                            placeholder="Enter certificate title"
+                            placeholder="Enter machines title"
                             required
                         />
                     </div>
@@ -93,7 +96,7 @@ export default function CertificateForm({ token }: { token: string }) {
                         <Input
                             id="price"
                             name="price"
-                            placeholder="Enter certificate price"
+                            placeholder="Enter machines price"
                             defaultValue={0}
                             required
                         />
@@ -104,7 +107,7 @@ export default function CertificateForm({ token }: { token: string }) {
                         <Textarea
                             id="description"
                             name="description"
-                            placeholder="Enter certificate description"
+                            placeholder="Enter machines description"
                             required
                             className="min-h-[100px]"
                         />
@@ -119,7 +122,7 @@ export default function CertificateForm({ token }: { token: string }) {
                                 type="file"
                                 required
                                 onChange={handleImageChange}
-                                className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90"
+                                className="h-auto file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90"
                             />
                         </div>
                     </div>
@@ -130,7 +133,7 @@ export default function CertificateForm({ token }: { token: string }) {
                             <div className="mt-2 relative aspect-video rounded-lg overflow-hidden border border-gray-200">
                                 <img
                                     src={imagePreview}
-                                    alt="Certificate preview"
+                                    alt="Machines preview"
                                     className="object-cover w-full h-full"
                                 />
                             </div>
@@ -138,7 +141,7 @@ export default function CertificateForm({ token }: { token: string }) {
                     )}
 
                     <Button type="submit" className="w-full">
-                        <PlusCircle className="mr-2 h-4 w-4" /> Add Certificate
+                        <PlusCircle className="mr-2 h-4 w-4" /> Add Machines
                     </Button>
                 </form>
             </CardContent>

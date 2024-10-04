@@ -53,6 +53,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 							className="w-20 h-20 object-cover rounded"
 						/>
 						<button
+						    title="button"
 							type="button"
 							onClick={() => removeImage(index)}
 							className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"

@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import React from "react";
-import Certificate from "./Certificate";
+import Machines from "./Machines";
 import CertificateForm from "./Create";
 import { cookies } from "next/headers";
 
@@ -30,7 +30,7 @@ const page: React.FC<pageProps> = async () => {
 					<h2 className="text-2xl my-2">List of machines</h2>
 					<div className="grid grid-cols-2 gap-2 w-full">
 						{data.map((item: any, index:number) => (
-							<Certificate key={index} item={item} token={token} />
+							<Machines key={index} item={item} token={token} />
 						))}
 					</div>
 				</div>
