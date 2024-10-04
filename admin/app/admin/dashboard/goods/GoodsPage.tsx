@@ -3,9 +3,13 @@
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import GoodsForm from "@/components/custom/GoodsForm";
 import GoodsPreview from "@/components/custom/GoodsPreview";
 import { getCookies } from "@/lib/cookies.request";
+import { Pencil, Trash } from "lucide-react";
+import { callMessage } from "@/lib/utils";
+import { PatchGoodModal } from "@/components/custom/modals/PatchGoodModal";
 
 export interface Good {
     id: number;
@@ -89,8 +93,10 @@ export default function GoodsPage() {
             if (fileInputRef.current) {
                 fileInputRef.current.value = "";
             }
+            callMessage("default", "Product added successfully");
         } else {
             console.error("Error uploading product:", res.statusText);
+            callMessage("destructive", "Something went wrong");
         }
     };
 
@@ -104,12 +110,34 @@ export default function GoodsPage() {
             .then((res) => setGoods(res));
     }, []);
 
+
+    const DeleteGood = async (id: number) => {
+        const token = await getCookies("token");
+        const res = await fetch(
+            process.env.NEXT_PUBLIC_API_URL + "/product/" + id,
+            {
+                method: "delete",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        if (res.ok) {
+            setGoods((prev) => prev.filter((good) => good.id !== id));
+            callMessage("default", "Product deleted successfully");
+        } else {
+            console.error("Error deleting product:", res.statusText);
+            callMessage("destructive", "Something went wrong");
+        }
+    };
+
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4 text-black">
                 Goods Management
             </h1>
 
+            {/* добавление */}
             <Tabs defaultValue="add" className="mb-6">
                 <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="add">Add New Good</TabsTrigger>
@@ -130,6 +158,7 @@ export default function GoodsPage() {
                 </TabsContent>
             </Tabs>
 
+            {/* отрисовка */}
             <Card>
                 <CardHeader>
                     <CardTitle>List of Goods</CardTitle>
@@ -140,18 +169,26 @@ export default function GoodsPage() {
                             No goods added yet.
                         </p>
                     ) : (
-                        <ul className="space-y-4">
+                        <ul className="grid grid-cols-3 justify-center items-start gap-5">
                             {goods.map((good) => (
                                 <li
                                     key={good.id}
+                                    id={good.id.toString()}
                                     className="border rounded-lg p-4"
                                 >
+                                    <div className="w-full h-10 flex justify-end items-center gap-2">
+                                        <PatchGoodModal id={good.id}>
+                                            <div className="rounded-full p-1 border border-blue-500 hover:bg-gray-200 transition-all cursor-pointer">
+                                                <Pencil width={20} height={20} />
+                                            </div>
+                                        </PatchGoodModal>
+                                        <div className="rounded-full p-1 border border-red-500 hover:bg-gray-200 transition-all cursor-pointer" onClick={() => DeleteGood(good.id)}>
+                                            <Trash width={20} height={20} />
+                                        </div>
+                                    </div>
                                     <h3 className="font-bold text-lg mb-2">
-                                        Title: {good.name}
+                                        Title: {good?.name}
                                     </h3>
-                                    <p className="text-gray-600 mb-2">
-                                        Price: {good.price}
-                                    </p>
 
                                     <p className="text-gray-600 mb-2">
                                         Description: {good.description}
@@ -161,22 +198,23 @@ export default function GoodsPage() {
                                         Images:
                                     </p>
 
-                                    <div className="flex flex-wrap gap-2">
-                                        {good.images.map(
-                                            (image: any, index) => {
-                                                return (
-                                                    <img
-                                                        key={index}
-                                                        src={image.url}
-                                                        alt={`${
-                                                            good.name
-                                                        } - Image ${index + 1}`}
-                                                        className="w-20 h-20 object-cover rounded"
-                                                    />
-                                                );
-                                            }
-                                        )}
-                                    </div>
+                                    <ScrollArea className="h-24 w-full">
+                                        <div className="flex gap-2">
+                                            {good.images.map(
+                                                (image: any, index) => {
+                                                    return (
+                                                        <img
+                                                            key={index}
+                                                            src={image.url}
+                                                            alt={`${good.name
+                                                                } - Image ${index + 1}`}
+                                                            className="w-20 h-20 object-cover rounded"
+                                                        />
+                                                    );
+                                                }
+                                            )}
+                                        </div>
+                                    </ScrollArea>
                                 </li>
                             ))}
                         </ul>

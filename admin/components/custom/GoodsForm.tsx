@@ -53,8 +53,8 @@ const GoodsForm: React.FC<GoodsFormProps> = ({
 					type="text"
 					name="price"
 					placeholder="Price"
-					className="w-full"
-					required
+					className="w-full hidden"
+					defaultValue={"0"}
 				/>
 				<Select name="categoryId">
 					<SelectTrigger className="w-full text-gray-500">
