@@ -42,7 +42,7 @@ const AboutPartners = () => {
                     </div>
                     <div className="grid grid-cols-2 gap-x-5 gap-y-10 max-lg:gap-5 px-10 max-xl:px-0 mb-20 max-lg:mb-10 max-md:px-10 max-sm:px-0">
                         <div className="anim-element">
-                            <div className="flex items-center justify-center py-32 max-xl:py-28 max-lg:py-24 max-sm:py-16 mb-7 max-lg:mb-5 rounded-md border border-white">
+                            <div className="flex items-center justify-center h-72 max-xl:h-60 max-lg:h-56 max-sm:h-48 mb-7 max-lg:mb-5 rounded-md border border-white">
                                 <Image
                                     className='w-40 max-md:w-32 max-xs:w-28 text-white'
                                     src={"/images/partners/partner-white-1.svg"}
@@ -52,52 +52,68 @@ const AboutPartners = () => {
                                 />
                             </div>
                             <div className="">
-                                <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ОООSam Rafoat Textile. В начале эта компания начала производить плющ.</p>
+                                <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>
+                                    1Password Мы заботимся о
+                                    древесинеи тщательно следим за всем
+                                    производственным процессом.
+                                </p>
                             </div>
                         </div>
                         <div className="anim-element">
-                            <div className="flex items-center justify-center py-32 max-xl:py-28 max-lg:py-24 max-sm:py-16 mb-7 max-lg:mb-5 rounded-md border border-white">
+                            <div className="flex items-center justify-center h-72 max-xl:h-60 max-lg:h-56 max-sm:h-48 mb-7 max-lg:mb-5 rounded-md border border-white">
                                 <Image
                                     className='w-40 max-md:w-32 max-xs:w-28 text-white'
-                                    src={"/images/partners/partner-white-1.svg"}
+                                    src={"/images/partners/partner-white-2.svg"}
                                     width={1000}
                                     height={1000}
                                     alt='partner'
                                 />
                             </div>
                             <div className="">
-                                <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ.</p>
+                                <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>
+                                    Motive - итальянский
+                                    производитель древесины, крупнейший
+                                    лидер рынка в Европе.
+                                </p>
                             </div>
                         </div>
                         <div className="anim-element">
-                            <div className="flex items-center justify-center py-32 max-xl:py-28 max-lg:py-24 max-sm:py-16 mb-7 max-lg:mb-5 rounded-md border border-white">
+                            <div className="flex items-center justify-center h-72 max-xl:h-60 max-lg:h-56 max-sm:h-48 mb-7 max-lg:mb-5 rounded-md border border-white">
                                 <Image
                                     className='w-40 max-md:w-32 max-xs:w-28 text-white'
-                                    src={"/images/partners/partner-white-1.svg"}
+                                    src={"/images/partners/partner-white-3.svg"}
                                     width={1000}
                                     height={1000}
                                     alt='partner'
                                 />
                             </div>
                             <div className="">
-                                <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ.</p>
+                                <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>
+                                    Brex создаёт уникальную
+                                    итальянскую мебель ручной работы,
+                                    как продолж ение вашего интерьера.
+                                </p>
                             </div>
                         </div>
                         <div className="anim-element">
-                            <div className="flex items-center justify-center py-32 max-xl:py-28 max-lg:py-24 max-sm:py-16 mb-7 max-lg:mb-5 rounded-md border border-white">
+                            <div className="flex items-center justify-center h-72 max-xl:h-60 max-lg:h-56 max-sm:h-48 mb-7 max-lg:mb-5 rounded-md border border-white">
                                 <Image
                                     className='w-40 max-md:w-32 max-xs:w-28 text-white'
-                                    src={"/images/partners/partner-white-1.svg"}
+                                    src={"/images/partners/partner-white-4.svg"}
                                     width={1000}
                                     height={1000}
                                     alt='partner'
                                 />
                             </div>
                             <div className="">
-                                <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ.</p>
+                                <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>
+                                    Univision воспроизводит
+                                    мебель ушедших эпох: ампир, барокко, рококо и многие другие.
+                                </p>
                             </div>
                         </div>
                     </div>
+
                     <div className="mb-14 md:hidden flex items-center justify-between">
                         <Image
                             className='w-48 anim-element'

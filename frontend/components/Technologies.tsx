@@ -59,7 +59,8 @@ const Technologies = () => {
                     </div>
                     <div className="flex max-md:flex-col md:items-center md:justify-end gap-10 max-md:gap-2 anim-element">
                         <h2 className="max-w-md text-3xl max-lg:text-2xl max-sm:text-xl font-extrabold">Бренд идущий по пути технологических инноваций</h2>
-                        <p className="max-w-sm text-sm md:text-end leading-6">Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией</p>
+                        <p className="max-w-sm text-sm md:text-end leading-6">
+                            Наш бренд не просто следует за трендами, а внедряет технологические инновации, чтобы предлагать полотенца высшего качества. Мы используем передовые технологии для создания тканей, которые сочетают комфорт, долговечность и экологичность.                        </p>
                     </div>
                 </div>
 
