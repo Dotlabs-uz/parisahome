@@ -1,11 +1,15 @@
 import React from 'react';
 import LoginPage from './Login';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-interface pageProps {
+const page = () => {
+
+    const token:any = cookies().get("token")?.value
     
-}
+    if (token) redirect("/admin/dashboard")
+    
 
-const page: React.FC<pageProps> = () => {
     return (
         <LoginPage/>
     );
