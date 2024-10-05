@@ -3,7 +3,7 @@ import Image from 'next/image'
 import axios from 'axios'
 
 const Page = async () => {
-    const certificate = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/certificate`)
+    const certificate = await axios.get(`${process.env.API_URL}/certificate`)
 
     return (
         <div className='custom-container h-screen pt-14'>
