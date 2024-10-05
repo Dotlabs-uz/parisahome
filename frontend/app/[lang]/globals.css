@@ -156,3 +156,7 @@ video::-webkit-media-controls-enclosure {
   border-top: var(--size) solid white;
   top: 55%;
 }
+
+img {
+  @apply pointer-events-none select-none;
+}

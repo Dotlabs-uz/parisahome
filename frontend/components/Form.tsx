@@ -55,9 +55,14 @@ const Form = () => {
                             <p className="mb-1">Ваше имя</p>
                             <input
                                 disabled={loadind}
-                                className="w-full py-1 px-3 max-sm:rounded-md border border-yellow bg-[#D9D9D966]"
+                                className="w-full py-1 px-3 rounded-md border border-yellow bg-[#D9D9D966]"
                                 type="text"
-                                {...register("name", { required: true })}
+                                {...register("name", {
+                                    required: true,
+                                    minLength: 3,
+                                    pattern: /^[A-Za-zА-Яа-яЁё]+(?:[-\s][A-Za-zА-Яа-яЁё]+)*$/,
+
+                                })}
                                 placeholder="Напишите свое имя здесь"
                             />
                             {errors.name && (
@@ -70,10 +75,12 @@ const Form = () => {
                             <p className="mb-1">Ваш телефон</p>
                             <input
                                 disabled={loadind}
-                                className="w-full py-1 px-3 max-sm:rounded-md border border-yellow bg-[#D9D9D966]"
+                                className="w-full py-1 px-3 rounded-md border border-yellow bg-[#D9D9D966]"
                                 type="text"
                                 {...register("telNumber", {
                                     required: true,
+                                    minLength: 7,
+                                    pattern: /^\d+$/,
                                 })}
                                 placeholder="Напишите свой телефон"
                             />
@@ -87,7 +94,7 @@ const Form = () => {
                             <p className="mb-1">Ваш email</p>
                             <input
                                 disabled={loadind}
-                                className="w-full py-1 px-3 max-sm:rounded-md border border-yellow bg-[#D9D9D966]"
+                                className="w-full py-1 px-3 rounded-md border border-yellow bg-[#D9D9D966]"
                                 type="email"
                                 {...register("email", { required: true })}
                                 placeholder="Ваш email"
@@ -102,7 +109,7 @@ const Form = () => {
                             <p className="mb-1">Ваш комментарий</p>
                             <input
                                 disabled={loadind}
-                                className="w-full py-1 px-3 max-sm:rounded-md border border-yellow bg-[#D9D9D966]"
+                                className="w-full py-1 px-3 rounded-md border border-yellow bg-[#D9D9D966]"
                                 type="text"
                                 {...register("message", { required: true })}
                                 placeholder="Напишите свой комментарий"

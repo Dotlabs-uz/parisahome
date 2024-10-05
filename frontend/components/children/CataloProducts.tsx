@@ -34,7 +34,7 @@ const CataloProducts = ({ category }: any) => {
                 products.map((i: any, idx: number) => {
                     if (category === i.category.name) {
                         return (
-                            <Link href={"#"} key={idx} className="anim-element">
+                            <Link href={i.id} key={idx} className="anim-element">
                                 <div className="flex flex-col h-full w-full">
                                     <div className="w-full h-full">
                                         <Image
@@ -60,7 +60,7 @@ const CataloProducts = ({ category }: any) => {
                         )
                     } else if (category === "all") {
                         return (
-                            <Link href={"#"} key={idx} className="anim-element">
+                            <Link href={i.id} key={idx} className="anim-element">
                                 <div className="flex flex-col h-full w-full">
                                     <div className="w-full h-full">
                                         <Image
