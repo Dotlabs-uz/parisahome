@@ -78,7 +78,7 @@ const Products = () => {
                                     <p className='text-sm max-sm:text-xs max-sm:font-medium leading-6 max-sm:leading-5 mb-5'>
                                         {i.description}
                                     </p>
-                                    <Link href={i.id} className='text-sm max-sm:text-xs font-extrabold underline m-auto'>
+                                    <Link href={`/${i.id}`} className='text-sm max-sm:text-xs font-extrabold underline m-auto'>
                                         Читать полностью
                                     </Link>
                                 </div>
