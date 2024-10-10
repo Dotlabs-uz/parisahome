@@ -160,3 +160,20 @@ video::-webkit-media-controls-enclosure {
 img {
   @apply pointer-events-none select-none;
 }
+
+.custom-swiper .swiper-slide {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.custom-swiper .swiper-slide:not(.swiper-slide-active) {
+  transform: scale(0.9);
+  /* уменьшение неактивных слайдов */
+  opacity: 0.5;
+  /* полупрозрачные неактивные слайды */
+}
+
+.custom-swiper .swiper-slide-active {
+  transform: scale(1);
+  /* активный слайд в полном размере */
+  opacity: 1;
+}
