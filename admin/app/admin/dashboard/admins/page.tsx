@@ -4,6 +4,7 @@ import React from "react";
 import { cookies } from "next/headers";
 import Admins from "./Admins";
 import AdminForm from "./Create";
+import { redirect } from "next/navigation";
 // import QuestionForm from "./Create";
 
 interface pageProps {}
@@ -17,16 +18,26 @@ const page: React.FC<pageProps> = async () => {
     };
     const token = JSON.parse(decodeURIComponent(resToken.value));
 
+    const resRole = cookieStore.get("role") as {
+        name: string;
+        value: string;
+    };
+
+    const role = JSON.parse(decodeURIComponent(resRole.value));
+
+    if(role !== "superAdmin"){
+        redirect("/admin")
+    }
+
+
     const res = await fetch(process.env.API_URL + "/admin", {
         cache: "no-store",
         headers: {
             Authorization: `Bearer ${token}`,
         },
     });
-    if (!res.ok) return <h1>Something went wrong</h1>;
+    if (!res.ok) return <h1 className="text-red-500">Something went wrong</h1>;
     const admins = await res.json();
-
-    console.log(admins);
 
     return (
         <Card className="">

@@ -19,7 +19,7 @@ export class AdminService {
 	}
 
 	async signin(body: AdminsDto) {
-		const resAdmin = await this.adminModel.findOne({ where: { login: body.login } });
+		const resAdmin:any = await this.adminModel.findOne({ where: { login: body.login } });
 
 		if (!resAdmin?.dataValues) {
 			throw new BadRequestException('Invalid login or password');
@@ -34,7 +34,8 @@ export class AdminService {
 		const token = await this.authService.generateAccessToken({ id: resAdmin.dataValues.id, role: resAdmin.dataValues.role });
 
 		return {
-			accessToken: token
+			accessToken: token,
+			role: resAdmin.dataValues.role
 		};
 	}
 
