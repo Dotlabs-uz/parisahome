@@ -3,6 +3,7 @@ import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { IsAdminGuard } from '../../guards/isAdmin.guard';
+import { Roles } from 'src/guards/roles.decorator';
 
 @ApiTags("Category")
 @Controller('category')
@@ -11,6 +12,7 @@ export class CategoryController {
 
 	@ApiBearerAuth()
     @UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	@Post()
 	create(@Body() createCategoryDto: CreateCategoryDto) {
 		return this.categoryService.create(createCategoryDto);
@@ -28,6 +30,7 @@ export class CategoryController {
 
 	@ApiBearerAuth()
     @UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	@Patch(':id')
 	update(@Param('id') id: string, @Body() updateCategoryDto: CreateCategoryDto) {
 		return this.categoryService.update(+id, updateCategoryDto);
@@ -35,6 +38,7 @@ export class CategoryController {
 
 	@ApiBearerAuth()
     @UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	@Delete(':id')
 	remove(@Param('id') id: string) {
 		return this.categoryService.remove(+id);

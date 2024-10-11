@@ -51,6 +51,7 @@ export default function LoginPage() {
         const data = await res.json();
 
         await setCookies("token", data.accessToken);
+        await setCookies("role", data.role);
         setLoading(false);
         router.push("/admin/dashboard");
     };

@@ -3,6 +3,7 @@ import { QuestionService } from './question.service';
 import { CreateQuestionDto, TUpdateQuestionDto } from './dto/create-question.dto';
 import { IsAdminGuard } from 'src/guards/isAdmin.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Roles } from 'src/guards/roles.decorator';
 
 @ApiTags("Questions")
 @Controller('question')
@@ -10,8 +11,9 @@ export class QuestionController {
 	constructor(private readonly questionService: QuestionService) { }
 
 	@ApiBearerAuth()
-    @UseGuards(IsAdminGuard)
-    @Post()
+	@UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
+	@Post()
 	create(@Body() createQuestionDto: CreateQuestionDto) {
 		return this.questionService.create(createQuestionDto);
 	}
@@ -27,14 +29,16 @@ export class QuestionController {
 	}
 
 	@ApiBearerAuth()
-    @UseGuards(IsAdminGuard)
+	@UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	@Patch(':id')
 	update(@Param('id') id: string, @Body() updateQuestionDto: TUpdateQuestionDto) {
 		return this.questionService.update(+id, updateQuestionDto);
 	}
 
 	@ApiBearerAuth()
-    @UseGuards(IsAdminGuard)
+	@UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	@Delete(':id')
 	remove(@Param('id') id: string) {
 		return this.questionService.remove(+id);

@@ -5,6 +5,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/common/multer.option';
 import { CreateCertificateDto, TUpdateCertificateDto } from './dto/create-certificate.dto';
 import { IsAdminGuard } from '../../guards/isAdmin.guard';
+import { Roles } from 'src/guards/roles.decorator';
 
 
 @ApiTags("Certificate")
@@ -14,6 +15,7 @@ export class CertificateController {
 
   @ApiBearerAuth()
   @UseGuards(IsAdminGuard)
+  @Roles("admin", "superAdmin")
   @Post()
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('image', multerOptions))
@@ -33,6 +35,7 @@ export class CertificateController {
 
   @ApiBearerAuth()
   @UseGuards(IsAdminGuard)
+  @Roles("admin", "superAdmin")
   @Patch(':id')
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('image', multerOptions))
@@ -42,6 +45,7 @@ export class CertificateController {
 
   @ApiBearerAuth()
   @UseGuards(IsAdminGuard)
+  @Roles("admin", "superAdmin")
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.certificateService.remove(+id);
