@@ -28,12 +28,12 @@ const ZoomImage: React.FC<ZoomImageProps> = ({ src, alt, scale = 1.5 }) => {
 
     return (
         <div
-            className="image-container"
+            // className="image-container"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
             <Image
-                className='w-full h-full pointer-events-none select-none rounded-2xl image zoomed'
+                className='w-full h-[600px] object-cover pointer-events-none select-none rounded-2xl image zoomed'
                 style={{
                     transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
                     transform: isZoomed ? `scale(${scale})` : 'scale(1)', // Управляем увеличением через пропс

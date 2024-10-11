@@ -138,18 +138,51 @@ const HorizontalScroll: React.FC = () => {
         <div ref={containerRef} className="scroll-section-outer relative">
             <div className="progress-line-bg absolute bottom-10 max-md:bottom-5 left-0 h-[3px] w-full bg-white z-20" />
             <div className="progress-line bottom-10 max-md:bottom-5" />
-
-            <div className="dots-container absolute bottom-[38px] max-md:bottom-[18px] left-0 w-full flex justify-around z-[41]">
+            {/* <div className="w-screen h-1 absolute bottom-10 max-md:bottom-5 left-0">
                 {sectionsData.map((_, index) => (
                     <div
                         key={index}
-                        ref={(el: any) => (dotsRefs.current[index] = el)}
-                        className={`progress-dot w-2 h-2 rounded-full transform transition-transform duration-300 ease-out ${activeDot >= index ? "bg-yellow" : "bg-white"}`}
-                    />
+                        className="dot-container max-md:hidden flex flex-col gap-3 items-center absolute -top-11"
+                        style={{ left: `${(index / sectionsData.length) * 100}%` }}
+                    >
+                        <div
+                            className={`p-1 px-2 rounded-md border ${activeDot === index
+                                ? "bg-yellow border-yellow text-green"
+                                : "border-white text-white"
+                                }`}
+                        >
+                            <p className="text-sm font-medium whitespace-nowrap">
+                                {sectionsData[index].title.toLowerCase()}
+                            </p>
+                        </div>
+                        <span className={`block w-2 h-2 rounded-full bg-yellow ${activeDot >= index ? "scale-100" : "scale-0"} duration-200`}></span>
+                    </div>
+                ))}
+            </div> */}
+
+            <div className="dots-container absolute bottom-[38px] max-md:bottom-[18px] left-0 w-full flex justify-around z-[41]">
+                {sectionsData.map((_, index) => (
+                    <div key={index} className="flex flex-col gap-2 items-center">
+                        <div
+                            className={`p-1 px-2 rounded-md border max-md:hidden duration-200 ${activeDot === index
+                                ? "bg-yellow border-yellow text-green"
+                                : "border-white text-white"
+                                }`}
+                        >
+                            <p className="text-sm font-medium whitespace-nowrap">
+                                {sectionsData[index].title.toLowerCase()}
+                            </p>
+                        </div>
+
+                        <div
+                            ref={(el: any) => (dotsRefs.current[index] = el)}
+                            className={`progress-dot w-2 h-2 rounded-full transform transition-transform duration-300 ease-out ${activeDot >= index ? "bg-yellow" : "bg-white"}`}
+                        />
+                    </div>
                 ))}
             </div>
 
-            <div className="max-w-md max-md:max-w-xs w-full h-80 max-md:h-60 fixed left-1/2 max-lg:left-1/3 top-1/2 -translate-y-1/2 max-md:left-[10%]">
+            <div className="max-w-md max-md:max-w-sm w-full h-80 max-md:h-64 fixed left-1/2 top-2/3 -translate-y-1/2 -translate-x-1/2">
                 <FlowerRotate rotation={modelRotation} /> {/* Передаем вращение в модель */}
             </div>
 
@@ -161,11 +194,21 @@ const HorizontalScroll: React.FC = () => {
                             ref={(el: any) => (sectionsRefs.current[index] = el)}
                             className="scroll-section flex"
                         >
-                            <div className="custom-container nth h-full flex gap-20 max-md:gap-10 py-40 max-md:py-20">
-                                <div className="w-full text-white">
+                            <div className="custom-container h-full flex gap-20 max-md:gap-10 py-40 max-md:py-20">
+                                <div className="w-full flex flex-col text-white">
                                     <p className="text-xl mb-10 max-md:mb-5">{years}</p>
                                     <h2 className="text-5xl mb-3">{title}</h2>
                                     <p className="max-w-[600px] text-[17px] leading-6">{dcr}</p>
+                                    <div
+                                        className={`w-fit mt-auto py-2 px-8 rounded-md border md:hidden duration-200 ${activeDot === index
+                                            ? "bg-yellow border-yellow text-white"
+                                            : "border-white text-white"
+                                            }`}
+                                    >
+                                        <p className="text-lg font-medium whitespace-nowrap">
+                                            {sectionsData[index].title.toLowerCase()}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
