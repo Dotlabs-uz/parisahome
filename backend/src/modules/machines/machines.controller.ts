@@ -7,6 +7,7 @@ import { IsAdminGuard } from 'src/guards/isAdmin.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/common/multer.option';
 import { Machine, MachineUpdate } from 'src/common/swagger.types';
+import { Roles } from 'src/guards/roles.decorator';
 
 @ApiTags("Machines")
 @Controller('machines')
@@ -15,6 +16,7 @@ export class MachinesController {
 
 	@ApiBearerAuth()
 	@UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	@ApiBody({
 		schema: {
 			type: 'object',
@@ -40,6 +42,7 @@ export class MachinesController {
 
 	@ApiBearerAuth()
 	@UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	@ApiParam({ name: 'id', required: true })
 	@UseInterceptors(FileInterceptor('image', multerOptions))
 	@ApiBody({
@@ -56,6 +59,7 @@ export class MachinesController {
 
 	@ApiBearerAuth()
 	@UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	@ApiParam({ name: 'id', required: true })
 	@Delete(':id')
 	async delete(@Param('id') id: number) {

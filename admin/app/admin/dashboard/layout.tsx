@@ -1,4 +1,6 @@
 import { TbCategoryFilled, TbPackageExport, TbCalendarCog } from "react-icons/tb";
+import { RiAdminFill } from "react-icons/ri";
+import { MdQuestionAnswer } from "react-icons/md";
 import { AiFillProduct } from "react-icons/ai";
 import { parseJwt } from "@/lib/utils";
 import NavLink from "./NavLink";
@@ -42,8 +44,11 @@ export default function DashboardLayout({
 					<NavLink href="/admin/dashboard/machines" Icon={<AiFillProduct/> }>
 						Machines
 					</NavLink>
-					<NavLink href="/admin/dashboard/question" Icon={<AiFillProduct/> }>
+					<NavLink href="/admin/dashboard/question" Icon={<MdQuestionAnswer />}>
 						FAQ
+					</NavLink>
+					<NavLink href="/admin/dashboard/admins" Icon={<RiAdminFill /> }>
+						Admins
 					</NavLink>
 				</nav>
 			</aside>

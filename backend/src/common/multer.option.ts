@@ -11,9 +11,8 @@ if (!process.env.UPLOAD_URL) {
 
 export const multerOptions = {
     storage: diskStorage({
-        destination: join(__dirname, process.env.UPLOAD_URL), // Путь для сохранения файлов
+        destination: join(__dirname, process.env.UPLOAD_URL),
         filename: (req, file, cb) => {
-            // Генерация случайного имени файла
             const randomName = [...Array(32)]
                 .map(() => Math.random().toString(36)[2])
                 .join('');
@@ -21,16 +20,16 @@ export const multerOptions = {
         },
     }),
     fileFilter: (_, file, callback) => {
-        const allowedExtensions = ['.png', '.jpg', '.jpeg', '.pdf', '.webp'];
-        const fileExt = extname(file.originalname).toLowerCase(); // Приведение к нижнему регистру для корректной проверки
+        const allowedExtensions = ['.webp'];
+        const fileExt = extname(file.originalname).toLowerCase(); 
 
         if (!allowedExtensions.includes(fileExt)) {
             return callback(new BadRequestException(`Allowed file types: ${allowedExtensions.join(', ')}`), false);
         }
 
-        callback(null, true); // Файл подходит
+        callback(null, true); 
     },
     limits: {
-        fileSize: 5 * 1024 * 1024, // Опционально: лимит размера файла (5MB)
+        fileSize: 5 * 1024 * 1024,
     },
 };

@@ -1,48 +1,53 @@
-import { BadRequestException, CanActivate, ExecutionContext, HttpException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, CanActivate, ExecutionContext, UnauthorizedException, BadRequestException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Admin } from 'src/modules/admin/entities/admin.entity';
+import { Reflector } from '@nestjs/core';
 
 @Injectable()
 export class IsAdminGuard implements CanActivate {
-
-    constructor(private jwtService: JwtService) { }
+    constructor(private jwtService: JwtService, private reflector: Reflector) {}
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
         const request = context.switchToHttp().getRequest();
-
-        // Проверка наличия заголовка Authorization
         const authHeader = request.headers?.authorization;
+
         if (!authHeader) {
             throw new UnauthorizedException('Authorization header not provided');
         }
 
-        const token = authHeader.split(' ')[1];
+        const token = this.extractToken(authHeader);
+        const payload = await this.verifyToken(token);
 
-        if (!token) {
-            throw new UnauthorizedException('JWT token is missing');
-        }
-
-        let payload: any;
-
-        // Попытка верификации токена
-        try {
-            payload = this.jwtService.verify(token);
-        } catch (e) {
-            throw new BadRequestException('Invalid or expired JWT token');
-        }
-
-        // Поиск админа в базе данных по ID из токена
-        const admin = await Admin.findOne({ where: { id: payload.id } });
-
+        const admin = await this.findAdminById(payload.id);
         if (!admin) {
             throw new UnauthorizedException('Admin not found');
         }
 
-        // Проверка роли
-        if (payload.role === 'admin') {
-            return true;
+        const roles = this.reflector.get<string[]>('roles', context.getHandler());
+        if (!roles) {
+            return false;
         }
 
-        return false;
+        return roles.includes(payload.role);
+    }
+
+    private extractToken(authHeader: string): string {
+        const parts = authHeader.split(' ');
+        if (parts.length !== 2 || parts[0] !== 'Bearer') {
+            throw new UnauthorizedException('Invalid authorization format');
+        }
+        return parts[1];
+    }
+
+    private async verifyToken(token: string): Promise<any> {
+        try {
+            return await this.jwtService.verifyAsync(token);
+        } catch (e) {
+            throw new BadRequestException('Invalid or expired JWT token');
+        }
+    }
+
+    private async findAdminById(id: number): Promise<Admin | null> {
+        return await Admin.findOne({ where: { id } });
     }
 }

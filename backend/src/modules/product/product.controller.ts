@@ -5,6 +5,7 @@ import { ApiBearerAuth, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/common/multer.option';
 import { IsAdminGuard } from '../../guards/isAdmin.guard';
+import { Roles } from 'src/guards/roles.decorator';
 
 @ApiTags("Product")
 @Controller('product')
@@ -13,6 +14,7 @@ export class ProductController {
 
 	@ApiBearerAuth()
 	@UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	@Post()
 	@ApiConsumes('multipart/form-data')
 	@UseInterceptors(FilesInterceptor('images', 10, multerOptions))
@@ -32,6 +34,7 @@ export class ProductController {
 
 	@ApiBearerAuth()
 	@UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	@Patch(':id')
 	@ApiConsumes('multipart/form-data')
 	@UseInterceptors(FilesInterceptor('images', 10, multerOptions))
@@ -46,6 +49,7 @@ export class ProductController {
 	@Delete(':id')
 	@ApiBearerAuth()
 	@UseGuards(IsAdminGuard)
+	@Roles("admin", "superAdmin")
 	async remove(@Param('id') id: string) {
 		return await this.productService.remove(+id);
 	}
