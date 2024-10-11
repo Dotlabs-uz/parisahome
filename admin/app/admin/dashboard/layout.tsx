@@ -10,6 +10,7 @@ import { parseJwt } from "@/lib/utils";
 import NavLink from "./NavLink";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { IoMdSettings } from "react-icons/io";
 
 export default function DashboardLayout({
     children,
@@ -23,7 +24,7 @@ export default function DashboardLayout({
     if (!coockied || !resRole) redirect("/admin/login");
     const jwt = parseJwt(decodeURIComponent(coockied?.value));
 
-    const role =JSON.parse(decodeURIComponent(resRole?.value)) 
+    const role = JSON.parse(decodeURIComponent(resRole?.value));
 
     if (jwt.exp < Date.now() / 1000) {
         redirect("/admin/login");
@@ -68,12 +69,20 @@ export default function DashboardLayout({
                         FAQ
                     </NavLink>
                     {role === "superAdmin" && (
-                        <NavLink
-                            href="/admin/dashboard/admins"
-                            Icon={<RiAdminFill />}
-                        >
-                            Admins
-                        </NavLink>
+                        <>
+                            <NavLink
+                                href="/admin/dashboard/admins"
+                                Icon={<RiAdminFill />}
+                            >
+                                Admins
+                            </NavLink>
+                            <NavLink
+                                href="/admin/dashboard/settings"
+                                Icon={<IoMdSettings />}
+                            >
+                                Settings
+                            </NavLink>
+                        </>
                     )}
                 </nav>
             </aside>

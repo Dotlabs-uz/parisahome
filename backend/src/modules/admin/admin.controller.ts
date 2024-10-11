@@ -15,9 +15,9 @@ export class AdminController {
     return this.adminService.signin(body);
   }
 
-  // @ApiBearerAuth()
-  // @UseGuards(IsAdminGuard)
-  // @Roles('superAdmin')
+  @ApiBearerAuth()
+  @UseGuards(IsAdminGuard)
+  @Roles('superAdmin')
   @Post('create')
   async createAdmin(@Body() body: AdminsDto) {
     return this.adminService.register(body);
@@ -29,6 +29,14 @@ export class AdminController {
   @Get()
   async getAdmins() {
     return this.adminService.get();
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(IsAdminGuard)
+  @Roles('superAdmin')
+  @Get("superAdmin")
+  async getSuperAdmins() {
+    return this.adminService.getSuperAdmin();
   }
 
   @ApiBearerAuth()

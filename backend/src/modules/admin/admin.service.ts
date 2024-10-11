@@ -78,4 +78,9 @@ export class AdminService {
 		await this.adminModel.destroy({ where: { id } });
 		return { message: 'Admin deleted successfully' };
 	}
+
+	async getSuperAdmin(){
+		const superAdmins = await this.adminModel.findOne({ where: { role: "superAdmin" } })
+		return superAdmins
+	}
 }
