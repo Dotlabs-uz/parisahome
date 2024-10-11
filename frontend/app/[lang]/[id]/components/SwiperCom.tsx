@@ -11,7 +11,7 @@ import { LuMinus, LuPlus } from "react-icons/lu";
 
 const SwiperCom = ({ data }: any) => {
     const [swiperRef, setSwiperRef] = useState<any>(null);
-    const [scale, setScale] = useState<number>(4.5); // Стандартное значение масштаба
+    const [scale, setScale] = useState<number>(3); // Стандартное значение масштаба
 
     const prevHandler = () => {
         swiperRef.slidePrev();
@@ -63,7 +63,7 @@ const SwiperCom = ({ data }: any) => {
                 }}
             >
                 {data.images.map((img: { url: string; id: number }) => (
-                    <SwiperSlide className="overflow-hidden rounded-2xl bg-[#555]" key={img.id}>
+                    <SwiperSlide className="w-fit overflow-hidden rounded-2xl bg-white/10" key={img.id}>
                         <ZoomImage src={img.url} alt="Your Image" scale={scale} /> {/* Передаем масштаб */}
                     </SwiperSlide>
                 ))}

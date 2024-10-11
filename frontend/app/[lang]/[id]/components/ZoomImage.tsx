@@ -46,7 +46,7 @@ const ZoomImage: React.FC<ZoomImageProps> = ({ src, alt, scale = 1.5 }) => {
             onTouchEnd={handleTouchEnd}
         >
             <Image
-                className='w-full h-[600px] max-sm:h-[400px] object-cover pointer-events-none select-none rounded-2xl image zoomed'
+                className='w-fit mx-auto h-[600px] max-sm:h-[400px] object-contain pointer-events-none select-none image zoomed'
                 style={{
                     transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
                     transform: isZoomed ? `scale(${scale})` : 'scale(1)',
