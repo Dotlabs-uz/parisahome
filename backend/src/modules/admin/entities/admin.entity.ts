@@ -23,7 +23,7 @@ export class Admin extends Model<Admin> {
 
     @Column({
         type: DataType.ENUM(...Object.values(AdminRole)),
-        allowNull: false,
+        allowNull: true,
         defaultValue: AdminRole.ADMIN
     })
     role: AdminRole
