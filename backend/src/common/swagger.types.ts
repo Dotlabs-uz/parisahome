@@ -1,17 +1,9 @@
-// export const Publication = {
-//     uzTitle: {type: 'string'},
-//     ruTitle: {type: 'string'},
-//     enTitle: {type: 'string'},
-//     images: {
-//         type: "array",
-//         items: {
-//             type: "string",
-//             format: "binary"
-//         }
-//     }
-// };
-
-
+export const GalleryPost = {
+    image: {
+        type: "string",
+        format: "binary"
+    }
+}
 export const Machine = {
     name: {type: 'string'},
     title: {type: 'string'},

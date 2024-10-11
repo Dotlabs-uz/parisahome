@@ -19,8 +19,9 @@ import { MachinesModule } from './modules/machines/machines.module';
 import { Machine } from './modules/machines/entities/machine.entity';
 import { QuestionModule } from './modules/question/question.module';
 import { Question } from './modules/question/entities/question.entity';
-import { ContactController } from './modules/contact/contact.controller';
 import { ContactModule } from './modules/contact/contact.module';
+import { GalleryModule } from './modules/gallery/gallery.module';
+import { Gallery } from './modules/gallery/entities/gallery.entity';
 
 @Module({
 	imports: [
@@ -37,7 +38,7 @@ import { ContactModule } from './modules/contact/contact.module';
 			username: process.env.POSTGRES_USER,
 			password: process.env.POSTGRES_PASSWORD,
 			database: process.env.POSTGRES_DB,
-			models: [Product, Category, Certificate, Image, Admin, Machine, Question],
+			models: [Product, Category, Certificate, Image, Admin, Machine, Question, Gallery],
 			autoLoadModels: true,
 			synchronize: true,
 			sync: { alter: true },
@@ -55,7 +56,8 @@ import { ContactModule } from './modules/contact/contact.module';
 		AdminModule,
 		MachinesModule,
 		QuestionModule,
-		ContactModule
+		ContactModule,
+		GalleryModule
 	],
 	controllers: [AppController]
 })
