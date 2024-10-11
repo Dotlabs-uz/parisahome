@@ -6,6 +6,7 @@ import { animateElementsOnScroll } from '@/lib/animations'
 import FlowerModal from './children/FlowerModal'
 import axios from 'axios'
 import { IoCallOutline, IoLocationOutline } from 'react-icons/io5'
+import PhoneNumberInput from './children/PhoneNumberInput'
 
 type Inputs = {
     name: string;
@@ -73,17 +74,24 @@ const Form = () => {
                         </label>
                         <label className="w-full mb-3 max-sm:mb-2 block anim-element">
                             <p className="mb-1">Ваш телефон</p>
-                            <input
+                            <PhoneNumberInput
+                                inputProps={register("telNumber", {
+                                    required: true,
+                                    minLength: 7,
+                                    pattern: /^\+?\d+$/,
+                                })}
+                            />
+                            {/* <input
                                 disabled={loadind}
                                 className="w-full py-1 px-3 rounded-md border border-yellow bg-[#D9D9D966]"
                                 type="text"
                                 {...register("telNumber", {
                                     required: true,
                                     minLength: 7,
-                                    pattern: /^\d+$/,
+                                    pattern: /^\+?\d+$/,
                                 })}
                                 placeholder="Напишите свой телефон"
-                            />
+                            /> */}
                             {errors.telNumber && (
                                 <span className="text-[red]">
                                     This field is required

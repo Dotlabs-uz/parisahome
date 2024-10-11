@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
 import Image from 'next/image'
 import axios from 'axios'
+import Link from 'next/link'
 
 const Page = async () => {
     const certificate = await axios.get(`${process.env.API_URL}/certificate`)
@@ -15,7 +16,7 @@ const Page = async () => {
                 <div className="mb-10 grid grid-cols-3 max-md:grid-cols-2 gap-5 max-md:gap-2">
                     {
                         certificate.data.map((i: any, idx: number) => (
-                            <div key={idx} className="h-40 max-sm:h-32 overflow-hidden">
+                            <Link href={`/certificates/${i.id}`} key={idx} className="h-40 max-sm:h-32 overflow-hidden">
                                 <Image
                                     className='h-full w-full object-cover rounded-md'
                                     src={i.images[0].url}
@@ -23,7 +24,7 @@ const Page = async () => {
                                     height={1000}
                                     alt="certificates"
                                 />
-                            </div>
+                            </Link>
                         ))
                     }
                 </div>

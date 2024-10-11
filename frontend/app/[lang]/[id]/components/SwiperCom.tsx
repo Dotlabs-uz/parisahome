@@ -11,7 +11,7 @@ import { LuMinus, LuPlus } from "react-icons/lu";
 
 const SwiperCom = ({ data }: any) => {
     const [swiperRef, setSwiperRef] = useState<any>(null);
-    const [scale, setScale] = useState<number>(3); // Стандартное значение масштаба
+    const [scale, setScale] = useState<number>(1); // Стандартное значение масштаба
 
     const prevHandler = () => {
         swiperRef.slidePrev();
@@ -26,7 +26,7 @@ const SwiperCom = ({ data }: any) => {
     };
 
     const decreaseScale = () => {
-        setScale((prevScale) => (prevScale > 1.5 ? prevScale - 0.5 : prevScale)); // Уменьшаем масштаб, но не меньше 0.5
+        setScale((prevScale) => (prevScale > 1 ? prevScale - 0.5 : prevScale)); // Уменьшаем масштаб, но не меньше 1
     };
 
     return (

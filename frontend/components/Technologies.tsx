@@ -68,7 +68,7 @@ const Technologies = () => {
                     <div className="grid grid-cols-3 max-md:grid-cols-2 max-xs:grid-cols-1 gap-5 max-sm:gap-y-10 mt-8 max-sm:px-5 anim-element">
                         {
                             machines.map((i: any, idx: number) => (
-                                <div key={idx} className="border-b-4 border-green hover:border-white max-sm:border-white">
+                                <Link href={`/machineries/${i.id}`} key={idx} className="border-b-4 border-green hover:border-white max-sm:border-white">
                                     <div className="w-full ">
                                         <Image
                                             className='w-full h-40 object-cover rounded-lg'
@@ -84,7 +84,7 @@ const Technologies = () => {
                                         <h3 className="text-2xl text-center">{i.name}</h3>
                                         <p className="text-base max-lg:text-sm leading-6 my-5 max-lg:my-2">{i.description}</p>
                                     </div>
-                                </div>
+                                </Link>
                             ))
                         }
                     </div>
