@@ -11,6 +11,8 @@ import NavLink from "./NavLink";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { IoMdSettings } from "react-icons/io";
+import LogOutButton from "@/components/custom/logOut";
+
 
 export default function DashboardLayout({
     children,
@@ -84,6 +86,7 @@ export default function DashboardLayout({
                             </NavLink>
                         </>
                     )}
+                    <LogOutButton />
                 </nav>
             </aside>
             <main className="flex-1 p-8 overflow-y-auto">{children}</main>
