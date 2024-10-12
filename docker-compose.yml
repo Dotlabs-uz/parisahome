@@ -7,12 +7,17 @@ services:
             - "--api.insecure=true"
             - "--providers.docker=true"
             - "--providers.docker.exposedbydefault=false"
-            - "--entryPoints.websecure.address=:80"
+            - "--entryPoints.websecure.address=:443"
+            - "--certificatesresolvers.resolver.acme.tlschallenge=true"
+            - "--certificatesresolvers.resolver.acme.email=dsarifkulo021@gmail.com"
+            - "--certificatesresolvers.resolver.acme.storage=/letsencrypt/acme.json"
         networks:
             - dropin
         ports:
             - "80:80"
+            - "443:443"
         volumes:
+            - ../volumes/letsencrypt:/letsencrypt
             - /var/run/docker.sock:/var/run/docker.sock
 
     app:
@@ -30,6 +35,7 @@ services:
             - traefik.enable=true
             - traefik.http.routers.app.entrypoints=websecure
             - traefik.http.routers.app.rule=(Host(`${HOST}`) && PathPrefix(`/`) || Host(`www.${HOST}`) && PathPrefix(`/`))
+            - traefik.http.routers.app.tls.certresolver=resolver
             - traefik.http.services.app.loadbalancer.server.port=3000
         depends_on:
             - api
@@ -50,6 +56,7 @@ services:
             - traefik.enable=true
             - traefik.http.routers.admin.entrypoints=websecure
             - traefik.http.routers.admin.rule=(Host(`${HOST}`) && PathPrefix(`/admin`) || Host(`www.${HOST}`) && PathPrefix(`/admin`))
+            - traefik.http.routers.app.tls.certresolver=resolver
             - traefik.http.services.admin.loadbalancer.server.port=3001
         depends_on:
             - api
@@ -69,6 +76,7 @@ services:
             - traefik.enable=true
             - traefik.http.routers.api.entrypoints=websecure
             - traefik.http.routers.api.rule=(Host(`${HOST}`) && PathPrefix(`/api/v1`) || Host(`www.${HOST}`) && PathPrefix(`/api/v1`))
+            - traefik.http.routers.app.tls.certresolver=resolver
             - traefik.http.services.api.loadbalancer.server.port=${PORT}
         environment:
             PORT: ${PORT}
