@@ -1,18 +1,16 @@
-import Categories from '@/components/children/Categories';
-import CataloProducts from '@/components/children/CataloProducts';
-import { Suspense } from 'react';
+import { Suspense } from "react";
+import CategoriesContainer from "./components/CategoriesContainer";
+import RenderProducts from "./components/RenderProducts";
 
 const Page = async ({ searchParams }: any) => {
-    const category = searchParams['category'] ?? 'all'
-
-    console.log(category);
-
     return (
         <div className="custom-container min-h-screen pt-14">
-            <Categories />
+            <Suspense fallback={<p>Loading...</p>}>
+                <CategoriesContainer />
+            </Suspense>
 
-            <Suspense fallback={'loading'}>
-                <CataloProducts category={category} />
+            <Suspense fallback={<p>Loading...</p>}>
+                <RenderProducts searchParams={searchParams} />
             </Suspense>
         </div>
     );

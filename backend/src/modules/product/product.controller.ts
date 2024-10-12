@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFiles, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFiles, UseGuards, Query } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ApiBearerAuth, ApiConsumes, ApiTags } from '@nestjs/swagger';
@@ -23,8 +23,8 @@ export class ProductController {
 	}
 
 	@Get()
-	async findAll() {
-		return await this.productService.findAll();
+	async findAll(@Query() query: any) {
+		return await this.productService.findAll(query);
 	}
 
 	@Get(':id')

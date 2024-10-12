@@ -4,6 +4,7 @@ import { Product } from './entities/product.entity';
 import { ImagesService } from '../images/images.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { Category } from '../category/entities/category.entity';
+import { paginateData } from 'src/common/paginateData';
 
 @Injectable()
 export class ProductService {
@@ -28,8 +29,19 @@ export class ProductService {
 		}
 	}
 
-	async findAll() {
-		return this.productModel.findAll({ include: { all: true } });
+	async findAll(query: any) {
+		const paginatedQuery = paginateData(query);
+
+		const { count, rows } = await this.productModel.findAndCountAll({
+			...paginatedQuery,
+			include: { all: true }
+		});
+
+		return {
+			page: +query.page || 1,
+			total: count,
+			data: rows
+		};
 	}
 
 	async findOne(id: number) {
