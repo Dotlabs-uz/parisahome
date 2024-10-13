@@ -1,7 +1,7 @@
 import { Op } from "sequelize";
 
 export function paginateData(data: any) {
-    const limit = +data.limit || 15;
+    const limit = +data.limit || 10;
     const page = Number(data.page) - 1 || 0;
     const offset = page * limit;
     const result = { limit, offset, where: {} };

@@ -32,10 +32,16 @@ export class ProductService {
 	async findAll(query: any) {
 		const paginatedQuery = paginateData(query);
 
-		const { count, rows } = await this.productModel.findAndCountAll({
-			...paginatedQuery,
-			include: { all: true }
-		});
+
+		const [rows, count] = await Promise.all([
+			this.productModel.findAll({
+				...paginatedQuery,
+				include: { all: true }
+			}),
+			this.productModel.count({
+				...paginatedQuery
+			})
+		]);
 
 		return {
 			page: +query.page || 1,
