@@ -11,7 +11,6 @@ const RenderProducts = async ({ searchParams }: any) => {
     if(products.status == 500){
         return "error"
     }
-    
 
     return (
         <>

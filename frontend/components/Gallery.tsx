@@ -14,7 +14,7 @@ const Gallery = () => {
     const [gallery, setGallery] = useState<any>(null);
     const sectionRef = useRef<any>(null);
 
-    const {lang} = useParams()
+    const { lang } = useParams()
 
     useEffect(() => {
         const elements = sectionRef.current?.querySelectorAll(".anim-element");
@@ -46,7 +46,7 @@ const Gallery = () => {
     }, []);
 
     useEffect(() => {
-        axios(`${process.env.NEXT_PUBLIC_API_URL}/gallery`).then((res) => {
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/gallery`).then((res) => {
             if (res.status == 200 || res.status == 201) {
                 setGallery(res.data);
             }
@@ -74,15 +74,14 @@ const Gallery = () => {
                             {gallery.slice(0, 4).map((item: any, i: number) => (
                                 <div
                                     key={item.id}
-                                    className={`${
-                                        i == 0
+                                    className={`${i == 0
                                             ? "h-[30%]"
                                             : i == 1
-                                            ? "h-[20%]"
-                                            : i == 2
-                                            ? "h-[35%]"
-                                            : "h-[25%]"
-                                    } anim-element`}
+                                                ? "h-[20%]"
+                                                : i == 2
+                                                    ? "h-[35%]"
+                                                    : "h-[25%]"
+                                        } anim-element`}
                                 >
                                     <Image
                                         className="w-full h-full object-cover rounded-lg"
@@ -99,15 +98,14 @@ const Gallery = () => {
                             {gallery.slice(4, 8).map((item: any, i: number) => (
                                 <div
                                     key={item.id}
-                                    className={`${
-                                        i == 0
+                                    className={`${i == 0
                                             ? "h-[40%]"
                                             : i == 1
-                                            ? "h-[25%]"
-                                            : i == 2
-                                            ? "h-[20%]"
-                                            : "h-[15%]"
-                                    } anim-element`}
+                                                ? "h-[25%]"
+                                                : i == 2
+                                                    ? "h-[20%]"
+                                                    : "h-[15%]"
+                                        } anim-element`}
                                 >
                                     <Image
                                         className="w-full h-full object-cover rounded-lg"
@@ -126,15 +124,14 @@ const Gallery = () => {
                                 .map((item: any, i: number) => (
                                     <div
                                         key={item.id}
-                                        className={`${
-                                            i == 0
+                                        className={`${i == 0
                                                 ? "h-[35%]"
                                                 : i == 1
-                                                ? "h-[25%]"
-                                                : i == 2
-                                                ? "h-[30%]"
-                                                : "h-[10%]"
-                                        } anim-element`}
+                                                    ? "h-[25%]"
+                                                    : i == 2
+                                                        ? "h-[30%]"
+                                                        : "h-[10%]"
+                                            } anim-element`}
                                     >
                                         <Image
                                             className="w-full h-full object-cover rounded-lg"
@@ -152,19 +149,18 @@ const Gallery = () => {
                         {gallery.slice(0, 5).map((item: any, i: number) => (
                             <div
                                 key={item.id}
-                                className={`${
-                                    i == 0
+                                className={`${i == 0
                                         ? "col-span-6 h-[150px]"
                                         : i == 1
-                                        ? "col-span-4 h-[150px]"
-                                        : i == 2
-                                        ? "col-span-10 h-[150px]"
-                                        : i == 3
-                                        ? "col-span-4 h-[150px]"
-                                        : i == 4
-                                        ? "col-span-6 h-[150px]"
-                                        : "col-span-10 h-[150px]"
-                                } anim-element`}
+                                            ? "col-span-4 h-[150px]"
+                                            : i == 2
+                                                ? "col-span-10 h-[150px]"
+                                                : i == 3
+                                                    ? "col-span-4 h-[150px]"
+                                                    : i == 4
+                                                        ? "col-span-6 h-[150px]"
+                                                        : "col-span-10 h-[150px]"
+                                    } anim-element`}
                             >
                                 <Image
                                     className="w-full h-full object-cover rounded-md"
