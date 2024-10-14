@@ -6,12 +6,11 @@ import {
 import { RiAdminFill } from "react-icons/ri";
 import { MdQuestionAnswer } from "react-icons/md";
 import { AiFillProduct } from "react-icons/ai";
-import { parseJwt } from "@/lib/utils";
 import NavLink from "./NavLink";
-import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { IoMdSettings } from "react-icons/io";
 import LogOutButton from "@/components/custom/logOut";
+import { GrGallery } from "react-icons/gr";
 
 
 export default function DashboardLayout({
@@ -20,17 +19,9 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }) {
     const cookieStore = cookies();
-    const coockied = cookieStore.get("token");
-    const resRole = cookieStore.get("role");
-
-    if (!coockied || !resRole) redirect("/admin/login");
-    const jwt = parseJwt(decodeURIComponent(coockied?.value));
+    const resRole = cookieStore.get("role") as {value:string}
 
     const role = JSON.parse(decodeURIComponent(resRole?.value));
-
-    if (jwt.exp < Date.now() / 1000) {
-        redirect("/admin/login");
-    }
 
     return (
         <div className="flex h-screen bg-gray-100">
@@ -69,6 +60,12 @@ export default function DashboardLayout({
                         Icon={<MdQuestionAnswer />}
                     >
                         FAQ
+                    </NavLink>
+                    <NavLink
+                        href="/admin/dashboard/gallery"
+                        Icon={<GrGallery />}
+                    >
+                        Gallery
                     </NavLink>
                     {role === "superAdmin" && (
                         <>

@@ -21,7 +21,7 @@ export default function LoginPage() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    const { toast } = useToast()
+    const { toast } = useToast();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -42,7 +42,7 @@ export default function LoginPage() {
             toast({
                 title: "Error!",
                 description: "Somethin went wrong.",
-                variant: "destructive"
+                variant: "destructive",
             });
             setLoading(false);
             return;
@@ -50,8 +50,14 @@ export default function LoginPage() {
 
         const data = await res.json();
 
-        await setCookies("token", data.accessToken);
-        await setCookies("role", data.role);
+        const oneDay = 24 * 60 * 60 * 1000;
+
+        await setCookies("token", data.accessToken, {
+            expires: Date.now() + oneDay,
+        });
+        await setCookies("role", data.role, {
+            expires: Date.now() + oneDay,
+        });
         setLoading(false);
         router.push("/admin/dashboard");
     };
