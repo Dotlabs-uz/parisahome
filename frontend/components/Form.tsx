@@ -1,10 +1,8 @@
-"use client"
+'use client';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import PhoneNumberInput from './children/PhoneNumberInput';
-import FlowerModal from './children/FlowerModal';
 import { TfiEmail } from 'react-icons/tfi';
 import { IoCallOutline, IoLocationOutline } from 'react-icons/io5';
 
@@ -19,12 +17,7 @@ const Form = () => {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [loading, setLoading] = useState<boolean>(false);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors },
-    } = useForm<Inputs>();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<Inputs>();
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         setLoading(true);
@@ -37,27 +30,25 @@ const Form = () => {
         }
 
         try {
-            const gRecaptchaToken = await executeRecaptcha('inquirySubmit');
-            console.log(data, gRecaptchaToken);
-            
-            const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/contact`,
-                {
-                    ...data,
-                    gRecaptchaToken,
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                }
-            );
+            const gRecaptchaToken = await executeRecaptcha('submit');
+            const response = await axios.post('/api/verify-recaptcha', { token: gRecaptchaToken });
 
-            if (response.status === 200 || response.status === 201) {
-                setSuccessMessage('Форма успешно отправлена!');
-                reset();
+            if (response.data.success) {
+                // Отправка формы на сервер, если проверка reCAPTCHA пройдена
+                const formResponse = await axios.post(
+                    `${process.env.NEXT_PUBLIC_API_URL}/contact`,
+                    { ...data, gRecaptchaToken },
+                    { headers: { 'Content-Type': 'application/json' } }
+                );
+
+                if (formResponse.status === 200 || formResponse.status === 201) {
+                    setSuccessMessage('Форма успешно отправлена!');
+                    reset();
+                } else {
+                    setSuccessMessage('Не удалось отправить форму.');
+                }
             } else {
-                setSuccessMessage('Не удалось отправить форму.');
+                setSuccessMessage('Проверка reCAPTCHA не пройдена.');
             }
         } catch (error) {
             console.error('Ошибка при отправке формы:', error);
@@ -67,21 +58,33 @@ const Form = () => {
         }
     };
 
+    // const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    //     if (!executeRecaptcha) {
+    //         console.log("ReCAPTCHA не готов к выполнению");
+    //         return;
+    //     }
+
+    //     try {
+    //         // Выполнение reCAPTCHA и вывод токена
+    //         const gRecaptchaToken = await executeRecaptcha('inquirySubmit');
+    //         console.log("reCAPTCHA Token:", gRecaptchaToken);
+    //         console.log("data:", data);
+    //         // Временная проверка токена
+    //         setSuccessMessage(`Ваш reCAPTCHA токен: ${gRecaptchaToken}`);
+    //     } catch (error) {
+    //         console.error('Ошибка reCAPTCHA:', error);
+    //     }
+    // };
+
     return (
         <div className="bg-white my-10 overflow-hidden">
             <div className="custom-container flex max-md:flex-col gap-16 max-lg:gap-5 py-20 max-md:py-10">
                 <div className="md:max-w-md w-full anim-element-left">
                     <div className="text-black mb-5 max-sm:text-center anim-element">
-                        <h2 className="text-3xl max-sm:text-2xl font-semibold">
-                            Остались вопросы?
-                        </h2>
-                        <p className="text-xl max-md:text-lg max-sm:text-base">
-                            Заполните форму и мы с вами свяжемся
-                        </p>
+                        <h2 className="text-3xl max-sm:text-2xl font-semibold">Остались вопросы?</h2>
+                        <p className="text-xl max-md:text-lg max-sm:text-base">Заполните форму и мы с вами свяжемся</p>
                     </div>
-                    {successMessage && (
-                        <p className="text-center text-lg text-green-600">{successMessage}</p>
-                    )}
+                    {successMessage && <p className="text-center text-lg text-green-600">{successMessage}</p>}
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label className="w-full mb-3 max-sm:mb-2 block anim-element">
                             <p className="mb-1">Ваше имя</p>
@@ -119,7 +122,7 @@ const Form = () => {
                                 })}
                                 placeholder="Ваш tel"
                             />
-                            {errors.telNumber && (<span className="text-[red]">Это поле обязательно</span>)}
+                            {errors.telNumber && <span className="text-[red]">Это поле обязательно</span>}
                         </label>
 
                         <label className="w-full mb-3 max-sm:mb-2 block anim-element">
@@ -167,10 +170,6 @@ const Form = () => {
                         <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element">
                             <IoLocationOutline className="text-2xl max-sm:text-[15px]" /> Konigil Samarkand 140319, Uzbekistan
                         </p>
-                    </div>
-
-                    <div className="flex items-center justify-center w-96 h-72 max-md:w-full max-md:h-60 max-md:mt-5 anim-element">
-                        <FlowerModal type={"silver"} />
                     </div>
                 </div>
             </div>

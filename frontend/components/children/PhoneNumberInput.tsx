@@ -28,8 +28,8 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ inputProps }) => {
             className="w-full py-1 px-3 rounded-md border border-yellow bg-[#D9D9D966]"
             mask={"+998-(99)-999-99-99"}
             placeholder="Напишите свой телефон"
-            // onChange={handleInputChange}
-            // alwaysShowMask={false}
+        // onChange={handleInputChange}
+        // alwaysShowMask={false}
         />
     );
 };
