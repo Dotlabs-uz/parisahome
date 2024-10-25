@@ -1,20 +1,20 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsNumber, IsPhoneNumber, IsString } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsString } from 'class-validator';
 
 export class ContactDto {
-    @ApiProperty({ description: "name" })
+    @ApiProperty({ description: 'name' })
     @IsString()
     readonly name: string;
 
-    @ApiProperty({ description: "Telephone number" })
-    @IsPhoneNumber("UZ", { message: 'Invalid phone number' })
+    @ApiProperty({ description: 'Telephone number' })
+    @IsString()
     readonly telNumber: string;
 
-    @ApiProperty({ description: "email" })
+    @ApiProperty({ description: 'email' })
     @IsEmail()
     readonly email: string;
 
-    @ApiProperty({ description: "message" })
+    @ApiProperty({ description: 'message' })
     @IsString()
-    readonly message: string
+    readonly message: string;
 }
