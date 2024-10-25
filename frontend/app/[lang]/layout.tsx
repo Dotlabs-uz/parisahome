@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Head from "next/head";
 import { Locale } from "@/i18n.config";
+import GoogleRecaptchaWrapper from "./GoogleRecaptchaWrapper";
 
 const inter = Raleway({
    weight: ["300", "400", "500", "600", '800'],
@@ -65,11 +66,13 @@ export default function RootLayout({
          </Head>
 
          <body className={inter.className}>
-            <Header lang={lang} />
-            <main>
-               {children}
-            </main>
-            <Footer />
+            <GoogleRecaptchaWrapper>
+               <Header lang={lang} />
+               <main>
+                  {children}
+               </main>
+               <Footer />
+            </GoogleRecaptchaWrapper>
          </body>
       </html>
    );
