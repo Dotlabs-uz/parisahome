@@ -15,9 +15,9 @@ export class AdminController {
     return this.adminService.signin(body);
   }
 
-  @ApiBearerAuth()
-  @UseGuards(IsAdminGuard)
-  @Roles('superAdmin')
+  // @ApiBearerAuth()
+  // @UseGuards(IsAdminGuard)
+  // @Roles('superAdmin')
   @Post('create')
   async createAdmin(@Body() body: AdminsDto) {
     return this.adminService.register(body);
