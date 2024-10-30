@@ -23,22 +23,22 @@ const WeInNumbers = () => {
                 <p className="text-green text-lg">Innovative, efficient, and reliable</p>
             </div>
 
-            <div className="flex max-sm:flex-col sm:items-center sm:justify-between gap-1">
+            <div className="grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-1">
                 <div className="w-fit px-4 py-5  border-l-2 border-yellow anim-element">
-                    <p className="text-green text-5xl font-extrabold mb-2">28K+</p>
-                    <p className="text-green text-lg">Completed Works</p>
+                    <p className="text-green text-2xl font-extrabold mb-2">95% женщин</p>
+                    <p className="text-green text-sm">в составе сотрудников</p>
                 </div>
-                <div className="w-fit px-4 py-5 max-sm:ml-auto border-l-2 border-yellow anim-element">
-                    <p className="text-green text-5xl font-extrabold mb-2">550+</p>
-                    <p className="text-green text-lg">Team Members</p>
+                <div className="w-fit max-sm:w-2/3 px-4 py-5 max-sm:ml-auto border-l-2 border-yellow anim-element">
+                    <p className="text-green text-2xl font-extrabold mb-2">3000 м³ в день</p>
+                    <p className="text-green text-sm">мощность очистных сооружений (1080 тонн в год)</p>
                 </div>
                 <div className="w-fit px-4 py-5 border-l-2 border-yellow anim-element">
-                    <p className="text-green text-5xl font-extrabold mb-2">13</p>
-                    <p className="text-green text-lg">Years of Experience</p>
+                    <p className="text-green text-2xl font-extrabold mb-2">9000 тонн в год</p>
+                    <p className="text-green text-sm">производственная мощность</p>
                 </div>
                 <div className="w-fit px-4 py-5 max-sm:ml-auto border-l-2 border-yellow anim-element">
-                    <p className="text-green text-5xl font-extrabold mb-2">99%</p>
-                    <p className="text-green text-lg">Satisfied Customers</p>
+                    <p className="text-green text-2xl font-extrabold mb-2">15+ стран</p>
+                    <p className="text-green text-sm">экспорт продукции</p>
                 </div>
             </div>
 

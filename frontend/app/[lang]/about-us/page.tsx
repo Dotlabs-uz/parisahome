@@ -16,7 +16,7 @@ const Page = () => {
                 <AboutСompany />
             </section>
 
-            <section className="w-full h-screen relative z-10 bg-[url('/images/hero-img.png')] bg-no-repeat bg-cover bg-center">
+            <section className="w-full h-screen relative z-10 bg-[url('/images/image-2.jpg')] bg-no-repeat bg-cover bg-center">
                 <ExploreServices />
             </section>
 

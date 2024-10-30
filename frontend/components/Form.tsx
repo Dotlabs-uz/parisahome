@@ -34,7 +34,6 @@ const Form = () => {
             const response = await axios.post('/api/verify-recaptcha', { token: gRecaptchaToken });
 
             if (response.data.success) {
-                // Отправка формы на сервер, если проверка reCAPTCHA пройдена
                 const formResponse = await axios.post(
                     `${process.env.NEXT_PUBLIC_API_URL}/contact`,
                     { ...data, gRecaptchaToken },

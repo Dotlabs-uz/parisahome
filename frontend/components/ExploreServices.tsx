@@ -53,7 +53,7 @@ const ExploreServices = () => {
             window.addEventListener("resize", handleResize);
 
             // Удаление обработчика при размонтировании компонента
-            return () => {
+                return () => {
                 window.removeEventListener("resize", handleResize);
 
                 // Удаление всех ScrollTrigger
@@ -64,7 +64,7 @@ const ExploreServices = () => {
 
     return (
         <>
-            <div className="absolute -z-10 top-0 left-0 w-full h-full bg-black/50" />
+            <div className="absolute -z-10 top-0 left-0 w-full h-full bg-black/60" />
             <div className="custom-container h-full w-full flex flex-col justify-around">
                 <div className="max-w-xl">
                     <Image

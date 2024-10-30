@@ -186,3 +186,7 @@ img {
 .image {
   transition: transform 0.4s ease-in-out;
 }
+
+.img-black {
+  filter: grayscale(100%);
+}

@@ -6,7 +6,6 @@ interface PhoneNumberInputProps {
     inputProps: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
-
 const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ inputProps }) => {
     const [mask, setMask] = useState('+999 99 999 9999');
 

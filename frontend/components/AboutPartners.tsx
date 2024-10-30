@@ -44,8 +44,8 @@ const AboutPartners = () => {
                         <div className="anim-element">
                             <div className="flex items-center justify-center h-72 max-xl:h-60 max-lg:h-56 max-sm:h-48 mb-7 max-lg:mb-5 rounded-md border border-white">
                                 <Image
-                                    className='w-40 max-md:w-32 max-xs:w-28 text-white'
-                                    src={"/images/partners/partner-white-1.svg"}
+                                    className='w-40 max-md:w-32 max-xs:w-28 img-black text-white'
+                                    src={"/images/partners/logo-1.webp"}
                                     width={1000}
                                     height={1000}
                                     alt='partner'
@@ -53,17 +53,15 @@ const AboutPartners = () => {
                             </div>
                             <div className="">
                                 <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>
-                                    1Password Мы заботимся о
-                                    древесинеи тщательно следим за всем
-                                    производственным процессом.
+                                    Xetma Vollenweider GmbH – Specializes in shearing and other textile finishing machines.
                                 </p>
                             </div>
                         </div>
                         <div className="anim-element">
                             <div className="flex items-center justify-center h-72 max-xl:h-60 max-lg:h-56 max-sm:h-48 mb-7 max-lg:mb-5 rounded-md border border-white">
                                 <Image
-                                    className='w-40 max-md:w-32 max-xs:w-28 text-white'
-                                    src={"/images/partners/partner-white-2.svg"}
+                                    className='w-40 max-md:w-32 max-xs:w-28 img-black text-white'
+                                    src={"/images/partners/logo-2.webp"}
                                     width={1000}
                                     height={1000}
                                     alt='partner'
@@ -71,17 +69,15 @@ const AboutPartners = () => {
                             </div>
                             <div className="">
                                 <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>
-                                    Motive - итальянский
-                                    производитель древесины, крупнейший
-                                    лидер рынка в Европе.
+                                    Toyota Industries Corporation (Airjet Looms)– Renowned for their advanced Toyota Airjet weaving machines.
                                 </p>
                             </div>
                         </div>
                         <div className="anim-element">
                             <div className="flex items-center justify-center h-72 max-xl:h-60 max-lg:h-56 max-sm:h-48 mb-7 max-lg:mb-5 rounded-md border border-white">
                                 <Image
-                                    className='w-40 max-md:w-32 max-xs:w-28 text-white'
-                                    src={"/images/partners/partner-white-3.svg"}
+                                    className='w-40 max-md:w-32 max-xs:w-28 img-black text-white'
+                                    src={"/images/partners/logo-3.webp"}
                                     width={1000}
                                     height={1000}
                                     alt='partner'
@@ -89,17 +85,15 @@ const AboutPartners = () => {
                             </div>
                             <div className="">
                                 <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>
-                                    Brex создаёт уникальную
-                                    итальянскую мебель ручной работы,
-                                    как продолж ение вашего интерьера.
+                                    Prashant Westpoint Group– A leading manufacturer of weaving and finishing machinery in India.
                                 </p>
                             </div>
                         </div>
                         <div className="anim-element">
                             <div className="flex items-center justify-center h-72 max-xl:h-60 max-lg:h-56 max-sm:h-48 mb-7 max-lg:mb-5 rounded-md border border-white">
                                 <Image
-                                    className='w-40 max-md:w-32 max-xs:w-28 text-white'
-                                    src={"/images/partners/partner-white-4.svg"}
+                                    className='w-40 max-md:w-32 max-xs:w-28 img-black text-white'
+                                    src={"/images/partners/logo-4.webp"}
                                     width={1000}
                                     height={1000}
                                     alt='partner'
@@ -107,8 +101,7 @@ const AboutPartners = () => {
                             </div>
                             <div className="">
                                 <p className='text-sm max-lg:text-xs leading-6 max-lg:leading-5 font-light text-white'>
-                                    Univision воспроизводит
-                                    мебель ушедших эпох: ампир, барокко, рококо и многие другие.
+                                    Dilmenler Tekstil Makinaları (Dilmenler Softflow Dyeing) – Manufacturer of dyeing machines, including Softflow dyeing machines.
                                 </p>
                             </div>
                         </div>
@@ -138,7 +131,7 @@ const AboutPartners = () => {
                 </div>
             </div>
 
-            <div className="custom-container flex max-md:flex-col gap-5 max-md:gap-8 py-20 max-md:py-10">
+            {/* <div className="custom-container flex max-md:flex-col gap-5 max-md:gap-8 py-20 max-md:py-10">
                 <div className="anim-element">
                     <div className=" h-[500px] max-xl:h-[400px] max-lg:h-[350px] max-md:h-[300px] relative z-10 flex flex-col justify-between p-6 max-lg:p-3 rounded-md overflow-hidden border-2 border-white">
                         <div className="w-full h-full absolute -z-10 top-0 left-0 bg-black/30"></div>
@@ -185,7 +178,7 @@ const AboutPartners = () => {
                         <p className='text-xs leading-5 md:hidden text-white'>Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией </p>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </section>
     )
 }

@@ -41,8 +41,8 @@ const AboutСompany = () => {
                 <div className="max-w-sm w-full max-lg:w-80 max-lg:h-[300px] relative anim-element">
                     <div className="absolute -z-10 top-3 -right-3 max-sm:-right-2 max-sm:top-2 w-full h-full rounded-md bg-white/30 border border-white"></div>
                     <Image
-                        className="w-full h-full object-cover rounded-md hover:translate-x-3 hover:translate-y-3 duration-500 ease-in-out"
-                        src={"/images/image.png"}
+                        className="w-full h-full object-cover rounded-md hover:translate-x-3 hover:translate-y-3 max-sm:-translate-y-2 max-sm:-translate-x-1/2 duration-500 ease-in-out"
+                        src={"/images/image.jpg"}
                         width={1000}
                         height={1000}
                         alt='img'

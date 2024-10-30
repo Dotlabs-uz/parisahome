@@ -8,9 +8,11 @@ const RenderProducts = async ({ searchParams }: any) => {
 
     const products = await getProducts(page, categoryId);
 
-    if(products.status == 500){
+    if (products.status == 500) {
         return "error"
     }
+
+    console.log(products.data[2].images);
 
     return (
         <>
