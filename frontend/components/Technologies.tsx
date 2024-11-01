@@ -5,8 +5,10 @@ import FlowerModal from './children/FlowerModal'
 import { animateElementsOnScroll } from '@/lib/animations'
 import axios from 'axios'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 const Technologies = () => {
+    const { lang } = useParams()
     const sectionRef = useRef<HTMLDivElement | null>(null)
     const [machines, setMachines] = useState([]);
 
@@ -45,7 +47,7 @@ const Technologies = () => {
                     <div className="flex items-center justify-between mb-10 anim-element">
                         <div className="w-full flex max-sm:flex-col sm:items-center justify-between gap-3">
                             <h2 className="text-3xl max-sm:text-xl text-yellow">\\ТЕХНОЛОГИИ</h2>
-                            <Link href={"/about-us"} className="w-fit text-sm max-sm:text-xs py-3 max-sm:py-2 px-8 max-sm:px-5 rounded-full border border-yellow">О КОМПАНИИ</Link>
+                            <Link href={`/${lang}/about-us`} className="w-fit text-sm max-sm:text-xs py-3 max-sm:py-2 px-8 max-sm:px-5 rounded-full border border-yellow">О КОМПАНИИ</Link>
                         </div>
                         <div className="w-56 sm:hidden anim-element">
                             {/* <FlowerModal type={"gold"} /> */}

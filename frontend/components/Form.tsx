@@ -119,7 +119,7 @@ const Form = () => {
                                     minLength: 7,
                                     pattern: /^\+?\d+$/,
                                 })}
-                                placeholder="Ваш tel"
+                                placeholder="Ваш номер"
                             />
                             {errors.telNumber && <span className="text-[red]">Это поле обязательно</span>}
                         </label>
@@ -164,7 +164,13 @@ const Form = () => {
                             <TfiEmail className="text-[18px] max-sm:text-[15px]" /> info@parisahome.com
                         </p>
                         <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element">
-                            <IoCallOutline className="text-2xl max-sm:text-[15px]" /> +998 95 411-66-66
+                            <IoCallOutline className="text-2xl max-sm:text-[15px]" /> +998 91 538 11 11
+                        </p>
+                        <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element">
+                            <IoCallOutline className="text-2xl max-sm:text-[15px]" /> +998 91 539 11 11
+                        </p>
+                        <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element">
+                            <IoCallOutline className="text-2xl max-sm:text-[15px]" /> +998 90 606 13 00 - Отдел закупок
                         </p>
                         <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element">
                             <IoLocationOutline className="text-2xl max-sm:text-[15px]" /> Konigil Samarkand 140319, Uzbekistan

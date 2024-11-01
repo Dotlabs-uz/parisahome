@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import React from 'react'
 import { SlArrowUp } from "react-icons/sl";
 
@@ -16,7 +17,7 @@ const Footer = () => {
         { link: "/en/machineries", title: "Станки" },
         { link: "/en/certificates", title: "Сертификаты" },
     ];
-
+    const { lang } = useParams()
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -64,7 +65,7 @@ const Footer = () => {
                             {
                                 links.map((i: any, idx: number) => (
                                     <li key={idx} className='text-sm font-medium '>
-                                        <Link href={i.link}>
+                                        <Link href={`/${lang}/${i.link}`}>
                                             {i.title}
                                         </Link>
                                     </li>
@@ -82,7 +83,7 @@ const Footer = () => {
 
                         <div className="">
                             <h2 className='text-5xl max-xl:text-4xl max-md:text-3xl max-sm:text-2xl max-sm:text-center mb-7 max-sm:mb-3 '>Мы всегда ищем новые партнерства и варианты</h2>
-                            <Link href={"/contacts"} className='bg-yellow w-fit m-auto max-sm:text-sm font-medium py-3 max-lg:py-2 px-10 max-lg:px-7 rounded-lg max-sm:mx-auto flex '>СВЯЗАТЬСЯ С НАМИ</Link>
+                            <Link href={`/${lang}/contacts`} className='bg-yellow w-fit m-auto max-sm:text-sm font-medium py-3 max-lg:py-2 px-10 max-lg:px-7 rounded-lg max-sm:mx-auto flex '>СВЯЗАТЬСЯ С НАМИ</Link>
                         </div>
 
                         <ul className='w-fit grid gap-x-28 gap-y-2 grid-cols-2 ml-auto max-sm:hidden m-auto'>

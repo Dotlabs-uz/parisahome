@@ -14,7 +14,7 @@ const Header = ({ lang }: any) => {
     const links = [
         { link: `/${lang}`, title: "Home" },
         { link: `/${lang}/about-us`, title: "О нас" },
-        { link: `/${lang}/catalog`, title: "Каталог" },
+        { link: `/${lang}/catalog/1`, title: "Каталог" },
         { link: `/${lang}/contacts`, title: "Контакты" },
         { link: `/${lang}/machineries`, title: "Станки" },
         { link: `/${lang}/certificates`, title: "Сертификаты" },
@@ -28,8 +28,8 @@ const Header = ({ lang }: any) => {
     const tl = useRef<any>();
 
     const isActive = (link: string) => {
-        const langPrefix = ['/ru', '/en', '/jpn', '/uz'].find(prefix => pathname.startsWith(prefix)) || '/uz';
-        const adjustedLink = link.replace(/^\/(ru|en|jpn|uz)/, langPrefix);
+        const langPrefix = ['/ru', '/en', '/jp', '/uz'].find(prefix => pathname.startsWith(prefix)) || '/uz';
+        const adjustedLink = link.replace(/^\/(ru|en|jp|uz)/, langPrefix);
         return adjustedLink === langPrefix ? pathname === langPrefix : pathname.startsWith(adjustedLink);
     };
 
@@ -94,7 +94,7 @@ const Header = ({ lang }: any) => {
             className="w-full fixed z-50 top-0 left-0 md:border-b md:border-white/40 bg-green"
         >
             <div ref={container} className="custom-container flex items-center justify-between py-3 relative z-10">
-                <Link href={`/`} className="header relative z-40">
+                <Link href={`/${lang}/`} className="header relative z-40">
                     <Image
                         className="w-24 max-lg:w-20"
                         src={"/images/logo.svg"}
@@ -142,7 +142,7 @@ const Header = ({ lang }: any) => {
                             <option value="ru" className="bg-yellow">RU</option>
                             <option value="en" className="bg-yellow">EN</option>
                             <option value="uz" className="bg-yellow">UZ</option>
-                            <option value="jpn" className="bg-yellow">JPN</option>
+                            <option value="jp" className="bg-yellow">JP</option>
                         </select>
                     </div>
                     {/* <div className="custom-select relative w-full">

@@ -3,11 +3,14 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image'
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import React, { useEffect } from 'react'
 import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
 const ExploreServices = () => {
+    const { lang } = useParams()
     useEffect(() => {
         const splitTypes = document.querySelectorAll(".text-split");
 
@@ -53,7 +56,7 @@ const ExploreServices = () => {
             window.addEventListener("resize", handleResize);
 
             // Удаление обработчика при размонтировании компонента
-                return () => {
+            return () => {
                 window.removeEventListener("resize", handleResize);
 
                 // Удаление всех ScrollTrigger
@@ -75,15 +78,15 @@ const ExploreServices = () => {
                         alt='img'
                     />
                     <div className="text-animation-container">
-                        <p className='text-split text-[56px] max-xl:text-5xl max-lg:text-4xl max-md:text-3xl leading-[50.97px]'>специализируется на полотенцах и общепромышленной продукции.</p>
+                        <p className='text-split text-[56px] max-xl:text-5xl max-lg:text-4xl max-md:text-3xl leading-[50.97px] text-white/60'>специализируется на полотенцах и общепромышленной продукции.</p>
                     </div>
                 </div>
 
                 <div className="w-full max-w-[430px] flex flex-col justify-end ml-auto">
                     <div className="text-animation-container">
-                        <p className="text-split text-sm font-light leading-[23.8px] mb-5">Parisa Home была основана в 2009 году, Наша компания также известна, как ООО Sam Rafoat Textile. В начале эта компания начала производить плющ. С 2009 года ООО Sam Rafoat Текстиль обеспечивал местные рынки своей продукцией </p>
+                        <p className="text-split text-sm font-light leading-[23.8px] mb-5 text-white/60">С 2011 года мы накапливаем опыт и подтверждаем наше качество международными сертификатами, соответствующими высоким стандартам текстильной промышленности.</p>
                     </div>
-                    <button className="w-fit max-md:text-sm font-medium py-3 max-md:py-2 px-10 max-md:px-6 max-md:m-auto rounded-lg bg-yellow text-white">ИЗУЧИТЬ УСЛУГИ</button>
+                    <Link href={`/${lang}/contacts`} className="w-fit max-md:text-sm font-medium py-3 max-md:py-2 px-10 max-md:px-6 max-md:m-auto rounded-lg bg-yellow text-white">ИЗУЧИТЬ УСЛУГИ</Link>
                 </div>
             </div>
         </>

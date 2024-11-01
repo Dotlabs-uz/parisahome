@@ -64,9 +64,9 @@ const Categories = ({ categories }: any) => {
                         onClick={() => {
                             handleClick(idx);
                             if (i.name === "all") {
-                                push(`/${lang}/catalog`);
+                                push(`/${lang}/catalog/1`);
                             } else {
-                                push(`/${lang}/catalog?categoryId=${i.id}`);
+                                push(`/${lang}/catalog/1/?categoryId=${i.id}`);
                             }
                         }}
                     >

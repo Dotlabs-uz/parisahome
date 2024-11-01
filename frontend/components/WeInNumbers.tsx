@@ -3,8 +3,6 @@ import React, { useEffect, useRef } from 'react'
 
 import { animateElementsOnScroll } from '@/lib/animations'
 
-import { LuArrowUpRight } from 'react-icons/lu'
-
 const WeInNumbers = () => {
     const sectionRef = useRef<HTMLDivElement | null>(null)
 
@@ -29,22 +27,17 @@ const WeInNumbers = () => {
                     <p className="text-green text-sm">в составе сотрудников</p>
                 </div>
                 <div className="w-fit max-sm:w-2/3 px-4 py-5 max-sm:ml-auto border-l-2 border-yellow anim-element">
-                    <p className="text-green text-2xl font-extrabold mb-2">3000 м³ в день</p>
-                    <p className="text-green text-sm">мощность очистных сооружений (1080 тонн в год)</p>
+                    <p className="text-green text-2xl font-extrabold mb-2">1080 тонн</p>
+                    <p className="text-green text-sm">Воды перерабатывается в год</p>
                 </div>
                 <div className="w-fit px-4 py-5 border-l-2 border-yellow anim-element">
-                    <p className="text-green text-2xl font-extrabold mb-2">9000 тонн в год</p>
-                    <p className="text-green text-sm">производственная мощность</p>
+                    <p className="text-green text-2xl font-extrabold mb-2">9000 тонн</p>
+                    <p className="text-green text-sm">Производится готовой продукции в год</p>
                 </div>
                 <div className="w-fit px-4 py-5 max-sm:ml-auto border-l-2 border-yellow anim-element">
-                    <p className="text-green text-2xl font-extrabold mb-2">15+ стран</p>
-                    <p className="text-green text-sm">экспорт продукции</p>
+                    <p className="text-green text-2xl font-extrabold mb-2">В 15+ стран</p>
+                    <p className="text-green text-sm">Экспортируется наши товары</p>
                 </div>
-            </div>
-
-            <div className="flex items-center m-auto w-fit mt-16 anim-element">
-                <LuArrowUpRight className="text-[38px] text-[#00EB8D]" />
-                <p className="text-3xl max-sm:text-xl text-green">86% эффективности продаж</p>
             </div>
         </div>
     )

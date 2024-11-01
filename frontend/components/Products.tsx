@@ -10,8 +10,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { animateElementsOnScroll } from "@/lib/animations";
 import axios from "axios";
+import { useParams } from "next/navigation";
 
 const Products = () => {
+    const { lang } = useParams()
     const sectionRef = useRef<HTMLDivElement | null>(null);
     const [products, setProducts] = useState<any>(null);
 
@@ -91,10 +93,10 @@ const Products = () => {
                                         {i.description}
                                     </p>
                                     <Link
-                                        href={`/${i.id}`}
+                                        href={`/${lang}/${i.id}`}
                                         className="text-sm max-sm:text-xs font-extrabold underline m-auto"
                                     >
-                                        Читать полностью
+                                        Посмотреть
                                     </Link>
                                 </div>
                             </SwiperSlide>
