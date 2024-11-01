@@ -1,20 +1,38 @@
 import { ApiProperty, PartialType } from "@nestjs/swagger";
-import { Type } from "class-transformer";
-import { IsInt, IsString } from "class-validator";
+import { IsString } from "class-validator";
 
 export class CreateMachineDto {
-    @ApiProperty({ description: "name" })
+    @ApiProperty({ description: "ruTitle" })
     @IsString()
-    readonly name: string;
+    ruTitle: string;
 
-    @ApiProperty({ description: "description" })
+    @ApiProperty({ description: "uzTitle" })
     @IsString()
-    readonly description: string;
+    uzTitle: string;
 
-    @ApiProperty({ description: "price" })
-    @IsInt()
-    @Type(() => Number)
-    readonly price: number;
+    @ApiProperty({ description: "enTitle" })
+    @IsString()
+    enTitle: string;
+
+    @ApiProperty({ description: "jpTitle" })
+    @IsString()
+    jpTitle: string;
+
+    @ApiProperty({ description: "ruDescription" })
+    @IsString()
+    ruDescription: string;
+
+    @ApiProperty({ description: "uzDescription" })
+    @IsString()
+    uzDescription: string;
+
+    @ApiProperty({ description: "enDescription" })
+    @IsString()
+    enDescription: string;
+
+    @ApiProperty({ description: "jpDescription" })
+    @IsString()
+    jpDescription: string;
 }
 
-export class UpdateMachineDto extends PartialType(CreateMachineDto) {}
+export class UpdateMachineDto extends PartialType(CreateMachineDto) { }

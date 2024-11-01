@@ -1,18 +1,24 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { CreateCertificateDto } from './dto/create-certificate.dto';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Certificate } from './entities/certificate.entity';
 import { ImagesService } from '../images/images.service';
+import { CertCategory } from '../cert-category/entities/cert-category.entity';
 
 @Injectable()
 export class CertificateService {
 	constructor(
 		@InjectModel(Certificate) private certificateModel: typeof Certificate,
+		@InjectModel(CertCategory) private certCategory: typeof CertCategory,
 		private imagesService: ImagesService
 	) { }
 
 	async create(createCertificateDto: any, file: Express.Multer.File) {
 		try {
+			const category = await this.certCategory.findByPk(createCertificateDto.categoryId);
+
+			if (!category) {
+				throw new NotFoundException('Категория не найдена');
+			}
 			const certificate = await this.certificateModel.create(createCertificateDto);
 			await this.imagesService.uploadImage(certificate.dataValues.id, file, "certificateId")
 
@@ -22,8 +28,13 @@ export class CertificateService {
 		}
 	}
 
-	async findAll() {
-		return this.certificateModel.findAll({ include: { all: true } });
+	async findAll(query: any) {
+		const { categoryId } = query;
+
+		const options = categoryId ? { where: { categoryId } } : {};
+		const certificates = await this.certificateModel.findAll(options);
+
+		return certificates;
 	}
 
 	async findOne(id: number) {

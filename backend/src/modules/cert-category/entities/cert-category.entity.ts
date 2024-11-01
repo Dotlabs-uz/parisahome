@@ -1,8 +1,9 @@
-import { Column, Model, Table, HasMany, DataType } from 'sequelize-typescript';
-import { Product } from 'src/modules/product/entities/product.entity';
 
-@Table({ tableName: 'category' })
-export class Category extends Model<Category> {
+import { Column, Model, Table, HasMany, DataType } from 'sequelize-typescript';
+import { Certificate } from 'src/modules/certificate/entities/certificate.entity';
+
+@Table({ tableName: 'cert-category' })
+export class CertCategory extends Model<CertCategory> {
   
   @Column({
     type: DataType.TEXT
@@ -24,6 +25,6 @@ export class Category extends Model<Category> {
   })
   jpTitle: string;
 
-  @HasMany(() => Product)
-  products: Product[];
+  @HasMany(() => Certificate)
+  certificates: Certificate[];
 }

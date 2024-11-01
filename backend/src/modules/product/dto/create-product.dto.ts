@@ -3,13 +3,37 @@ import { Type } from "class-transformer";
 import {IsInt, IsString} from "class-validator";
 
 export class CreateProductDto {
-    @ApiProperty({ description: "name" })
+    @ApiProperty({ description: "ruName" })
     @IsString()
-    readonly name: string;
+    ruName: string;
 
-    @ApiProperty({ description: "description" })
+    @ApiProperty({ description: "uzName" })
     @IsString()
-    readonly description: string;
+    uzName: string;
+
+    @ApiProperty({ description: "enName" })
+    @IsString()
+    enName: string;
+
+    @ApiProperty({ description: "jpName" })
+    @IsString()
+    jpName: string;
+
+    @ApiProperty({ description: "ruDescription" })
+    @IsString()
+    ruDescription: string;
+
+    @ApiProperty({ description: "uzDescription" })
+    @IsString()
+    uzDescription: string;
+
+    @ApiProperty({ description: "enDescription" })
+    @IsString()
+    enDescription: string;
+
+    @ApiProperty({ description: "jpDescription" })
+    @IsString()
+    jpDescription: string;
 
     @ApiProperty({ description: "price" })
     @IsInt()

@@ -22,6 +22,8 @@ import { Question } from './modules/question/entities/question.entity';
 import { ContactModule } from './modules/contact/contact.module';
 import { GalleryModule } from './modules/gallery/gallery.module';
 import { Gallery } from './modules/gallery/entities/gallery.entity';
+import { CertCategoryModule } from './modules/cert-category/cert-category.module';
+import { CertCategory } from './modules/cert-category/entities/cert-category.entity';
 
 @Module({
 	imports: [
@@ -38,7 +40,7 @@ import { Gallery } from './modules/gallery/entities/gallery.entity';
 			username: process.env.POSTGRES_USER,
 			password: process.env.POSTGRES_PASSWORD,
 			database: process.env.POSTGRES_DB,
-			models: [Product, Category, Certificate, Image, Admin, Machine, Question, Gallery],
+			models: [Product, Category, Certificate, Image, Admin, Machine, Question, Gallery, CertCategory],
 			autoLoadModels: true,
 			synchronize: true,
 			sync: { alter: true },
@@ -57,7 +59,8 @@ import { Gallery } from './modules/gallery/entities/gallery.entity';
 		MachinesModule,
 		QuestionModule,
 		ContactModule,
-		GalleryModule
+		GalleryModule,
+		CertCategoryModule
 	],
 	controllers: [AppController]
 })

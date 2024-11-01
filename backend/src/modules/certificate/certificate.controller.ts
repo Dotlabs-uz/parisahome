@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile, UseGuards, Query } from '@nestjs/common';
 import { CertificateService } from './certificate.service';
 import { ApiBearerAuth, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -24,8 +24,8 @@ export class CertificateController {
 	}
 
 	@Get()
-	findAll() {
-		return this.certificateService.findAll();
+	findAll(@Query() query: any) {
+		return this.certificateService.findAll(query);
 	}
 
 	@Get(':id')

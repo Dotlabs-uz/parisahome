@@ -1,4 +1,4 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 import { DataTypes } from "sequelize"
 
 @Table({ tableName: 'questions' })
@@ -11,12 +11,42 @@ export class Question extends Model<Question> {
     id: number
 
     @Column({
-        type: DataTypes.TEXT
+        type: DataType.TEXT
     })
-    question: string;
+    ruQuestion: string;
 
     @Column({
-        type: DataTypes.TEXT
+        type: DataType.TEXT
     })
-    answer: string;
+    uzQuestion: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    enQuestion: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    jpQuestion: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    ruAnswer: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    uzAnswer: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    enAnswer: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    jpAnswer: string;
 }

@@ -1,4 +1,4 @@
-import { Column, Model, Table, HasOne } from 'sequelize-typescript';
+import { Column, Model, Table, HasOne, DataType } from 'sequelize-typescript';
 import { Image } from 'src/modules/images/entities/image.entity';
 
 @Table({ tableName: 'machines' })
@@ -10,14 +10,45 @@ export class Machine extends Model<Machine> {
     })
     id: number
 
-    @Column
-    name: string;
+    @Column({
+        type: DataType.TEXT
+    })
+    ruTitle: string;
 
-    @Column
-    description: string;
+    @Column({
+        type: DataType.TEXT
+    })
+    uzTitle: string;
 
-    @Column
-    price: number;
+    @Column({
+        type: DataType.TEXT
+    })
+    enTitle: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    jpTitle: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    ruDescription: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    uzDescription: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    enDescription: string;
+
+    @Column({
+        type: DataType.TEXT
+    })
+    jpDescription: string;
 
     @HasOne(() => Image)
     image: Image;
