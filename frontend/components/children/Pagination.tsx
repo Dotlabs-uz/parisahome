@@ -1,117 +1,104 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface PaginationProps {
-    totalPages: number;
-    itemsPerPage: number;
-    onPageChange: (page: number) => void;
+    products: any;
+    searchParams: any;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ totalPages, itemsPerPage, onPageChange }) => {
-    const [currentPage, setCurrentPage] = useState<number>(1);
-    const maxVisiblePages = 5;
+const Pagination: React.FunctionComponent<PaginationProps> = ({
+    products,
+    searchParams
+}) => {
+    const [queryUrl, setQueryUrl] = useState('');
+    const params = useParams();
+    const totalPages = Math.ceil(products.total / 15);
 
-    const handlePageClick = (page: number) => {
-        setCurrentPage(page);
-        onPageChange(page);
-    };
-
-    const handleNext = () => {
-        if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
-            onPageChange(currentPage + 1);
+    useEffect(() => {
+        let url = '';
+        for (let key in searchParams) {
+            url += `&${key}=${searchParams[key]}`;
         }
-    };
+        setQueryUrl(url);
+    }, [searchParams]);
 
-    const handlePrev = () => {
-        if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
-            onPageChange(currentPage - 1);
-        }
-    };
-
-    const renderPagination = () => {
-        let pages = [];
-
-        if (totalPages <= maxVisiblePages) {
-            for (let i = 1; i <= totalPages; i++) {
-                pages.push(
-                    <div
-                        key={i}
-                        className={`w-10 h-10 flex items-center justify-center text-xl font-semibold rounded-md cursor-pointer ${i === currentPage ? 'bg-yellow text-white' : 'bg-gray-200 text-white'}`}
-                        onClick={() => handlePageClick(i)}
-                    >
-                        {i}
-                    </div>
-                );
-            }
-        } else {
-            const startPage = Math.max(1, currentPage - 2);
-            const endPage = Math.min(totalPages, currentPage + 2);
-
-            if (startPage > 1) {
-                pages.push(
-                    <div
-                        key={1}
-                        className={`w-10 h-10 max-md:w-7 max-md:h-7 flex items-center justify-center text-xl max-md:text-base font-semibold rounded-md cursor-pointer ${1 === currentPage ? 'bg-yellow text-white' : 'bg-gray-200 text-white'}`}
-                        onClick={() => handlePageClick(1)}
-                    >
-                        1
-                    </div>
-                );
-                if (startPage > 2) {
-                    pages.push(<div key="dots-start" className='w-10 h-10 max-md:w-7 max-md:h-7 flex items-center justify-center text-white'>. . .</div>);
-                }
-            }
-
-            for (let i = startPage; i <= endPage; i++) {
-                pages.push(
-                    <div
-                        key={i}
-                        className={`w-10 h-10 max-md:w-7 max-md:h-7 flex items-center justify-center text-xl max-md:text-base font-semibold rounded-md cursor-pointer ${i === currentPage ? 'bg-yellow text-white' : 'bg-gray-200 text-white'}`}
-                        onClick={() => handlePageClick(i)}
-                    >
-                        {i}
-                    </div>
-                );
-            }
-
-            if (endPage < totalPages) {
-                if (endPage < totalPages - 1) {
-                    pages.push(<div key="dots-end" className='w-10 h-10 max-md:w-7 max-md:h-7 flex items-center justify-center text-white'>. . .</div>);
-                }
-                pages.push(
-                    <div
-                        key={totalPages}
-                        className={`w-10 h-10 max-md:w-7 max-md:h-7 flex items-center justify-center text-xl max-md:text-base font-semibold rounded-md cursor-pointer ${totalPages === currentPage ? 'bg-yellow text-white' : 'bg-gray-200 text-white'}`}
-                        onClick={() => handlePageClick(totalPages)}
-                    >
-                        {totalPages}
-                    </div>
-                );
-            }
-        }
-
-        return pages;
-    };
+    const currentPage = +params.paginationPageId || 1;
 
     return (
-        <div className='w-fit flex items-center gap-2 max-sm:gap-1 mx-auto pt-20'>
-            <button
-                className='w-10 h-10 max-md:w-5 max-md:h-7 flex items-center justify-center text-xl font-semibold rounded-md cursor-pointer bg-gray-300 text-white'
-                onClick={handlePrev}
-                disabled={currentPage === 1}
-            >
-                &lt;
-            </button>
-            {renderPagination()}
-            <button
-                className='w-10 h-10 max-md:w-5 max-md:h-7 flex items-center justify-center text-xl font-semibold rounded-md cursor-pointer bg-gray-300 text-white'
-                onClick={handleNext}
-                disabled={currentPage === totalPages}
-            >
-                &gt;
-            </button>
+        <div className="flex items-center mt-10 max-sm:mt-5 gap-2 justify-center mb-10">
+            {/* Кнопка назад */}
+            {currentPage > 1 && (
+                <Link
+                    href={`/${params.lang}/catalog/${currentPage - 1}?${queryUrl}`}
+                    className="text-sm font-medium p-2 rounded border border-white text-white"
+                >
+                    Назад
+                </Link>
+            )}
+
+            {/* Первая страница */}
+            {currentPage > 2 && (
+                <>
+                    <Link
+                        href={`/${params.lang}/catalog/1?${queryUrl}`}
+                        className="text-lg font-medium px-3 py-1 rounded border border-white text-white"
+                    >
+                        1
+                    </Link>
+                    {currentPage > 3 && <span>...</span>}
+                </>
+            )}
+
+            {/* Предыдущая страница */}
+            {currentPage > 1 && (
+                <Link
+                    href={`/${params.lang}/catalog/${currentPage - 1}?${queryUrl}`}
+                    className="text-lg font-medium px-3 py-1 rounded border border-white text-white"
+                >
+                    {currentPage - 1}
+                </Link>
+            )}
+
+            {/* Текущая страница */}
+            <span className="text-lg font-medium px-3 py-1 rounded border border-yellow bg-yellow text-white">
+                {currentPage}
+            </span>
+
+            {/* Следующая страница */}
+            {currentPage < totalPages && (
+                <Link
+                    href={`/${params.lang}/catalog/${currentPage + 1}?${queryUrl}`}
+                    className="text-lg font-medium px-3 py-1 rounded border border-white text-white"
+                >
+                    {currentPage + 1}
+                </Link>
+            )}
+
+            {/* Последняя страница */}
+            {currentPage < totalPages - 1 && (
+                <>
+                    {currentPage < totalPages - 2 && <span>...</span>}
+                    <Link
+                        href={`/${params.lang}/catalog/${totalPages}?${queryUrl}`}
+                        className="text-lg font-medium px-3 py-1 rounded border border-white text-white"
+                    >
+                        {totalPages}
+                    </Link>
+                </>
+            )}
+
+            {/* Кнопка вперед */}
+            {currentPage < totalPages && (
+                <Link
+                    href={`/${params.lang}/catalog/${currentPage + 1}?${queryUrl}`}
+                    className="text-sm font-medium p-2 rounded border border-white text-white"
+                >
+                    Вперед
+                </Link>
+            )}
         </div>
     );
 };

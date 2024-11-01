@@ -10,41 +10,62 @@ gsap.registerPlugin(ScrollTrigger, CustomEase);
 const Vision = () => {
     const containerRef = useRef(null);
     const textRef = useRef<any>(null);
+    const imageRef = useRef(null);
 
     const text = "«Мы верим, что мягкость — это роскошь, которую нужно привнести в повседневность.»";
-
     const words = text.split(' ');
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Text Animation
             words.forEach((_, index) => {
                 const wordElement = textRef.current.children[index];
                 gsap.fromTo(
                     wordElement,
-                    { opacity: 0, y: 40 },
+                    { opacity: 0, y: 30 },
                     {
                         opacity: 1,
                         y: 0,
                         ease: CustomEase.create("custom", "M0,0 C0.1,0.1 0.3,1 1,1"),
+                        duration: 0.3, // Shorten duration for faster appearance
                         scrollTrigger: {
                             trigger: containerRef.current,
-                            start: `top+=200 ${-40 + index * 10}%`,
-                            end: "bottom 70%",
+                            start: `top+=200 ${-50 + index * 10}%`,
+                            end: "bottom 80%",
                             scrub: true,
                             // markers: true
                         },
                     }
                 );
             });
+
+            // Image Animation
+            gsap.fromTo(
+                imageRef.current,
+                { opacity: 0, scale: 0.6 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    ease: "power3.out",
+                    duration: 1.5,
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        scrub: true,
+                    },
+                }
+            );
         }, containerRef);
 
         return () => ctx.revert();
     }, [words]);
 
     return (
-        <div ref={containerRef} className="custom-container h-[250vh] relative">
+        <div ref={containerRef} className="custom-container h-[300vh] relative">
             <div className="h-screen sticky top-0 mx-auto">
                 <Image
+                    ref={imageRef}
                     className="w-96 max-md:w-80 select-none pointer-events-none absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
                     src={'/images/flower.svg'}
                     width={1000}
@@ -57,7 +78,7 @@ const Vision = () => {
                     className="max-w-[800px] w-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-4xl max-md:text-3xl max-sm:text-xl text-center text-white/50"
                 >
                     {words.map((word, index) => (
-                        <span key={index} className="inline-block mx-1"> {/* Добавляем отступы между словами */}
+                        <span key={index} className="inline-block mx-1">
                             {word}
                         </span>
                     ))}

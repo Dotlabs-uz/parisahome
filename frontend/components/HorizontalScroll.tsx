@@ -198,8 +198,8 @@ const HorizontalScroll: React.FC = () => {
                             <div className="custom-container h-full flex gap-20 max-md:gap-10 py-40 max-md:py-20">
                                 <div className="w-full flex flex-col text-white">
                                     <p className="text-xl mb-10 max-md:mb-5">{years}</p>
-                                    <h2 className="text-5xl mb-3">{title}</h2>
-                                    <p className="max-w-[600px] text-[17px] leading-6">{dcr}</p>
+                                    <h2 className="text-5xl max-sm:text-4xl mb-3">{title}</h2>
+                                    <p className="max-w-[600px] text-[17px] max-sm:text-sm leading-6">{dcr}</p>
                                     <div
                                         className={`w-fit mt-auto py-2 px-8 rounded-md border md:hidden duration-200 ${activeDot === index
                                             ? "bg-yellow border-yellow text-white"

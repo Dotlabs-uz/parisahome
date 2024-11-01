@@ -13,7 +13,7 @@ const getPublications = async (
     }
 
     try {
-        const res = await fetch(`${URL}?page=${page}${queryUrl}`);
+        const res = await fetch(`${URL}?page=${page}${queryUrl}`, { cache: "no-store" });
 
         return res.json();
     } catch (error) {
