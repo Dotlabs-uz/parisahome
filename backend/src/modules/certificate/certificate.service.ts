@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Certificate } from './entities/certificate.entity';
 import { ImagesService } from '../images/images.service';
 import { CertCategory } from '../cert-category/entities/cert-category.entity';
+import { FindOptions } from 'sequelize';
 
 @Injectable()
 export class CertificateService {
@@ -31,7 +32,9 @@ export class CertificateService {
 	async findAll(query: any) {
 		const { categoryId } = query;
 
-		const options = categoryId ? { where: { categoryId } } : {};
+		const options: FindOptions<Certificate> = categoryId
+			? { where: { categoryId }, include: { all: true } as const }
+			: { include: { all: true } as const };
 		const certificates = await this.certificateModel.findAll(options);
 
 		return certificates;
