@@ -33,6 +33,13 @@ export class CreateMachineDto {
     @ApiProperty({ description: "jpDescription" })
     @IsString()
     jpDescription: string;
+
+    @ApiProperty({
+        description: 'The images associated with the product',
+        type: 'string',
+        format: 'binary',
+    })
+    image: Express.Multer.File;
 }
 
 export class UpdateMachineDto extends PartialType(CreateMachineDto) { }

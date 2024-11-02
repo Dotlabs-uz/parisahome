@@ -16,12 +16,12 @@ export class MachinesController {
 	@ApiBearerAuth()
 	@UseGuards(IsAdminGuard)
 	@Roles("admin", "superAdmin")
-	@ApiBody({
-		schema: {
-			type: 'object',
-			properties: Machine,
-		},
-	})
+	// @ApiBody({
+	// 	schema: {
+	// 		type: 'object',
+	// 		properties: Machine,
+	// 	},
+	// })
 	@ApiConsumes('multipart/form-data')
 	@UseInterceptors(FileInterceptor('image', multerOptions))
 	@Post()
@@ -44,15 +44,15 @@ export class MachinesController {
 	@Roles("admin", "superAdmin")
 	@ApiParam({ name: 'id', required: true })
 	@UseInterceptors(FileInterceptor('image', multerOptions))
-	@ApiBody({
-		schema: {
-			type: 'object',
-			properties: MachineUpdate,
-		},
-	})
+	// @ApiBody({
+	// 	schema: {
+	// 		type: 'object',
+	// 		properties: MachineUpdate,
+	// 	},
+	// })
 	@ApiConsumes('multipart/form-data')
 	@Patch(':id')
-	async patch(@Body() body: any, @Param('id') id: number, @UploadedFile() file: any) {
+	async patch(@Body() body: any, @Param('id') id: number, @UploadedFile() file: Express.Multer.File) {
 		return await this.machinesService.update(id, body, file);
 	}
 
