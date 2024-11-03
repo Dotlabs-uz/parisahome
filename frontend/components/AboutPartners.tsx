@@ -2,8 +2,11 @@
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { animateElementsOnScroll } from '@/lib/animations'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 const AboutPartners = () => {
+    const { lang } = useParams()
     const sectionRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
@@ -126,7 +129,7 @@ const AboutPartners = () => {
                     </div>
                     <div className="py-7 max-md:py-5 border-t-4 border-white">
                         <p className='text-4xl max-xl:text-3xl max-lg:text-2xl max-lg:leading-6 max-sm:text-center mb-7 max-md:mb-5 text-white anim-element'>Мы всегда ищем новые партнерства и варианты сотрудничества!</p>
-                        <button className='max-sm:text-xs font-medium py-3 max-md:py-2 px-10 max-md:px-7 max-md:m-auto flex rounded-lg text-white bg-yellow anim-element'>СВЯЗАТЬСЯ С НАМИ</button>
+                        <Link href={`/${lang}/contacts`} className='w-fit max-sm:text-xs font-medium py-3 max-md:py-2 px-10 max-md:px-7 max-md:m-auto flex rounded-lg text-white bg-yellow anim-element'>СВЯЗАТЬСЯ С НАМИ</Link>
                     </div>
                 </div>
             </div>

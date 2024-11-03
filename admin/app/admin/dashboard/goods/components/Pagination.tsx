@@ -35,20 +35,19 @@ const PaginationComponent: React.FunctionComponent<PaginationProps> = ({
     goods,
     searchParams,
 }) => {
-    const categoryQuery =searchParams["categoryId"] ? `&categoryId=${searchParams["categoryId"]}` : "";
+    const categoryQuery = searchParams["categoryId"] ? `&categoryId=${searchParams["categoryId"]}` : "";
 
     const currentPage = +searchParams["page"] || 1;
     const totalPages = Math.ceil(goods.total / 10);
 
     return (
-        <Pagination className="mt-10 max-sm:mt-5">
+        <Pagination className="mt-10 max-sm:mt-5 text-black">
             <PaginationContent>
                 {currentPage > 1 && (
                     <PaginationItem>
                         <PaginationPrevious
-                            href={`/admin/admin/dashboard/goods?page=${
-                                currentPage - 1
-                            }${categoryQuery}`}
+                            href={`/admin/admin/dashboard/goods?page=${currentPage - 1
+                                }${categoryQuery}`}
                         />
                     </PaginationItem>
                 )}
@@ -71,9 +70,8 @@ const PaginationComponent: React.FunctionComponent<PaginationProps> = ({
                 {currentPage > 1 && (
                     <PaginationItem>
                         <PaginationLink
-                            href={`/admin/admin/dashboard/goods?page=${
-                                currentPage - 1
-                            }${categoryQuery}`}
+                            href={`/admin/admin/dashboard/goods?page=${currentPage - 1
+                                }${categoryQuery}`}
                         >
                             {currentPage - 1}
                         </PaginationLink>
@@ -89,9 +87,8 @@ const PaginationComponent: React.FunctionComponent<PaginationProps> = ({
                 {currentPage < totalPages && (
                     <PaginationItem>
                         <PaginationLink
-                            href={`/admin/admin/dashboard/goods?page=${
-                                currentPage + 1
-                            }${categoryQuery}`}
+                            href={`/admin/admin/dashboard/goods?page=${currentPage + 1
+                                }${categoryQuery}`}
                         >
                             {currentPage + 1}
                         </PaginationLink>
@@ -119,9 +116,8 @@ const PaginationComponent: React.FunctionComponent<PaginationProps> = ({
                             // translations={
                             //     translations[params.lang === "en" ? 0 : 1]
                             // }
-                            href={`/admin/admin/dashboard/goods?page=${
-                                currentPage + 1
-                            }${categoryQuery}`}
+                            href={`/admin/admin/dashboard/goods?page=${currentPage + 1
+                                }${categoryQuery}`}
                         />
                     </PaginationItem>
                 )}

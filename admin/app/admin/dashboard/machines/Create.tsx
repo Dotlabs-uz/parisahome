@@ -12,7 +12,7 @@ import action from "../../actions";
 export default function MachinesForm({ token }: { token: string }) {
     const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-    const {toast} = useToast()
+    const { toast } = useToast();
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -24,14 +24,14 @@ export default function MachinesForm({ token }: { token: string }) {
             reader.readAsDataURL(file);
         }
     };
-    const handleSubmit = async (e: any) => {
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Создаем FormData объект для отправки
-        const formData = new FormData(e.target);
+        // Create FormData object for submission
+        const formData = new FormData(e.currentTarget);
 
         try {
-            formData.append("name", "");
             const response = await fetch(
                 process.env.NEXT_PUBLIC_API_URL + "/machines",
                 {
@@ -46,24 +46,24 @@ export default function MachinesForm({ token }: { token: string }) {
             if (response.ok) {
                 toast({
                     title: "Success!",
-                    description: "Machines successfully added!",
+                    description: "Machine successfully added!",
                 });
-                e.target.reset(); 
-                setImagePreview(null)
-                action("machines")
+                e.currentTarget.reset();
+                setImagePreview(null);
+                action("machines");
             } else {
                 toast({
                     title: "Error!",
-                    description: "Error while adding machines.",
-                    variant:"destructive"
+                    description: "Error while adding machine.",
+                    variant: "destructive",
                 });
             }
         } catch (error) {
             console.error("Error:", error);
             toast({
                 title: "Error!",
-                description: "Failed to send machines data.",
-                variant:"destructive"
+                description: "Failed to send machine data.",
+                variant: "destructive",
             });
         }
     };
@@ -81,33 +81,69 @@ export default function MachinesForm({ token }: { token: string }) {
                     encType="multipart/form-data"
                     className="space-y-6"
                 >
+                    {/* Title Inputs for Different Languages */}
                     <div className="space-y-2">
-                        <Label htmlFor="title">Title</Label>
+                        <Label htmlFor="title_ru">Title (RU)</Label>
                         <Input
-                            id="title"
-                            name="title"
-                            placeholder="Enter machines title"
+                            id="title_ru"
+                            name="ruTitle"
+                            placeholder="Enter machine title in Russian"
+                            required
+                        />
+                        <Label htmlFor="title_uz">Title (UZ)</Label>
+                        <Input
+                            id="title_uz"
+                            name="uzTitle"
+                            placeholder="Enter machine title in Uzbek"
+                            required
+                        />
+                        <Label htmlFor="title_en">Title (EN)</Label>
+                        <Input
+                            id="title_en"
+                            name="enTitle"
+                            placeholder="Enter machine title in English"
+                            required
+                        />
+                        <Label htmlFor="title_jp">Title (JP)</Label>
+                        <Input
+                            id="title_jp"
+                            name="jpTitle"
+                            placeholder="Enter machine title in Japanese"
                             required
                         />
                     </div>
 
+                    {/* Description Inputs for Different Languages */}
                     <div className="space-y-2">
-                        <Label htmlFor="price">Price</Label>
-                        <Input
-                            id="price"
-                            name="price"
-                            placeholder="Enter machines price"
-                            defaultValue={0}
-                            required
-                        />
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="description">Description</Label>
+                        <Label htmlFor="description_ru">Description (RU)</Label>
                         <Textarea
-                            id="description"
-                            name="description"
-                            placeholder="Enter machines description"
+                            id="description_ru"
+                            name="ruDescription"
+                            placeholder="Enter machine description in Russian"
+                            required
+                            className="min-h-[100px]"
+                        />
+                        <Label htmlFor="description_uz">Description (UZ)</Label>
+                        <Textarea
+                            id="description_uz"
+                            name="uzDescription"
+                            placeholder="Enter machine description in Uzbek"
+                            required
+                            className="min-h-[100px]"
+                        />
+                        <Label htmlFor="description_en">Description (EN)</Label>
+                        <Textarea
+                            id="description_en"
+                            name="enDescription"
+                            placeholder="Enter machine description in English"
+                            required
+                            className="min-h-[100px]"
+                        />
+                        <Label htmlFor="description_jp">Description (JP)</Label>
+                        <Textarea
+                            id="description_jp"
+                            name="jpDescription"
+                            placeholder="Enter machine description in Japanese"
                             required
                             className="min-h-[100px]"
                         />
@@ -133,7 +169,7 @@ export default function MachinesForm({ token }: { token: string }) {
                             <div className="mt-2 relative aspect-video rounded-lg overflow-hidden border border-gray-200">
                                 <img
                                     src={imagePreview}
-                                    alt="Machines preview"
+                                    alt="Machine preview"
                                     className="object-cover w-full h-full"
                                 />
                             </div>
@@ -141,7 +177,7 @@ export default function MachinesForm({ token }: { token: string }) {
                     )}
 
                     <Button type="submit" className="w-full">
-                        <PlusCircle className="mr-2 h-4 w-4" /> Add Machines
+                        <PlusCircle className="mr-2 h-4 w-4" /> Add Machine
                     </Button>
                 </form>
             </CardContent>

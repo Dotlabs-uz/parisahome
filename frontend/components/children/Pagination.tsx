@@ -15,7 +15,7 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({
 }) => {
     const [queryUrl, setQueryUrl] = useState('');
     const params = useParams();
-    const totalPages = Math.ceil(products.total / 15);
+    const totalPages = Math.ceil(products.total / 10);
 
     useEffect(() => {
         let url = '';

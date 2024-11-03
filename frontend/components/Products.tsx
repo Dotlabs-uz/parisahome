@@ -2,15 +2,16 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import axios from "axios";
+
+import { animateElementsOnScroll } from "@/lib/animations";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import { animateElementsOnScroll } from "@/lib/animations";
-import axios from "axios";
-import { useParams } from "next/navigation";
 
 const Products = () => {
     const { lang } = useParams()

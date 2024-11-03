@@ -15,7 +15,6 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
    return (
       <>
          <section className="relative mt-14">
-            {/* <Hero /> */}
             <HeroVideo />
          </section>
 

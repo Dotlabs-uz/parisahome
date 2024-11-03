@@ -4,7 +4,7 @@ import Questions from "./Questions";
 import { cookies } from "next/headers";
 import QuestionForm from "./Create";
 
-interface pageProps {}
+interface pageProps { }
 
 const page: React.FC<pageProps> = async () => {
     const res = await fetch(process.env.API_URL + "/question", {
@@ -28,7 +28,7 @@ const page: React.FC<pageProps> = async () => {
                 <QuestionForm token={token} />
                 <div className="w-full">
                     <h2 className="text-2xl my-2">List of questions</h2>
-                    <div className="grid grid-cols-2 gap-2 w-full">
+                    <div className="grid grid-cols-1 gap-2 w-full">
                         {question.map((item: any, index: number) => (
                             <Questions key={index} item={item} />
                         ))}

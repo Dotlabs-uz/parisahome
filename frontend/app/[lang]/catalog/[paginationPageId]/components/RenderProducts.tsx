@@ -5,6 +5,8 @@ import Link from "next/link";
 
 const RenderProducts = async ({ searchParams, params }: any) => {
     const categoryId = searchParams["categoryId"]
+    const productName = `${params.lang}Name`;
+    const productDescription = `${params.lang}Description`;
 
     const products = await getProducts(+params.paginationPageId, categoryId);
 
@@ -41,10 +43,11 @@ const RenderProducts = async ({ searchParams, params }: any) => {
                                         <div className="mt-1.5 px-2 text-white">
                                             <div className="flex items-center justify-between">
                                                 <p className="font-semibold">
-                                                    {i.name.toLocaleString("uz")}
+                                                    {i[productName]}
                                                 </p>
-                                                <p>{i.price} сум</p>
+                                                <p>{i.price} $</p>
                                             </div>
+                                            <p>{i[productDescription]}</p>
                                         </div>
                                     </div>
                                 </Link>

@@ -19,7 +19,7 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }) {
     const cookieStore = cookies();
-    const resRole = cookieStore.get("role") as {value:string}
+    const resRole = cookieStore.get("role") as { value: string }
 
     const role = JSON.parse(decodeURIComponent(resRole?.value));
 
@@ -48,6 +48,12 @@ export default function DashboardLayout({
                         Icon={<TbCalendarCog />}
                     >
                         Certificates
+                    </NavLink>
+                    <NavLink
+                        href="/admin/dashboard/cert-category"
+                        Icon={<TbCategoryFilled />}
+                    >
+                        Certificates Categories
                     </NavLink>
                     <NavLink
                         href="/admin/dashboard/machines"

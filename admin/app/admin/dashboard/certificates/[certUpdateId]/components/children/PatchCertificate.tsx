@@ -13,36 +13,34 @@ import { useRouter } from "next/navigation";
 
 interface Props {
     id: number;
-    good: {
-        ruName: string;
-        enName: string;
-        uzName: string;
-        jpName: string;
+    certificate: {
+        ruTitle: string;
+        enTitle: string;
+        uzTitle: string;
+        jpTitle: string;
         ruDescription: string;
         enDescription: string;
         uzDescription: string;
         jpDescription: string;
         categoryId: number;
-        price: string
     };
     categories: { id: number; name: string }[];
 }
 
-interface GoodForm {
-    ruName: string;
-    enName: string;
-    uzName: string;
-    jpName: string;
+interface CertificateForm {
+    ruTitle: string;
+    enTitle: string;
+    uzTitle: string;
+    jpTitle: string;
     ruDescription: string;
     enDescription: string;
     uzDescription: string;
     jpDescription: string;
     categoryId: number;
-    images: File[];
-    price: string
+    image: File[];
 }
 
-export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
+export const PatchCertificate: React.FC<Props> = ({ id, certificate, categories }) => {
     const [previewImages, setPreviewImages] = useState<string[]>([]);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -55,47 +53,45 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
         reset,
         setValue,
         formState: { isSubmitting },
-    } = useForm<GoodForm>();
+    } = useForm<CertificateForm>();
 
     useEffect(() => {
         reset({
-            ruName: good.ruName,
-            enName: good.enName,
-            uzName: good.uzName,
-            jpName: good.jpName,
-            ruDescription: good.ruDescription,
-            enDescription: good.enDescription,
-            uzDescription: good.uzDescription,
-            jpDescription: good.jpDescription,
-            categoryId: good.categoryId,
-            price: good.price,
+            ruTitle: certificate.ruTitle,
+            enTitle: certificate.enTitle,
+            uzTitle: certificate.uzTitle,
+            jpTitle: certificate.jpTitle,
+            ruDescription: certificate.ruDescription,
+            enDescription: certificate.enDescription,
+            uzDescription: certificate.uzDescription,
+            jpDescription: certificate.jpDescription,
+            categoryId: certificate.categoryId,
         });
-    }, [good, reset]);
+    }, [certificate, reset]);
 
-    const onSubmit = async (formData: GoodForm) => {
+    const onSubmit = async (formData: CertificateForm) => {
         try {
             const token = await getCookies("token");
 
             const data = new FormData();
-            data.append("ruName", formData.ruName);
-            data.append("enName", formData.enName);
-            data.append("uzName", formData.uzName);
-            data.append("jpName", formData.jpName);
+            data.append("ruTitle", formData.ruTitle);
+            data.append("enTitle", formData.enTitle);
+            data.append("uzTitle", formData.uzTitle);
+            data.append("jpTitle", formData.jpTitle);
             data.append("ruDescription", formData.ruDescription);
             data.append("enDescription", formData.enDescription);
             data.append("uzDescription", formData.uzDescription);
             data.append("jpDescription", formData.jpDescription);
             data.append("categoryId", formData.categoryId.toString());
-            data.append("price", formData.price);
 
-            if (formData.images) {
-                Array.from(formData.images).forEach((file) => {
-                    data.append("images", file);
+            if (formData.image) {
+                Array.from(formData.image).forEach((file) => {
+                    data.append("image", file);
                 });
             }
 
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/product/${id}`,
+                `${process.env.NEXT_PUBLIC_API_URL}/certificate/${id}`,
                 {
                     method: "PATCH",
                     headers: {
@@ -107,9 +103,9 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
 
             if (res.status === 200 || res.status === 201) {
                 reset();
-                callMessage("default", "Product updated successfully");
-                action("product");
-                push("/admin/dashboard/goods");
+                callMessage("default", "Certificate updated successfully");
+                action("certificate");
+                push("/admin/dashboard/certificates");
             }
         } catch (err: any) {
             console.error(err);
@@ -122,7 +118,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
         if (files) {
             const fileArray = Array.from(files);
             setPreviewImages(fileArray.map((file) => URL.createObjectURL(file)));
-            setValue("images", fileArray);
+            setValue("image", fileArray);
         }
     };
 
@@ -135,10 +131,10 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                 </Label>
                 <Input
                     id="ruName"
-                    {...register("ruName")}
+                    {...register("ruTitle")}
                     type="text"
                     className="block w-full p-2 border border-black text-black rounded"
-                    placeholder="Product Name (Russian)"
+                    placeholder="Certificate Name (Russian)"
                 />
             </div>
 
@@ -148,10 +144,10 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                 </Label>
                 <Input
                     id="enName"
-                    {...register("enName")}
+                    {...register("enTitle")}
                     type="text"
                     className="block w-full p-2 border border-black text-black rounded"
-                    placeholder="Product Name (English)"
+                    placeholder="Certificate Name (English)"
                 />
             </div>
 
@@ -161,10 +157,10 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                 </Label>
                 <Input
                     id="uzName"
-                    {...register("uzName")}
+                    {...register("uzTitle")}
                     type="text"
                     className="block w-full p-2 border border-black text-black rounded"
-                    placeholder="Product Name (Uzbek)"
+                    placeholder="Certificate Name (Uzbek)"
                 />
             </div>
 
@@ -174,10 +170,10 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                 </Label>
                 <Input
                     id="jpName"
-                    {...register("jpName")}
+                    {...register("jpTitle")}
                     type="text"
                     className="block w-full p-2 border border-black text-black rounded"
-                    placeholder="Product Name (Japanese)"
+                    placeholder="Certificate Name (Japanese)"
                 />
             </div>
 
@@ -190,7 +186,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                     id="ruDescription"
                     {...register("ruDescription")}
                     className="block w-full p-2 border border-black text-black rounded"
-                    placeholder="Product Description (Russian)"
+                    placeholder="Certificate Description (Russian)"
                 />
             </div>
 
@@ -202,7 +198,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                     id="enDescription"
                     {...register("enDescription")}
                     className="block w-full p-2 border border-black text-black rounded"
-                    placeholder="Product Description (English)"
+                    placeholder="Certificate Description (English)"
                 />
             </div>
 
@@ -214,7 +210,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                     id="uzDescription"
                     {...register("uzDescription")}
                     className="block w-full p-2 border border-black text-black rounded"
-                    placeholder="Product Description (Uzbek)"
+                    placeholder="Certificate Description (Uzbek)"
                 />
             </div>
 
@@ -226,20 +222,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                     id="jpDescription"
                     {...register("jpDescription")}
                     className="block w-full p-2 border border-black text-black rounded"
-                    placeholder="Product Description (Japanese)"
-                />
-            </div>
-
-            <div>
-                <Label htmlFor="price" className="block mb-2 text-sm font-medium text-black">
-                    Цена
-                </Label>
-                <Input
-                    id="price"
-                    {...register("price")}
-                    type="text"
-                    className="block w-full p-2 border border-black text-black rounded"
-                    placeholder="Product Name (Japanese)"
+                    placeholder="Certificate Description (Japanese)"
                 />
             </div>
 
@@ -270,7 +253,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                     type="file"
                     id="images"
                     multiple
-                    {...register("images")}
+                    {...register("image")}
                     onChange={handleFileChange}
                     ref={fileInputRef}
                     className="block w-full text-sm text-gray-500"
@@ -296,7 +279,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                 className="px-4 py-2 bg-blue-500 text-white rounded"
                 disabled={isSubmitting}
             >
-                {isSubmitting ? "Updating..." : "Update Product"}
+                {isSubmitting ? "Updating..." : "Update Certificate"}
             </button>
         </form>
     );

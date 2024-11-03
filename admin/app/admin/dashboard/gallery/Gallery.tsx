@@ -16,6 +16,7 @@ import Image from "next/image";
 import React from "react";
 import action from "../../actions";
 import { useToast } from "@/hooks/use-toast";
+import Link from "next/link";
 
 interface GalleryProps {
     item: any;
@@ -56,6 +57,12 @@ const Gallery: React.FC<GalleryProps> = ({ item, token, index }) => {
         <div className="w-full rounded overflow-hidden shadow-lg bg-white p-3 border">
             <div className="w-full flex justify-between items-center gap-2 mb-2">
                 <p>{index + 1}.</p>
+                <Link
+                    href={`/admin/dashboard/gallery/${item.id}`}
+                    className="px-6 py-1.5 rounded-md border border-gray-300 hover:bg-gray-100 duration-200"
+                >
+                    Edit
+                </Link>
                 <AlertDialog>
                     <AlertDialogTrigger asChild>
                         <Button variant="destructive">Delete</Button>

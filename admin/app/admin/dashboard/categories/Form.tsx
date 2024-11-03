@@ -9,23 +9,31 @@ import { useState } from "react";
 export default function AddForm({
 	token,
 }: {
-	token: string
+	token: string;
 }) {
 	const [loading, setLoading] = useState(false);
-	const [name, setName] = useState("");
+	const [ruTitle, setRuTitle] = useState("");
+	const [enTitle, setEnTitle] = useState("");
+	const [uzTitle, setUzTitle] = useState("");
+	const [jpTitle, setJpTitle] = useState("");
 
-	const {toast} = useToast()
+	const { toast } = useToast();
 
-	async function handleSubmit(event: any) {
+	async function handleSubmit(event: React.FormEvent) {
 		event.preventDefault();
 		setLoading(true);
 
 		try {
 			const res = await fetch(
-				process.env.NEXT_PUBLIC_API_URL + "/category",
+				`${process.env.NEXT_PUBLIC_API_URL}/category`,
 				{
-					method: "post",
-					body: JSON.stringify({ name: name }),
+					method: "POST",
+					body: JSON.stringify({
+						ruTitle,
+						enTitle,
+						uzTitle,
+						jpTitle,
+					}),
 					headers: {
 						"Content-Type": "application/json",
 						Authorization: `Bearer ${token}`,
@@ -36,35 +44,70 @@ export default function AddForm({
 			if (!res.ok) {
 				toast({
 					title: "Error!",
-					description: `Somethin went wrong!`,
-					variant:"destructive"
+					description: "Something went wrong!",
+					variant: "destructive",
 				});
 				return;
 			}
+
+			toast({
+				title: "Success!",
+				description: "Category added successfully.",
+				variant: "default",
+			});
+
+			// Clear input fields on success
+			setRuTitle("");
+			setEnTitle("");
+			setUzTitle("");
+			setJpTitle("");
+
+			// Optionally perform any additional action
 			action("/category");
 		} catch (e: any) {
 			toast({
 				title: "Error!",
-				description: `${e.message}`,
-				variant:"destructive"
+				description: e.message || "Something went wrong!",
+				variant: "destructive",
 			});
+		} finally {
+			setLoading(false);
 		}
-
-		setLoading(false);
 	}
+
 	return (
-		<form onSubmit={handleSubmit} className="mb-3 flex px-4">
+		<form onSubmit={handleSubmit} className="mb-3 grid grid-cols-2 gap-3 px-4">
 			<Input
 				type="text"
-				placeholder="category"
-				className={`mb-3 rounded-r-none rounded-l-lg`}
-				name="name"
-				value={name}
-				onChange={(e) => setName(e.target.value)}
+				placeholder="category ru"
+				className="rounded-lg"
+				value={ruTitle}
+				onChange={(e) => setRuTitle(e.target.value)}
+			/>
+			<Input
+				type="text"
+				placeholder="category en"
+				className="rounded-lg"
+				value={enTitle}
+				onChange={(e) => setEnTitle(e.target.value)}
+			/>
+			<Input
+				type="text"
+				placeholder="category uz"
+				className="rounded-lg"
+				value={uzTitle}
+				onChange={(e) => setUzTitle(e.target.value)}
+			/>
+			<Input
+				type="text"
+				placeholder="category jp"
+				className="rounded-lg"
+				value={jpTitle}
+				onChange={(e) => setJpTitle(e.target.value)}
 			/>
 			<Button
 				variant="outline"
-				className="w-36 rounded-r-lg rounded-l-none "
+				className="w-fit rounded-lg"
 				type="submit"
 			>
 				{loading ? "Loading..." : "Add category"}

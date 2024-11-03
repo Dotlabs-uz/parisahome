@@ -1,11 +1,8 @@
 "use client"
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import React from 'react'
 import { SlArrowUp } from "react-icons/sl";
 
 const Footer = () => {

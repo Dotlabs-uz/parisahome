@@ -1,7 +1,6 @@
 "use client"
 import { Suspense, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import FlowerModal from './children/FlowerModal'
 import { animateElementsOnScroll } from '@/lib/animations'
 import axios from 'axios'
 import Link from 'next/link'

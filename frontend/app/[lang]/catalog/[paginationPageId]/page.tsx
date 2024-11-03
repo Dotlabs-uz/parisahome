@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import CategoriesContainer from "./components/CategoriesContainer";
 import RenderProducts from "./components/RenderProducts";
-import Pagination from "@/components/children/Pagination";
 
 const Page = ({ searchParams, params }: any) => {
     return (

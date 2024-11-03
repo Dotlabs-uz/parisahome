@@ -63,10 +63,10 @@ export const columns: ColumnDef<GoodItemType>[] = [
         ),
     },
     {
-        accessorKey: "name",
+        accessorKey: "ruName",
         header: "Name",
         cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("name")}</div>
+            <div className="capitalize">{row.getValue("ruName")}</div>
         ),
     },
     {
@@ -87,7 +87,7 @@ export const columns: ColumnDef<GoodItemType>[] = [
         cell: ({ row }) => {
             const payment: any = row.original;
 
-            return <div className="lowercase">{payment.category.name}</div>;
+            return <div className="lowercase">{payment.category.ruTitle}</div>;
         },
     },
     {
@@ -105,7 +105,7 @@ export const columns: ColumnDef<GoodItemType>[] = [
                             alt=""
                             width={50}
                             height={50}
-                            className="h-10 w-10 rounded-md"
+                            className="rounded-md object-cover"
                         />
                     ))}
                 </div>
@@ -189,7 +189,7 @@ export function GoodsTable({ goods: { data } }: { goods: GoodsType }) {
                     Goods List
                 </h2>
             </div>
-            <div className="rounded-md border">
+            <div className="rounded-md border text-black">
                 <Table>
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
@@ -200,10 +200,10 @@ export function GoodsTable({ goods: { data } }: { goods: GoodsType }) {
                                             {header.isPlaceholder
                                                 ? null
                                                 : flexRender(
-                                                      header.column.columnDef
-                                                          .header,
-                                                      header.getContext()
-                                                  )}
+                                                    header.column.columnDef
+                                                        .header,
+                                                    header.getContext()
+                                                )}
                                         </TableHead>
                                     );
                                 })}

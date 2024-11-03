@@ -18,6 +18,7 @@ import Image from "next/image";
 import React from "react";
 import action from "../../actions";
 import { useToast } from "@/hooks/use-toast";
+import Link from "next/link";
 
 interface CertificateProps {
     item: any;
@@ -56,6 +57,13 @@ const Certificate: React.FC<CertificateProps> = ({ item, token }) => {
     return (
         <div className="w-full rounded overflow-hidden shadow-lg bg-white p-3 border">
             <div className="w-full flex justify-end items-center gap-2 mb-2">
+                <Link
+                    href={`/admin/dashboard/certificates/${item.id}`}
+                    className="px-6 py-1.5 rounded-md border border-gray-300 hover:bg-gray-100 duration-200"
+                >
+                    Edit
+                </Link>
+
                 <AlertDialog>
                     <AlertDialogTrigger asChild>
                         <Button variant="destructive">Delete</Button>
@@ -84,13 +92,13 @@ const Certificate: React.FC<CertificateProps> = ({ item, token }) => {
                 className="w-full h-48 object-cover bg-gray-200"
                 unoptimized={true}
                 src={item.images[0].url}
-                alt={item.title}
+                alt={item.ruTitle}
                 width={200}
                 height={200}
             />
             <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">{item.title}</div>
-                <p className="text-gray-700 text-base">{item.description}</p>
+                <div className="font-bold text-lg mb-1">{item.ruTitle}</div>
+                <p className="text-gray-700 text-sm">{item.ruDescription}</p>
             </div>
         </div>
     );

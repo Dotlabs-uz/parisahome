@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -8,10 +8,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { PlusCircle } from "lucide-react";
 import action from "../../actions";
 import { useToast } from "@/hooks/use-toast";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function CertificateForm({ token }: { token: string }) {
     const [imagePreview, setImagePreview] = useState<string | null>(null);
-
+    const [sertCategories, setSertCategories] = useState([]);
     const { toast } = useToast();
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,10 +25,10 @@ export default function CertificateForm({ token }: { token: string }) {
             reader.readAsDataURL(file);
         }
     };
+
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
-        // Создаем FormData объект для отправки
         const formData = new FormData(e.target);
 
         try {
@@ -66,6 +67,15 @@ export default function CertificateForm({ token }: { token: string }) {
         }
     };
 
+    useEffect(() => {
+        fetch(process.env.NEXT_PUBLIC_API_URL + "/cert-category")
+            .then((res) => res.json())
+            .then((res) => setSertCategories(res));
+    }, []);
+
+    console.log(sertCategories);
+
+
     return (
         <Card className="w-full mx-auto">
             <CardHeader>
@@ -80,25 +90,99 @@ export default function CertificateForm({ token }: { token: string }) {
                     className="space-y-6"
                 >
                     <div className="space-y-2">
-                        <Label htmlFor="title">Title</Label>
+                        <Label htmlFor="ruTitle">RU Title</Label>
                         <Input
-                            id="title"
-                            name="title"
+                            id="ruTitle"
+                            name="ruTitle"
+                            placeholder="Enter certificate title"
+                            required
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="enTitle">EN Title</Label>
+                        <Input
+                            id="enTitle"
+                            name="enTitle"
+                            placeholder="Enter certificate title"
+                            required
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="uzTitle">UZ Title</Label>
+                        <Input
+                            id="uzTitle"
+                            name="uzTitle"
+                            placeholder="Enter certificate title"
+                            required
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="jpTitle">JP Title</Label>
+                        <Input
+                            id="jpTitle"
+                            name="jpTitle"
                             placeholder="Enter certificate title"
                             required
                         />
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="description">Description</Label>
+                        <Label htmlFor="ruDescription">RU Description</Label>
                         <Textarea
-                            id="description"
-                            name="description"
+                            id="ruDescription"
+                            name="ruDescription"
                             placeholder="Enter certificate description"
                             required
                             className="min-h-[100px]"
                         />
                     </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="enDescription">EN Description</Label>
+                        <Textarea
+                            id="enDescription"
+                            name="enDescription"
+                            placeholder="Enter certificate description"
+                            required
+                            className="min-h-[100px]"
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="uzDescription">UZ Description</Label>
+                        <Textarea
+                            id="uzDescription"
+                            name="uzDescription"
+                            placeholder="Enter certificate description"
+                            required
+                            className="min-h-[100px]"
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="jpDescription">JP Description</Label>
+                        <Textarea
+                            id="jpDescription"
+                            name="jpDescription"
+                            placeholder="Enter certificate description"
+                            required
+                            className="min-h-[100px]"
+                        />
+                    </div>
+                    <Select name="categoryId">
+                        <SelectTrigger className="w-full text-gray-500">
+                            <SelectValue placeholder="Select Category" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {sertCategories &&
+                                sertCategories.map((item: any) => (
+                                    <SelectItem
+                                        className="text-black"
+                                        key={item.id}
+                                        value={`${item.id}`}
+                                    >
+                                        {item.ruTitle}
+                                    </SelectItem>
+                                ))}
+                        </SelectContent>
+                    </Select>
 
                     <div className="space-y-2">
                         <Label htmlFor="image">Upload Image</Label>

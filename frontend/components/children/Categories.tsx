@@ -10,6 +10,8 @@ const Categories = ({ categories }: any) => {
     const sectionRef = useRef<HTMLDivElement | null>(null);
     const { replace, push } = useRouter();
     const { lang } = useParams();
+    const categoryTitle = `${lang}Title`;
+
 
     const handleClick = (index: number) => {
         setActiveIndex(index);
@@ -56,21 +58,21 @@ const Categories = ({ categories }: any) => {
             </div>
 
             <div className="anim-element w-full relative flex items-center max-sm:grid grid-cols-2 gap-2 pb-5 mb-5 max-md:mb-3">
-                {[{ name: "all" }, ...categories].map((i: any, idx: number) => (
+                {[{ ruTitle: "Все", uzTitle: "Hammasi", enTitle: "all", jpTitle: "全て" }, ...categories].map((i: any, idx: number) => (
                     <button
                         key={idx}
                         ref={(el: any) => (categoryRefs.current[idx] = el)}
                         className={`text-sm font-semibold text-center py-1.5 px-4 max-sm:px-3 max-sm:py-1.5 rounded-full cursor-pointer border border-yellow text-yellow duration-150`}
                         onClick={() => {
                             handleClick(idx);
-                            if (i.name === "all") {
+                            if (i.ruTitle === "Все") {
                                 push(`/${lang}/catalog/1`);
                             } else {
                                 push(`/${lang}/catalog/1/?categoryId=${i.id}`);
                             }
                         }}
                     >
-                        {i.name}
+                        {i[categoryTitle]}
                     </button>
                 ))}
             </div>

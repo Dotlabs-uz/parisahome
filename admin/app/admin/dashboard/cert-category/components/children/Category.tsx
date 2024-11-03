@@ -43,7 +43,7 @@ export default function Category({
         try {
             setIsProcessing(true);
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/category/${item.id}`,
+                `${process.env.NEXT_PUBLIC_API_URL}/cert-category/${item.id}`,
                 {
                     method: "PATCH",
                     body: JSON.stringify(updatedData),
@@ -63,7 +63,7 @@ export default function Category({
                 description: "Category updated successfully.",
                 variant: "default",
             });
-            action("/category");
+            action("/cert-category");
         } catch (e: any) {
             toast({
                 title: "Error!",
@@ -81,7 +81,7 @@ export default function Category({
             try {
                 setIsProcessing(true);
                 const res = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL}/category/${item.id}`,
+                    `${process.env.NEXT_PUBLIC_API_URL}/cert-category/${item.id}`,
                     {
                         method: "DELETE",
                         headers: {
@@ -100,7 +100,7 @@ export default function Category({
                     variant: "default",
                 });
 
-                action("/category");
+                action("/cert-category");
             } catch (e: any) {
                 toast({
                     title: "Error!",

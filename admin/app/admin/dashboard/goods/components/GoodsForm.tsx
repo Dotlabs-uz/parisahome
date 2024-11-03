@@ -19,7 +19,7 @@ import { getCookies } from "@/lib/cookies.request";
 import { callMessage } from "@/lib/utils";
 import action from "@/app/admin/actions";
 
-interface GoodsFormProps {}
+interface GoodsFormProps { }
 
 const GoodsForm: React.FC<GoodsFormProps> = () => {
     const [categories, setCategories] = useState<any>(null);
@@ -35,11 +35,11 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const token = await getCookies("token");
 
-        const fm = new FormData(e.target as any);
+        const fm = new FormData(e.currentTarget);
 
         if (!formData) return;
 
@@ -65,12 +65,12 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
                 categoryId: 0,
                 description: "",
             });
-            e.target.reset();
+            e.currentTarget.reset();
 
             if (fileInputRef.current) {
                 fileInputRef.current.value = "";
             }
-            action("product")
+            action("product");
             callMessage("default", "Product added successfully");
         } else {
             console.error("Error uploading product:", res.statusText);
@@ -160,22 +160,75 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
                         removeImage={removeImage}
                         fileInputRef={fileInputRef}
                     />
+
+                    {/* Title inputs for different languages */}
                     <Input
                         type="text"
-                        name="name"
-                        placeholder="Title"
+                        name="ruName"
+                        placeholder="Title in Russian"
                         className="w-full"
                         required
                     />
                     <Input
                         type="text"
+                        name="uzName"
+                        placeholder="Title in Uzbek"
+                        className="w-full"
+                        required
+                    />
+                    <Input
+                        type="text"
+                        name="enName"
+                        placeholder="Title in English"
+                        className="w-full"
+                        required
+                    />
+                    <Input
+                        type="text"
+                        name="jpName"
+                        placeholder="Title in Japanese"
+                        className="w-full"
+                        required
+                    />
+
+                    {/* Description inputs for different languages */}
+                    <Textarea
+                        name="ruDescription"
+                        placeholder="Description in Russian"
+                        required
+                        className="w-full"
+                    />
+                    <Textarea
+                        name="uzDescription"
+                        placeholder="Description in Uzbek"
+                        required
+                        className="w-full"
+                    />
+                    <Textarea
+                        name="enDescription"
+                        placeholder="Description in English"
+                        required
+                        className="w-full"
+                    />
+                    <Textarea
+                        name="jpDescription"
+                        placeholder="Description in Japanese"
+                        required
+                        className="w-full"
+                    />
+
+                    {/* Price input */}
+                    <Input
+                        type="text"
                         name="price"
                         placeholder="Price"
-                        className="w-full hidden"
-                        defaultValue={"0"}
+                        className="w-full"
+                        defaultValue="0"
                     />
+
+                    {/* Category selector */}
                     <Select name="categoryId">
-                        <SelectTrigger className="w-full text-gray-500">
+                        <SelectTrigger className="w-full text-black">
                             <SelectValue placeholder="Select Category" />
                         </SelectTrigger>
                         <SelectContent>
@@ -186,17 +239,13 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
                                         key={item.id}
                                         value={`${item.id}`}
                                     >
-                                        {item.name}
+                                        {item.ruTitle}
                                     </SelectItem>
                                 ))}
                         </SelectContent>
                     </Select>
-                    <Textarea
-                        name="description"
-                        placeholder="Description"
-                        required
-                        className="w-full"
-                    />
+
+
                     <Button type="submit" className="w-full">
                         <Plus className="mr-2 h-4 w-4" /> Add Good
                     </Button>
