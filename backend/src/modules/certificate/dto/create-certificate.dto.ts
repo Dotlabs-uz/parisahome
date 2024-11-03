@@ -3,11 +3,6 @@ import { Type } from "class-transformer";
 import { IsInt, IsString } from "class-validator";
 
 export class CreateCertificateDto {
-
-    @ApiProperty({ description: "description" })
-    @IsString()
-    readonly description: string;
-
     @ApiProperty({ description: "ruTitle" })
     @IsString()
     ruTitle: string;
