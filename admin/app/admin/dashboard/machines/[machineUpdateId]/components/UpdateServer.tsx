@@ -12,8 +12,6 @@ const UpdateServer = async ({ machineUpdateId }: { machineUpdateId: number }) =>
 
     const machine = await resMachine.json();
 
-    console.log(machine);
-
     return (
         <div className="bg-white p-5 rounded-xl">
             <div className="mb-5 flex flex-col gap-5">

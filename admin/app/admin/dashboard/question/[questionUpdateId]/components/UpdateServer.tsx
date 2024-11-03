@@ -2,7 +2,8 @@ import { PatchGoodModal } from "@/components/custom/modals/PatchGoodModal";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PatchQuestion } from "./children/PatchQuestion";
-// 
+
+
 const UpdateServer = async ({ questionUpdateId }: { questionUpdateId: number }) => {
     const resQuestion = await fetch(`${process.env.API_URL}/question/${questionUpdateId}`, {
         cache: "no-store",
