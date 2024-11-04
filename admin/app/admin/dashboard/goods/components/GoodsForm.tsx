@@ -35,17 +35,22 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
         const token = await getCookies("token");
 
-        const fm = new FormData(e.currentTarget);
+        const fm = new FormData(e.target);
+
+
+
 
         if (!formData) return;
 
         formData.forEach((elem: any) => {
             fm.append("images", elem);
         });
+
+        // console.log(formData, "formData");
 
         const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/product", {
             method: "POST",
@@ -65,7 +70,7 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
                 categoryId: 0,
                 description: "",
             });
-            e.currentTarget.reset();
+            e.target.reset();
 
             if (fileInputRef.current) {
                 fileInputRef.current.value = "";
@@ -150,9 +155,6 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
                 <form
                     onSubmit={handleSubmit}
                     className="space-y-4"
-                    onErrorCapture={(err) => {
-                        console.log(err);
-                    }}
                 >
                     <ImageUploader
                         images={newGood.images}
@@ -244,7 +246,6 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
                                 ))}
                         </SelectContent>
                     </Select>
-
 
                     <Button type="submit" className="w-full">
                         <Plus className="mr-2 h-4 w-4" /> Add Good

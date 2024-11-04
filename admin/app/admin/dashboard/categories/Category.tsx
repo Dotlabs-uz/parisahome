@@ -3,7 +3,15 @@ import action from "@/app/admin/actions";
 import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { useToast } from "@/hooks/use-toast";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+
+interface QuestionForm {
+    ruTitle: string;
+    uzTitle: string;
+    enTitle: string;
+    jpTitle: string;
+}
 
 export default function Category({
     item,
@@ -14,48 +22,33 @@ export default function Category({
     index: number;
     token: string;
 }) {
-    const [isProcessing, setIsProcessing] = useState(false);
-    const [ruTitle, setRuTitle] = useState(item.ruTitle);
-    const [uzTitle, setUzTitle] = useState(item.uzTitle);
-    const [enTitle, setEnTitle] = useState(item.enTitle);
-    const [jpTitle, setJpTitle] = useState(item.jpTitle);
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { isSubmitting },
+    } = useForm<QuestionForm>();
 
+    const [isProcessing, setIsProcessing] = useState(false);
     const { toast } = useToast();
 
-    async function handleChangeName() {
-        // Only send changed values
-        const updatedData = {
-            ...(ruTitle !== item.ruTitle && { ruTitle }),
-            ...(uzTitle !== item.uzTitle && { uzTitle }),
-            ...(enTitle !== item.enTitle && { enTitle }),
-            ...(jpTitle !== item.jpTitle && { jpTitle }),
-        };
-
-        if (Object.keys(updatedData).length === 0) {
-            toast({
-                title: "No changes detected",
-                description: "Please modify a title before saving.",
-                variant: "default",
-            });
-            return;
-        }
-
+    async function handleChangeName(data: QuestionForm) {
         try {
-            setIsProcessing(true);
             const res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_URL}/category/${item.id}`,
                 {
                     method: "PATCH",
-                    body: JSON.stringify(updatedData),
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
+                    body: JSON.stringify(data),
                 }
             );
 
             if (!res.ok) {
-                throw new Error("Failed to update category.");
+                const errorText = await res.text();
+                throw new Error(`Failed to update category: ${errorText}`);
             }
 
             toast({
@@ -70,8 +63,6 @@ export default function Category({
                 description: e.message || "Something went wrong!",
                 variant: "destructive",
             });
-        } finally {
-            setIsProcessing(false);
         }
     }
 
@@ -113,52 +104,59 @@ export default function Category({
         }
     }
 
+    useEffect(() => {
+        reset({
+            ruTitle: item.ruTitle,
+            uzTitle: item.uzTitle,
+            enTitle: item.enTitle,
+            jpTitle: item.jpTitle,
+        });
+    }, [item, reset]);
+
     return (
-        <TableRow key={index} className="flex flex-col-reverse items-start">
-            <TableCell className="font-medium flex gap-3">
-                {isProcessing ? (
-                    "Processing..."
-                ) : (
-                    <>
-                        <input
-                            type="text"
-                            className="border p-2 mb-1 w-full rounded-lg"
-                            value={ruTitle}
-                            onChange={(e) => setRuTitle(e.target.value)}
-                            placeholder="Category RU Title"
-                        />
-                        <input
-                            type="text"
-                            className="border p-2 mb-1 w-full rounded-lg"
-                            value={enTitle}
-                            onChange={(e) => setEnTitle(e.target.value)}
-                            placeholder="Category EN Title"
-                        />
-                        <input
-                            type="text"
-                            className="border p-2 mb-1 w-full rounded-lg"
-                            value={uzTitle}
-                            onChange={(e) => setUzTitle(e.target.value)}
-                            placeholder="Category UZ Title"
-                        />
-                        <input
-                            type="text"
-                            className="border p-2 mb-1 w-full rounded-lg"
-                            value={jpTitle}
-                            onChange={(e) => setJpTitle(e.target.value)}
-                            placeholder="Category JP Title"
-                        />
-                    </>
-                )}
-            </TableCell>
-            <TableCell className="flex justify-end gap-2">
-                <Button variant="outline" onClick={handleChangeName} disabled={isProcessing}>
-                    Edit
-                </Button>
-                <Button variant="outline" onClick={handleRemove} disabled={isProcessing}>
-                    Delete
-                </Button>
-            </TableCell>
-        </TableRow>
+        <form onSubmit={handleSubmit(handleChangeName)} className="mb-10">
+            <div key={index} className="flex flex-col-reverse items-start">
+                <div className="font-medium flex gap-3">
+                    {isProcessing ? (
+                        "Processing..."
+                    ) : (
+                        <>
+                            <input
+                                type="text"
+                                className="border p-2 mb-1 w-full rounded-lg"
+                                {...register("ruTitle")}
+                                placeholder="Category RU Title"
+                            />
+                            <input
+                                type="text"
+                                className="border p-2 mb-1 w-full rounded-lg"
+                                {...register("enTitle")}
+                                placeholder="Category EN Title"
+                            />
+                            <input
+                                type="text"
+                                className="border p-2 mb-1 w-full rounded-lg"
+                                {...register("uzTitle")}
+                                placeholder="Category UZ Title"
+                            />
+                            <input
+                                type="text"
+                                className="border p-2 mb-1 w-full rounded-lg"
+                                {...register("jpTitle")}
+                                placeholder="Category JP Title"
+                            />
+                        </>
+                    )}
+                </div>
+                <div className="flex justify-end gap-2 mb-5">
+                    <Button type="submit" variant="outline" disabled={isProcessing}>
+                        Edit
+                    </Button>
+                    <Button type="button" variant="outline" onClick={handleRemove} disabled={isProcessing}>
+                        Delete
+                    </Button>
+                </div>
+            </div>
+        </form>
     );
 }

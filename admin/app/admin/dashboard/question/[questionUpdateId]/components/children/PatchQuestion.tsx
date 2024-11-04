@@ -65,7 +65,7 @@ export const PatchQuestion: React.FC<Props> = ({ id, question }) => {
             const token = await getCookies("token");
 
             console.log(token);
-            
+
 
             const res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_URL}/question/${id}`,
@@ -74,7 +74,7 @@ export const PatchQuestion: React.FC<Props> = ({ id, question }) => {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
-                    body:JSON.stringify(data),
+                    body: JSON.stringify(data),
                 }
             );
 

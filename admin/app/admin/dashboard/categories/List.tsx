@@ -19,20 +19,20 @@ export default function CategoryList({
 	return (
 		<Card className="p-3">
 			<CardTitle>All categories</CardTitle>
-			<Table>
-				<TableHeader>
-					<TableRow>
-						<TableHead>Title</TableHead>
+			<div>
+				<div>
+					<div>
+						<h2>Title</h2>
 
-						<TableHead className="text-right">Actions</TableHead>
-					</TableRow>
-				</TableHeader>
-				<TableBody>
+						<p className="text-right">Actions</p>
+					</div>
+				</div>
+				<div>
 					{categories.map((item: any, index: number) => (
 						<Category key={index} item={item} index={index} token={token} />
 					))}
-				</TableBody>
-			</Table>
+				</div>
+			</div>
 		</Card>
 	);
 }
