@@ -89,11 +89,11 @@ const Products = () => {
                                 <div className="">
                                     <div className="my-3 border-l-[3px] pl-3 border-yellow">
                                         <p className="text-xl max-sm:text-base font-bold">
-                                            {i.name}
+                                            {i[productName]}
                                         </p>
                                     </div>
                                     <p className="text-sm max-sm:text-xs max-sm:font-medium leading-6 max-sm:leading-5 mb-5">
-                                        {i.description}
+                                        {i[productDescription]}
                                     </p>
                                     <Link
                                         href={`/${lang}/${i.id}`}

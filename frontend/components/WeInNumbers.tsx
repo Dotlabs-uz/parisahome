@@ -2,6 +2,10 @@
 import React, { useEffect, useRef } from 'react'
 
 import { animateElementsOnScroll } from '@/lib/animations'
+import { GiWaterRecycling } from 'react-icons/gi'
+import { AiFillProduct } from 'react-icons/ai'
+import { TbPackageExport } from 'react-icons/tb'
+import Image from 'next/image'
 
 const WeInNumbers = () => {
     const sectionRef = useRef<HTMLDivElement | null>(null)
@@ -23,18 +27,28 @@ const WeInNumbers = () => {
 
             <div className="grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-1">
                 <div className="w-fit px-4 py-5  border-l-2 border-yellow anim-element">
+                    <Image
+                        className='w-12 ml-5 text-green'
+                        src={"/images/icons/woman.png"}
+                        width={1000}
+                        height={1000}
+                        alt='workers'
+                    />
                     <p className="text-green text-2xl font-extrabold mb-2">95% женщин</p>
                     <p className="text-green text-sm">в составе сотрудников</p>
                 </div>
                 <div className="w-fit max-sm:w-2/3 px-4 py-5 max-sm:ml-auto border-l-2 border-yellow anim-element">
+                    <GiWaterRecycling className='ml-5 text-[40px] text-green' />
                     <p className="text-green text-2xl font-extrabold mb-2">1080 тонн</p>
                     <p className="text-green text-sm">Воды перерабатывается в год</p>
                 </div>
                 <div className="w-fit px-4 py-5 border-l-2 border-yellow anim-element">
+                    <AiFillProduct className='ml-5 text-[40px] text-green' />
                     <p className="text-green text-2xl font-extrabold mb-2">9000 тонн</p>
                     <p className="text-green text-sm">Производится готовой продукции в год</p>
                 </div>
                 <div className="w-fit px-4 py-5 max-sm:ml-auto border-l-2 border-yellow anim-element">
+                    <TbPackageExport className='ml-5 text-[40px] text-green' />
                     <p className="text-green text-2xl font-extrabold mb-2">В 15+ стран</p>
                     <p className="text-green text-sm">Экспортируется наши товары</p>
                 </div>

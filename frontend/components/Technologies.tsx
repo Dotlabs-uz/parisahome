@@ -10,6 +10,8 @@ const Technologies = () => {
     const { lang } = useParams()
     const sectionRef = useRef<HTMLDivElement | null>(null)
     const [machines, setMachines] = useState([]);
+    const machineTitle = `${lang}Title`;
+    const machineDescription = `${lang}Description`;
 
     useEffect(() => {
         const section = sectionRef.current
@@ -83,8 +85,8 @@ const Technologies = () => {
                                     </div>
 
                                     <div className="mt-8 max-lg:mt-3 px-4 max-lg:px-3">
-                                        <h3 className="text-2xl text-center">{i.name}</h3>
-                                        <p className="text-base max-lg:text-sm leading-6 my-5 max-lg:my-2">{i.description}</p>
+                                        <h3 className="text-2xl text-center">{i[machineTitle]}</h3>
+                                        <p className="text-base max-lg:text-sm leading-6 my-5 max-lg:my-2">{i[machineDescription]}</p>
                                     </div>
                                 </Link>
                             ))
