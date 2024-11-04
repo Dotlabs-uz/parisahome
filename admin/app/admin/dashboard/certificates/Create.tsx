@@ -73,8 +73,6 @@ export default function CertificateForm({ token }: { token: string }) {
             .then((res) => setSertCategories(res));
     }, []);
 
-    console.log(sertCategories);
-
 
     return (
         <Card className="w-full mx-auto">

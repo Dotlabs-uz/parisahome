@@ -59,27 +59,28 @@ export const PatchQuestion: React.FC<Props> = ({ id, question }) => {
     }, [question, reset]);
 
     const onSubmit = async (data: any) => {
-        console.log(data);
 
         try {
             const token = await getCookies("token");
 
+<<<<<<< HEAD
             console.log(token);
 
 
+=======
+>>>>>>> 4ef8dd0604b4042e94b946efb5679260f585e1f1
             const res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_URL}/question/${id}`,
                 {
                     method: "PATCH",
                     headers: {
                         Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json", 
                     },
                     body: JSON.stringify(data),
                 }
             );
-
-            // console.log(data);
-            console.log(res);
+            
 
             if (res.ok) {
                 reset();

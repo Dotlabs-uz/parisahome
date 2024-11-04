@@ -13,9 +13,6 @@ const UpdateServer = async ({ certUpdateId }: { certUpdateId: number }) => {
 
     const certificate = await resCert.json();
     const categories = await resCategory.json();
-
-    console.log(categories);
-
     return (
         <div className="bg-white p-5 rounded-xl">
             <div className="mb-5 flex flex-col gap-5">
