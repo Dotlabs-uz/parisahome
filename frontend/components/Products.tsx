@@ -17,6 +17,8 @@ const Products = () => {
     const { lang } = useParams()
     const sectionRef = useRef<HTMLDivElement | null>(null);
     const [products, setProducts] = useState<any>(null);
+    const productDescription = `${lang}Description`;
+    const productName = `${lang}Name`;
 
     useEffect(() => {
         const section = sectionRef.current;
