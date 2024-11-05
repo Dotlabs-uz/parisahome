@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
 const page = async () => {
     const res = await fetch(process.env.API_URL + "/certificate", {
-        cache:"no-store"
+        cache: "no-store"
     });
     if (!res.ok) return <h1>Something went wrong</h1>;
     const certificate = await res.json();
