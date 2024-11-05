@@ -10,7 +10,7 @@ import { useParams } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Gallery = () => {
+const Gallery = ({ galleryTitle }: any) => {
     const [gallery, setGallery] = useState<any>(null);
     const sectionRef = useRef<any>(null);
 
@@ -63,7 +63,7 @@ const Gallery = () => {
                     <hr className="border-none w-0 h-0.5 bg-green hr-1 galleryTitle" />
                     <div className="py-7 max-md:py-5">
                         <h2 className="text-3xl max-sm:text-xl text-center text-yellow anim-element">
-                            \\НАША ГАЛЕРЕЯ
+                            \\{galleryTitle}
                         </h2>
                     </div>
                     <div className="w-full h-0.5 hr-2 translate-y-0.5 bg-white"></div>
@@ -75,12 +75,12 @@ const Gallery = () => {
                                 <div
                                     key={item.id}
                                     className={`${i == 0
-                                            ? "h-[30%]"
-                                            : i == 1
-                                                ? "h-[20%]"
-                                                : i == 2
-                                                    ? "h-[35%]"
-                                                    : "h-[25%]"
+                                        ? "h-[30%]"
+                                        : i == 1
+                                            ? "h-[20%]"
+                                            : i == 2
+                                                ? "h-[35%]"
+                                                : "h-[25%]"
                                         } anim-element`}
                                 >
                                     <Image
@@ -99,12 +99,12 @@ const Gallery = () => {
                                 <div
                                     key={item.id}
                                     className={`${i == 0
-                                            ? "h-[40%]"
-                                            : i == 1
-                                                ? "h-[25%]"
-                                                : i == 2
-                                                    ? "h-[20%]"
-                                                    : "h-[15%]"
+                                        ? "h-[40%]"
+                                        : i == 1
+                                            ? "h-[25%]"
+                                            : i == 2
+                                                ? "h-[20%]"
+                                                : "h-[15%]"
                                         } anim-element`}
                                 >
                                     <Image
@@ -125,12 +125,12 @@ const Gallery = () => {
                                     <div
                                         key={item.id}
                                         className={`${i == 0
-                                                ? "h-[35%]"
-                                                : i == 1
-                                                    ? "h-[25%]"
-                                                    : i == 2
-                                                        ? "h-[30%]"
-                                                        : "h-[10%]"
+                                            ? "h-[35%]"
+                                            : i == 1
+                                                ? "h-[25%]"
+                                                : i == 2
+                                                    ? "h-[30%]"
+                                                    : "h-[10%]"
                                             } anim-element`}
                                     >
                                         <Image
@@ -150,16 +150,16 @@ const Gallery = () => {
                             <div
                                 key={item.id}
                                 className={`${i == 0
-                                        ? "col-span-6 h-[150px]"
-                                        : i == 1
-                                            ? "col-span-4 h-[150px]"
-                                            : i == 2
-                                                ? "col-span-10 h-[150px]"
-                                                : i == 3
-                                                    ? "col-span-4 h-[150px]"
-                                                    : i == 4
-                                                        ? "col-span-6 h-[150px]"
-                                                        : "col-span-10 h-[150px]"
+                                    ? "col-span-6 h-[150px]"
+                                    : i == 1
+                                        ? "col-span-4 h-[150px]"
+                                        : i == 2
+                                            ? "col-span-10 h-[150px]"
+                                            : i == 3
+                                                ? "col-span-4 h-[150px]"
+                                                : i == 4
+                                                    ? "col-span-6 h-[150px]"
+                                                    : "col-span-10 h-[150px]"
                                     } anim-element`}
                             >
                                 <Image

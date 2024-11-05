@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { animateElementsOnScroll } from '@/lib/animations'
 import Link from 'next/link'
 
-const Partners = () => {
+const Partners = ({ partnersCom }: any) => {
     const sectionRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
@@ -18,7 +18,9 @@ const Partners = () => {
     return (
         <div ref={sectionRef} className="custom-container">
             <div className="max-w-3xl m-auto mb-16 max-md:mb-10 anim-element">
-                <h2 className="text-2xl max-sm:text-xl font-extrabold text-center text-yellow">Мы применяем передовые технологии и оборудование от мировых брендов для обеспечения высокого качества нашей продукции</h2>
+                <h2 className="text-2xl max-sm:text-xl font-extrabold text-center text-yellow">
+                    {partnersCom.partnersTitle}
+                </h2>
             </div>
 
             <div className="grid grid-cols-4 max-lg:grid-cols-2 max-xs:grid-cols-1 gap-10 max-sm:gap-7">
@@ -32,9 +34,9 @@ const Partners = () => {
                             alt="logo"
                         />
                     </Link>
-                    <div className="">
+                    <div>
                         <p className="text-center text-sm leading-6">
-                            <span className="text-yellow">Benninger AG</span> – Known for high-quality warping and weaving preparation machinery.
+                            <span className="text-yellow">Benninger AG</span> – {partnersCom.benningerDescription}
                         </p>
                     </div>
                 </div>
@@ -50,7 +52,7 @@ const Partners = () => {
                     </Link>
                     <div className="">
                         <p className="text-center text-sm leading-6">
-                            <span className="text-yellow">Prashant Westpoint Group </span> – A leading manufacturer of weaving and finishing machinery in India.
+                            <span className="text-yellow">Prashant Westpoint Group </span> – {partnersCom.prashantDescription}
                         </p>
                     </div>
                 </div>
@@ -66,7 +68,7 @@ const Partners = () => {
                     </Link>
                     <div className="">
                         <p className="text-center text-sm leading-6">
-                            <span className="text-yellow">Toyota Industries Corporation (Airjet Looms) </span> – Renowned for their advanced Toyota Airjet weaving machines.
+                            <span className="text-yellow">Toyota Industries Corporation (Airjet Looms) </span> – {partnersCom.toyotaDescription}
                         </p>
                     </div>
                 </div>
@@ -82,7 +84,7 @@ const Partners = () => {
                     </Link>
                     <div className="">
                         <p className="text-center text-sm leading-6">
-                            <span className="text-yellow">Dilmenler Tekstil Makinaları (Dilmenler Softflow Dyeing) </span> – Manufacturer of dyeing machines, including Softflow dyeing machines.
+                            <span className="text-yellow">Dilmenler Tekstil Makinaları (Dilmenler Softflow Dyeing) </span> – {partnersCom.dilmenlerDescription}
                         </p>
                     </div>
                 </div>
@@ -98,7 +100,7 @@ const Partners = () => {
                     </Link>
                     <div className="">
                         <p className="text-center text-sm leading-6">
-                            <span className="text-yellow">Xetma Vollenweider GmbH </span> – Specializes in shearing and other textile finishing machines.
+                            <span className="text-yellow">Xetma Vollenweider GmbH </span> – {partnersCom.xetmaDescription}
                         </p>
                     </div>
                 </div>
@@ -114,7 +116,7 @@ const Partners = () => {
                     </Link>
                     <div className="">
                         <p className="text-center text-sm leading-6">
-                            <span className="text-yellow">Juki Corporation (Juki Stitching Machine) </span> – Global leader in sewing and stitching machinery.
+                            <span className="text-yellow">Juki Corporation (Juki Stitching Machine) </span> – {partnersCom.jukiDescription}
                         </p>
                     </div>
                 </div>
@@ -130,7 +132,7 @@ const Partners = () => {
                     </Link>
                     <div className="">
                         <p className="text-center text-sm leading-6">
-                            <span className="text-yellow">Hashima Co., Ltd. </span> – Known for metal detectors used in textile quality control (Hasima Metal Detector).
+                            <span className="text-yellow">Hashima Co., Ltd. </span> – {partnersCom.hashimaDescription}
                         </p>
                     </div>
                 </div>
@@ -146,7 +148,7 @@ const Partners = () => {
                     </Link>
                     <div className="">
                         <p className="text-center text-sm leading-6">
-                            <span className="text-yellow">Pentek Textile Machinery </span> – Known for tumbling and textile finishing equipment (often referred to as a tumbler).
+                            <span className="text-yellow">Pentek Textile Machinery </span> – {partnersCom.pentekDescription}
                         </p>
                     </div>
                 </div>

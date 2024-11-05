@@ -7,18 +7,18 @@ import CustomEase from 'gsap/CustomEase';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
-const Vision = () => {
+const Vision = ({ quote }: any) => {
     const containerRef = useRef(null);
     const textRef = useRef<any>(null);
     const imageRef = useRef(null);
 
-    const text = "«Мы верим, что мягкость — это роскошь, которую нужно привнести в повседневность.»";
+    const text = quote;
     const words = text.split(' ');
 
     useEffect(() => {
         const ctx = gsap.context(() => {
             // Text Animation
-            words.forEach((_, index) => {
+            words.forEach((_: any, index: any) => {
                 const wordElement = textRef.current.children[index];
                 gsap.fromTo(
                     wordElement,
@@ -75,9 +75,9 @@ const Vision = () => {
 
                 <h2
                     ref={textRef}
-                    className="max-w-[800px] w-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-4xl max-md:text-3xl max-sm:text-xl text-center text-white/50"
+                    className="max-w-[700px] w-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-4xl max-md:text-3xl max-sm:text-xl text-center text-white/50"
                 >
-                    {words.map((word, index) => (
+                    {words.map((word: string, index: number) => (
                         <span key={index} className="inline-block mx-1">
                             {word}
                         </span>

@@ -13,7 +13,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const Products = () => {
+const Products = ({ productsTitle }: any) => {
     const { lang } = useParams()
     const sectionRef = useRef<HTMLDivElement | null>(null);
     const [products, setProducts] = useState<any>(null);
@@ -48,7 +48,7 @@ const Products = () => {
         >
             <div className="mb-16 max-md:mb-8 anim-element">
                 <h2 className="text-3xl max-sm:text-xl text-center text-yellow">
-                    \\ПРОДУКЦИЯ
+                    \\{productsTitle}
                 </h2>
             </div>
 

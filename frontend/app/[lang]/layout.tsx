@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Head from "next/head";
 import { Locale } from "@/i18n.config";
 import GoogleRecaptchaWrapper from "./GoogleRecaptchaWrapper";
+import { getDictionary } from "@/lib/dictionary";
 
 const inter = Raleway({
    weight: ["300", "400", "500", "600", '800'],
@@ -39,13 +40,15 @@ export const metadata = {
    },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
    params: { lang },
    children,
 }: Readonly<{
    children: React.ReactNode;
    params: { lang: Locale }
 }>) {
+   const { footer, nav } = await getDictionary(lang);
+
    return (
       <html lang="en">
          <Head>
@@ -67,11 +70,11 @@ export default function RootLayout({
 
          <body className={inter.className}>
             <GoogleRecaptchaWrapper>
-               <Header lang={lang} />
+               <Header lang={lang} nav={nav} />
                <main>
                   {children}
                </main>
-               <Footer />
+               <Footer footer={footer} nav={nav} />
             </GoogleRecaptchaWrapper>
          </body>
       </html>

@@ -3,28 +3,31 @@ import AboutСompany from '@/components/AboutСompany'
 import ExploreServices from '@/components/ExploreServices'
 import HorizontalScroll from '@/components/HorizontalScroll'
 import Vision from '@/components/Vision'
+import { Locale } from '@/i18n.config'
+import { getDictionary } from '@/lib/dictionary'
 
-const Page = () => {
+const Page = async ({ params: { lang } }: { params: { lang: Locale } }) => {
+    const { history, aboutCompany, exploreServices, quote, partners } = await getDictionary(lang);
 
     return (
         <>
             <section>
-                <HorizontalScroll />
+                <HorizontalScroll history={history} />
             </section>
 
             <section>
-                <AboutСompany />
+                <AboutСompany aboutCompany={aboutCompany} />
             </section>
 
             <section className="w-full h-screen relative z-10 bg-[url('/images/image-2.jpg')] bg-no-repeat bg-cover bg-center">
-                <ExploreServices />
+                <ExploreServices exploreServices={exploreServices} />
             </section>
 
             <section>
-                <Vision />
+                <Vision quote={quote} />
             </section>
 
-            <AboutPartners />
+            <AboutPartners partners={partners} />
 
             <section>
                 <div className="w-full h-[500px] max-md:h-80">

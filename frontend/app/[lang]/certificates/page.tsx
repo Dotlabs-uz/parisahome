@@ -3,8 +3,10 @@ import axios from 'axios'
 import RenderCertificates from './components/RenderCertificates'
 import Categories from './components/Categories'
 import getCertificates from '@/actions/getCertificates'
+import { getDictionary } from '@/lib/dictionary'
 
-const Page = async ({ searchParams }: any) => {
+const Page = async ({ searchParams, params: { lang } }: any) => {
+    const { nav } = await getDictionary(lang);
     const categoryId = searchParams["categoryId"]
     const certificatesCategories = await axios.get(`${process.env.API_URL}/cert-category`)
 
@@ -13,7 +15,7 @@ const Page = async ({ searchParams }: any) => {
     return (
         <div className='custom-container h-screen pt-14'>
             <div className="">
-                <h2 className='text-4xl max-lg:text-3xl font-bold my-8 certificates text-white'>Сертификаты</h2>
+                <h2 className='text-4xl max-lg:text-3xl font-bold my-8 certificates text-white'>{nav.link6}</h2>
                 <Categories categories={certificatesCategories.data} />
             </div>
 

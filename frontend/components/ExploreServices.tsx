@@ -9,7 +9,7 @@ import React, { useEffect } from 'react'
 import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
-const ExploreServices = () => {
+const ExploreServices = ({ exploreServices }: any) => {
     const { lang } = useParams()
     useEffect(() => {
         const splitTypes = document.querySelectorAll(".text-split");
@@ -78,15 +78,15 @@ const ExploreServices = () => {
                         alt='img'
                     />
                     <div className="text-animation-container">
-                        <p className='text-split text-6xl max-xl:text-5xl max-lg:text-4xl max-md:text-3xl leading-[50.97px] text-white/60'>Вместе мы делаем мир мягче.</p>
+                        <p className='text-split text-6xl max-xl:text-5xl max-lg:text-4xl max-md:text-3xl leading-[50.97px] text-white/60'>{exploreServices.tagline}</p>
                     </div>
                 </div>
 
                 <div className="w-full max-w-[430px] flex flex-col justify-end ml-auto">
                     <div className="text-animation-container">
-                        <p className="text-split text-lg max-sm:text-base font-light leading-[23.8px] mb-5 text-white/60">С 2011 года мы накапливаем опыт и подтверждаем наше качество международными сертификатами, соответствующими высоким стандартам текстильной промышленности.</p>
+                        <p className="text-split text-lg max-sm:text-base font-light leading-[23.8px] mb-5 text-white/60">{exploreServices.description}</p>
                     </div>
-                    <Link href={`/${lang}/certificates`} className="w-fit max-md:text-sm font-medium py-3 max-md:py-2 px-10 max-md:px-6 max-md:m-auto rounded-lg bg-yellow text-white">ИЗУЧИТЬ СЕРТИФИКАТЫ</Link>
+                    <Link href={`/${lang}/certificates`} className="w-fit max-md:text-sm font-medium py-3 max-md:py-2 px-10 max-md:px-6 max-md:m-auto rounded-lg bg-yellow text-white">{exploreServices.certificatesLink}</Link>
                 </div>
             </div>
         </>

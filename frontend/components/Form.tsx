@@ -13,7 +13,7 @@ type Inputs = {
     message: string;
 };
 
-const Form = () => {
+const Form = ({ form }: any) => {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [loading, setLoading] = useState<boolean>(false);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -80,13 +80,13 @@ const Form = () => {
             <div className="custom-container flex max-md:flex-col gap-16 max-lg:gap-5 py-20 max-md:py-10">
                 <div className="md:max-w-md w-full anim-element-left">
                     <div className="text-black mb-5 max-sm:text-center anim-element">
-                        <h2 className="text-3xl max-sm:text-2xl font-semibold">Остались вопросы?</h2>
-                        <p className="text-xl max-md:text-lg max-sm:text-base">Заполните форму и мы с вами свяжемся</p>
+                        <h2 className="text-3xl max-sm:text-2xl font-semibold">{form.heading}</h2>
+                        <p className="text-xl max-md:text-lg max-sm:text-base">{form.subheading}</p>
                     </div>
                     {successMessage && <p className="text-center text-lg text-green-600">{successMessage}</p>}
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label className="w-full mb-3 max-sm:mb-2 block anim-element">
-                            <p className="mb-1">Ваше имя</p>
+                            <p className="mb-1">{form.nameLabel}</p>
                             <input
                                 disabled={loading}
                                 className="w-full py-1 px-3 rounded-md border border-yellow bg-[#D9D9D966]"
@@ -96,13 +96,13 @@ const Form = () => {
                                     minLength: 3,
                                     pattern: /^[A-Za-zА-Яа-яЁё]+(?:[-\s][A-Za-zА-Яа-яЁё]+)*$/,
                                 })}
-                                placeholder="Напишите свое имя здесь"
+                                placeholder={form.namePlaceholder}
                             />
-                            {errors.name && <span className="text-[red]">Это поле обязательно</span>}
+                            {errors.name && <span className="text-[red]">{form.requiredField}</span>}
                         </label>
 
                         <label className="w-full mb-3 max-sm:mb-2 block anim-element">
-                            <p className="mb-1">Ваш телефон</p>
+                            <p className="mb-1">{form.phoneLabel}</p>
                             {/* <PhoneNumberInput
                                 inputProps={register("telNumber", {
                                     required: true,
@@ -119,61 +119,61 @@ const Form = () => {
                                     minLength: 7,
                                     pattern: /^\+?\d+$/,
                                 })}
-                                placeholder="Ваш номер"
+                                placeholder={form.phonePlaceholder}
                             />
-                            {errors.telNumber && <span className="text-[red]">Это поле обязательно</span>}
+                            {errors.telNumber && <span className="text-[red]">{form.requiredField}</span>}
                         </label>
 
                         <label className="w-full mb-3 max-sm:mb-2 block anim-element">
-                            <p className="mb-1">Ваш email</p>
+                            <p className="mb-1">{form.emailLabel}</p>
                             <input
                                 disabled={loading}
                                 className="w-full py-1 px-3 rounded-md border border-yellow bg-[#D9D9D966]"
                                 type="email"
                                 {...register('email', { required: true })}
-                                placeholder="Ваш email"
+                                placeholder={form.emailPlaceholder}
                             />
-                            {errors.email && <span className="text-[red]">Это поле обязательно</span>}
+                            {errors.email && <span className="text-[red]">{form.requiredField}</span>}
                         </label>
 
                         <label className="w-full mb-9 max-md:mb-5 block anim-element">
-                            <p className="mb-1">Ваш комментарий</p>
+                            <p className="mb-1">{form.messageLabel}</p>
                             <input
                                 disabled={loading}
                                 className="w-full py-1 px-3 rounded-md border border-yellow bg-[#D9D9D966]"
                                 type="text"
                                 {...register('message', { required: true })}
-                                placeholder="Напишите свой комментарий"
+                                placeholder={form.messagePlaceholder}
                             />
-                            {errors.message && <span className="text-[red]">Это поле обязательно</span>}
+                            {errors.message && <span className="text-[red]">{form.requiredField}</span>}
                         </label>
 
                         <button
                             disabled={loading}
                             className="bg-yellow text-white text-xl max-sm:text-base font-medium py-3 max-md:py-1.5 px-10 max-md:px-7 max-sm:px-4 rounded-full anim-element"
                         >
-                            {loading ? 'Отправка...' : 'Отправить'}
+                            {loading ? form.loadingButton : form.submitButton}
                         </button>
                     </form>
                 </div>
 
                 <div className="w-full relative">
                     <div className="">
-                        <h2 className="text-3xl max-md:text-2xl font-semibold anim-element">Oставайтесь на связи</h2>
+                        <h2 className="text-3xl max-md:text-2xl font-semibold anim-element">{form.heading2}</h2>
                         <p className="flex gap-1 items-center text-xl max-sm:text-lg anim-element">
-                            <TfiEmail className="text-[18px] max-sm:text-[15px]" /> info@parisahome.com
+                            <TfiEmail className="text-[18px] max-sm:text-[15px]" /> {form.email}
                         </p>
                         <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element">
-                            <IoCallOutline className="text-2xl max-sm:text-[15px]" /> +998 91 538 11 11
+                            <IoCallOutline className="text-2xl max-sm:text-[15px]" /> {form.phone1}
                         </p>
                         <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element">
-                            <IoCallOutline className="text-2xl max-sm:text-[15px]" /> +998 91 539 11 11
+                            <IoCallOutline className="text-2xl max-sm:text-[15px]" /> {form.phone2}
                         </p>
                         <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element">
-                            <IoCallOutline className="text-2xl max-sm:text-[15px]" /> +998 90 606 13 00 - Отдел закупок
+                            <IoCallOutline className="text-2xl max-sm:text-[15px]" /> {form.phoneProcurement}
                         </p>
                         <p className="flex gap-1 items-center text-xl max-sm:text-lg mt-1 anim-element">
-                            <IoLocationOutline className="text-2xl max-sm:text-[15px]" /> Konigil Samarkand 140319, Uzbekistan
+                            <IoLocationOutline className="text-2xl max-sm:text-[15px]" /> {form.address}
                         </p>
                     </div>
                 </div>

@@ -7,13 +7,7 @@ import FlowerRotate from "./children/FlowerRotate";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface SectionData {
-    years: string;
-    title: string;
-    dcr: string;
-}
-
-const HorizontalScroll: React.FC = () => {
+const HorizontalScroll = ({ history }: any) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const horizontalRef = useRef<HTMLDivElement | null>(null);
     const lenis = useRef<Lenis | null>(null);
@@ -22,26 +16,26 @@ const HorizontalScroll: React.FC = () => {
     const [activeDot, setActiveDot] = useState<number>(0);
     const [modelRotation, setModelRotation] = useState([0, 0, 0]); // Для хранения вращения по осям
 
-    const sectionsData: SectionData[] = useMemo(() => [
+    const sectionsData = useMemo(() => [
         {
             years: "2014",
-            title: "История SamRafoatTekstil",
-            dcr: "Это больше, чем просто бизнес, это семейное наследие, наполненное теплом и заботой, которое передается через поколения. Всё началось с бабушки Рафоат, чьи искусные работы стали символом качества и мастерства, которые сегодня вдохновляют нас в нашей деятельности. Продолжая семейную традицию, её сын расширил семейное дело, занявшись торговлей текстильными материалами. В 2014 году внуки основали компанию SamRafoatTekstil, названную в честь бабушки, и наладили производство плюща, расширяя семейный бизнес.",
+            title: history.title1,
+            dcr: history.dcr1
         },
         {
             years: "2011",
-            title: "Начало производства",
-            dcr: "Начав с производства текстиля, в 2011 году компания создала бренд PARISAHOME, ставящий акцент на высококачественные домашние изделия. С мягкими и комфортными полотенцами компания быстро завоевала доверие и внимание клиентов.",
+            title: history.title2,
+            dcr: history.dcr2
         },
         {
             years: "2021",
-            title: "Время роста",
-            dcr: "С самого начала своего пути SamRafoatTekstil активно развивала экспортное направление, что позволило выйти на международные рынки. В 2021 году мы расширили географию поставок, начав экспорт махровых полотенец в Японию. Сегодня наша продукция успешно поставляется в более чем 15 стран, включая страны СНГ, Японию, Венгрию, Болгарию, США и Турцию. Мы продолжаем стремиться к совершенству, вдохновленные наследием нашей бабушки Рафоат, привнося тепло и уют в дома по всему миру.",
+            title: history.title3,
+            dcr: history.dcr3
         },
         {
             years: "2024",
-            title: "Новые горизонты",
-            dcr: "Мы гордимся нашим опытом в производстве полотенец, который передаётся из поколения в поколение. Наша команда сосредоточена на создании инновационных решений для вашего дома, соответствующих высоким стандартам, сохраняя при этом дух мастерства и преданности семейным традициям.",
+            title: history.title4,
+            dcr: history.dcr4
         },
     ], []);
 
@@ -138,27 +132,6 @@ const HorizontalScroll: React.FC = () => {
         <div ref={containerRef} className="scroll-section-outer relative">
             <div className="progress-line-bg absolute bottom-10 max-md:bottom-5 left-0 h-[3px] w-full bg-white z-20" />
             <div className="progress-line bottom-10 max-md:bottom-5" />
-            {/* <div className="w-screen h-1 absolute bottom-10 max-md:bottom-5 left-0">
-                {sectionsData.map((_, index) => (
-                    <div
-                        key={index}
-                        className="dot-container max-md:hidden flex flex-col gap-3 items-center absolute -top-11"
-                        style={{ left: `${(index / sectionsData.length) * 100}%` }}
-                    >
-                        <div
-                            className={`p-1 px-2 rounded-md border ${activeDot === index
-                                ? "bg-yellow border-yellow text-green"
-                                : "border-white text-white"
-                                }`}
-                        >
-                            <p className="text-sm font-medium whitespace-nowrap">
-                                {sectionsData[index].title.toLowerCase()}
-                            </p>
-                        </div>
-                        <span className={`block w-2 h-2 rounded-full bg-yellow ${activeDot >= index ? "scale-100" : "scale-0"} duration-200`}></span>
-                    </div>
-                ))}
-            </div> */}
 
             <div className="dots-container absolute bottom-[38px] max-md:bottom-[18px] left-0 w-full flex justify-around z-[41]">
                 {sectionsData.map((_, index) => (

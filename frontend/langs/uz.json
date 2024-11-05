@@ -1,5 +1,134 @@
 {
-    "homepage": {
-        "title": "salam aleykum"
+    "technologiesComp": {
+        "technologies": "TEXNOLOGIYALAR",
+        "aboutCompany": "KOMPANIYA HAQIDA",
+        "brandMessage": "Texnologik innovatsiyalar yo‘lida borayotgan brend",
+        "description": "Biz dunyoni yanada yumshoq qilamiz, yuqori sifatli sochiqlar yaratish uchun innovatsiyalarni joriy qilamiz. Bizning matolarimiz qulaylik va chidamlilikni taʼminlaydi va ekologiyaga g‘amxo‘rlik qiladi."
+    },
+    "weInNumbersComp": {
+        "weInNumbersTitle": "BIZ RAQAMLARDA",
+        "subtitle": "Innovatsion, samarali va ishonchli",
+        "womenPercentage": "95% ayollar",
+        "womenDescription": "xodimlar tarkibida",
+        "waterRecycled": "1080 tonna",
+        "waterRecycledDescription": "Yiliga qayta ishlanadigan suv",
+        "productionOutput": "9000 tonna",
+        "productionOutputDescription": "Yiliga ishlab chiqarilgan mahsulot",
+        "exportCountries": "15+ davlatga",
+        "exportDescription": "Bizning mahsulotlarimiz eksport qilinadi"
+    },
+    "partnersCom": {
+        "partnersTitle": "Biz mahsulotlarimizning yuqori sifatini ta'minlash uchun jahon brendlarining ilg'or texnologiya va uskunalarini qo'llaymiz",
+        "benningerDescription": "Yuqori sifatli tarmoqli va to'quv tayyorlash mashinalari bilan mashhur.",
+        "prashantDescription": "Hindistonda to'quv va pardozlash mashinalari bo'yicha yetakchi ishlab chiqaruvchi.",
+        "toyotaDescription": "Toyota Airjet to'quv mashinalari bilan mashhur.",
+        "dilmenlerDescription": "Softflow bo'yicha bo'yash mashinalari ishlab chiqaruvchisi.",
+        "xetmaDescription": "Matoni pardozlash va kesish mashinalari bo'yicha ixtisoslashgan.",
+        "jukiDescription": "Tikuv mashinalarining global yetakchisi.",
+        "hashimaDescription": "Matoni sifatini nazorat qilish uchun metalldetektorlar bilan tanilgan.",
+        "pentekDescription": "Matoni pardozlash va tishlash uskunalari bilan mashhur."
+    },
+    "productsTitle": "PRODUCTS",
+    "galleryTitle": "BIZNING GALEREYA",
+    "faqTitle": "Ko'p beriladigan savollar",
+    "form": {
+        "heading": "Savollaringiz bormi?",
+        "subheading": "Formani to'ldiring va biz siz bilan bog'lanamiz",
+        "nameLabel": "Ismingiz",
+        "namePlaceholder": "Ismingizni bu yerga yozing",
+        "phoneLabel": "Telefon raqamingiz",
+        "phonePlaceholder": "Sizning raqamingiz",
+        "emailLabel": "Emailingiz",
+        "emailPlaceholder": "Sizning emailingiz",
+        "messageLabel": "Izohingiz",
+        "messagePlaceholder": "Izohingizni yozing",
+        "submitButton": "Jo'natish",
+        "loadingButton": "Jo'natilmoqda...",
+        "successMessage": "Xabaringiz jo'natildi!",
+        "requiredField": "Bu maydon majburiy",
+        "heading2": "Bog'lanishda qoling",
+        "email": "info@parisahome.com",
+        "phone1": "+998 91 538 11 11",
+        "phone2": "+998 91 539 11 11",
+        "phoneProcurement": "+998 90 606 13 00 - Xaridlar bo'limi",
+        "address": "Konigil Samarkand 140319, O'zbekiston"
+    },
+    "footer": {
+        "backToTop": "YUQORIGA QAYTISH",
+        "contactUs": "BIZ BILAN BOG'LANING",
+        "copyright": "Copyright © Parisa Home 2024.",
+        "privacyPolicy": "Maxfiylik siyosati",
+        "allRightsReserved": "Barcha huquqlar himoyalangan.",
+        "heading": "Biz doimo yangi hamkorlik va imkoniyatlarni qidirmoqdamiz"
+    },
+    "nav": {
+        "link1": "Bosh sahifa",
+        "link2": "Biz haqimizda",
+        "link3": "Katalog",
+        "link4": "Aloqalar",
+        "link5": "Mashinalar",
+        "link6": "Sertifikatlar"
+    },
+    "history": {
+        "title1": "SamRafoatTekstil tarixi",
+        "dcr1": "Bu faqat biznes emas, balki avloddan avlodga o'tadigan iliq va g'amxo'rlik bilan to'ldirilgan oilaviy merosdir. Hammasi Rahfoat bobo-buvimdan boshlangan, uning mahoratli ishlari sifat va mahorat timsoliga aylangan, bugun bizni ilhomlantiradi. Oila an'analarini davom ettirib, o'g'li to'qimachilik materiallari savdosi bilan oilaviy ishni kengaytirdi. 2014 yilda nevaralari SamRafoatTekstil kompaniyasini, bobolarining ismini qo'yib, ivy ishlab chiqarishni yo'lga qo'ydilar va oilaviy biznesni kengaytirdilar.",
+        "title2": "Ishlab chiqarishni boshlash",
+        "dcr2": "To'qimachilik ishlab chiqarishni boshlagan holda, 2011 yilda kompaniya yuqori sifatli uy mahsulotlariga e'tibor qaratgan PARISAHOME brendini yaratdi. Yumshoq va qulay sochiqlar bilan kompaniya tezda mijozlar ishonchini va e'tiborini qozondi.",
+        "title3": "O'sish vaqti",
+        "dcr3": "SamRafoatTekstil o'z yo'lini boshlaganidan beri, eksport yo'nalishini faol rivojlantirib, xalqaro bozorga chiqish imkoniyatini yaratdi. 2021 yilda biz Yaponiyaga hammom sochiqlarini eksport qilishni boshlab, yetkazib berish geografiyasini kengaytirdik. Bugungi kunda mahsulotlarimiz 15 dan ortiq davlatga, shu jumladan MDH davlatlari, Yaponiyaga, Vengriyaga, Bolgariyaga, AQSh va Turkiyaga muvaffaqiyatli etkazib beriladi. Biz bobomiz Rahfoatning merosidan ilhomlanib, dunyo bo'ylab uylariga iliqlik va qulaylik olib kelishga intilamiz.",
+        "title4": "Yangi ufqlar",
+        "dcr4": "Biz sochiq ishlab chiqarish tajribamiz bilan faxrlanamiz, bu tajriba avloddan avlodga o'tadi. Bizning jamoamiz sizning uyingiz uchun yuqori standartlarga javob beradigan innovatsion yechimlar yaratishga qaratilgan bo'lib, mahorat ruhi va oilaviy an'analariga sodiqlikni saqlab qoladi."
+    },
+    "aboutCompany": {
+        "title": "Kompaniyamiz Haqida",
+        "sections": [
+            {
+                "number": "01",
+                "heading": "Ishlashga yo'naltirilgan",
+                "description": "Biz ishlab chiqarish jarayonining har bir bosqichida maksimal samaradorlikka intilamiz, ilg'or texnologiyalardan foydalanamiz va jarayonlarni optimallashtiramiz. Bizning maqsadimiz sifat va chidamlilikning eng yuqori standartlariga javob beradigan mahsulotlar ishlab chiqarish."
+            },
+            {
+                "number": "02",
+                "heading": "Mijozga yo'naltirilgan",
+                "description": "Biz taklif qiladigan har bir yechim mijozlarimizning ehtiyojlari asosida yaratiladi. Biz ularning fikrlariga diqqat bilan quloq tutamiz va zamonaviy iste'molchilar talablariga javob beradigan mahsulotlar yaratishga intilamiz."
+            },
+            {
+                "number": "03",
+                "heading": "Innovatsion",
+                "description": "Biz yangi yechimlarni qidirishda va ishlab chiqarish jarayonlariga innovatsiyalarni joriy etishda davom etamiz. To'qimachilik sohasidagi so'nggi yangiliklardan foydalanib, biz funksionallik va uslubni birlashtirgan mahsulotlar ishlab chiqaramiz."
+            }
+        ]
+    },
+    "exploreServices": {
+        "tagline": "Birgalikda dunyoni yumshoqroq qilamiz.",
+        "description": "2011 yildan beri biz tajriba to'playmiz va xalqaro sertifikatlar bilan sifatimizni tasdiqlaymiz, bu to'qimachilik sanoatining yuqori standartlariga mos keladi.",
+        "certificatesLink": "SERTIFIKATLARNI O'RGANISH"
+    },
+    "quote": "Biz yumshoqlikning kundalik hayotga kiritilishi kerak bo'lgan bir hashamat ekanligiga ishonamiz.",
+    "partners": {
+        "title": "HAMKORLAR",
+        "description": "2011 yildan buyon biz tajriba to'playmiz va yuqori tekstil sanoati standartlariga mos xalqaro sertifikatlar bilan sifatimizni tasdiqlaymiz.",
+        "partnerList": [
+            {
+                "name": "Xetma Vollenweider GmbH",
+                "description": "Yengil va boshqa to'qimachilikni tayyorlash mashinalariga ixtisoslashgan."
+            },
+            {
+                "name": "Toyota Industries Corporation (Airjet Looms)",
+                "description": "Toyota Airjet to'qish mashinalari bilan mashhur."
+            },
+            {
+                "name": "Prashant Westpoint Group",
+                "description": "Hindistondagi to'qish va tayyorlash mashinalari ishlab chiqaruvchisi."
+            },
+            {
+                "name": "Dilmenler Tekstil Makinaları (Dilmenler Softflow Dyeing)",
+                "description": "Softflow bo'yash mashinalarini o'z ichiga olgan bo'yash mashinalari ishlab chiqaruvchisi."
+            }
+        ],
+        "contactSection": {
+            "callToAction": "Biz har doim yangi hamkorlik va hamkorlik imkoniyatlarini qidiryapmiz!",
+            "linkText": "BIZ BILAN ALOQAGA CHIQING"
+        }
     }
 }

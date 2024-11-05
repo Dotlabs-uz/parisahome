@@ -1,5 +1,134 @@
 {
-    "homepage": {
-        "title": "こんにちは"
+    "technologiesComp": {
+        "technologies": "テクノロジー",
+        "aboutCompany": "会社について",
+        "brandMessage": "技術革新の道を進むブランド",
+        "description": "私たちは、より良いタオルを作るために革新を取り入れ、世界をより柔らかくします。私たちの生地は、快適さと耐久性を提供し、環境に配慮しています。"
+    },
+    "weInNumbersComp": {
+        "weInNumbersTitle": "数字で見る私たち",
+        "subtitle": "革新的で、効率的で、信頼性のある",
+        "womenPercentage": "95% 女性",
+        "womenDescription": "従業員の中で",
+        "waterRecycled": "1080 トン",
+        "waterRecycledDescription": "年間にリサイクルされる水",
+        "productionOutput": "9000 トン",
+        "productionOutputDescription": "年間に生産される製品",
+        "exportCountries": "15以上の国へ",
+        "exportDescription": "製品は輸出されています"
+    },
+    "partnersCom": {
+        "partnersTitle": "製品の高品質を保証するために、世界的ブランドの先端技術と設備を活用しています",
+        "benningerDescription": "高品質の経糸整経および織機準備機械で知られる。",
+        "prashantDescription": "インドでの織機および仕上げ機械のリーディングメーカー。",
+        "toyotaDescription": "先進的なトヨタエアジェット織機で有名。",
+        "dilmenlerDescription": "ソフトフロー染色機などの染色機械の製造業者。",
+        "xetmaDescription": "繊維の仕上げと毛羽取り機械を専門とする。",
+        "jukiDescription": "縫製機械のグローバルリーダー。",
+        "hashimaDescription": "繊維品質管理に使用される金属探知機で有名。",
+        "pentekDescription": "テキスタイル仕上げ装置やタンブラーとして知られる。"
+    },
+    "productsTitle": "製品",
+    "galleryTitle": "私たちのギャラリー",
+    "faqTitle": "よくある質問",
+    "form": {
+        "heading": "質問はありますか？",
+        "subheading": "フォームにご記入いただければ、こちらからご連絡いたします。",
+        "nameLabel": "あなたの名前",
+        "namePlaceholder": "ここにあなたの名前を入力してください",
+        "phoneLabel": "あなたの電話番号",
+        "phonePlaceholder": "あなたの電話番号",
+        "emailLabel": "あなたのメール",
+        "emailPlaceholder": "あなたのメールアドレス",
+        "messageLabel": "あなたのコメント",
+        "messagePlaceholder": "ここにコメントを入力してください",
+        "submitButton": "送信",
+        "loadingButton": "送信中...",
+        "successMessage": "メッセージが送信されました！",
+        "requiredField": "このフィールドは必須です",
+        "heading2": "お問い合わせ",
+        "email": "info@parisahome.com",
+        "phone1": "+998 91 538 11 11",
+        "phone2": "+998 91 539 11 11",
+        "phoneProcurement": "+998 90 606 13 00 - 調達部門",
+        "address": "Konigil Samarkand 140319, ウズベキスタン"
+    },
+    "footer": {
+        "backToTop": "トップに戻る",
+        "contactUs": "お問い合わせ",
+        "copyright": "Copyright © Parisa Home 2024.",
+        "privacyPolicy": "プライバシーポリシー",
+        "allRightsReserved": "すべての権利を保留します ",
+        "heading": "私たちは常に新しいパートナーシップと機会を探しています"
+    },
+    "nav": {
+        "link1": "ホーム",
+        "link2": "私たちについて",
+        "link3": "カタログ",
+        "link4": "お問い合わせ",
+        "link5": "機械",
+        "link6": "証明書"
+    },
+    "history": {
+        "title1": "SamRafoatTekstilの歴史",
+        "dcr1": "ビジネス以上のものであり、世代を超えて受け継がれる温かさと配慮に満ちた家族の遺産です。すべては、私たちに今日の活動にインスピレーションを与える、品質と職人技の象徴となった、ラフォアットおばあちゃんの巧妙な作品から始まりました。家族の伝統を継承し、彼女の息子はテキスタイル素材の商売をすることで家族のビジネスを拡大しました。2014年に孫たちは、祖母の名前を冠したSamRafoatTekstilという会社を設立し、アイビーの生産を確立し、家族ビジネスを拡大しました。",
+        "title2": "生産の開始",
+        "dcr2": "テキスタイルの生産から始まり、2011年に会社は高品質な家庭用品に重点を置いたPARISAHOMEブランドを創設しました。柔らかく快適なタオルを提供することで、会社は迅速に顧客の信頼と注目を集めました。",
+        "title3": "成長の時",
+        "dcr3": "SamRafoatTekstilは、設立以来、積極的に輸出方向を発展させ、国際市場に進出することを可能にしました。2021年には、日本へのタオル輸出を開始し、供給地域を拡大しました。現在、私たちの製品は、CIS諸国、日本、ハンガリー、ブルガリア、アメリカ、トルコなど、15カ国以上に成功裏に供給されています。私たちは、ラフォアットおばあちゃんの遺産に触発されて、世界中の家々に温かさと快適さをもたらすために、卓越性を追求し続けています。",
+        "title4": "新たな地平線",
+        "dcr4": "私たちは、世代を超えて受け継がれるタオル製造の経験を誇りに思っています。私たちのチームは、高い基準を満たす革新的な解決策をあなたの家のために創造することに注力し、職人技の精神と家族の伝統への献身を守り続けています。"
+    },
+    "aboutCompany": {
+        "title": "私たちの会社について",
+        "sections": [
+            {
+                "number": "01",
+                "heading": "パフォーマンス指向",
+                "description": "私たちは、生産の各段階で最大限の効率を追求し、先進的な技術を活用してプロセスを最適化しています。私たちの目標は、最高の品質と耐久性の基準を満たす製品を作成することです。"
+            },
+            {
+                "number": "02",
+                "heading": "顧客中心",
+                "description": "私たちが提供するすべてのソリューションは、顧客のニーズに基づいています。私たちは、彼らのフィードバックに注意を払い、快適さと便利さを提供し、現代の消費者の要求を満たす製品を作成するよう努めています。"
+            },
+            {
+                "number": "03",
+                "heading": "革新的",
+                "description": "私たちは常に新しいソリューションを探し、製造プロセスに革新を導入しています。テキスタイル業界の最新の発展を活用して、機能性とスタイルを兼ね備えた製品を作り出しています。"
+            }
+        ]
+    },
+    "exploreServices": {
+        "tagline": "一緒に世界を柔らかくします。",
+        "description": "2011年から、私たちは経験を積み、テキスタイル業界の高い基準に合致する国際的な認証で品質を確認しています。",
+        "certificatesLink": "認証を探る"
+    },
+    "quote": "私たちは、柔らかさは日常生活に取り入れるべき贅沢であると信じています。",
+    "partners": {
+        "title": "パートナー",
+        "description": "2011年から、私たちは経験を積み、繊維産業の高い基準を満たす国際的な認証で品質を確認しています。",
+        "partnerList": [
+            {
+                "name": "Xetma Vollenweider GmbH",
+                "description": "シアリングおよびその他のテキスタイル仕上げ機械を専門としています。"
+            },
+            {
+                "name": "Toyota Industries Corporation (Airjet Looms)",
+                "description": "最新のトヨタエアジェット織機で知られています。"
+            },
+            {
+                "name": "Prashant Westpoint Group",
+                "description": "インドの織機と仕上げ機械の大手製造業者。"
+            },
+            {
+                "name": "Dilmenler Tekstil Makinaları (Dilmenler Softflow Dyeing)",
+                "description": "ソフトフロー染色機を含む染色機の製造業者。"
+            }
+        ],
+        "contactSection": {
+            "callToAction": "私たちは常に新しいパートナーシップと協力の機会を探しています！",
+            "linkText": "お問い合わせ"
+        }
     }
 }

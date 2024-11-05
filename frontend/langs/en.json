@@ -1,5 +1,134 @@
 {
-    "homepage": {
-        "title": "hello world"
+    "technologiesComp": {
+        "technologies": "TECHNOLOGIES",
+        "aboutCompany": "ABOUT US",
+        "brandMessage": "A brand on the path of technological innovations",
+        "description": "We make the world softer by introducing innovations to create high-quality towels. Our fabrics provide comfort and durability with a focus on sustainability."
+    },
+    "weInNumbersComp": {
+        "weInNumbersTitle": "WE IN NUMBERS",
+        "subtitle": "Innovative, efficient, and reliable",
+        "womenPercentage": "95% women",
+        "womenDescription": "in our workforce",
+        "waterRecycled": "1080 tons",
+        "waterRecycledDescription": "of water recycled annually",
+        "productionOutput": "9000 tons",
+        "productionOutputDescription": "of finished products produced annually",
+        "exportCountries": "To 15+ countries",
+        "exportDescription": "Our products are exported"
+    },
+    "partnersCom": {
+        "partnersTitle": "We utilize advanced technologies and equipment from global brands to ensure the highest quality of our products",
+        "benningerDescription": "Known for high-quality warping and weaving preparation machinery.",
+        "prashantDescription": "A leading manufacturer of weaving and finishing machinery in India.",
+        "toyotaDescription": "Renowned for their advanced Toyota Airjet weaving machines.",
+        "dilmenlerDescription": "Manufacturer of dyeing machines, including Softflow dyeing machines.",
+        "xetmaDescription": "Specializes in shearing and other textile finishing machines.",
+        "jukiDescription": "Global leader in sewing and stitching machinery.",
+        "hashimaDescription": "Known for metal detectors used in textile quality control.",
+        "pentekDescription": "Known for tumbling and textile finishing equipment."
+    },
+    "productsTitle": "PRODUCTS",
+    "galleryTitle": "OUR GALLERY",
+    "faqTitle": "Frequently Asked Questions",
+    "form": {
+        "heading": "Got questions?",
+        "subheading": "Fill out the form and we will get back to you",
+        "nameLabel": "Your Name",
+        "namePlaceholder": "Enter your name here",
+        "phoneLabel": "Your Phone",
+        "phonePlaceholder": "Your number",
+        "emailLabel": "Your Email",
+        "emailPlaceholder": "Your email",
+        "messageLabel": "Your Comment",
+        "messagePlaceholder": "Write your comment here",
+        "submitButton": "Send",
+        "loadingButton": "Sending...",
+        "successMessage": "Your message has been sent!",
+        "requiredField": "This field is required",
+        "heading2": "Stay in Touch",
+        "email": "info@parisahome.com",
+        "phone1": "+998 91 538 11 11",
+        "phone2": "+998 91 539 11 11",
+        "phoneProcurement": "+998 90 606 13 00 - Procurement Department",
+        "address": "Konigil Samarkand 140319, Uzbekistan"
+    },
+    "footer": {
+        "backToTop": "BACK TO TOP",
+        "contactUs": "CONTACT US",
+        "copyright": "Copyright © Parisa Home 2024.",
+        "privacyPolicy": "Privacy Policy",
+        "allRightsReserved": "All Rights Reserved.",
+        "heading": "We are always looking for new partnerships and opportunities"
+    },
+    "nav": {
+        "link1": "Home",
+        "link2": "About Us",
+        "link3": "Catalog",
+        "link4": "Contacts",
+        "link5": "Machineries",
+        "link6": "Certificates"
+    },
+    "history": {
+        "title1": "The History of SamRafoatTekstil",
+        "dcr1": "More than just a business, it is a family heritage filled with warmth and care passed down through generations. It all started with Grandma Rafoat, whose skilled works became a symbol of quality and craftsmanship that inspire us today. Continuing the family tradition, her son expanded the family business by trading textile materials. In 2014, the grandchildren founded the company SamRafoatTekstil, named after their grandmother, and established ivy production, further expanding the family business.",
+        "title2": "Start of Production",
+        "dcr2": "Starting with textile production, in 2011, the company created the PARISAHOME brand, emphasizing high-quality home products. With soft and comfortable towels, the company quickly gained the trust and attention of customers.",
+        "title3": "Time of Growth",
+        "dcr3": "From the very beginning, SamRafoatTekstil actively developed its export direction, allowing it to enter international markets. In 2021, we expanded our delivery geography by starting the export of terry towels to Japan. Today, our products are successfully supplied to over 15 countries, including the CIS countries, Japan, Hungary, Bulgaria, the USA, and Turkey. We continue to strive for excellence, inspired by the legacy of our grandmother Rafoat, bringing warmth and comfort to homes around the world.",
+        "title4": "New Horizons",
+        "dcr4": "We take pride in our towel manufacturing experience, passed down through generations. Our team is focused on creating innovative solutions for your home that meet high standards while preserving the spirit of craftsmanship and dedication to family traditions."
+    },
+    "aboutCompany": {
+        "title": "About Our Company",
+        "sections": [
+            {
+                "number": "01",
+                "heading": "Performance-Oriented",
+                "description": "We strive for maximum efficiency at every stage of our production, utilizing advanced technologies and optimizing processes. Our goal is to create products that meet the highest standards of quality and durability."
+            },
+            {
+                "number": "02",
+                "heading": "Customer-Centric",
+                "description": "Every solution we offer is based on our customers' needs. We listen closely to their feedback and strive to create products that provide comfort, convenience, and meet the demands of modern consumers."
+            },
+            {
+                "number": "03",
+                "heading": "Innovative",
+                "description": "We are constantly seeking new solutions and implementing innovations in our production processes. By using the latest developments in the textile industry, we create products that combine functionality with style."
+            }
+        ]
+    },
+    "exploreServices": {
+        "tagline": "Together, we make the world softer.",
+        "description": "Since 2011, we have been accumulating experience and confirming our quality with international certificates that meet the high standards of the textile industry.",
+        "certificatesLink": "EXPLORE CERTIFICATES"
+    },
+    "quote": "We believe that softness is a luxury that should be brought into everyday life.",
+    "partners": {
+        "title": "PARTNERS",
+        "description": "Since 2011, we have been accumulating experience and confirming our quality with international certificates that meet the high standards of the textile industry.",
+        "partnerList": [
+            {
+                "name": "Xetma Vollenweider GmbH",
+                "description": "Specializes in shearing and other textile finishing machines."
+            },
+            {
+                "name": "Toyota Industries Corporation (Airjet Looms)",
+                "description": "Renowned for their advanced Toyota Airjet weaving machines."
+            },
+            {
+                "name": "Prashant Westpoint Group",
+                "description": "A leading manufacturer of weaving and finishing machinery in India."
+            },
+            {
+                "name": "Dilmenler Tekstil Makinaları (Dilmenler Softflow Dyeing)",
+                "description": "Manufacturer of dyeing machines, including Softflow dyeing machines."
+            }
+        ],
+        "contactSection": {
+            "callToAction": "We are always looking for new partnerships and collaboration opportunities!",
+            "linkText": "CONTACT US"
+        }
     }
 }

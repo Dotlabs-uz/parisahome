@@ -5,8 +5,9 @@ import { animateElementsOnScroll } from '@/lib/animations'
 import axios from 'axios'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import { getDictionary } from '@/lib/dictionary'
 
-const Technologies = () => {
+const Technologies = ({ technologiesComp }: any) => {
     const { lang } = useParams()
     const sectionRef = useRef<HTMLDivElement | null>(null)
     const [machines, setMachines] = useState([]);
@@ -47,8 +48,8 @@ const Technologies = () => {
                     </div>
                     <div className="flex items-center justify-between mb-10 anim-element">
                         <div className="w-full flex max-sm:flex-col sm:items-center justify-between gap-3">
-                            <h2 className="text-3xl max-sm:text-xl text-yellow">\\ТЕХНОЛОГИИ</h2>
-                            <Link href={`/${lang}/about-us`} className="w-fit text-sm max-sm:text-xs py-3 max-sm:py-2 px-8 max-sm:px-5 rounded-full border border-yellow">О КОМПАНИИ</Link>
+                            <h2 className="text-3xl max-sm:text-xl text-yellow">\\{technologiesComp.technologies}</h2>
+                            <Link href={`/${lang}/about-us`} className="w-fit text-sm max-sm:text-xs py-3 max-sm:py-2 px-8 max-sm:px-5 rounded-full border border-yellow">{technologiesComp.aboutCompany}</Link>
                         </div>
                         <div className="w-56 sm:hidden anim-element">
                             {/* <FlowerModal type={"gold"} /> */}
@@ -61,9 +62,9 @@ const Technologies = () => {
                         </div>
                     </div>
                     <div className="flex max-md:flex-col md:items-center md:justify-end gap-10 max-md:gap-2 anim-element">
-                        <h2 className="max-w-md text-3xl max-lg:text-2xl max-sm:text-xl font-extrabold">Бренд идущий по пути технологических инноваций</h2>
+                        <h2 className="max-w-md text-3xl max-lg:text-2xl max-sm:text-xl font-extrabold">{technologiesComp.brandMessage}</h2>
                         <p className="max-w-sm text-sm md:text-end leading-6">
-                            Мы делаем мир мягче, внедряя инновации для создания полотенец высшего качества. Наши ткани обеспечивают комфорт и долговечность, с заботой об экологии.
+                            {technologiesComp.description}
                         </p>
                     </div>
                 </div>
@@ -79,7 +80,6 @@ const Technologies = () => {
                                             src={i.image.url}
                                             width={1000}
                                             height={1000}
-                                            // layout="responsive"
                                             alt="img"
                                         />
                                     </div>

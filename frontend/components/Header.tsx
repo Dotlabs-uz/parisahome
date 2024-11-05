@@ -10,14 +10,14 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Header = ({ lang }: any) => {
+const Header = ({ lang, nav }: any) => {
     const links = [
-        { link: `/${lang}`, title: "Home" },
-        { link: `/${lang}/about-us`, title: "О нас" },
-        { link: `/${lang}/catalog/1`, title: "Каталог" },
-        { link: `/${lang}/contacts`, title: "Контакты" },
-        { link: `/${lang}/machineries`, title: "Станки" },
-        { link: `/${lang}/certificates`, title: "Сертификаты" },
+        { link: `/${lang}`, title: nav.link1 },
+        { link: `/${lang}/about-us`, title: nav.link2 },
+        { link: `/${lang}/catalog`, title: nav.link3 },
+        { link: `/${lang}/contacts`, title: nav.link4 },
+        { link: `/${lang}/machineries`, title: nav.link5 },
+        { link: `/${lang}/certificates`, title: nav.link6 },
     ];
 
     const [openModal, setOpenModal] = useState(false);
