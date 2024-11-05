@@ -63,12 +63,6 @@ export const PatchQuestion: React.FC<Props> = ({ id, question }) => {
         try {
             const token = await getCookies("token");
 
-<<<<<<< HEAD
-            console.log(token);
-
-
-=======
->>>>>>> 4ef8dd0604b4042e94b946efb5679260f585e1f1
             const res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_URL}/question/${id}`,
                 {

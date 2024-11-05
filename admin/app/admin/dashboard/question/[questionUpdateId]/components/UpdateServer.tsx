@@ -1,4 +1,3 @@
-import { PatchGoodModal } from "@/components/custom/modals/PatchGoodModal";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PatchQuestion } from "./children/PatchQuestion";
