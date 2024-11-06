@@ -2,7 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import SwiperCom from './components/SwiperCom';
 
-const page = async ({ params: { id } }: { params: { id: string } }) => {
+const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
     const { data } = await axios.get(`${process.env.API_URL}/product/${id}`)
 
     return (
@@ -12,4 +12,4 @@ const page = async ({ params: { id } }: { params: { id: string } }) => {
     )
 }
 
-export default page
+export default ProductPage

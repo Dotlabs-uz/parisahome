@@ -33,10 +33,11 @@ const Form = ({ form }: any) => {
             const gRecaptchaToken = await executeRecaptcha('submit');
             const response = await axios.post('/api/verify-recaptcha', { token: gRecaptchaToken });
 
+
             if (response.data.success) {
                 const formResponse = await axios.post(
                     `${process.env.NEXT_PUBLIC_API_URL}/contact`,
-                    { ...data, gRecaptchaToken },
+                    data,
                     { headers: { 'Content-Type': 'application/json' } }
                 );
 
@@ -69,7 +70,7 @@ const Form = ({ form }: any) => {
     //         console.log("reCAPTCHA Token:", gRecaptchaToken);
     //         console.log("data:", data);
     //         // Временная проверка токена
-    //         setSuccessMessage(`Ваш reCAPTCHA токен: ${gRecaptchaToken}`);
+    //         // setSuccessMessage(`Ваш reCAPTCHA токен: ${gRecaptchaToken}`);
     //     } catch (error) {
     //         console.error('Ошибка reCAPTCHA:', error);
     //     }

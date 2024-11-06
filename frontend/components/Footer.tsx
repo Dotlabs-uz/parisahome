@@ -10,7 +10,7 @@ const Footer = ({ footer, nav }: any) => {
     const links = [
         { link: `/${lang}`, title: nav.link1 },
         { link: `/${lang}/about-us`, title: nav.link2 },
-        { link: `/${lang}/catalog`, title: nav.link3 },
+        { link: `/${lang}/catalog/1`, title: nav.link3 },
         { link: `/${lang}/contacts`, title: nav.link4 },
         { link: `/${lang}/machineries`, title: nav.link5 },
         { link: `/${lang}/certificates`, title: nav.link6 },

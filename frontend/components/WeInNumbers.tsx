@@ -43,7 +43,13 @@ const WeInNumbers = ({ weInNumbersComp }: any) => {
                     <p className="text-green text-sm">{weInNumbersComp.waterRecycledDescription}</p>
                 </div>
                 <div className="w-fit px-4 py-5 border-l-2 border-yellow anim-element">
-                    <AiFillProduct className='ml-5 text-[40px] text-green' />
+                    <Image
+                        className='w-12 ml-5 text-green'
+                        src={"/images/icons/product.png"}
+                        width={1000}
+                        height={1000}
+                        alt='workers'
+                    />
                     <p className="text-green text-2xl font-extrabold mb-2">{weInNumbersComp.productionOutput}</p>
                     <p className="text-green text-sm">{weInNumbersComp.productionOutputDescription}</p>
                 </div>

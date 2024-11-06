@@ -14,7 +14,7 @@ const Header = ({ lang, nav }: any) => {
     const links = [
         { link: `/${lang}`, title: nav.link1 },
         { link: `/${lang}/about-us`, title: nav.link2 },
-        { link: `/${lang}/catalog`, title: nav.link3 },
+        { link: `/${lang}/catalog/1`, title: nav.link3 },
         { link: `/${lang}/contacts`, title: nav.link4 },
         { link: `/${lang}/machineries`, title: nav.link5 },
         { link: `/${lang}/certificates`, title: nav.link6 },
@@ -120,8 +120,7 @@ const Header = ({ lang, nav }: any) => {
                         {links.map((i, idx) => (
                             <li key={idx} className={`menu-link-item`}>
                                 <p
-                                    className={`menu-link-item-holder md:leading-loose text-3xl font-medium py-0.5 px-2 rounded-md text-white ${isActive(i.link) ? "bg-yellow" : ""
-                                        }`}
+                                    className={`menu-link-item-holder md:leading-loose text-3xl font-medium py-0.5 px-2 rounded-md text-white ${isActive(i.link) ? "bg-yellow" : ""}`}
                                 >
                                     <Link onClick={() => setOpenModal(false)} href={i.link}>
                                         {i.title}
