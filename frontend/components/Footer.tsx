@@ -62,7 +62,7 @@ const Footer = ({ footer, nav }: any) => {
                             {
                                 links.map((i: any, idx: number) => (
                                     <li key={idx} className='text-sm font-medium '>
-                                        <Link href={`/${lang}/${i.link}`}>
+                                        <Link href={`${i.link}`}>
                                             {i.title}
                                         </Link>
                                     </li>

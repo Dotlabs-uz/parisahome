@@ -13,7 +13,7 @@ const RenderCertificates = ({ certificate }: any) => {
         <div className="mb-10 grid grid-cols-3 max-lg:grid-cols-2 max-xs:grid-cols-1 gap-5 max-lg:gap-3 max-sm:gap-5">
             {
                 certificate.map((i: any, idx: number) => (
-                    <Link href={`/certificates/${i.id}`} key={idx} className="">
+                    <Link href={`/${lang}/certificates/${i.id}`} key={idx} className="">
                         <div className="h-40 max-sm:h-32 overflow-hidden">
                             <Image
                                 className='h-full w-full object-cover rounded-md'
