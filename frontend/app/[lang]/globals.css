@@ -190,3 +190,12 @@ img {
 .img-black {
   filter: grayscale(100%);
 }
+
+.custom-truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* Указывает количество строк */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

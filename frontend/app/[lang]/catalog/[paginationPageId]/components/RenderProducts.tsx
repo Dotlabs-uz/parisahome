@@ -31,7 +31,7 @@ const RenderProducts = async ({ searchParams, params }: any) => {
                                     className="anim-element"
                                 >
                                     <div className="flex flex-col h-full w-full">
-                                        <div className="w-full h-full">
+                                        <div className="w-full">
                                             <Image
                                                 className="w-full h-full object-cover"
                                                 src={i.images[0].url}
@@ -45,9 +45,9 @@ const RenderProducts = async ({ searchParams, params }: any) => {
                                                 <p className="font-semibold">
                                                     {i[productName]}
                                                 </p>
-                                                <p>{i.price} $</p>
+                                                <p>{i.price !== 0 && `${i.price} $`}</p>
                                             </div>
-                                            <p>{i[productDescription]}</p>
+                                            <p className="custom-truncate">{i[productDescription]}</p>
                                         </div>
                                     </div>
                                 </Link>

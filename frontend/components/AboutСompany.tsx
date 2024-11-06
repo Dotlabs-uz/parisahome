@@ -33,11 +33,11 @@ const AboutСompany = ({ aboutCompany }: any) => {
                 {aboutCompany.sections.map((i: any, idx: number) => (
                     <div key={idx} className="flex gap-32 max-xl:gap-10 max-lg:gap-5 items-start justify-between anim-element">
                         <div className="max-md:hidden">
-                            <p className='text-4xl font-medium underline underline-offset-4'>01</p>
+                            <p className='text-4xl font-medium underline underline-offset-8'>{idx + 1}</p>
                         </div>
                         <div className="lg:max-w-[417px]">
                             <div className="flex gap-4 max-md:mb-2">
-                                <p className='text-4xl font-medium underline underline-offset-4 md:hidden'>01</p>
+                                <p className='text-4xl font-medium underline underline-offset-8 md:hidden'>{idx + 1}</p>
                                 <h2 className='text-3xl max-xl:text-2xl md:mb-2'>{i.heading}</h2>
                             </div>
                             <p className='text-sm leading-[23.8px]'>

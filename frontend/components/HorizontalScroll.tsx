@@ -180,7 +180,7 @@ const HorizontalScroll = ({ history }: any) => {
                                             }`}
                                     >
                                         <p className="text-lg font-medium whitespace-nowrap">
-                                            {sectionsData[index].title.toLowerCase()}
+                                            {sectionsData[index].title}
                                         </p>
                                     </div>
                                 </div>
