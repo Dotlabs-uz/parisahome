@@ -24,6 +24,7 @@
     "react-hook-form": "^7.53.0",
     "react-icons": "^5.2.1",
     "react-input-mask": "^2.0.4",
+    "react-masonry-css": "^1.0.16",
     "split-type": "^0.3.4",
     "swiper": "^11.1.9",
     "three": "^0.168.0"

@@ -130,5 +130,9 @@
             "callToAction": "Biz har doim yangi hamkorlik va hamkorlik imkoniyatlarini qidiryapmiz!",
             "linkText": "BIZ BILAN ALOQAGA CHIQING"
         }
+    },
+    "product": {
+        "model": "Model/Seriya:",
+        "zoom": "Kattalashtirish"
     }
 }

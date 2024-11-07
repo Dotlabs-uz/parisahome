@@ -11,11 +11,11 @@ import { FaArrowRight } from "react-icons/fa";
 import { LuMinus, LuPlus } from "react-icons/lu";
 import { IoIosArrowBack } from "react-icons/io";
 
-const SwiperCom = ({ data }: any) => {
+const SwiperCom = ({ data, transition }: any) => {
     const { lang } = useParams()
     const router = useRouter()
     const [swiperRef, setSwiperRef] = useState<any>(null);
-    const [scale, setScale] = useState<number>(1); // Стандартное значение масштаба
+    const [scale, setScale] = useState<number>(1.5); // Стандартное значение масштаба
     const productDescription = `${lang}Description`;
     const productName = `${lang}Name`;
 
@@ -47,7 +47,7 @@ const SwiperCom = ({ data }: any) => {
                 </button>
                 <div className="flex justify-between items-center">
                     <div className="flex flex-col">
-                        <p className="text-white">модель/серия:</p>
+                        <p className="text-white">{transition.model}</p>
                         <p className="text-8xl max-xl:text-7xl max-md:text-6xl font-bold text-white">{data[productName]}</p>
                     </div>
                     <div className="flex gap-3">
@@ -75,8 +75,8 @@ const SwiperCom = ({ data }: any) => {
                 }}
             >
                 {data.images.map((img: { url: string; id: number }) => (
-                    <SwiperSlide className="w-fit overflow-hidden rounded-2xl bg-white/10" key={img.id}>
-                        <ZoomImage src={img.url} alt="Your Image" scale={scale} /> {/* Передаем масштаб */}
+                    <SwiperSlide className="w-fit overflow-hidden rounded-2xl cursor-zoom-in bg-white/10" key={img.id}>
+                        <ZoomImage src={img.url} alt="Your Image" scale={scale} />
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -90,6 +90,7 @@ const SwiperCom = ({ data }: any) => {
                     <LuMinus color="black" className="text-[20px]" />
                 </button>
             </div>
+            <p className="text-center text-white">{transition.zoom}</p>
             <div className="custom-container pt-10">
                 <p className="text-xl text-white">{data[productDescription]}</p>
             </div>

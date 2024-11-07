@@ -130,5 +130,9 @@
             "callToAction": "We are always looking for new partnerships and collaboration opportunities!",
             "linkText": "CONTACT US"
         }
+    },
+    "product": {
+        "model": "Model/Series:",
+        "zoom": "Zoom"
     }
 }

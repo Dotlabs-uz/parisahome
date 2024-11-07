@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 interface ZoomImageProps {
     src: string;
@@ -11,6 +11,7 @@ interface ZoomImageProps {
 const ZoomImage: React.FC<ZoomImageProps> = ({ src, alt, scale = 1.5 }) => {
     const [isZoomed, setIsZoomed] = useState(false);
     const [zoomPosition, setZoomPosition] = useState<any>({ x: 'center', y: 'center' });
+    const imageRef = useRef<HTMLImageElement>(null);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -18,6 +19,10 @@ const ZoomImage: React.FC<ZoomImageProps> = ({ src, alt, scale = 1.5 }) => {
         const y = ((e.clientY - top) / height) * 100; // Y position in percentage
         setZoomPosition({ x, y });
         setIsZoomed(true);
+        if (imageRef.current) {
+            imageRef.current.style.cursor = 'zoom-in';
+        }
+
     };
 
     const handleMouseLeave = () => {
@@ -39,6 +44,7 @@ const ZoomImage: React.FC<ZoomImageProps> = ({ src, alt, scale = 1.5 }) => {
 
     return (
         <div
+            style={{ cursor: 'zoom-in' }}
             className="cursor-zoom-in"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -46,11 +52,13 @@ const ZoomImage: React.FC<ZoomImageProps> = ({ src, alt, scale = 1.5 }) => {
             onTouchEnd={handleTouchEnd}
         >
             <Image
-                className='w-fit mx-auto h-[600px] max-sm:h-[400px] object-contain pointer-events-none select-none image'
+                ref={imageRef}
+                className='w-fit mx-auto h-[600px] max-sm:h-[400px] object-contain pointer-events-none select-none image cursor-zoom-in'
                 style={{
                     transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
                     transform: isZoomed ? `scale(${scale})` : 'scale(1)',
                     transition: 'transform 0.2s ease-in-out',
+                    cursor: 'zoom-in',
                 }}
                 src={src}
                 width={1000}
