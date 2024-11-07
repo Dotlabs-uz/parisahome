@@ -18,7 +18,7 @@ const UpdateServer = async ({ updateId }: { updateId: number }) => {
             <div className="mb-5 flex flex-col gap-5">
                 <Link
                     href={"/admin/dashboard/goods"}
-                    className="flex items-center gap-1 border w-fit py-1 px-2 rounded-sm bg-black hover:bg-black/80 duration-150"
+                    className="flex items-center gap-1 border w-fit py-1 px-2 rounded-sm bg-black hover:bg-black/80 duration-150 text-white"
                 >
                     <ArrowLeft size={20} /> Назад
                 </Link>

@@ -14,11 +14,11 @@ const GoodsPage = async ({ searchParams }: any) => {
     if (goods.status === 500) return <p>Something went wrong!</p>;
 
     return (
-        <div className='bg-white p-5 rounded-xl'>
+        <div className='bg-white p-5 rounded-xl mb-10'>
             <h1 className='text-2xl font-bold mb-4 text-black'>
                 Goods Management
             </h1>
-
+        
             <div className='mb-5'>
                 <GoodsForm />
             </div>

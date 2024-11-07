@@ -98,16 +98,16 @@ export const columns: ColumnDef<GoodItemType>[] = [
 
             return (
                 <div className="flex items-center gap-2">
-                    {images.map((item: any) => (
-                        <Image
-                            key={item.id}
-                            src={item.url}
-                            alt=""
-                            width={50}
-                            height={50}
-                            className="rounded-md object-cover"
-                        />
-                    ))}
+                    {/* {images.map((item: any) => ( */}
+                    <Image
+                        key={images[0].id}
+                        src={images[0].url}
+                        alt=""
+                        width={50}
+                        height={50}
+                        className="rounded-md object-cover"
+                    />
+                    {/* ))} */}
                 </div>
             );
         },

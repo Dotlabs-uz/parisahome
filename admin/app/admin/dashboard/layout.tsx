@@ -24,8 +24,8 @@ export default function DashboardLayout({
     const role = JSON.parse(decodeURIComponent(resRole?.value));
 
     return (
-        <div className="flex h-screen bg-gray-100">
-            <aside className="w-64 bg-white shadow-md">
+        <div className="flex h-full bg-gray-100">
+            <aside className="fixed left-0 top-0 w-64 h-screen bg-white shadow-md">
                 <nav className="p-5 space-y-2">
                     <h1 className="text-black text-2xl mb-4">
                         Admin dashboard
@@ -92,7 +92,7 @@ export default function DashboardLayout({
                     <LogOutButton />
                 </nav>
             </aside>
-            <main className="flex-1 p-8 overflow-y-auto">{children}</main>
+            <main className="flex-1 ml-64 p-8">{children}</main>
         </div>
     );
 }
