@@ -185,7 +185,6 @@ img {
 
 .image {
   transition: transform 0.4s ease-in-out;
-  cursor: zoom-in !important;
 }
 
 .img-black {

@@ -51,12 +51,6 @@ const Categories = ({ categories }: any) => {
 
     return (
         <div ref={sectionRef}>
-            <div className="mt-10 mb-5 max-md:mb-3 anim-element">
-                <h1 className="text-4xl max-lg:text-3xl max-sm:text-2xl font-bold text-white">
-                    Категории продукции
-                </h1>
-            </div>
-
             <div className="anim-element w-full relative flex items-center max-sm:grid grid-cols-2 gap-2 pb-5 mb-5 max-md:mb-3">
                 {[{ ruTitle: "Все", uzTitle: "Hammasi", enTitle: "all", jpTitle: "全て" }, ...categories].map((i: any, idx: number) => (
                     <button

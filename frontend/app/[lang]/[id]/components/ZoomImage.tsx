@@ -44,8 +44,7 @@ const ZoomImage: React.FC<ZoomImageProps> = ({ src, alt, scale = 1.5 }) => {
 
     return (
         <div
-            style={{ cursor: 'zoom-in' }}
-            className="cursor-zoom-in"
+            className='cursor-zoom-in'
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onTouchMove={handleTouchMove}
@@ -53,12 +52,11 @@ const ZoomImage: React.FC<ZoomImageProps> = ({ src, alt, scale = 1.5 }) => {
         >
             <Image
                 ref={imageRef}
-                className='w-fit mx-auto h-[600px] max-sm:h-[400px] object-contain pointer-events-none select-none image cursor-zoom-in'
+                className='w-fit mx-auto h-[600px] max-sm:h-[400px] object-contain image pointer-events-none select-none'
                 style={{
                     transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
                     transform: isZoomed ? `scale(${scale})` : 'scale(1)',
                     transition: 'transform 0.2s ease-in-out',
-                    cursor: 'zoom-in',
                 }}
                 src={src}
                 width={1000}

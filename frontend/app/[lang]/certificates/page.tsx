@@ -4,6 +4,7 @@ import RenderCertificates from './components/RenderCertificates'
 import Categories from './components/Categories'
 import getCertificates from '@/actions/getCertificates'
 import { getDictionary } from '@/lib/dictionary'
+import SkeletonCtegories from '@/components/skeletons/SkeletonCtegories'
 
 const Page = async ({ searchParams, params: { lang } }: any) => {
     const { nav } = await getDictionary(lang);
@@ -16,10 +17,12 @@ const Page = async ({ searchParams, params: { lang } }: any) => {
         <div className='custom-container h-screen pt-14'>
             <div className="">
                 <h2 className='text-4xl max-lg:text-3xl font-bold my-8 certificates text-white'>{nav.link6}</h2>
-                <Categories categories={certificatesCategories.data} />
+                <Suspense fallback={<SkeletonCtegories />}>
+                    <Categories categories={certificatesCategories.data} />
+                </Suspense>
             </div>
 
-            <Suspense fallback={'loading'}>
+            <Suspense fallback={'loading...'}>
                 <RenderCertificates certificate={certificate} />
             </Suspense>
         </div>
