@@ -50,8 +50,6 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
             fm.append("images", elem);
         });
 
-        // console.log(formData, "formData");
-
         const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/product", {
             method: "POST",
             body: fm,
@@ -59,6 +57,8 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
                 Authorization: `Bearer ${token}`,
             },
         });
+
+        const resStatus = await res.json()
 
         if (res.ok) {
             setFormData(null);
@@ -78,8 +78,8 @@ const GoodsForm: React.FC<GoodsFormProps> = () => {
             action("product");
             callMessage("default", "Product added successfully");
         } else {
-            console.error("Error uploading product:", res.statusText);
-            callMessage("destructive", "Something went wrong");
+            console.error("Error uploading product:", resStatus.message);
+            callMessage("destructive", `Something went wrong: ${resStatus.message}`);
         }
     };
 
