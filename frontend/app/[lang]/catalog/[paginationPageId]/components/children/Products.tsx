@@ -35,15 +35,16 @@ const Products = ({ products }: any) => {
                                 className="anim-element h-fit"
                             >
                                 <div className="flex flex-col h-full w-full">
-                                    <div className="w-full">
+                                    <div className="w-full h-80 overflow-hidden">
                                         <Image
                                             className="w-full h-full object-cover"
                                             src={i.images[0].url}
-                                            width={1000}
-                                            height={1000}
+                                            width={300}
+                                            height={300}
                                             alt="product"
                                         />
                                     </div>
+
                                     <div className="mt-1.5 px-2 text-white">
                                         <div className="flex items-center justify-between">
                                             <p className="font-semibold">
