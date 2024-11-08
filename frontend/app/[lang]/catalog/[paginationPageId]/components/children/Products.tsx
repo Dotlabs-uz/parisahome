@@ -35,7 +35,7 @@ const Products = ({ products }: any) => {
                                 className="anim-element h-fit"
                             >
                                 <div className="flex flex-col h-full w-full">
-                                    <div className="w-full h-80 overflow-hidden">
+                                    <div className="w-full h-80 max-md:h-60 overflow-hidden">
                                         <Image
                                             className="w-full h-full object-cover"
                                             src={i.images[0].url}
