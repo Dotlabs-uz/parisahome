@@ -1,13 +1,9 @@
 import getProducts from "@/actions/getProducts";
 import Pagination from "@/components/children/Pagination";
-import Image from "next/image";
-import Link from "next/link";
-import Masonry from "react-masonry-css";
 import Products from "./children/Products";
 
 const RenderProducts = async ({ searchParams, params }: any) => {
     const categoryId = searchParams["categoryId"]
-
 
     const products = await getProducts(+params.paginationPageId, categoryId);
 

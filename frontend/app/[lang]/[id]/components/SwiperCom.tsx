@@ -76,7 +76,7 @@ const SwiperCom = ({ data, transition }: any) => {
             >
                 {data.images.map((img: { url: string; id: number }) => (
                     <SwiperSlide className="w-fit overflow-hidden rounded-2xl bg-white/10" key={img.id}>
-                        <ZoomImage src={img.url} alt="Your Image" scale={scale} />
+                        <ZoomImage src={img.url} alt="Image" scale={scale} />
                     </SwiperSlide>
                 ))}
             </Swiper>

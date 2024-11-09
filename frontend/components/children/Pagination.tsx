@@ -48,7 +48,7 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({
                     >
                         1
                     </Link>
-                    {currentPage > 3 && <span>...</span>}
+                    {currentPage > 3 && <span className="text-white">...</span>}
                 </>
             )}
 
@@ -80,7 +80,7 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({
             {/* Последняя страница */}
             {currentPage < totalPages - 1 && (
                 <>
-                    {currentPage < totalPages - 2 && <span>...</span>}
+                    {currentPage < totalPages - 2 && <span className="text-white">...</span>}
                     <Link
                         href={`/${params.lang}/catalog/${totalPages}?${queryUrl}`}
                         className="text-lg font-medium px-3 py-1 rounded border border-white text-white"
