@@ -18,12 +18,12 @@ const HorizontalScroll = ({ history }: any) => {
 
     const sectionsData = [
         {
-            years: "2014",
+            years: "2011",
             title: history.title1,
             dcr: history.dcr1
         },
         {
-            years: "2011",
+            years: "2014",
             title: history.title2,
             dcr: history.dcr2
         },
