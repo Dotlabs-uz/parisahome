@@ -5,6 +5,18 @@ import { animateElementsOnScroll } from '@/lib/animations'
 import Accordion from './children/Accordion';
 import axios from 'axios';
 
+type accordion = {
+    id: number
+    ruQuestion: string
+    uzQuestion: string
+    enQuestion: string
+    jpQuestion: string
+    ruAnswer: string
+    uzAnswer: string
+    enAnswer: string
+    jpAnswer: string
+}
+
 const FAQ = ({ faqTitle }: any) => {
     const [questions, setQuestions] = useState([]);
     const [expanded, setExpanded] = useState(4);
@@ -36,12 +48,10 @@ const FAQ = ({ faqTitle }: any) => {
                 </div>
 
                 <div className='max-w-4xl h-auto mx-auto px-10 max-sm:px-4 anim-element'>
-                    {questions.map((e: { question: string, answer: string, id: number }) => (
+                    {questions.map((e: accordion) => (
                         <Accordion
                             key={e.id}
-                            id={e.id}
-                            question={e.question}
-                            answer={e.answer}
+                            elem={e}
                             expanded={expanded}
                             setExpanded={setExpanded}
                         />

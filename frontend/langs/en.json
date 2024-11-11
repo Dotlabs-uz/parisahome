@@ -28,7 +28,10 @@
         "hashimaDescription": "Known for metal detectors used in textile quality control.",
         "pentekDescription": "Known for tumbling and textile finishing equipment."
     },
-    "productsTitle": "PRODUCTS",
+    "products": {
+        "title": "PRODUCTS",
+        "show": "Show"
+    },
     "galleryTitle": "OUR GALLERY",
     "faqTitle": "Frequently Asked Questions",
     "form": {
@@ -134,5 +137,50 @@
     "product": {
         "model": "Model/Series:",
         "zoom": "Zoom"
+    },
+    "galleryButton": "VIEW PRODUCTS",
+    "thanks": {
+        "title": "Thank you for your request!",
+        "message": "We will get in touch with you shortly.",
+        "backHome": "Return to the homepage"
+    },
+    "metadata": {
+        "title": {
+            "default": "Parisa Home",
+            "template": "%s - Parisa Home"
+        },
+        "category": "Home textiles, Towels, Home comfort, Hotel amenities, Spa products",
+        "description": "Parisa Home is a leading supplier of high-quality towels. We offer a wide range of soft and stylish towels for home, hotel, or spa. Your comfort and style are our priority.",
+        "keywords": [
+            "Towels for home",
+            "Wholesale terry towels",
+            "100% cotton towels",
+            "Soft towels",
+            "Eco-friendly towels",
+            "Custom embroidered towels",
+            "Towels for hotels",
+            "Towels for SPA",
+            "Towels from Uzbekistan",
+            "Wholesale towel sales",
+            "Towel production in Uzbekistan",
+            "Towels for hotels",
+            "Towel supplies to Russia and the CIS"
+        ],
+        "openGraph": {
+            "title": "Parisa Home",
+            "description": "Parisa Home is a leading supplier of high-quality towels. We offer a wide range of soft and stylish towels for home, hotel, or spa. Your comfort and style are our priority.",
+            "url": "https://new.parisahome.com",
+            "siteName": "new.parisahome.com",
+            "images": [
+                {
+                    "url": "/images/icon.ico",
+                    "width": "800",
+                    "height": "600",
+                    "alt": "Parisa Home"
+                }
+            ],
+            "locale": "en_US",
+            "type": "website"
+        }
     }
 }

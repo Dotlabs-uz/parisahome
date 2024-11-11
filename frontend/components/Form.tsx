@@ -5,6 +5,7 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { TfiEmail } from 'react-icons/tfi';
 import { IoCallOutline, IoLocationOutline } from 'react-icons/io5';
+import { useParams, useRouter } from 'next/navigation';
 
 type Inputs = {
     name: string;
@@ -14,6 +15,8 @@ type Inputs = {
 };
 
 const Form = ({ form }: any) => {
+    const { push } = useRouter()
+    const { lang } = useParams()
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [loading, setLoading] = useState<boolean>(false);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -33,7 +36,6 @@ const Form = ({ form }: any) => {
             const gRecaptchaToken = await executeRecaptcha('submit');
             const response = await axios.post('/api/verify-recaptcha', { token: gRecaptchaToken });
 
-
             if (response.data.success) {
                 const formResponse = await axios.post(
                     `${process.env.NEXT_PUBLIC_API_URL}/contact`,
@@ -44,6 +46,7 @@ const Form = ({ form }: any) => {
                 if (formResponse.status === 200 || formResponse.status === 201) {
                     setSuccessMessage('Форма успешно отправлена!');
                     reset();
+                    push(`/${lang}/thanks`)
                 } else {
                     setSuccessMessage('Не удалось отправить форму.');
                 }

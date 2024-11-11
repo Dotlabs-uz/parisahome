@@ -28,7 +28,10 @@
         "hashimaDescription": "繊維品質管理に使用される金属探知機で有名。",
         "pentekDescription": "テキスタイル仕上げ装置やタンブラーとして知られる。"
     },
-    "productsTitle": "製品",
+    "products": {
+        "title": "製品",
+        "show": "見る"
+    },
     "galleryTitle": "私たちのギャラリー",
     "faqTitle": "よくある質問",
     "form": {
@@ -134,5 +137,50 @@
     "product": {
         "model": "モデル/シリーズ:",
         "zoom": "ズーム"
+    },
+    "galleryButton": "製品を見る",
+    "thanks": {
+        "title": "お申し込みありがとうございます！",
+        "message": "近日中にご連絡いたします。",
+        "backHome": "ホームページに戻る"
+    },
+    "metadata": {
+        "title": {
+            "default": "Parisa Home",
+            "template": "%s - Parisa Home"
+        },
+        "category": "ホームテキスタイル, タオル, ホームコンフォート, ホテルアメニティ, スパ製品",
+        "description": "Parisa Homeは高品質なタオルの主要供給者です。家庭、ホテル、またはスパのための柔らかくてスタイリッシュなタオルの豊富なラインアップを提供しています。あなたの快適さとスタイルは私たちの最優先事項です。",
+        "keywords": [
+            "家庭用タオル",
+            "タオル卸売",
+            "100％コットンタオル",
+            "柔らかいタオル",
+            "エコタオル",
+            "刺繍入りタオル",
+            "ホテル用タオル",
+            "スパ用タオル",
+            "ウズベキスタン産タオル",
+            "タオル卸売販売",
+            "ウズベキスタンでのタオル製造",
+            "ホテル用タオル",
+            "ロシアとCISへのタオル供給"
+        ],
+        "openGraph": {
+            "title": "Parisa Home",
+            "description": "Parisa Homeは高品質なタオルの主要供給者です。家庭、ホテル、またはスパのための柔らかくてスタイリッシュなタオルの豊富なラインアップを提供しています。あなたの快適さとスタイルは私たちの最優先事項です。",
+            "url": "https://new.parisahome.com",
+            "siteName": "new.parisahome.com",
+            "images": [
+                {
+                    "url": "/images/icon.ico",
+                    "width": "800",
+                    "height": "600",
+                    "alt": "Parisa Home"
+                }
+            ],
+            "locale": "ja_JP",
+            "type": "website"
+        }
     }
 }

@@ -28,7 +28,10 @@
         "hashimaDescription": "Matoni sifatini nazorat qilish uchun metalldetektorlar bilan tanilgan.",
         "pentekDescription": "Matoni pardozlash va tishlash uskunalari bilan mashhur."
     },
-    "productsTitle": "PRODUCTS",
+    "products": {
+        "title": "PRODUCTS",
+        "show": "Ko‘rish"
+    },
     "galleryTitle": "BIZNING GALEREYA",
     "faqTitle": "Ko'p beriladigan savollar",
     "form": {
@@ -134,5 +137,50 @@
     "product": {
         "model": "Model/Seriya:",
         "zoom": "Kattalashtirish"
+    },
+    "galleryButton": "MAHSULOTLARNI KO‘RISH",
+    "thanks": {
+        "title": "So‘rovingiz uchun rahmat!",
+        "message": "Tez orada siz bilan bog‘lanamiz.",
+        "backHome": "Bosh sahifaga qaytish"
+    },
+    "metadata": {
+        "title": {
+            "default": "Parisa Home",
+            "template": "%s - Parisa Home"
+        },
+        "category": "Uy matolari, Sochiqlar, Uy qulayligi, Mehmonxona anjomlari, SPA mahsulotlari",
+        "description": "Parisa Home - yuqori sifatli sochiqlar yetkazib beruvchi yetakchi kompaniya. Uy, mehmonxona yoki SPA uchun yumshoq va zamonaviy sochiqlarning keng assortimenti. Sizning qulayligingiz va uslubingiz - bizning g'amxo'rligimiz.",
+        "keywords": [
+            "Uy uchun sochiqlar",
+            "Olim sochiqlari ulgurji",
+            "100% paxta sochiqlari",
+            "Yumshoq sochiqlar",
+            "Ekologik sochiqlar",
+            "Maxsus tikilgan sochiqlar",
+            "Mehmonxonalarga sochiqlar",
+            "SPA uchun sochiqlar",
+            "O'zbekistondan sochiqlar",
+            "Olim sochiqlari sotilishi",
+            "O'zbekistonda sochiq ishlab chiqarish",
+            "Mehmonxonalarga sochiqlar",
+            "Rossiya va MDHga sochiqlar yetkazib berish"
+        ],
+        "openGraph": {
+            "title": "Parisa Home",
+            "description": "Parisa Home - yuqori sifatli sochiqlar yetkazib beruvchi yetakchi kompaniya. Uy, mehmonxona yoki SPA uchun yumshoq va zamonaviy sochiqlarning keng assortimenti. Sizning qulayligingiz va uslubingiz - bizning g'amxo'rligimiz.",
+            "url": "https://new.parisahome.com",
+            "siteName": "new.parisahome.com",
+            "images": [
+                {
+                    "url": "/images/icon.ico",
+                    "width": "800",
+                    "height": "600",
+                    "alt": "Parisa Home"
+                }
+            ],
+            "locale": "uz_UZ",
+            "type": "website"
+        }
     }
 }

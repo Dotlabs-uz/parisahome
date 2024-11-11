@@ -10,7 +10,7 @@ import Form from "@/components/Form";
 import HeroVideo from "@/components/HeroVideo";
 
 const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
-   const { technologiesComp, weInNumbersComp, partnersCom, productsTitle, galleryTitle, faqTitle, form } = await getDictionary(lang);
+   const { technologiesComp, weInNumbersComp, partnersCom, products, galleryTitle, galleryButton, faqTitle, form } = await getDictionary(lang);
 
    return (
       <>
@@ -31,11 +31,11 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
          </section>
 
          <section className="bg-white">
-            <Products productsTitle={productsTitle} />
+            <Products products={products} />
          </section>
 
          <section className="bg-white">
-            <Gallery galleryTitle={galleryTitle} />
+            <Gallery galleryTitle={galleryTitle} galleryButton={galleryButton} />
          </section>
 
          <section className="bg-milky py-10">

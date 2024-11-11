@@ -10,7 +10,7 @@ import { useParams } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Gallery = ({ galleryTitle }: any) => {
+const Gallery = ({ galleryTitle, galleryButton }: any) => {
     const [gallery, setGallery] = useState<any>(null);
     const sectionRef = useRef<any>(null);
 
@@ -177,7 +177,7 @@ const Gallery = ({ galleryTitle }: any) => {
 
                     <Link href={`/${lang}/catalog`}>
                         <button className="bg-yellow text-white font-medium py-3 px-9 mx-auto flex rounded-lg anim-element">
-                            СМОТРЕТЬ ПРОДУКТЫ
+                            {galleryButton}
                         </button>
                     </Link>
                 </div>

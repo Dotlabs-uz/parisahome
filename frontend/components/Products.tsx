@@ -13,10 +13,10 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const Products = ({ productsTitle }: any) => {
+const Products = ({ products }: any) => {
     const { lang } = useParams()
     const sectionRef = useRef<HTMLDivElement | null>(null);
-    const [products, setProducts] = useState<any>(null);
+    const [product, setProducts] = useState<any>(null);
     const productDescription = `${lang}Description`;
     const productName = `${lang}Name`;
 
@@ -48,7 +48,7 @@ const Products = ({ productsTitle }: any) => {
         >
             <div className="mb-16 max-md:mb-8 anim-element">
                 <h2 className="text-3xl max-sm:text-xl text-center text-yellow">
-                    \\{productsTitle}
+                    \\{products.title}
                 </h2>
             </div>
 
@@ -70,8 +70,8 @@ const Products = ({ productsTitle }: any) => {
                         },
                     }}
                 >
-                    {products !== null &&
-                        products.data.map((i: any, idx: number) => (
+                    {product !== null &&
+                        product.data.map((i: any, idx: number) => (
                             <SwiperSlide
                                 key={idx}
                                 className="mb-10 p-3 max-sm:p-1.5 rounded-[20px] border border-[#EEEEEE]"
@@ -99,7 +99,7 @@ const Products = ({ productsTitle }: any) => {
                                         href={`/${lang}/${i.id}`}
                                         className="text-sm max-sm:text-xs font-extrabold underline m-auto"
                                     >
-                                        Посмотреть
+                                        {products.show}
                                     </Link>
                                 </div>
                             </SwiperSlide>
