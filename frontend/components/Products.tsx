@@ -3,7 +3,6 @@ import React, { Suspense, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import axios from "axios";
 
 import { animateElementsOnScroll } from "@/lib/animations";
 
@@ -32,10 +31,9 @@ const Products = ({ product, tran }: any) => {
             <Suspense fallback={"loading"}>
                 <div
                     ref={sectionRef}
-                    className=""
                 >
                     <Swiper
-                        className="anim-element"
+                        className=""
                         slidesPerView={1.5}
                         spaceBetween={20}
                         modules={[Pagination]}
