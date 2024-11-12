@@ -1,6 +1,5 @@
 import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
-import Products from "@/components/Products";
 import Gallery from "@/components/Gallery";
 import Partners from "@/components/Partners";
 import WeInNumbers from "@/components/WeInNumbers";
@@ -8,6 +7,8 @@ import Technologies from "@/components/Technologies";
 import FAQ from "@/components/FAQ";
 import Form from "@/components/Form";
 import HeroVideo from "@/components/HeroVideo";
+import ProductsCon from "@/components/ProductsCon";
+import FAQcon from "@/components/FAQcon";
 
 const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
    const { technologiesComp, weInNumbersComp, partnersCom, products, galleryTitle, galleryButton, faqTitle, form } = await getDictionary(lang);
@@ -31,15 +32,15 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
          </section>
 
          <section className="bg-white">
-            <Products products={products} />
+            <ProductsCon products={products} />
          </section>
 
          <section className="bg-white">
-            <Gallery galleryTitle={galleryTitle} galleryButton={galleryButton} />
+            <Gallery galleryTitle={galleryTitle} galleryButton={galleryButton} lang={lang} />
          </section>
 
          <section className="bg-milky py-10">
-            <FAQ faqTitle={faqTitle} />
+            <FAQcon faqTitle={faqTitle} />
          </section>
 
          <section>

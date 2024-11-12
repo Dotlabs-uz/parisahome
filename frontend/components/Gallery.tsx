@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import { Suspense, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
@@ -10,54 +10,55 @@ import { useParams } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Gallery = ({ galleryTitle, galleryButton }: any) => {
-    const [gallery, setGallery] = useState<any>(null);
-    const sectionRef = useRef<any>(null);
+const Gallery = async ({ galleryTitle, galleryButton, lang }: any) => {
+    const gallery = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/gallery`)
+    // const [gallery, setGallery] = useState<any>(null);
+    // const sectionRef = useRef<any>(null);
 
-    const { lang } = useParams()
+    // const { lang } = useParams()
 
-    useEffect(() => {
-        const elements = sectionRef.current?.querySelectorAll(".anim-element");
-        if (elements) {
-            animateElementsOnScroll(elements);
-        }
+    // useEffect(() => {
+    //     const elements = sectionRef.current?.querySelectorAll(".anim-element");
+    //     if (elements) {
+    //         animateElementsOnScroll(elements);
+    //     }
 
-        gsap.to(".hr-1", {
-            width: "100%",
-            scrollTrigger: {
-                trigger: ".galleryTitle",
-                start: "center bottom",
-                end: "center center",
-                scrub: 1,
-                // markers: true
-            },
-        });
+    //     gsap.to(".hr-1", {
+    //         width: "100%",
+    //         scrollTrigger: {
+    //             trigger: ".galleryTitle",
+    //             start: "center bottom",
+    //             end: "center center",
+    //             scrub: 1,
+    //             // markers: true
+    //         },
+    //     });
 
-        gsap.to(".hr-2", {
-            width: "0%",
-            scrollTrigger: {
-                trigger: ".hr-2",
-                start: "center bottom",
-                end: "bottom center",
-                scrub: 1,
-                // markers: true
-            },
-        });
-    }, []);
+    //     gsap.to(".hr-2", {
+    //         width: "0%",
+    //         scrollTrigger: {
+    //             trigger: ".hr-2",
+    //             start: "center bottom",
+    //             end: "bottom center",
+    //             scrub: 1,
+    //             // markers: true
+    //         },
+    //     });
+    // }, []);
 
-    useEffect(() => {
-        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/gallery`).then((res) => {
-            if (res.status == 200 || res.status == 201) {
-                setGallery(res.data);
-            }
-        });
-    }, []);
+    // useEffect(() => {
+    //     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/gallery`).then((res) => {
+    //         if (res.status == 200 || res.status == 201) {
+    //             setGallery(res.data);
+    //         }
+    //     });
+    // }, []);
 
     return (
         <>
             {gallery ? (
                 <div
-                    ref={sectionRef}
+                    // ref={sectionRef}
                     className="custom-container py-20 max-md:py-10 h-auto"
                 >
                     {/* <hr className="border w-0 h-0.5 bg-green hr-1 galleryTitle" /> */}
@@ -71,7 +72,7 @@ const Gallery = ({ galleryTitle, galleryButton }: any) => {
                     <Suspense fallback={"loading..."}>
                         <div className="grid grid-cols-3 gap-3 px-60 max-xl:px-40 max-lg:px-10 my-7 max-md:hidden md:grid">
                             <div className="flex flex-col gap-3">
-                                {gallery.slice(0, 4).map((item: any, i: number) => (
+                                {gallery.data.slice(0, 4).map((item: any, i: number) => (
                                     <div
                                         key={item.id}
                                         className={`${i == 0
@@ -95,7 +96,7 @@ const Gallery = ({ galleryTitle, galleryButton }: any) => {
                             </div>
 
                             <div className="flex flex-col gap-3">
-                                {gallery.slice(4, 8).map((item: any, i: number) => (
+                                {gallery.data.slice(4, 8).map((item: any, i: number) => (
                                     <div
                                         key={item.id}
                                         className={`${i == 0
@@ -119,7 +120,7 @@ const Gallery = ({ galleryTitle, galleryButton }: any) => {
                             </div>
 
                             <div className="flex flex-col gap-3">
-                                {gallery
+                                {gallery.data
                                     .slice(8, 12)
                                     .map((item: any, i: number) => (
                                         <div
@@ -146,7 +147,7 @@ const Gallery = ({ galleryTitle, galleryButton }: any) => {
                         </div>
 
                         <div className="grid grid-cols-10 gap-1 my-5 md:hidden">
-                            {gallery.slice(0, 5).map((item: any, i: number) => (
+                            {gallery.data.slice(0, 5).map((item: any, i: number) => (
                                 <div
                                     key={item.id}
                                     className={`${i == 0
