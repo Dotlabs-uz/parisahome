@@ -36,9 +36,9 @@ const Gallery = ({ galleryTitle, galleryButton }: any) => {
         gsap.to(".hr-2", {
             width: "0%",
             scrollTrigger: {
-                trigger: ".galleryTitle",
+                trigger: ".hr-2",
                 start: "center bottom",
-                end: "center center",
+                end: "bottom center",
                 scrub: 1,
                 // markers: true
             },
@@ -60,14 +60,13 @@ const Gallery = ({ galleryTitle, galleryButton }: any) => {
                     ref={sectionRef}
                     className="custom-container py-20 max-md:py-10 h-auto"
                 >
-                    <hr className="border-none w-0 h-0.5 bg-green hr-1 galleryTitle" />
+                    {/* <hr className="border w-0 h-0.5 bg-green hr-1 galleryTitle" /> */}
                     <div className="py-7 max-md:py-5">
                         <h2 className="text-3xl max-sm:text-xl text-center text-yellow anim-element">
                             \\{galleryTitle}
                         </h2>
                     </div>
-                    <div className="w-full h-0.5 hr-2 translate-y-0.5 bg-white"></div>
-                    <hr className="border-none w-full h-0.5 bg-green" />
+                    {/* <hr className="border- hr-2 w-0 h-0.5 bg-green" /> */}
 
                     <Suspense fallback={"loading..."}>
                         <div className="grid grid-cols-3 gap-3 px-60 max-xl:px-40 max-lg:px-10 my-7 max-md:hidden md:grid">
@@ -175,10 +174,8 @@ const Gallery = ({ galleryTitle, galleryButton }: any) => {
                         </div>
                     </Suspense>
 
-                    <Link href={`/${lang}/catalog`}>
-                        <button className="bg-yellow text-white font-medium py-3 px-9 mx-auto flex rounded-lg anim-element">
-                            {galleryButton}
-                        </button>
+                    <Link href={`/${lang}/catalog/1`} className={"bg-yellow text-white w-fit font-medium py-3 px-9 mx-auto flex rounded-lg anim-element"}>
+                        {galleryButton}
                     </Link>
                 </div>
             ) : null}
