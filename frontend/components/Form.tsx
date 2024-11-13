@@ -61,24 +61,6 @@ const Form = ({ form }: any) => {
         }
     };
 
-    // const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    //     if (!executeRecaptcha) {
-    //         console.log("ReCAPTCHA не готов к выполнению");
-    //         return;
-    //     }
-
-    //     try {
-    //         // Выполнение reCAPTCHA и вывод токена
-    //         const gRecaptchaToken = await executeRecaptcha('inquirySubmit');
-    //         console.log("reCAPTCHA Token:", gRecaptchaToken);
-    //         console.log("data:", data);
-    //         // Временная проверка токена
-    //         // setSuccessMessage(`Ваш reCAPTCHA токен: ${gRecaptchaToken}`);
-    //     } catch (error) {
-    //         console.error('Ошибка reCAPTCHA:', error);
-    //     }
-    // };
-
     return (
         <div className="bg-white my-10 overflow-hidden">
             <div className="custom-container flex max-md:flex-col gap-16 max-lg:gap-5 py-20 max-md:py-10">

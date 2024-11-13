@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -17,6 +17,15 @@ const Products = ({ product, tran }: any) => {
     const sectionRef = useRef<HTMLDivElement | null>(null);
     const productDescription = `${lang}Description`;
     const productName = `${lang}Name`;
+
+    const shuffledProducts = useMemo(() => {
+        const array = [...product];
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }, [product]);
 
     useEffect(() => {
         const section = sectionRef.current;
@@ -50,7 +59,7 @@ const Products = ({ product, tran }: any) => {
                         }}
                     >
                         {product !== null &&
-                            product.map((i: any, idx: number) => (
+                            shuffledProducts.map((i: any, idx: number) => (
                                 <SwiperSlide
                                     key={idx}
                                     className="mb-10 p-3 max-sm:p-1.5 rounded-[20px] border border-[#EEEEEE]"

@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  /* border: 1px solid black */
-}
+/* * {
+  border: 1px solid black
+} */
 
 body {
   @apply bg-green;

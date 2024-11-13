@@ -14,7 +14,7 @@ const Page = async ({ searchParams, params: { lang } }: any) => {
     const certificate = await getCertificates(categoryId);
 
     return (
-        <div className='custom-container h-screen pt-14'>
+        <div className='custom-container pt-14'>
             <div className="">
                 <h2 className='text-4xl max-lg:text-3xl font-bold my-8 certificates text-white'>{nav.link6}</h2>
                 <Suspense fallback={<SkeletonCtegories />}>

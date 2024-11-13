@@ -14,7 +14,7 @@ const HorizontalScroll = ({ history }: any) => {
     const sectionsRefs = useRef<(HTMLDivElement | null)[]>([]);
     const dotsRefs = useRef<(HTMLDivElement | null)[]>([]);
     const [activeDot, setActiveDot] = useState<number>(0);
-    const [modelRotation, setModelRotation] = useState([0, 0, 0]); // Для хранения вращения по осям
+    const [modelRotation, setModelRotation] = useState([0, 0, 0]);
 
     const sectionsData = [
         {

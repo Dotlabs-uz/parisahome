@@ -16,15 +16,15 @@ const RenderCertificates = ({ certificate }: any) => {
                     <Link href={`/${lang}/certificates/${i.id}`} key={idx} className="">
                         <div className="h-40 max-sm:h-32 overflow-hidden">
                             <Image
-                                className='h-full w-full object-cover rounded-md'
+                                className='h-full w-full object-contain rounded-md'
                                 src={i.images[0].url}
                                 width={1000}
                                 height={1000}
                                 alt="certificates"
                             />
                         </div>
-                        <p className='mt-1 max-sm:text-sm text-white'>{i[certificateTitle]}</p>
-                        <p className='max-sm:text-sm text-white'>{i[certificateDescription]}</p>
+                        <p className='mt-1 max-sm:text-sm font-medium text-white'>{i[certificateTitle]}</p>
+                        <p className='text-sm custom-truncate text-white'>{i[certificateDescription]}</p>
                     </Link>
                 ))
             }

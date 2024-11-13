@@ -59,7 +59,7 @@ const Gallery = async ({ galleryTitle, galleryButton, lang }: any) => {
             {gallery ? (
                 <div
                     // ref={sectionRef}
-                    className="custom-container py-20 max-md:py-10 h-auto"
+                    className="custom-container py-20 max-md:py-10 h-auto bg-white"
                 >
                     {/* <hr className="border w-0 h-0.5 bg-green hr-1 galleryTitle" /> */}
                     <div className="py-7 max-md:py-5">
@@ -70,49 +70,43 @@ const Gallery = async ({ galleryTitle, galleryButton, lang }: any) => {
                     {/* <hr className="border- hr-2 w-0 h-0.5 bg-green" /> */}
 
                     <Suspense fallback={"loading..."}>
-                        <div className="grid grid-cols-3 gap-3 px-60 max-xl:px-40 max-lg:px-10 my-7 max-md:hidden md:grid">
-                            <div className="flex flex-col gap-3">
-                                {gallery.data.slice(0, 4).map((item: any, i: number) => (
-                                    <div
-                                        key={item.id}
-                                        className={`${i == 0
-                                            ? "h-[30%]"
-                                            : i == 1
-                                                ? "h-[20%]"
-                                                : i == 2
-                                                    ? "h-[35%]"
-                                                    : "h-[25%]"
-                                            } anim-element`}
-                                    >
-                                        <Image
-                                            className="w-full h-full object-cover rounded-lg"
-                                            src={item.url}
-                                            width={1000}
-                                            height={1000}
-                                            alt="img"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
+                        <div className="grid grid-cols-3 max-sm:grid-cols-2 gap-3 px-60 max-xl:px-40 max-lg:px-10 max-md:px-0 my-7">
+                            {gallery.data.map((item: any, i: number) => (
+                                <div
+                                    key={item.id}
+                                // className={`${i == 0
+                                //     ? "h-[30%]"
+                                //     : i == 1
+                                //         ? "h-[20%]"
+                                //         : i == 2
+                                //             ? "h-[35%]"
+                                //             : "h-[25%]"
+                                //     } anim-element`}
+                                >
+                                    <img
+                                        className="w-full h-full object-cover rounded-lg"
+                                        src={item.url}
+                                        alt="img"
+                                    />
+                                </div>
+                            ))}
 
-                            <div className="flex flex-col gap-3">
+                            {/* <div className="flex flex-col gap-3">
                                 {gallery.data.slice(4, 8).map((item: any, i: number) => (
                                     <div
                                         key={item.id}
-                                        className={`${i == 0
-                                            ? "h-[40%]"
-                                            : i == 1
-                                                ? "h-[25%]"
-                                                : i == 2
-                                                    ? "h-[20%]"
-                                                    : "h-[15%]"
-                                            } anim-element`}
+                                    // className={`${i == 0
+                                    //     ? "h-[40%]"
+                                    //     : i == 1
+                                    //         ? "h-[25%]"
+                                    //         : i == 2
+                                    //             ? "h-[20%]"
+                                    //             : "h-[15%]"
+                                    //     } anim-element`}
                                     >
-                                        <Image
+                                        <img
                                             className="w-full h-full object-cover rounded-lg"
                                             src={item.url}
-                                            width={1000}
-                                            height={1000}
                                             alt="img"
                                         />
                                     </div>
@@ -125,54 +119,50 @@ const Gallery = async ({ galleryTitle, galleryButton, lang }: any) => {
                                     .map((item: any, i: number) => (
                                         <div
                                             key={item.id}
-                                            className={`${i == 0
-                                                ? "h-[35%]"
-                                                : i == 1
-                                                    ? "h-[25%]"
-                                                    : i == 2
-                                                        ? "h-[30%]"
-                                                        : "h-[10%]"
-                                                } anim-element`}
+                                        // className={`${i == 0
+                                        //     ? "h-[35%]"
+                                        //     : i == 1
+                                        //         ? "h-[25%]"
+                                        //         : i == 2
+                                        //             ? "h-[30%]"
+                                        //             : "h-[10%]"
+                                        //     } anim-element`}
                                         >
-                                            <Image
+                                            <img
                                                 className="w-full h-full object-cover rounded-lg"
                                                 src={item.url}
-                                                width={1000}
-                                                height={1000}
                                                 alt="img"
                                             />
                                         </div>
                                     ))}
-                            </div>
+                            </div> */}
                         </div>
 
-                        <div className="grid grid-cols-10 gap-1 my-5 md:hidden">
+                        {/* <div className="grid grid-cols-2 gap-1 my-5 md:hidden">
                             {gallery.data.slice(0, 5).map((item: any, i: number) => (
                                 <div
                                     key={item.id}
-                                    className={`${i == 0
-                                        ? "col-span-6 h-[150px]"
-                                        : i == 1
-                                            ? "col-span-4 h-[150px]"
-                                            : i == 2
-                                                ? "col-span-10 h-[150px]"
-                                                : i == 3
-                                                    ? "col-span-4 h-[150px]"
-                                                    : i == 4
-                                                        ? "col-span-6 h-[150px]"
-                                                        : "col-span-10 h-[150px]"
-                                        } anim-element`}
+                                // className={`${i == 0
+                                //     ? "col-span-6 h-[150px]"
+                                //     : i == 1
+                                //         ? "col-span-4 h-[150px]"
+                                //         : i == 2
+                                //             ? "col-span-10 h-[150px]"
+                                //             : i == 3
+                                //                 ? "col-span-4 h-[150px]"
+                                //                 : i == 4
+                                //                     ? "col-span-6 h-[150px]"
+                                //                     : "col-span-10 h-[150px]"
+                                //     } anim-element`}
                                 >
-                                    <Image
+                                    <img
                                         className="w-full h-full object-cover rounded-md"
                                         src={item.url}
-                                        width={1000}
-                                        height={1000}
                                         alt="img"
                                     />
                                 </div>
                             ))}
-                        </div>
+                        </div> */}
                     </Suspense>
 
                     <Link href={`/${lang}/catalog/1`} className={"bg-yellow text-white w-fit font-medium py-3 px-9 mx-auto flex rounded-lg anim-element"}>
