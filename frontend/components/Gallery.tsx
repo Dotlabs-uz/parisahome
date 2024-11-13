@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // "use client";
 import { Suspense, useEffect, useRef, useState } from "react";
 import Image from "next/image";
