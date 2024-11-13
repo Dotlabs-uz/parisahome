@@ -1,12 +1,33 @@
-import { Suspense } from "react";
+"use client"
+import { Suspense, useEffect, useState } from "react";
 import CategoriesContainer from "./components/CategoriesContainer";
 import RenderProducts from "./components/RenderProducts";
 import SkeletonCatalog from "@/components/skeletons/SkeletonCatalog";
 import SkeletonCtegories from "@/components/skeletons/SkeletonCtegories";
 import action from "@/actions/actions"
+import getProducts from "@/actions/getProducts";
 
+
+// const Page = ({ searchParams, params }: any) => {
 const Page = ({ searchParams, params }: any) => {
-    action('product');
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [total, setTotal] = useState();
+    const categoryId = searchParams.categoryId
+
+    let queryUrl = "";
+
+    if (categoryId !== undefined) {
+        queryUrl += `&categoryId=${categoryId}`
+    }
+
+    useEffect(() => {
+        setLoading(true)
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/product?page=${params.paginationPageId}${queryUrl}`)
+            .then(res => res.json())
+            .then(res => { setProducts(res.data), setTotal(res.total) })
+            .finally(() => setLoading(false))
+    }, [params.paginationPageId, queryUrl])
 
     return (
         <div className="custom-container min-h-screen pt-16">
@@ -16,13 +37,18 @@ const Page = ({ searchParams, params }: any) => {
                 </h1>
             </div>
 
-            <Suspense fallback={<SkeletonCtegories />}>
-                <CategoriesContainer searchParams={searchParams} />
-            </Suspense>
+            <CategoriesContainer searchParams={searchParams} />
 
-            <Suspense fallback={<SkeletonCatalog />}>
+            {
+                loading ? <SkeletonCatalog /> : <RenderProducts arr={products} searchParams={searchParams} total={total} />
+            }
+
+            {/* <Suspense fallback={<SkeletonCtegories />}>
+            </Suspense> */}
+
+            {/* <Suspense fallback={<SkeletonCatalog />}>
                 <RenderProducts searchParams={searchParams} params={params} />
-            </Suspense>
+            </Suspense> */}
         </div>
     );
 };

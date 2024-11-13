@@ -11,7 +11,7 @@ const Categories = ({ categories, searchParams }: any) => {
     const { push } = useRouter();
     const { lang } = useParams();
     const categoryTitle = `${lang}Title`;
-    console.log(+searchParams.categoryId, "searchParams id");
+    // console.log(+searchParams.categoryId, "searchParams id");
 
     const handleClick = (index: number) => {
         setActiveIndex(index);
@@ -59,7 +59,6 @@ const Categories = ({ categories, searchParams }: any) => {
                         className={`text-sm font-semibold text-center py-1.5 px-4 max-sm:px-3 max-sm:py-1.5 rounded-full cursor-pointer border border-yellow text-yellow duration-150`}
                         onClick={() => {
                             handleClick(i.id);
-                            console.log(i.id, "product id");
 
                             if (i.ruTitle === "Все") {
                                 push(`/${lang}/catalog/1`);

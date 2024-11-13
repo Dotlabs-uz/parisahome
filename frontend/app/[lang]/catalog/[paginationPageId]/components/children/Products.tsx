@@ -10,6 +10,8 @@ const Products = ({ products }: any) => {
     const productName = `${lang}Name`;
     const productDescription = `${lang}Description`;
 
+    // console.log(products);
+
     return (
         <div>
             <div
@@ -24,13 +26,13 @@ const Products = ({ products }: any) => {
                         >
                             <div className="flex flex-col h-full w-full">
                                 <div className="w-full h-80 max-md:h-60 overflow-hidden">
-                                    <Image
+                                    <img
                                         className="w-full h-full object-cover"
                                         src={i.images[0].url}
-                                        width={300}
-                                        height={300}
+                                        // width={300}
+                                        // height={300}
                                         alt="product"
-                                        unoptimized
+                                    // unoptimized
                                     />
                                 </div>
 
