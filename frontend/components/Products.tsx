@@ -7,10 +7,10 @@ import { useParams } from "next/navigation";
 import { animateElementsOnScroll } from "@/lib/animations";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, FreeMode, Virtual } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/pagination";
+// import "swiper/css/pagination";
 
 const Products = ({ product, tran }: any) => {
     const { lang } = useParams()
@@ -43,18 +43,18 @@ const Products = ({ product, tran }: any) => {
                 >
                     <Swiper
                         className=""
-                        slidesPerView={1.5}
-                        spaceBetween={20}
-                        modules={[Pagination]}
-                        pagination={{
-                            clickable: true,
-                        }}
+                        slidesPerView={"auto"}
+                        // centeredSlides={true}
+                        spaceBetween={10}
+                        modules={[Virtual]}
                         breakpoints={{
                             540: {
                                 slidesPerView: 2,
+                                spaceBetween: 15
                             },
                             960: {
                                 slidesPerView: 3,
+                                spaceBetween: 20
                             },
                         }}
                     >
@@ -68,9 +68,14 @@ const Products = ({ product, tran }: any) => {
                                         <Image
                                             className="w-full h-full object-cover rounded-lg"
                                             src={i.images[0].url}
-                                            width={1000}
-                                            height={1000}
+                                            width={100}
+                                            height={100}
                                             alt="img"
+                                            loading="lazy"
+                                            placeholder="blur"
+                                            // blurDataURL={i.images[0].url}
+                                            blurDataURL="/path/to/placeholder-image.webp"
+                                        // quality={50}
                                         />
                                     </div>
 

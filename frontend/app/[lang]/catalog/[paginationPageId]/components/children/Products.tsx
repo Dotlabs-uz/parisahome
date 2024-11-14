@@ -11,8 +11,6 @@ const Products = ({ products }: any) => {
     const productName = `${lang}Name`;
     const productDescription = `${lang}Description`;
 
-    // console.log(products);
-
     return (
         <div>
             <div

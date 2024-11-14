@@ -14,7 +14,7 @@ const page = async ({ params: { id, lang } }: { params: { id: string, lang: Loca
                 <p className="text-5xl max-md:text-3xl font-bold text-white">{data[title]}</p>
             </div>
             {data.images.map((img: { url: string; id: number }) => (
-                <div key={img.id} className="w-2/5 max-sm:w-3/4 mx-auto">
+                <div key={img.id} className="mx-auto">
                     <Image
                         className="w-full h-full rounded-2xl"
                         src={img.url}
