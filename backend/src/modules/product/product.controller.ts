@@ -36,14 +36,11 @@ export class ProductController {
 	@UseGuards(IsAdminGuard)
 	@Roles("admin", "superAdmin")
 	@Patch(':id')
-	@ApiConsumes('multipart/form-data')
-	@UseInterceptors(FilesInterceptor('images', 10, multerOptions))
 	async update(
 		@Param('id') id: string,
-		@Body() updateProductDto: Partial<CreateProductDto>, // Допускает частичное обновление
-		@UploadedFiles() files: Array<Express.Multer.File>
+		@Body() updateProductDto: Partial<CreateProductDto>,
 	) {
-		return await this.productService.update(id, updateProductDto, files);
+		return await this.productService.update(id, updateProductDto);
 	}
 
 	@Delete(':id')

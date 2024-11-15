@@ -10,8 +10,6 @@ export class ImagesService {
 
 	constructor(@InjectModel(Image) private readonly imageModel: typeof Image) { }
 
-
-
 	async uploadImages(id: number, files: any, service: string) {
 		const images = [];
 
@@ -57,7 +55,6 @@ export class ImagesService {
 
 	// Удалить изображения с диска и из базы данных
 	async deleteImages(id: number, service: string) {
-
 		const images = await this.imageModel.findAll({ where: { [service]: id } });
 
 		for (const image of images) {
@@ -71,6 +68,19 @@ export class ImagesService {
 			} catch (error) {
 				console.error(`Failed to delete image file: ${imagePath}`, error);
 			}
+		}
+	}
+
+	async deleteImageById(id: number, service: string) {
+		const image = await this.imageModel.findByPk(id);
+
+		const imagePath = path.join(__dirname, '../../../uploads/', image.dataValues.url.split("/").at(-1)); // Путь к файлу на диске
+
+		try {
+			await unlink(imagePath); // Удаление файла с диска
+			await image.destroy()
+		} catch (error) {
+			console.error(`Failed to delete image file: ${imagePath}`, error);
 		}
 	}
 }

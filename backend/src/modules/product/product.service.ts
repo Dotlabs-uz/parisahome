@@ -10,12 +10,13 @@ import { paginateData } from 'src/common/paginateData';
 export class ProductService {
 	constructor(
 		@InjectModel(Product) private productModel: typeof Product,
+		@InjectModel(Category) private categoryModel: typeof Category,
 		private imagesService: ImagesService
 	) { }
 
 	async create(createProductDto: any, files: Array<Express.Multer.File>) {
 		try {
-			const category = await Category.findByPk(createProductDto.categoryId);
+			const category = await this.categoryModel.findByPk(createProductDto.categoryId);
 
 			if (!category) {
 				throw new NotFoundException('Категория не найдена');
@@ -23,7 +24,7 @@ export class ProductService {
 			const product = await this.productModel.create(createProductDto);
 			await this.imagesService.uploadImages(product.dataValues.id, files, "productId")
 
-			return this.productModel.findByPk(product.dataValues.id, { include: { all: true } });
+			return product.reload({include:{all:true}})
 		} catch (e) {
 			throw new BadRequestException(e.message);
 		}
@@ -54,7 +55,7 @@ export class ProductService {
 		return this.productModel.findByPk(id, { include: { all: true } });
 	}
 
-	async update(id: string, updateProductDto: Partial<CreateProductDto>, files: Array<Express.Multer.File>) {
+	async update(id: string, updateProductDto: Partial<CreateProductDto>) {
 		try {
 			const product = await this.productModel.findByPk(id);
 			if (!product) {
@@ -65,14 +66,7 @@ export class ProductService {
 
 			await product.update(productData);
 
-			if (files && files.length > 0) {
-
-				await this.imagesService.deleteImages(product.dataValues.id, "productId");
-
-				await this.imagesService.uploadImages(product.dataValues.id, files, 'productId');
-			}
-
-			return this.productModel.findByPk(id, { include: { all: true } });
+			return {message:"product was update"}
 		} catch (e) {
 			throw new BadRequestException(e.message);
 		}
@@ -88,8 +82,7 @@ export class ProductService {
 			}
 			await this.imagesService.deleteImages(resProduct.dataValues.id, "productId");
 
-			await this.productModel.destroy({ where: { id: id } });
-
+			resProduct.destroy()
 		} catch (e) {
 			throw new BadRequestException(e.message);
 		}
