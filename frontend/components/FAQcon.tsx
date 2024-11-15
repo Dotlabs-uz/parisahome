@@ -1,16 +1,18 @@
-import axios from 'axios'
-import React from 'react'
+
 import FAQ from './FAQ';
+import { getData } from '@/lib/https.request';
 
 const FAQcon = async ({ faqTitle }: any) => {
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/question`)
+    const question = await getData('/question')
 
-    console.log(data);
-
+    if (question.status === 500) {
+        return null;
+    }
+    
     return (
         <div className="custom-container">
             <div className="py-20 max-md:py-10 max-sm:py-5 rounded-3xl shadow-md bg-white">
-                <FAQ faqTitle={faqTitle} data={data} />
+                <FAQ faqTitle={faqTitle} data={question} />
             </div>
         </div>
     )

@@ -1,10 +1,15 @@
-import axios from 'axios'
-import React from 'react'
+
 import Products from './Products'
+import { getData } from '@/lib/https.request'
 
 const ProductsCon = async ({ products }: any) => {
-    const product = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/product`)
 
+    const product = await getData('/product')
+
+    if(product.status === 500 ){
+        return null;
+    }
+    
     return (
         <div
             className="custom-container py-28 max-md:py-20 max-sm:py-10"
@@ -15,7 +20,7 @@ const ProductsCon = async ({ products }: any) => {
                 </h2>
             </div>
 
-            <Products product={product.data.data} tran={products} />
+            <Products product={product.data} tran={products} />
         </div>
     )
 }

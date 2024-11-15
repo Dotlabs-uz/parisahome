@@ -8,6 +8,7 @@ import Form from "@/components/Form";
 import HeroVideo from "@/components/HeroVideo";
 import ProductsCon from "@/components/ProductsCon";
 import FAQcon from "@/components/FAQcon";
+import { Suspense } from "react";
 
 const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
    const { technologiesComp, weInNumbersComp, partnersCom, products, galleryTitle, galleryButton, faqTitle, form } = await getDictionary(lang);
@@ -19,7 +20,9 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
          </section>
 
          <section className="bg-green">
-            <Technologies technologiesComp={technologiesComp} />
+            <Suspense fallback={'loading'}>
+               <Technologies technologiesComp={technologiesComp} />
+            </Suspense>
          </section>
 
          <section className="bg-white">
@@ -31,15 +34,21 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
          </section>
 
          <section className="bg-white">
-            <ProductsCon products={products} />
+            <Suspense fallback={'loading'}>
+               <ProductsCon products={products} />
+            </Suspense>
          </section>
 
-         <section className="bg-white">
-            <Gallery galleryTitle={galleryTitle} galleryButton={galleryButton} lang={lang} />
+         <section className="bg-white w-full flex items-center justify-center">
+            <Suspense fallback={'loading'}>
+               <Gallery galleryTitle={galleryTitle} galleryButton={galleryButton} lang={lang} />
+            </Suspense>
          </section>
 
          <section className="bg-milky py-10">
-            <FAQcon faqTitle={faqTitle} />
+            <Suspense fallback={'loading'}>
+               <FAQcon faqTitle={faqTitle} />
+            </Suspense>
          </section>
 
          <section>
@@ -49,4 +58,4 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
    );
 }
 
-export default Home
+export default Home;

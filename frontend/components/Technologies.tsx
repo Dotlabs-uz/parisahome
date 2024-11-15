@@ -1,11 +1,10 @@
 "use client"
-import { Suspense, useEffect, useRef, useState } from 'react'
+import {useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { animateElementsOnScroll } from '@/lib/animations'
 import axios from 'axios'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import { getDictionary } from '@/lib/dictionary'
 
 const Technologies = ({ technologiesComp }: any) => {
     const { lang } = useParams()
@@ -69,30 +68,29 @@ const Technologies = ({ technologiesComp }: any) => {
                     </div>
                 </div>
 
-                <Suspense fallback={'loading'}>
-                    <div className="grid grid-cols-3 max-md:grid-cols-2 max-xs:grid-cols-1 gap-5 max-sm:gap-y-10 mt-8 max-sm:px-5 anim-element">
-                        {
-                            machines.map((i: any, idx: number) => (
-                                <Link href={`/${lang}/machineries/${i.id}`} key={idx} className="border-b-4 border-green hover:border-white max-sm:border-white">
-                                    <div className="w-full ">
-                                        <Image
-                                            className='w-full h-40 object-cover rounded-lg'
-                                            src={i.image.url}
-                                            width={1000}
-                                            height={1000}
-                                            alt="img"
-                                        />
-                                    </div>
 
-                                    <div className="mt-8 max-lg:mt-3 px-4 max-lg:px-3">
-                                        <h3 className="text-2xl text-center">{i[machineTitle]}</h3>
-                                        <p className="text-base max-lg:text-sm leading-6 my-5 max-lg:my-2">{i[machineDescription]}</p>
-                                    </div>
-                                </Link>
-                            ))
-                        }
-                    </div>
-                </Suspense>
+                <div className="grid grid-cols-3 max-md:grid-cols-2 max-xs:grid-cols-1 gap-5 max-sm:gap-y-10 mt-8 max-sm:px-5 anim-element">
+                    {
+                        machines.map((i: any, idx: number) => (
+                            <Link href={`/${lang}/machineries/${i.id}`} key={idx} className="border-b-4 border-green hover:border-white max-sm:border-white">
+                                <div className="w-full ">
+                                    <Image
+                                        className='w-full h-40 object-cover rounded-lg'
+                                        src={i.image.url}
+                                        width={1000}
+                                        height={1000}
+                                        alt="img"
+                                    />
+                                </div>
+
+                                <div className="mt-8 max-lg:mt-3 px-4 max-lg:px-3">
+                                    <h3 className="text-2xl text-center">{i[machineTitle]}</h3>
+                                    <p className="text-base max-lg:text-sm leading-6 my-5 max-lg:my-2">{i[machineDescription]}</p>
+                                </div>
+                            </Link>
+                        ))
+                    }
+                </div>
             </div>
         </div>
     )

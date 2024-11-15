@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from 'react'
 
 import { animateElementsOnScroll } from '@/lib/animations'
 import { GiWaterRecycling } from 'react-icons/gi'
-import { AiFillProduct } from 'react-icons/ai'
 import { TbPackageExport } from 'react-icons/tb'
 import Image from 'next/image'
 

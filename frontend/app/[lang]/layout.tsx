@@ -58,21 +58,6 @@ export default async function RootLayout({
    return (
       <html lang={lang}>
          <body className={inter.className}>
-            {/* <Head>
-               <meta name="description" content={metadata.description} />
-               <meta name="keywords" content={metadata.keywords.join(', ')} />
-               <meta property="og:title" content={metadata.openGraph.title} />
-               <meta property="og:description" content={metadata.openGraph.description} />
-               <meta property="og:url" content={metadata.openGraph.url} />
-               <meta property="og:site_name" content={"new.parisahome.com"} />
-               <meta property="og:image" content={metadata.openGraph.images[0].url} />
-               <meta property="og:image:secure_url" content={"/images/icon.ico"} />
-               <meta property="og:image:width" content={metadata.openGraph.images[0].width} />
-               <meta property="og:image:height" content={metadata.openGraph.images[0].height} />
-               <meta property="og:image:alt" content={metadata.openGraph.images[0].alt} />
-               <meta property="og:type" content={metadata.openGraph.type} />
-            </Head> */}
-
             <GoogleRecaptchaWrapper>
                <Header lang={lang} nav={nav} />
                <main>
