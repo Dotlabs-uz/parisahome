@@ -73,8 +73,8 @@ const Products = ({ product, tran }: any) => {
                                             alt="img"
                                             loading="lazy"
                                             placeholder="blur"
-                                            // blurDataURL={i.images[0].url}
-                                            blurDataURL="/path/to/placeholder-image.webp"
+                                            blurDataURL={i.images[0].url}
+                                        // blurDataURL="/path/to/placeholder-image.webp"
                                         // quality={50}
                                         />
                                     </div>

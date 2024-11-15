@@ -13,7 +13,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
    const { technologiesComp, weInNumbersComp, partnersCom, products, galleryTitle, galleryButton, faqTitle, form } = await getDictionary(lang);
 
    return (
-      <div className="">
+      <>
          <section className="relative mt-14">
             <HeroVideo />
          </section>
@@ -45,7 +45,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale }; }) => {
          <section>
             <Form form={form} />
          </section>
-      </div>
+      </>
    );
 }
 

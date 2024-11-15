@@ -99,6 +99,7 @@ const Header = ({ lang, nav }: any) => {
                         className="w-24 max-lg:w-20"
                         src={"/images/logo.svg"}
                         width={1000}
+                        priority
                         height={1000}
                         alt="logo"
                     />
@@ -144,16 +145,7 @@ const Header = ({ lang, nav }: any) => {
                             <option value="jp" className="bg-yellow">JP</option>
                         </select>
                     </div>
-                    {/* <div className="custom-select relative w-full">
-                        <select
-                            className="footer-select"
-                        >
-                            <option value="1" defaultChecked>dwqdqwd</option>
-                            <option value="instagram">Instagram</option>
-                            <option value="facebook">Facebook</option>
-                            <option value="tiktok">Tik Tok</option>
-                        </select>
-                    </div> */}
+
                     <button
                         onClick={() => setOpenModal(!openModal)}
                         className="md:hidden z-10"

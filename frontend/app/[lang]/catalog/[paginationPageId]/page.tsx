@@ -42,13 +42,6 @@ const Page = ({ searchParams, params }: any) => {
             {
                 loading ? <SkeletonCatalog /> : <RenderProducts arr={products} searchParams={searchParams} total={total} />
             }
-
-            {/* <Suspense fallback={<SkeletonCtegories />}>
-            </Suspense> */}
-
-            {/* <Suspense fallback={<SkeletonCatalog />}>
-                <RenderProducts searchParams={searchParams} params={params} />
-            </Suspense> */}
         </div>
     );
 };
