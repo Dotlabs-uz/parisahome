@@ -30,6 +30,8 @@ export class ImagesService {
 		} catch (e) {
 			throw new BadRequestException('Cannot upload images');
 		}
+
+		return {message:'Image was creater'}
 	}
 
 	async uploadImage(id: number, file: any, service: string) {
