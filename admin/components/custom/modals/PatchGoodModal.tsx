@@ -10,10 +10,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import action from "@/app/admin/actions";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { AiFillDelete } from "react-icons/ai";
 
 interface Props {
     id: number;
     good: {
+        id: number
         ruName: string;
         enName: string;
         uzName: string;
@@ -24,6 +27,7 @@ interface Props {
         jpDescription: string;
         categoryId: number;
         price: string
+        images: { id: number; url: string; }[]
     };
     categories: { id: number; name: string }[];
 }
@@ -43,7 +47,8 @@ interface GoodForm {
 }
 
 export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
-    const [previewImages, setPreviewImages] = useState<string[]>([]);
+    const [previewImages, setPreviewImages] = useState<{ id: number; url: string; }[]>([]);
+    const [newImages, setNewImages] = useState<File[]>([]);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -70,29 +75,89 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
             categoryId: good.categoryId,
             price: good.price,
         });
+
+        setPreviewImages(
+            good.images.map((image: { id: number; url: string }) => ({
+                id: image.id,
+                url: image.url,
+            }))
+        );
     }, [good, reset]);
 
-    const onSubmit = async (formData: GoodForm) => {
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files;
+        if (files) {
+            const fileArray = Array.from(files);
+            setPreviewImages((prev: any) => [
+                ...prev,
+                ...fileArray.map((file) => ({
+                    id: null, // Новые файлы не имеют id
+                    url: URL.createObjectURL(file),
+                })),
+            ]);
+            setNewImages((prev) => [...prev, ...fileArray]);
+        }
+    };
+
+    const uploadImages = async (files: File[]) => {
+        const token = await getCookies("token");
+        const formData: any = new FormData();
+
+        files.forEach((file) => {
+            formData.append("images", file);
+            console.log(file, "file");
+        });
+        formData.append("id", good.id);;
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/images`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            body: formData,
+        })
+
+        if (!res.ok) {
+            throw new Error("Failed to upload images");
+        }
+    };
+
+    const deleteImage = async (id: number | null, url: string) => {
+        if (id) {
+            try {
+                const token = await getCookies("token");
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/images/${id}`, {
+                    method: "DELETE",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if (!res.ok) {
+                    throw new Error("Failed to delete image");
+                }
+                callMessage("default", "Image deleted successfully");
+            } catch (error) {
+                console.error(error);
+                callMessage("destructive", "Failed to delete image");
+                return;
+            }
+        }
+
+        // Удаляем изображение из состояния
+        setPreviewImages((prev) => prev.filter((image) => image.url !== url));
+        if (!id) {
+            setNewImages((prev) =>
+                prev.filter((file) => URL.createObjectURL(file) !== url)
+            );
+        }
+    };
+
+    const onSubmit = async (data: GoodForm) => {
         try {
             const token = await getCookies("token");
 
-            const data = new FormData();
-            data.append("ruName", formData.ruName);
-            data.append("enName", formData.enName);
-            data.append("uzName", formData.uzName);
-            data.append("jpName", formData.jpName);
-            data.append("ruDescription", formData.ruDescription);
-            data.append("enDescription", formData.enDescription);
-            data.append("uzDescription", formData.uzDescription);
-            data.append("jpDescription", formData.jpDescription);
-            data.append("categoryId", formData.categoryId.toString());
-            data.append("price", formData.price);
-
-            if (formData.images) {
-                Array.from(formData.images).forEach((file) => {
-                    data.append("images", file);
-                });
-            }
+            // ${process.env.NEXT_PUBLIC_API_URL}/images/${good id}
 
             const res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_URL}/product/${id}`,
@@ -100,12 +165,17 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                     method: "PATCH",
                     headers: {
                         Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
                     },
-                    body: data,
+                    body: JSON.stringify(data),
                 }
             );
 
             if (res.status === 200 || res.status === 201) {
+                if (newImages.length > 0) {
+                    await uploadImages(newImages);
+                }
+
                 reset();
                 callMessage("default", "Product updated successfully");
                 action("product");
@@ -114,15 +184,6 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
         } catch (err: any) {
             console.error(err);
             callMessage("destructive", "Something went wrong");
-        }
-    };
-
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const files = e.target.files;
-        if (files) {
-            const fileArray = Array.from(files);
-            setPreviewImages(fileArray.map((file) => URL.createObjectURL(file)));
-            setValue("images", fileArray);
         }
     };
 
@@ -263,7 +324,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
 
             {/* Image Upload */}
             <div>
-                <Label htmlFor="images" className="block mb-2 text-sm font-medium text-black">
+                <Label htmlFor="images" className="block mb-2 text-sm font-medium cursor-pointer text-black">
                     Upload Images
                 </Label>
                 <Input
@@ -273,23 +334,35 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                     {...register("images")}
                     onChange={handleFileChange}
                     ref={fileInputRef}
-                    className="block w-full text-sm text-gray-500"
+                    className="block w-full text-sm cursor-pointer text-gray-500"
                 />
             </div>
 
             {/* Image Previews */}
-            <ScrollArea className="h-24 w-full mt-2">
-                <div className="flex gap-2 overflow-x-auto">
-                    {previewImages.map((src, index) => (
-                        <img
-                            key={`new-${index}`}
-                            src={src}
-                            alt="Preview"
-                            className="w-20 h-20 object-cover rounded"
-                        />
+            <ScrollArea className="w-full mt-2">
+                <div className="grid grid-cols-5 gap-2">
+                    {previewImages.map(({ id, url }, index) => (
+                        <div key={index} className="relative">
+                            <Image
+                                src={url}
+                                width={100}
+                                height={100}
+                                alt="Preview"
+                                className="w-full h-full object-contain rounded"
+                                quality={50}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => deleteImage(id, url)}
+                                className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1.5"
+                            >
+                                <AiFillDelete size={20} />
+                            </button>
+                        </div>
                     ))}
                 </div>
             </ScrollArea>
+
 
             <button
                 type="submit"
