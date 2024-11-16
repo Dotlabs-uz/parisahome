@@ -72,7 +72,6 @@ export class ProductService {
 		}
 	}
 
-
 	async remove(id: number) {
 		try {
 			const resProduct = await this.productModel.findByPk(id, { include: { all: true } });
