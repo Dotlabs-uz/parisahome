@@ -19,7 +19,7 @@ export class ImagesController {
 	@ApiConsumes('multipart/form-data')
 	@UseInterceptors(FilesInterceptor('images', 10, multerOptions))
 	async create(@Body() createProductDto: CreateimageDto, @UploadedFiles() files: Array<Express.Multer.File>) {
-		return await this.imagesService.uploadImages(createProductDto.id, files, 'productId');
+		return await this.imagesService.uploadImages(+createProductDto.id, files, 'productId');
 	}
 
 	@ApiBearerAuth()

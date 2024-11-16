@@ -3,8 +3,8 @@ import { IsEmail, IsNumber, IsString } from 'class-validator';
 
 export class CreateimageDto {
     @ApiProperty({ description: 'Product id' })
-    @IsNumber()
-    readonly id: number;
+    @IsString()
+    readonly id: string;
 
     @ApiProperty({
         description: 'The images associated with the product',
