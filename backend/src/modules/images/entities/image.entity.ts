@@ -20,6 +20,9 @@ export class Image extends Model<Image> {
     @Column
     mimetype: string
 
+    @Column({ defaultValue: false })
+    isMain:boolean
+
     @Column({
         allowNull: true
     })

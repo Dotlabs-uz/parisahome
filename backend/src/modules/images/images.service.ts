@@ -31,7 +31,7 @@ export class ImagesService {
 			throw new BadRequestException('Cannot upload images');
 		}
 
-		return {message:'Image was creater'}
+		return { message: 'Image was creater' }
 	}
 
 	async uploadImage(id: number, file: any, service: string) {
@@ -84,5 +84,24 @@ export class ImagesService {
 		} catch (error) {
 			console.error(`Failed to delete image file: ${imagePath}`, error);
 		}
+	}
+
+
+	async updateImage(imageId: number, productId: number) {
+		try {
+			await this.imageModel.update(
+				{ isMain: false },
+				{ where: { productId } }
+			);
+
+			await this.imageModel.update(
+				{ isMain: true },
+				{ where: { id: imageId, productId } }
+			);
+		} catch (error) {
+			throw new BadRequestException(error.message)
+		}
+
+		return {messsage:'Image was update'}
 	}
 }

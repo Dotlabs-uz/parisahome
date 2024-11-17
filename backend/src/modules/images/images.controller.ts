@@ -30,4 +30,17 @@ export class ImagesController {
 	async delete(@Param('id') id: number) {
 		return await this.imagesService.deleteImageById(id, 'productId');
 	}
+
+	@ApiBearerAuth()
+	@UseGuards(IsAdminGuard)
+	@Roles('admin', 'superAdmin')
+	@ApiParam({ name: 'imageId', required: true, description: 'ID of the image to update' })
+	@ApiParam({ name: 'productId', required: true, description: 'ID of the associated product' })
+	@Patch(':imageId/:productId')
+	async patch(
+		@Param() params: { imageId: string; productId: string }
+	): Promise<any> {
+		const { imageId, productId } = params;
+		return this.imagesService.updateImage(+imageId, +productId);
+	}
 }
