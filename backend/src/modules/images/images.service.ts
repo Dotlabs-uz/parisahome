@@ -88,14 +88,20 @@ export class ImagesService {
 
 
 	async updateImage(imageId: number, productId: number) {
-		await this.imageModel.update(
-			{ isMain: false },
-			{ where: { productId } }
-		);
+		try {
+			await this.imageModel.update(
+				{ isMain: false },
+				{ where: { productId } }
+			);
 
-		await this.imageModel.update(
-			{ isMain: true },
-			{ where: { id: imageId, productId } }
-		);
+			await this.imageModel.update(
+				{ isMain: true },
+				{ where: { id: imageId, productId } }
+			);
+		} catch (error) {
+			throw new BadRequestException(error.message)
+		}
+
+		return {messsage:'Image was update'}
 	}
 }
