@@ -107,7 +107,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
             formData.append("images", file);
             console.log(file, "file");
         });
-        formData.append("id", good.id);;
+        formData.append("id", good.id);
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/images`, {
             method: "POST",
@@ -152,6 +152,34 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
             );
         }
     };
+    console.log(good);
+
+    const patchImage = async (imageId: number | null) => {
+        if (!imageId) return;
+
+        try {
+            const token = await getCookies("token");
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/images/${imageId}/${good.id}`,
+                {
+                    method: "PATCH",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            if (res.ok) {
+                callMessage("default", "Image patched successfully");
+            } else {
+                throw new Error("Failed to patch image");
+            }
+        } catch (error) {
+            console.error(error);
+            callMessage("destructive", "Failed to patch image");
+        }
+    };
+
 
     const onSubmit = async (data: GoodForm) => {
         try {
@@ -342,7 +370,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
             <ScrollArea className="w-full mt-2">
                 <div className="grid grid-cols-5 gap-2">
                     {previewImages.map(({ id, url }, index) => (
-                        <div key={index} className="relative">
+                        <div key={index} className="relative group">
                             <Image
                                 src={url}
                                 width={100}
@@ -357,6 +385,14 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                                 className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1.5"
                             >
                                 <AiFillDelete size={20} />
+                            </button>
+
+                            <button
+                                type="button"
+                                onClick={() => patchImage(id)}
+                                className="absolute top-1 left-1 bg-blue-500 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                            >
+                                P
                             </button>
                         </div>
                     ))}
