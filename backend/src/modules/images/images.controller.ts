@@ -34,9 +34,9 @@ export class ImagesController {
 	@ApiBearerAuth()
 	@UseGuards(IsAdminGuard)
 	@Roles('admin', 'superAdmin')
-	@Patch(':imageId/:productId')
 	@ApiParam({ name: 'imageId', required: true, description: 'ID of the image to update' })
 	@ApiParam({ name: 'productId', required: true, description: 'ID of the associated product' })
+	@Patch(':imageId/:productId')
 	async patch(
 		@Param() params: { imageId: string; productId: string }
 	): Promise<any> {
