@@ -12,6 +12,7 @@ import action from "@/app/admin/actions";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { AiFillDelete } from "react-icons/ai";
+import { FaCheck, FaStar } from "react-icons/fa";
 
 interface Props {
     id: number;
@@ -27,7 +28,7 @@ interface Props {
         jpDescription: string;
         categoryId: number;
         price: string
-        images: { id: number; url: string; }[]
+        images: { id: number; url: string; isMain: boolean }[]
     };
     categories: { id: number; name: string }[];
 }
@@ -47,8 +48,9 @@ interface GoodForm {
 }
 
 export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
-    const [previewImages, setPreviewImages] = useState<{ id: number; url: string; }[]>([]);
+    const [previewImages, setPreviewImages] = useState<{ id: number; url: string; isMain: boolean }[]>([]);
     const [newImages, setNewImages] = useState<File[]>([]);
+    console.log(good);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -77,9 +79,10 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
         });
 
         setPreviewImages(
-            good.images.map((image: { id: number; url: string }) => ({
+            good.images.map((image: { id: number; url: string, isMain: boolean }) => ({
                 id: image.id,
                 url: image.url,
+                isMain: image.isMain
             }))
         );
     }, [good, reset]);
@@ -152,7 +155,6 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
             );
         }
     };
-    console.log(good);
 
     const patchImage = async (imageId: number | null) => {
         if (!imageId) return;
@@ -369,8 +371,8 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
             {/* Image Previews */}
             <ScrollArea className="w-full mt-2">
                 <div className="grid grid-cols-5 gap-2">
-                    {previewImages.map(({ id, url }, index) => (
-                        <div key={index} className="relative group">
+                    {previewImages.map(({ id, url, isMain }, index) => (
+                        <div key={index} className="relative group overflow-hidden rounded-md">
                             <Image
                                 src={url}
                                 width={100}
@@ -379,6 +381,7 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                                 className="w-full h-full object-contain rounded"
                                 quality={50}
                             />
+                            {isMain && <div className="h-5 w-24 absolute bottom-3 -left-6 rotate-45 flex items-center justify-center bg-blue-500"><FaStar className="text-yellow-400 -rotate-45" /></div>}
                             <button
                                 type="button"
                                 onClick={() => deleteImage(id, url)}
@@ -390,15 +393,14 @@ export const PatchGoodModal: React.FC<Props> = ({ id, good, categories }) => {
                             <button
                                 type="button"
                                 onClick={() => patchImage(id)}
-                                className="absolute top-1 left-1 bg-blue-500 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                                className="absolute top-1 left-1 bg-blue-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
                             >
-                                P
+                                <FaCheck className="text-[15px]" />
                             </button>
                         </div>
                     ))}
                 </div>
             </ScrollArea>
-
 
             <button
                 type="submit"
