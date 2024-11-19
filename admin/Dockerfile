@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:18-alpine
 
 COPY ./package*.json ./pre_build/
 RUN npm install -f --prefix /pre_build
