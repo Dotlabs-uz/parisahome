@@ -10,26 +10,24 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination";
 import { GoodsType } from "@/types";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 interface PaginationProps {
     goods: GoodsType;
     searchParams: Record<string, string>;
 }
 
-const translations = [
-    {
-        morePages: "More pages",
-        next: "Next",
-        previous: "Previous",
-    },
-    {
-        morePages: "Больше страниц",
-        next: "Следующий",
-        previous: "Предыдущий",
-    },
-];
+// const translations = [
+//     {
+//         morePages: "More pages",
+//         next: "Next",
+//         previous: "Previous",
+//     },
+//     {
+//         morePages: "Больше страниц",
+//         next: "Следующий",
+//         previous: "Предыдущий",
+//     },
+// ];
 
 const PaginationComponent: React.FunctionComponent<PaginationProps> = ({
     goods,
