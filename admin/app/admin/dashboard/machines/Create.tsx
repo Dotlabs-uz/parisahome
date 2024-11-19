@@ -25,11 +25,10 @@ export default function MachinesForm({ token }: { token: string }) {
         }
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
 
-        // Create FormData object for submission
-        const formData = new FormData(e.currentTarget);
+        const formData = new FormData(e.target);
 
         try {
             const response = await fetch(
@@ -48,13 +47,13 @@ export default function MachinesForm({ token }: { token: string }) {
                     title: "Success!",
                     description: "Machine successfully added!",
                 });
-                e.currentTarget.reset();
+                e.target.reset();
                 setImagePreview(null);
                 action("machines");
             } else {
                 toast({
-                    title: "Error!",
-                    description: "Error while adding machine.",
+                    title: "Error! 2",
+                    description: "Error while adding machine. 2",
                     variant: "destructive",
                 });
             }
