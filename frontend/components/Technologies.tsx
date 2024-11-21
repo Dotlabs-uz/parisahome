@@ -76,8 +76,9 @@ const Technologies = ({ technologiesComp }: any) => {
                                     <Image
                                         className='w-full h-40 object-cover rounded-lg'
                                         src={i.image.url}
-                                        width={1000}
-                                        height={1000}
+                                        width={10}
+                                        height={10}
+                                        priority={true}
                                         alt="img"
                                     />
                                 </div>

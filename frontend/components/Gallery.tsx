@@ -1,12 +1,9 @@
 
 import Image from "next/image";
-import axios from "axios";
 import Link from "next/link";
 import { getData } from "@/lib/https.request";
 
 const Gallery = async ({ galleryTitle, galleryButton, lang }: any) => {
-    // const gallery = axios.get(`${process.env.NEXT_PUBLIC_API_URL}/gallery`)
-
     const gallery = await getData("/gallery");
 
     if (gallery.status === 500) {
@@ -27,12 +24,13 @@ const Gallery = async ({ galleryTitle, galleryButton, lang }: any) => {
                 {gallery.map((item:any, index:number) => (
                     <div key={item.id} className="rounded-lg overflow-hidden">
                         <Image
-                            className="w-full h-full"
+                            className="w-full h-full object-cover"
                             src={item.url}
                             alt={`Gallery Image ${index + 1}`}
-                            width={500}
-                            height={500}
-                            loading="lazy"
+                            width={50}
+                            height={50}
+                            priority={true}
+                            quality={50}
                         />
                     </div>
                 ))}
