@@ -30,7 +30,6 @@ const Gallery = async ({ galleryTitle, galleryButton, lang }: any) => {
                             width={50}
                             height={50}
                             priority={true}
-                            quality={50}
                         />
                     </div>
                 ))}
