@@ -42,18 +42,18 @@ const Products = ({ product, tran }: any) => {
                     ref={sectionRef}
                 >
                     <Swiper
-                        className=""
-                        slidesPerView={"auto"}
+                        className="cursor-grab"
+                        slidesPerView={1.2}
                         // centeredSlides={true}
                         spaceBetween={10}
                         modules={[Virtual]}
                         breakpoints={{
                             540: {
-                                slidesPerView: 2,
+                                slidesPerView: 2.2,
                                 spaceBetween: 15
                             },
                             960: {
-                                slidesPerView: 3,
+                                slidesPerView: 3.2,
                                 spaceBetween: 20
                             },
                         }}

@@ -96,8 +96,8 @@ const Footer = ({ footer, nav }: any) => {
                         </ul>
 
                         <div className="flex items-center justify-between max-sm:justify-center">
-                            <p className='max-sm:hidden '>{footer.privacyPolicy}</p>
-                            <p className='max-sm:hidden '>{footer.allRightsReserved}</p>
+                            <p className='max-sm:hidden'></p>
+                            <p className='max-sm:hidden'>{footer.allRightsReserved}</p>
                             <p className='sm:hidden text-center '>{footer.copyright}</p>
                         </div>
                     </div>
