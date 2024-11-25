@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -6,16 +5,16 @@ import Footer from "@/components/Footer";
 import { Locale } from "@/i18n.config";
 import GoogleRecaptchaWrapper from "./GoogleRecaptchaWrapper";
 import { getDictionary } from "@/lib/dictionary";
-import Head from "next/head";
+import { Metadata } from "next";
 
-const inter = Raleway({
+const raleway = Raleway({
    weight: ["300", "400", "500", "600", '800'],
    subsets: ["latin"],
    style: ['normal'],
    display: 'swap',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
    title: {
       default: "Parisa Home",
       template: "%s - Parisa Home"
@@ -53,11 +52,11 @@ export default async function RootLayout({
    children: React.ReactNode;
    params: { lang: Locale }
 }>) {
-   const { footer, nav, metadata } = await getDictionary(lang);
+   const { footer, nav } = await getDictionary(lang);
 
    return (
       <html lang={lang}>
-         <body className={inter.className}>
+         <body className={raleway.className}>
             <GoogleRecaptchaWrapper>
                <Header lang={lang} nav={nav} />
                <main>

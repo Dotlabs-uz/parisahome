@@ -26,6 +26,7 @@ const Gallery = async ({ galleryTitle, galleryButton, lang }: any) => {
                     <div key={item.id} className="rounded-lg overflow-hidden h-72 max-sm:h-64 bg-cover" style={{ backgroundImage: `url(${item.url})` }}>
                         {/* <Image
                             className="w-full h-full object-cover"
+                            // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             src={item.url}
                             alt={`Gallery Image ${index + 1}`}
                             width={50}
