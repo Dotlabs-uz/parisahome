@@ -64,8 +64,8 @@ const Products = ({ product, tran }: any) => {
                                     key={idx}
                                     className="mb-10 p-3 max-sm:p-1.5 rounded-[20px] border border-[#EEEEEE]"
                                 >
-                                    <div className="w-full h-52 max-md:h-40">
-                                        <Image
+                                    <div className="w-full h-52 max-md:h-40 bg-cover rounded-lg bg-bottom" style={{ backgroundImage: `url(${i.images[0].url})` }}>
+                                        {/* <Image
                                             className="w-full h-full object-cover rounded-lg"
                                             src={i.images[0].url}
                                             width={100}
@@ -74,9 +74,7 @@ const Products = ({ product, tran }: any) => {
                                             loading="lazy"
                                             placeholder="blur"
                                             blurDataURL={i.images[0].url}
-                                        // blurDataURL="/path/to/placeholder-image.webp"
-                                        // quality={50}
-                                        />
+                                        /> */}
                                     </div>
 
                                     <div className="">

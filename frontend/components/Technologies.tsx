@@ -72,15 +72,15 @@ const Technologies = ({ technologiesComp }: any) => {
                     {
                         machines.map((i: any, idx: number) => (
                             <Link href={`/${lang}/machineries/${i.id}`} key={idx} className="border-b-4 border-green hover:border-white max-sm:border-white">
-                                <div className="w-full ">
-                                    <Image
+                                <div className="w-full h-72 max-lg:h-60 bg-cover rounded-md" style={{ backgroundImage: `url(${i.image.url})` }}>
+                                    {/* <Image
                                         className='w-full h-40 object-cover rounded-lg'
                                         src={i.image.url}
                                         width={10}
                                         height={10}
                                         priority={true}
                                         alt="img"
-                                    />
+                                    /> */}
                                 </div>
 
                                 <div className="mt-8 max-lg:mt-3 px-4 max-lg:px-3">
