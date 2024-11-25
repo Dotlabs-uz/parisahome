@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getData } from "@/lib/https.request";
+import { url } from "inspector";
 
 const Gallery = async ({ galleryTitle, galleryButton, lang }: any) => {
     const gallery = await getData("/gallery");
@@ -21,16 +22,16 @@ const Gallery = async ({ galleryTitle, galleryButton, lang }: any) => {
             </div>
 
             <div className="grid grid-cols-3 gap-3 px-60 max-xl:px-40 max-lg:px-10 max-md:px-0 max-sm:grid-cols-2 my-7">
-                {gallery.map((item:any, index:number) => (
-                    <div key={item.id} className="rounded-lg overflow-hidden">
-                        <Image
+                {gallery.map((item: any, index: number) => (
+                    <div key={item.id} className="rounded-lg overflow-hidden h-72 max-sm:h-64 bg-cover" style={{ backgroundImage: `url(${item.url})` }}>
+                        {/* <Image
                             className="w-full h-full object-cover"
                             src={item.url}
                             alt={`Gallery Image ${index + 1}`}
                             width={50}
                             height={50}
                             priority={true}
-                        />
+                        /> */}
                     </div>
                 ))}
             </div>
