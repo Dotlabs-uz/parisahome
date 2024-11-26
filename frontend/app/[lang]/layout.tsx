@@ -34,10 +34,10 @@ export const metadata: Metadata = {
       siteName: "new.parisahome.com",
       images: [
          {
-            "url": "/images/icon.ico",
-            "width": 800,
-            "height": 600,
-            "alt": "Parisa Home"
+            url: "/images/logo.ico",
+            width: 800,
+            height: 600,
+            alt: "Parisa Home"
          }
       ],
       locale: "ru_RU",
