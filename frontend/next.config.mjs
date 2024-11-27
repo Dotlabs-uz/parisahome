@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['localhost', 'new.parisahome.com'],
+        domains: ['localhost', 'parisahome.com'],
         unoptimized:true
     },
 };
