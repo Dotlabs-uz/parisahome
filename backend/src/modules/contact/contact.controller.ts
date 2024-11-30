@@ -1,4 +1,4 @@
-// contact.controller.ts
+
 import { Body, Controller, Post } from '@nestjs/common';
 import { ContactService } from './contact.service';
 import { ApiTags } from '@nestjs/swagger';
@@ -17,10 +17,10 @@ export class ContactController {
         const text = `Имя: ${name}\nНомер телефона: ${telNumber}\nEmail: ${email}\nСообщение: ${message}`;
 
         try {
-            await this.contactService.sendMail(process.env.EMAIL_USER, subject, text);
-            return { message: 'Заявка успешно отправлена!' };
+            await this.contactService.sendMail(subject, text);
         } catch (error) {
             return { message: 'Ошибка при отправке заявки', error };
         }
+        return { message: 'Заявка успешно отправлена!' };
     }
 }
