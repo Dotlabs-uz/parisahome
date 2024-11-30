@@ -46,7 +46,6 @@ export function middleware(request: NextRequest) {
 		console.error("Middleware error:", error);
 	}
 
-	// Continue with the request if no issues
 	return NextResponse.next();
 }
 
