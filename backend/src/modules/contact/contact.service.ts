@@ -1,39 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
 
-// @Injectable()
-// export class ContactService {
-// 	private transporter;
-
-// 	constructor() {
-// 		this.transporter = nodemailer.createTransport({
-// 			host: 'parisahome.com',
-// 			port: 587,
-// 			secure: false,
-// 			auth: {
-// 				user: process.env.EMAIL_USER,
-// 				pass: process.env.EMAIL_PASS,
-// 			},
-// 		});
-// 	}
-
-// 	async sendMail(subject: string, text: string) {
-// 		try {
-// 			const result = await this.transporter.sendMail({
-// 				from: process.env.EMAIL_USER,
-// 				to:process.env.EMAIL_USER,
-// 				subject,
-// 				text,
-// 			});
-// 			console.log('Письмо отправлено:', result);
-// 			return result;
-// 		} catch (error) {
-// 			console.error('Ошибка при отправке письма:', error);
-// 			throw error;
-// 		}
-// 	}
-// }
-
 @Injectable()
 export class ContactService {
   private readonly logger = new Logger(ContactService.name);
@@ -53,13 +20,17 @@ export class ContactService {
     }
 
     return {
-      host: 'parisahome.com',
+      host: 'smtp-mail.parisahome.com',
+      secureConnection: false,
       port: 587,
-      secure: false, // Используется TLS, поэтому `secure` = false
       auth: {
         user: EMAIL_USER,
         pass: EMAIL_PASS,
       },
+      tls: {
+        rejectUnauthorized: true,
+        ciphers: 'TLSv1.2',
+      }
     };
   }
 
