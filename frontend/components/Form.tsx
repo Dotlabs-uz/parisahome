@@ -46,7 +46,7 @@ const Form = ({ form }: any) => {
                 if (formResponse.status === 200 || formResponse.status === 201) {
                     setSuccessMessage('Форма успешно отправлена!');
                     reset();
-                    push(`/${lang}/thanks`)
+                    push(`/en/thanks`)
                 } else {
                     setSuccessMessage('Не удалось отправить форму.');
                 }
